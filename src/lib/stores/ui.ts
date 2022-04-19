@@ -1,3 +1,4 @@
+import { browser } from '$app/env';
 import type { IconName } from '@components/ui/Icon';
 import type { ToastColor, ToastItem } from '@components/ui/Toast';
 import { writable } from 'svelte/store';
@@ -14,8 +15,25 @@ const createUI = (initialState: UIStore) => {
   const { set, update, subscribe } = writable<UIStore>(initialState);
 
   const theme = {
-    toggle: () => update((v) => ({ ...v, isDarkTheme: !v.isDarkTheme })),
-    set: (isDarkTheme: boolean) => update((v) => ({ ...v, isDarkTheme }))
+    toggle: () =>
+      update((v) => {
+        if (browser) {
+          fetch(window.location.origin + '/theme', {
+            method: 'POST',
+            body: JSON.stringify({ isDark: !v.isDarkTheme })
+          });
+        }
+        return { ...v, isDarkTheme: !v.isDarkTheme };
+      }),
+    set: (isDarkTheme: boolean) => {
+      if (browser) {
+        fetch(window.location.origin + '/theme', {
+          method: 'POST',
+          body: JSON.stringify({ isDark: isDarkTheme })
+        });
+      }
+      update((v) => ({ ...v, isDarkTheme }));
+    }
   };
 
   const toast = {

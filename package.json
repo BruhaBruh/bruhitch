@@ -16,7 +16,8 @@
     "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
     "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
     "test": "vitest --passWithNoTests",
-    "test:watch": "vitest watch"
+    "test:watch": "vitest watch",
+    "typesafe-i18n": "typesafe-i18n"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
@@ -41,5 +42,8 @@
     "typescript": "~4.6.2",
     "vitest": "^0.8.3"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "typesafe-i18n": "^5.4.0"
+  }
 }
