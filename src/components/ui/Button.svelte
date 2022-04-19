@@ -8,12 +8,13 @@
   export let startIcon: IconName = undefined;
   export let endIcon: IconName = undefined;
   export let isLoading = false;
+  export let link = false;
 </script>
 
-<button
+<svelte:element
+  this={link ? 'a' : 'button'}
   {...$$restProps}
   class={[
-    $$restProps.class,
     'h-10 px-4 flex items-center justify-center space-x-1 rounded-default focus:ring-2 focus:ring-opacity-50 disabled:text-gray-dark disabled:bg-gray-light dark:disabled:text-gray-light dark:disabled:bg-gray-dark transition ease-in',
     color === 'primary'
       ? 'text-gray-lightest bg-primary-base hover:bg-primary-dark focus:ring-primary-base'
@@ -30,7 +31,7 @@
     color === 'danger'
       ? 'text-gray-darkest bg-danger-base hover:bg-danger-dark focus:ring-danger-base'
       : '',
-    isLoading ? '' : ''
+    $$restProps.class
   ]
     .filter(Boolean)
     .join(' ')}
@@ -54,4 +55,4 @@
       <Icon size={28} icon={endIcon} class="fill-current" />
     {/if}
   {/if}
-</button>
+</svelte:element>

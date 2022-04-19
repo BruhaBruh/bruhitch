@@ -51,7 +51,8 @@
 
 <App>
   <Header />
-  <main class="container mx-auto py-12 px-2 sm:px-4">
+
+  <main class="px-2 sm:px-4 py-12">
     <slot />
   </main>
 </App>

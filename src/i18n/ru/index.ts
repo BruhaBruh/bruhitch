@@ -1,7 +1,7 @@
 import type { Translation } from '../i18n-types';
 
 const ru: Translation = {
-  indexPage: 'Главная страница'
+  test: ''
 };
 
 export default ru;

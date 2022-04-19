@@ -14,17 +14,11 @@ export type Translation = RootTranslation
 export type Translations = RootTranslation
 
 type RootTranslation = {
-	/**
-	 * Index Page
-	 */
-	indexPage: string
+	test: string
 }
 
 export type TranslationFunctions = {
-	/**
-	 * Index Page
-	 */
-	indexPage: () => LocalizedString
+	test: () => LocalizedString
 }
 
 export type Formatters = {}

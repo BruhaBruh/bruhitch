@@ -9,11 +9,13 @@
   $: ui.theme.set(isDarkTheme);
 </script>
 
-<header class="w-full border-b border-gray-base shadow-xs">
-  <nav class="h-16 container mx-auto px-2 sm:px-4 flex items-center justify-between">
+<header
+  class="w-full h-16 border-b border-gray-base shadow-xs px-2 sm:px-4 flex items-center justify-between"
+>
+  <nav>
     <a href={'/' + $locale} sveltekit:prefetch>
       <Typography variant="h3">Bruhitch</Typography>
     </a>
-    <Switch bind:isSelected={isDarkTheme} />
   </nav>
+  <Switch bind:isSelected={isDarkTheme} />
 </header>
