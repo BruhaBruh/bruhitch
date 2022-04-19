@@ -1,7 +1,7 @@
-const config = {
+module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   presets: [],
-  darkMode: 'media', // or 'class'
+  darkMode: 'class', // or 'media'
   theme: {
     screens: {
       sm: '640px',
@@ -14,30 +14,51 @@ const config = {
       inherit: colors.inherit,
       current: colors.current,
       transparent: colors.transparent,
-      black: colors.black,
-      white: colors.white,
-      slate: colors.slate,
-      gray: colors.gray,
-      zinc: colors.zinc,
-      neutral: colors.neutral,
-      stone: colors.stone,
-      red: colors.red,
-      orange: colors.orange,
-      amber: colors.amber,
-      yellow: colors.yellow,
-      lime: colors.lime,
-      green: colors.green,
-      emerald: colors.emerald,
-      teal: colors.teal,
-      cyan: colors.cyan,
-      sky: colors.sky,
-      blue: colors.blue,
-      indigo: colors.indigo,
-      violet: colors.violet,
-      purple: colors.purple,
-      fuchsia: colors.fuchsia,
-      pink: colors.pink,
-      rose: colors.rose
+      gray: {
+        lightest: '#fafafa',
+        lighter: '#cfcfcf',
+        light: '#a6a6a6',
+        base: '#808080',
+        dark: '#595959',
+        darker: '#363636',
+        darkest: '#171717'
+      },
+      primary: {
+        lightest: '#f0f6ff',
+        lighter: '#bad6fd',
+        light: '#8bb3f8',
+        base: '#5d90ef',
+        dark: '#3169e3',
+        darker: '#224ebf',
+        darkest: '#1e3b8a'
+      },
+      success: {
+        lightest: '#edfdf5',
+        lighter: '#95f4cc',
+        light: '#3beda9',
+        base: '#10b77f',
+        dark: '#0c976b',
+        darker: '#097154',
+        darkest: '#064c39'
+      },
+      warning: {
+        lightest: '#fefce7',
+        lighter: '#faeeb2',
+        light: '#f5d87a',
+        base: '#edb94a',
+        dark: '#e0941a',
+        darker: '#a66617',
+        darkest: '#733f12'
+      },
+      danger: {
+        lightest: '#fef1f1',
+        lighter: '#f9bebe',
+        light: '#f18e8e',
+        base: '#e75f5f',
+        dark: '#db3333',
+        darker: '#b32323',
+        darkest: '#811d1d'
+      }
     }),
     columns: {
       auto: 'auto',
@@ -185,13 +206,11 @@ const config = {
     borderOpacity: ({ theme }) => theme('opacity'),
     borderRadius: {
       none: '0px',
-      sm: '0.125rem',
-      DEFAULT: '0.25rem',
-      md: '0.375rem',
-      lg: '0.5rem',
-      xl: '0.75rem',
-      '2xl': '1rem',
-      '3xl': '1.5rem',
+      sm: '0.25rem',
+      default: '0.5rem',
+      lg: '1rem',
+      xl: '1.5rem',
+      '2xl': '2rem',
       full: '9999px'
     },
     borderWidth: {
@@ -202,13 +221,10 @@ const config = {
       8: '8px'
     },
     boxShadow: {
-      sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-      DEFAULT: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
-      md: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
-      lg: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
-      xl: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
-      '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
-      inner: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
+      xs: '0px 0px 0px 0px rgba(22,23,29,0.1), 0px 2px 5px 0px rgba(22,23,29,0.1), 0px 8px 8px 0px rgba(22,23,29,0.09), 0px 19px 11px 0px rgba(22,23,29,0.05), 0px 33px 13px 0px rgba(22,23,29,0.01), 0px 52px 15px 0px rgba(22,23,29,0)',
+      sm: '0px 0px 0px 0px rgba(22,23,29,0.1), 0px 3px 8px 0px rgba(22,23,29,0.1), 0px 14px 14px 0px rgba(22,23,29,0.09), 0px 31px 19px 0px rgba(22,23,29,0.05), 0px 56px 22px 0px rgba(22,23,29,0.01), 0px 87px 24px 0px rgba(22,23,29,0)',
+      md: '0px 0px 0px 0px rgba(22,23,29,0.1), 0px 5px 11px 0px rgba(22,23,29,0.1), 0px 19px 19px 0px rgba(22,23,29,0.09), 0px 44px 26px 0px rgba(22,23,29,0.05), 0px 78px 31px 0px rgba(22,23,29,0.01), 0px 122px 34px 0px rgba(22,23,29,0)',
+      lg: '0px 0px 0px 0px rgba(22,23,29,0.1), 0px 6px 14px 0px rgba(22,23,29,0.1), 0px 25px 25px 0px rgba(22,23,29,0.09), 0px 56px 34px 0px rgba(22,23,29,0.05), 0px 100px 40px 0px rgba(22,23,29,0.01), 0px 156px 44px 0px rgba(22,23,29,0)',
       none: 'none'
     },
     boxShadowColor: ({ theme }) => theme('colors'),
@@ -344,6 +360,7 @@ const config = {
     },
     fontFamily: {
       sans: [
+        'Inter',
         'ui-sans-serif',
         'system-ui',
         '-apple-system',
@@ -372,19 +389,12 @@ const config = {
       ]
     },
     fontSize: {
-      xs: ['0.75rem', { lineHeight: '1rem' }],
-      sm: ['0.875rem', { lineHeight: '1.25rem' }],
-      base: ['1rem', { lineHeight: '1.5rem' }],
-      lg: ['1.125rem', { lineHeight: '1.75rem' }],
-      xl: ['1.25rem', { lineHeight: '1.75rem' }],
-      '2xl': ['1.5rem', { lineHeight: '2rem' }],
-      '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
-      '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
-      '5xl': ['3rem', { lineHeight: '1' }],
-      '6xl': ['3.75rem', { lineHeight: '1' }],
-      '7xl': ['4.5rem', { lineHeight: '1' }],
-      '8xl': ['6rem', { lineHeight: '1' }],
-      '9xl': ['8rem', { lineHeight: '1' }]
+      xs: ['0.75rem', { lineHeight: '1.25rem' }],
+      sm: ['1rem', { lineHeight: '1.5rem' }],
+      base: ['1.25rem', { lineHeight: '1.75rem' }],
+      lg: ['1.5rem', { lineHeight: '2rem' }],
+      xl: ['2rem', { lineHeight: '2.5rem' }],
+      '2xl': ['2.5rem', { lineHeight: '3rem' }]
     },
     fontWeight: {
       thin: '100',
@@ -948,5 +958,3 @@ const config = {
   ],
   plugins: []
 };
-
-module.exports = config;

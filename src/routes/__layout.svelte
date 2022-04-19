@@ -1,7 +1,14 @@
-<script>
+<script lang="ts" context="module">
+  import App from '@components/App.svelte';
   import '../app.css';
 </script>
 
-<main class="h-screen container mx-auto flex flex-col items-center justify-center space-y-2">
-  <slot />
-</main>
+<script lang="ts">
+  let isDark = true;
+</script>
+
+<App {isDark}>
+  <main class="container mx-auto py-8 px-2">
+    <slot />
+  </main>
+</App>
