@@ -1,63 +1,12 @@
-# SvelteKit boilerplate
+# Twitch services
 
-SvelteKit boilerplate with typescript, vitest, tailwindcss
+## Environment variables
 
-## To Install
+- `TWITCH` - uses
 
-```bash
-yarn
-```
+## TODO list
 
-## Run in development mode
-
-```bash
-yarn dev
-```
-
-## Build
-
-```bash
-yarn build
-```
-
-## Preview
-
-```bash
-yarn preview
-```
-
-## Check typescript
-
-```bash
-yarn check
-```
-
-## Check typescript in watch mode
-
-```bash
-yarn check:watch
-```
-
-## Check lint
-
-```bash
-yarn lint
-```
-
-## Format by eslint
-
-```bash
-yarn format
-```
-
-## Run tests
-
-```bash
-yarn test
-```
-
-## Run tests in watch mode
-
-```bash
-yarn test:watch
-```
+- [ ] Add BruhUI
+- [ ] Add localization
+- [ ] Create basic UI
+- [ ] Import twitch-chat to bruhitch
