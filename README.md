@@ -6,7 +6,7 @@
 
 ## TODO list
 
-- [ ] Add BruhUI
+- [x] Add BruhUI
 - [ ] Add localization
 - [ ] Create basic UI
 - [ ] Import twitch-chat to bruhitch

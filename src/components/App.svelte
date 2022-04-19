@@ -1,10 +1,10 @@
 <script lang="ts">
-  export let isDark: boolean;
+  import { ui } from '$lib/stores/ui';
 </script>
 
-<div class:dark={isDark}>
+<div class:dark={$ui.isDarkTheme}>
   <div
-    class="font-sans h-screen overflow-y-auto bg-gray-lightest text-gray-darkest dark:bg-gray-darkest dark:text-gray-lightest relative"
+    class="font-sans h-screen overflow-y-auto bg-gray-lightest text-gray-darkest dark:bg-gray-darkest dark:text-gray-lightest relative transition ease-in"
   >
     <slot />
   </div>
