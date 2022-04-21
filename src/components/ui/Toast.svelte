@@ -27,7 +27,6 @@
 
   onMount(() => {
     progressHeight.set(0);
-    console.log(duration);
     timeout = setTimeout(() => dispatchRemove(), duration);
   });
 

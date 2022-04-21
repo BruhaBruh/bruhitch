@@ -6,6 +6,7 @@
 
   const dispatch = createEventDispatcher();
 
+  export let input: HTMLInputElement = undefined;
   export let status: TextFieldStatus = undefined;
   export let placeholder = '';
   export let value: string | number = '';
@@ -14,8 +15,6 @@
   export let readonly = false;
   export let disabled = false;
   export let type = 'text';
-
-  let input: HTMLInputElement;
 
   const handleInputClick = (e: MouseEvent) => {
     if (disabled) return;

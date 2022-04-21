@@ -8,5 +8,5 @@
 
 - [x] Add BruhUI
 - [x] Add localization
-- [ ] Create basic UI
+- [x] Create basic UI
 - [ ] Import twitch-chat to bruhitch

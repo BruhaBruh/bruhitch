@@ -40,7 +40,7 @@
   };
 </script>
 
-<div {...$$restProps} class="relative">
+<div {...$$restProps} class={['relative', $$restProps.class].filter(Boolean).join(' ')}>
   <button
     bind:this={btn}
     {disabled}

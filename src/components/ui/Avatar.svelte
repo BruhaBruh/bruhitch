@@ -12,7 +12,6 @@
 
   const handleError = () => {
     loadError = true;
-    console.log('test');
   };
   const fallbackColorClass = [
     'bg-gray-base text-gray-darker',

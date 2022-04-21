@@ -14,11 +14,357 @@ export type Translation = RootTranslation
 export type Translations = RootTranslation
 
 type RootTranslation = {
-	test: string
+	pageNames: {
+		/**
+		 * Bruhitch
+		 */
+		index: string
+		/**
+		 * Bruhitch › Settings
+		 */
+		settings: string
+		/**
+		 * Bruhitch › Chat
+		 */
+		chat: string
+	}
+	settings: {
+		/**
+		 * Settings
+		 */
+		name: string
+		/**
+		 * Theme
+		 */
+		theme: string
+		/**
+		 * Dark
+		 */
+		darkTheme: string
+		/**
+		 * Light
+		 */
+		lightTheme: string
+		/**
+		 * Language
+		 */
+		language: string
+	}
+	chat: {
+		/**
+		 * Chat
+		 */
+		name: string
+		/**
+		 * Chat widget link generator
+		 */
+		title: string
+		/**
+		 * Chat preview
+		 */
+		preview: string
+		/**
+		 * Nickname
+		 */
+		nickname: string
+		/**
+		 * Channel
+		 */
+		channel: string
+		/**
+		 * Chat type
+		 */
+		chatType: string
+		/**
+		 * Default
+		 */
+		'default': string
+		/**
+		 * Block
+		 */
+		block: string
+		/**
+		 * Alternative block
+		 */
+		alternativeBlock: string
+		/**
+		 * Hide rewards
+		 */
+		hideRewards: string
+		/**
+		 * Hide claim channel points rewards in chat
+		 */
+		hideRewardsDescription: string
+		/**
+		 * Hidden nicknames
+		 */
+		hiddenNicknames: string
+		/**
+		 * Default color
+		 */
+		defaultColor: string
+		/**
+		 * Gradient only to custom nicknames
+		 */
+		gradientOnlyToCustomNicknames: string
+		/**
+		 * Custom color nicknames
+		 */
+		customColorNicknames: string
+		/**
+		 * Is gradient?
+		 */
+		isGradient: string
+		/**
+		 * Font
+		 */
+		font: string
+		/**
+		 * Font size
+		 */
+		fontSize: string
+		/**
+		 * Disable padding
+		 */
+		disablePadding: string
+		/**
+		 * Animation
+		 */
+		animation: string
+		animationParams: {
+			/**
+			 * Animation parameters
+			 */
+			name: string
+			/**
+			 * duration in ms
+			 */
+			duration: string
+			/**
+			 * start scale
+			 */
+			startScale: string
+			/**
+			 * opacity
+			 */
+			opacity: string
+		}
+		/**
+		 * Chat widget link
+		 */
+		chatLink: string
+		/**
+		 * Load config from link
+		 */
+		loadConfigFromLink: string
+	}
+	donationAlerts: {
+		/**
+		 * Donation alerts
+		 */
+		name: string
+	}
+	/**
+	 * Copy
+	 */
+	copy: string
+	/**
+	 * Copied
+	 */
+	copied: string
+	/**
+	 * Load
+	 */
+	load: string
+	/**
+	 * Loaded
+	 */
+	loaded: string
+	/**
+	 * Add
+	 */
+	add: string
+	/**
+	 * Remove
+	 */
+	remove: string
 }
 
 export type TranslationFunctions = {
-	test: () => LocalizedString
+	pageNames: {
+		/**
+		 * Bruhitch
+		 */
+		index: () => LocalizedString
+		/**
+		 * Bruhitch › Settings
+		 */
+		settings: () => LocalizedString
+		/**
+		 * Bruhitch › Chat
+		 */
+		chat: () => LocalizedString
+	}
+	settings: {
+		/**
+		 * Settings
+		 */
+		name: () => LocalizedString
+		/**
+		 * Theme
+		 */
+		theme: () => LocalizedString
+		/**
+		 * Dark
+		 */
+		darkTheme: () => LocalizedString
+		/**
+		 * Light
+		 */
+		lightTheme: () => LocalizedString
+		/**
+		 * Language
+		 */
+		language: () => LocalizedString
+	}
+	chat: {
+		/**
+		 * Chat
+		 */
+		name: () => LocalizedString
+		/**
+		 * Chat widget link generator
+		 */
+		title: () => LocalizedString
+		/**
+		 * Chat preview
+		 */
+		preview: () => LocalizedString
+		/**
+		 * Nickname
+		 */
+		nickname: () => LocalizedString
+		/**
+		 * Channel
+		 */
+		channel: () => LocalizedString
+		/**
+		 * Chat type
+		 */
+		chatType: () => LocalizedString
+		/**
+		 * Default
+		 */
+		'default': () => LocalizedString
+		/**
+		 * Block
+		 */
+		block: () => LocalizedString
+		/**
+		 * Alternative block
+		 */
+		alternativeBlock: () => LocalizedString
+		/**
+		 * Hide rewards
+		 */
+		hideRewards: () => LocalizedString
+		/**
+		 * Hide claim channel points rewards in chat
+		 */
+		hideRewardsDescription: () => LocalizedString
+		/**
+		 * Hidden nicknames
+		 */
+		hiddenNicknames: () => LocalizedString
+		/**
+		 * Default color
+		 */
+		defaultColor: () => LocalizedString
+		/**
+		 * Gradient only to custom nicknames
+		 */
+		gradientOnlyToCustomNicknames: () => LocalizedString
+		/**
+		 * Custom color nicknames
+		 */
+		customColorNicknames: () => LocalizedString
+		/**
+		 * Is gradient?
+		 */
+		isGradient: () => LocalizedString
+		/**
+		 * Font
+		 */
+		font: () => LocalizedString
+		/**
+		 * Font size
+		 */
+		fontSize: () => LocalizedString
+		/**
+		 * Disable padding
+		 */
+		disablePadding: () => LocalizedString
+		/**
+		 * Animation
+		 */
+		animation: () => LocalizedString
+		animationParams: {
+			/**
+			 * Animation parameters
+			 */
+			name: () => LocalizedString
+			/**
+			 * duration in ms
+			 */
+			duration: () => LocalizedString
+			/**
+			 * start scale
+			 */
+			startScale: () => LocalizedString
+			/**
+			 * opacity
+			 */
+			opacity: () => LocalizedString
+		}
+		/**
+		 * Chat widget link
+		 */
+		chatLink: () => LocalizedString
+		/**
+		 * Load config from link
+		 */
+		loadConfigFromLink: () => LocalizedString
+	}
+	donationAlerts: {
+		/**
+		 * Donation alerts
+		 */
+		name: () => LocalizedString
+	}
+	/**
+	 * Copy
+	 */
+	copy: () => LocalizedString
+	/**
+	 * Copied
+	 */
+	copied: () => LocalizedString
+	/**
+	 * Load
+	 */
+	load: () => LocalizedString
+	/**
+	 * Loaded
+	 */
+	loaded: () => LocalizedString
+	/**
+	 * Add
+	 */
+	add: () => LocalizedString
+	/**
+	 * Remove
+	 */
+	remove: () => LocalizedString
 }
 
 export type Formatters = {}

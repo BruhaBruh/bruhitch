@@ -12,7 +12,6 @@
 
   const handleCloseClick = (e: MouseEvent) => {
     dispatch('close', e);
-    console.log('test');
   };
 </script>
 

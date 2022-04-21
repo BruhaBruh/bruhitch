@@ -1,0 +1,50 @@
+<script lang="ts">
+  import config, { getEasing } from '$lib/stores/chat/config';
+  import { Animation } from '$types/animation';
+  import type { ChatMessage } from '$types/chat';
+  import { fade, scale, slide } from 'svelte/transition';
+  import Text from './Text.svelte';
+  import UserName from './UserName.svelte';
+
+  export let msg: ChatMessage;
+
+  const getAnimation = (animation: Animation) => {
+    switch (animation) {
+      case Animation.Slide:
+        return slide;
+      case Animation.Fade:
+        return fade;
+      case Animation.Scale:
+        return scale;
+      default:
+        return undefined;
+    }
+  };
+
+  $: animation = getAnimation($config.animation);
+</script>
+
+<div
+  transition:animation={{
+    ...$config.animationParams,
+    easing: getEasing($config.animationEasing)
+  }}
+  class="chat-message bg-gray-darkest bg-opacity-75"
+  style={`padding: ${$config.fontSize}px; border-radius: ${$config.fontSize}px`}
+>
+  <UserName
+    color={msg.user.color}
+    userBadges={msg.badgeNames}
+    nickname={msg.user.displayName}
+    withSeparator={false}
+  /><Text message={msg.message} />
+</div>
+
+<style>
+  .chat-message {
+    position: relative;
+    overflow-wrap: anywhere;
+    display: grid;
+    grid-template-rows: max-content 1fr;
+  }
+</style>
