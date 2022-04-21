@@ -43,11 +43,13 @@ export type Cookies = {
   [key: string]: string;
 };
 
-const cookieParse = (cookie: string): Cookies => {
+const cookieParse = (cookie: string | null): Cookies => {
   let cookies: Cookies = {};
-  cookie.split(';').forEach((v) => {
-    const [key, value] = v.trim().split('=');
-    cookies[key] = value;
-  });
+  if (cookie) {
+    cookie.split(';').forEach((v) => {
+      const [key, value] = v.trim().split('=');
+      cookies[key] = value;
+    });
+  }
   return cookies;
 };
