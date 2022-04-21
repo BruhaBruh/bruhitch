@@ -35,9 +35,9 @@
   <div class="layout">
     <div class="mds">
       <UserName
-        color={msg.user.color}
-        userBadges={msg.badgeNames}
-        nickname={msg.user.displayName}
+        color={msg.state.color}
+        userBadges={msg.state.badges}
+        nickname={msg.state['display-name']}
       /><Text message={msg.message} />
     </div>
   </div>

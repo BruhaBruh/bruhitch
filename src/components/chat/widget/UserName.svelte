@@ -1,12 +1,12 @@
 <script lang="ts">
   import config from '$lib/stores/chat/config';
-  import type { ChatTwitchBadge } from '$types/chat/badge';
   import type { ColorGradient } from '$types/chat/nickname';
   import { hex, scale } from 'chroma-js';
   import Badges from './Badges.svelte';
   import Separator from './Separator.svelte';
+  import type { Badges as TBadges } from 'tmi.js';
 
-  export let userBadges: ChatTwitchBadge[];
+  export let userBadges: TBadges;
   export let color: string | null;
   export let nickname: string;
   export let withSeparator = true;

@@ -22,6 +22,9 @@ const config = {
           $lib: path.resolve('./src/lib'),
           '@i18n': path.resolve('./src/i18n')
         }
+      },
+      optimizeDeps: {
+        exclude: ['tmi.js']
       }
     })
   }

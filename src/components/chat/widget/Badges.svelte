@@ -1,17 +1,17 @@
 <script lang="ts">
   import badges from '$lib/stores/chat/badges';
   import config from '$lib/stores/chat/config';
-  import type { ChatTwitchBadge } from '$types/chat/badge';
+  import type { Badges } from 'tmi.js';
 
-  export let userBadges: ChatTwitchBadge[];
+  export let userBadges: Badges;
 
   let badgeImages: string[] = [];
 
   const updateBadgeImages = () => {
-    badgeImages = userBadges
+    badgeImages = Object.keys(userBadges)
       .map((badge) => {
-        const versions = $badges.find((b) => b.set_id === badge.set_id)?.versions;
-        return versions?.find((v) => v.id === badge.version)?.image_url_4x;
+        const versions = $badges.find((b) => b.set_id === badge)?.versions;
+        return versions?.find((v) => v.id === userBadges[badge])?.image_url_4x;
       })
       .filter(Boolean);
   };

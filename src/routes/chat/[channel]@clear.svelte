@@ -6,12 +6,11 @@
   import badges from '$lib/stores/chat/badges';
   import chat from '$lib/stores/chat/chat';
   import config from '$lib/stores/chat/config';
-  import type { NewMessageResponse } from '$types/chat';
-  import type { ChatTwitchBadge, TwitchBadge } from '$types/chat/badge';
+  import type { TwitchBadge } from '$types/chat/badge';
   import ChatWidget from '@components/chat/widget/ChatWidget.svelte';
   import type { Load } from '@sveltejs/kit';
-  import { onMount } from 'svelte';
-  import { Events } from 'twitch-js';
+  import { onDestroy, onMount } from 'svelte';
+  import type { ChatUserstate, Client } from 'tmi.js';
   import './chat.css';
 
   export const prerender = true;
@@ -48,45 +47,41 @@
   export let channel: string;
   export let broadcasterId: string;
   export let tbadges: TwitchBadge[];
+  export let client: Client = undefined;
+  export let connected = false;
 
-  const handleNewMessage: (state: NewMessageResponse) => void = ({
-    tags,
-    _raw,
-    message,
-    isSelf
-  }) => {
-    if (
-      ($config.hideReward && /custom-reward-id=/.test(_raw)) ||
-      message.startsWith('!') ||
-      $config.hiddenNicknames.map((n) => n.toLowerCase()).includes(tags.username.toLowerCase()) ||
-      isSelf
-    )
+  const handleNewMessage = (state: ChatUserstate, message: string, isSelf: boolean) => {
+    if ($config.hideReward && state['custom-reward-id']) return;
+    if (message.startsWith('!')) return;
+    if ($config.hiddenNicknames.map((v) => v.toLowerCase()).includes(state.username.toLowerCase()))
       return;
 
-    let newMessage = message;
-    tags.emotes
+    let emoteTags: { id: string; start: number; end: number }[] = [];
+
+    if (state.emotes) {
+      Object.keys(state.emotes).map((emote) => {
+        state.emotes[emote].map((pos) => {
+          const [startString, endString] = pos.split('-');
+          const start = Number(startString);
+          const end = Number(endString);
+          emoteTags.push({ id: emote, start, end });
+        });
+      });
+    }
+
+    let formattedMessage = message;
+    emoteTags
       .sort((a, b) => b.start - a.start)
       .forEach((emote) => {
-        newMessage = replaceBetween(newMessage, emote.start, emote.end + 1, `<!${emote.id}!>`);
+        formattedMessage = replaceBetween(
+          formattedMessage,
+          emote.start,
+          emote.end + 1,
+          `<!${emote.id}!>`
+        );
       });
 
-    const badgeNames: ChatTwitchBadge[] = _raw
-      .split(';')
-      .find((v) => v.includes('badges='))
-      .split('=')[1]
-      .split(',')
-      .map((v) => ({
-        set_id: v.split('/')[0],
-        version: v.split('/')[1]
-      }));
-
-    chat.add({ id: tags.id, user: tags, message: newMessage, badgeNames });
-  };
-
-  const handleRemoveMessage: (state: { targetMessageId: string }) => void = ({
-    targetMessageId
-  }) => {
-    chat.remove(targetMessageId);
+    chat.add({ id: state.id, state, message: formattedMessage });
   };
 
   const loadConfigFromHref = () => {
@@ -128,30 +123,45 @@
 
     await fetchAllEmotes(channel, broadcasterId);
 
-    const tjs = (window as any).TwitchJs;
-    const twitchChat = new tjs.Chat({
-      username: undefined,
-      token: undefined,
-      log: { level: 'warn' }
+    client = new tmi.Client({
+      connection: {
+        reconnect: true,
+        secure: true
+      },
+      channels: [channel]
     });
 
-    twitchChat.on(Events.PRIVATE_MESSAGE, handleNewMessage);
+    client.on('message', (_, userState, message, self) =>
+      handleNewMessage(userState, message, self)
+    );
+    client.on('messagedeleted', (_, username, deletedMessage, state) => {
+      chat.remove(state['target-msg-id']);
+    });
+    client.on('clearchat', () => {
+      chat.clear();
+    });
 
-    twitchChat.on(Events.CLEAR_MESSAGE, handleRemoveMessage);
+    client.on('connected', () => {
+      console.log('Twitch: Connected!');
+      connected = true;
+    });
+    client.on('disconnected', () => {
+      console.log('Twitch: Disonnected!');
+      connected = false;
+    });
+    client.on('reconnect', () => console.log('Twitch: Reconnect!'));
 
-    twitchChat.on(Events.CLEAR_CHAT, () => chat.clear());
+    client.connect().catch(console.error);
+  });
 
-    twitchChat.on(Events.CONNECTED, () => console.log('Twitch: Connected!'));
-    twitchChat.on(Events.DISCONNECTED, () => console.log('Twitch: Disonnected!'));
-    twitchChat.on(Events.RECONNECT, () => console.log('Twitch: Reconnect!'));
-
-    try {
-      await twitchChat.connect();
-      await twitchChat.join(channel);
-    } catch (e) {
-      window.location.reload();
-    }
+  onDestroy(() => {
+    if (!client || !connected) return;
+    client.disconnect();
   });
 </script>
+
+<svelte:head>
+  <script defer src="/scripts/tmi.min.js"></script>
+</svelte:head>
 
 <ChatWidget />
