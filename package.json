@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "env-cmd svelte-kit dev",
-    "build": "env-cmd svelte-kit build",
+    "build": "env-cmd -f .env.json svelte-kit build ",
     "package": "svelte-kit package",
     "preview": "env-cmd svelte-kit preview",
     "prepare": "svelte-kit sync",
