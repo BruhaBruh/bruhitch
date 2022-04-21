@@ -24,13 +24,16 @@
         return;
       }
       nicknameStartColor = customNicknames[nickname] as string;
-      nicknameEndColor = customNicknames[nickname] as string;
+      nicknameEndColor = hex(customNicknames[nickname] as string)
+        .brighten(1.25)
+        .hex();
       return;
     }
 
     if (color === null) return;
-    if ($config.gradientOnlyCustom) {
-      nicknameEndColor = nicknameStartColor;
+    if (!$config.gradientOnlyCustom) {
+      nicknameStartColor = color;
+      nicknameEndColor = hex(color).brighten(1.25).hex();
       return;
     }
   };

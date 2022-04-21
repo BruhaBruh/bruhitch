@@ -8,7 +8,7 @@
 </script>
 
 <div
-  class="max-h-full h-screen"
+  class="max-h-full h-screen flex flex-col-reverse items-stretch"
   style={[$config.disablePadding ? '' : `padding: ${$config.fontSize}px`]
     .filter(Boolean)
     .join('; ')}

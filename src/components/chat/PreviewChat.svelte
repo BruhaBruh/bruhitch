@@ -226,7 +226,7 @@
       <ChatWidget />
     </div>
   {:else}
-    <Typography variant="b1" class="m-4">Type channel name</Typography>
+    <Typography variant="b1" class="m-4 text-gray-darkest">Type channel name</Typography>
   {/if}
 </div>
 
