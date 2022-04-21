@@ -11,6 +11,7 @@
   export let nickname: string;
   export let withSeparator = true;
 
+  // default gradient color
   let nicknameStartColor = $config.defaultColor;
   let nicknameEndColor = hex($config.defaultColor).brighten(1.25).hex();
 
@@ -24,17 +25,24 @@
         return;
       }
       nicknameStartColor = customNicknames[nickname] as string;
-      nicknameEndColor = hex(customNicknames[nickname] as string)
-        .brighten(1.25)
-        .hex();
+      nicknameEndColor = customNicknames[nickname] as string;
       return;
     }
 
-    if (color === null) return;
-    if (!$config.gradientOnlyCustom) {
+    if ($config.gradientOnlyCustom) {
+      if (color !== null) {
+        nicknameStartColor = color;
+        nicknameEndColor = color;
+        return;
+      }
+      nicknameStartColor = $config.defaultColor;
+      nicknameEndColor = $config.defaultColor;
+      return;
+    }
+
+    if (color !== null) {
       nicknameStartColor = color;
       nicknameEndColor = hex(color).brighten(1.25).hex();
-      return;
     }
   };
 
