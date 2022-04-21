@@ -60,6 +60,10 @@ type RootTranslation = {
 		 */
 		title: string
 		/**
+		 * Incorrect url
+		 */
+		incorrectUrl: string
+		/**
 		 * Chat preview
 		 */
 		preview: string
@@ -240,6 +244,10 @@ export type TranslationFunctions = {
 		 * Chat widget link generator
 		 */
 		title: () => LocalizedString
+		/**
+		 * Incorrect url
+		 */
+		incorrectUrl: () => LocalizedString
 		/**
 		 * Chat preview
 		 */

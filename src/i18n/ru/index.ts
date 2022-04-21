@@ -16,6 +16,7 @@ const ru: Translation = {
   chat: {
     name: 'Чат',
     title: 'Генератор ссылки на виджет чата',
+    incorrectUrl: 'Неверный url',
     preview: 'Предпросмотр чата',
     nickname: 'Ник',
     channel: 'Канал',

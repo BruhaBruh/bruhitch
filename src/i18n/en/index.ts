@@ -16,6 +16,7 @@ const en: BaseTranslation = {
   chat: {
     name: 'Chat',
     title: 'Chat widget link generator',
+    incorrectUrl: 'Incorrect url',
     preview: 'Chat preview',
     nickname: 'Nickname',
     channel: 'Channel',

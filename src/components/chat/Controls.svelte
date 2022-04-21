@@ -75,7 +75,7 @@
 
   const handleClickLoad = () => {
     if (!loadUrl) {
-      ui.toast.add('circle-warning', 'Incorrect url', undefined, 'warning');
+      ui.toast.add('circle-warning', $LL.chat.incorrectUrl(), undefined, 'warning');
       return;
     }
     const settings = new UrlParser(loadUrl).getSettings();
