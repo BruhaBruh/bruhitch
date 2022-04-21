@@ -11,3 +11,4 @@
 - [x] Add localization
 - [x] Create basic UI
 - [x] Import twitch-chat to bruhitch
+- [x] Add responsive to chat generator

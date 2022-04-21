@@ -17,6 +17,6 @@
   <Typography variant="h1" class="mb-8 col-span-12">
     {$LL.chat.title()}
   </Typography>
-  <Controls bind:channel class="col-span-6" />
-  <PreviewChat {channel} class="col-span-6" />
+  <Controls bind:channel class="col-span-12 md:col-span-6" />
+  <PreviewChat {channel} class="col-span-12 md:col-span-6" />
 </div>

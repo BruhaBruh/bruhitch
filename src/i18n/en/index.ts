@@ -51,7 +51,8 @@ const en: BaseTranslation = {
   load: 'Load',
   loaded: 'Loaded',
   add: 'Add',
-  remove: 'Remove'
+  remove: 'Remove',
+  wip: 'Work In Progress'
 };
 
 export default en;

@@ -51,7 +51,8 @@ const ru: Translation = {
   load: 'Загрузить',
   loaded: 'Загружено',
   add: 'Добавить',
-  remove: 'Удалить'
+  remove: 'Удалить',
+  wip: 'В разработке'
 };
 
 export default ru;

@@ -188,6 +188,10 @@ type RootTranslation = {
 	 * Remove
 	 */
 	remove: string
+	/**
+	 * Work In Progress
+	 */
+	wip: string
 }
 
 export type TranslationFunctions = {
@@ -365,6 +369,10 @@ export type TranslationFunctions = {
 	 * Remove
 	 */
 	remove: () => LocalizedString
+	/**
+	 * Work In Progress
+	 */
+	wip: () => LocalizedString
 }
 
 export type Formatters = {}
