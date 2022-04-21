@@ -28,6 +28,11 @@
     }
 
     if (!locales.includes(lang)) {
+      if (['chat'].includes(lang)) {
+        // delete session.locale;
+        await loadLocaleAsync(baseLocale);
+        return { props: { locale: baseLocale, isDark: session.isDark } };
+      }
       return {
         status: 302,
         redirect: replaceLocaleInUrl(url.pathname, baseLocale)

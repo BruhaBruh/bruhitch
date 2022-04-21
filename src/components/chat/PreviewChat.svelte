@@ -213,7 +213,7 @@
 <div
   {...$$restProps}
   class={[
-    'border border-gray-base max-h-96 h-full sticky top-4 flex items-center justify-center overflow-hidden bg-gray-lightest',
+    'preview border border-gray-base h-full sticky top-4 flex items-center justify-center overflow-hidden bg-gray-lightest',
     $$restProps.class
   ]
     .filter(Boolean)
@@ -229,3 +229,9 @@
     <Typography variant="b1" class="m-4">Type channel name</Typography>
   {/if}
 </div>
+
+<style lang="postcss">
+  .preview {
+    height: 576px;
+  }
+</style>

@@ -8,20 +8,22 @@
 </script>
 
 <div
-  class="w-full max-h-full"
+  class="max-h-full h-screen"
   style={[$config.disablePadding ? '' : `padding: ${$config.fontSize}px`]
     .filter(Boolean)
     .join('; ')}
 >
   {#if !!$chat.length}
     <div
-      class="chat-container h-full w-full overflow-hidden flex flex-col-reverse items-stretch text-gray-lightest bg-opacity-75"
+      class="chat-container text-gray-lightest bg-opacity-75"
       class:bg-gray-darkest={$config.chatType === 'default'}
       style={[
         `font-size: ${$config.fontSize * 2}px`,
         $config.chatType !== 'default' ? '' : `border-radius: ${$config.fontSize}px`,
         $config.chatType !== 'default' ? '' : `padding: ${$config.fontSize}px`,
-        `font-family: ${$config.font}, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
+        `font-family: ${
+          $config.font ? $config.font + ', ' : ''
+        }Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
         `--margin: ${$config.fontSize / 2}px`
       ]
         .filter(Boolean)
@@ -46,6 +48,14 @@
 </div>
 
 <style>
+  .chat-container {
+    max-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
   :global(.chat-container > *) {
     margin-top: var(--margin);
   }
