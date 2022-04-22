@@ -2,6 +2,7 @@
   import { browser } from '$app/env';
   import fetchAllEmotes from '$lib/chat/fetchEmotes';
   import UrlParser from '$lib/chat/urlParser';
+  import { BanWordRegex } from '$lib/constants';
   import { replaceBetween } from '$lib/replaceBetween';
   import badges from '$lib/stores/chat/badges';
   import chat from '$lib/stores/chat/chat';
@@ -80,6 +81,13 @@
           `<!${emote.id}!>`
         );
       });
+
+    formattedMessage = formattedMessage
+      .split(' ')
+      .map((v) => (BanWordRegex.test(v) ? '***' : v))
+      .join(' ');
+
+    console.log(JSON.stringify([formattedMessage]));
 
     chat.add({ id: state.id, state, message: formattedMessage });
   };
