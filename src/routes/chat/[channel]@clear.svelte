@@ -140,6 +140,12 @@
     client.on('clearchat', () => {
       chat.clear();
     });
+    client.on('ban', (_, username) => {
+      chat.removeByNickname(username);
+    });
+    client.on('timeout', (_, username) => {
+      chat.removeByNickname(username);
+    });
 
     client.on('connected', () => {
       console.log('Twitch: Connected!');

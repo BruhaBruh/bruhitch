@@ -23,6 +23,13 @@ const createChat = (initialState: ChatMessage[]) => {
     remove: (messageId: string) => {
       update((v) => v.filter((i) => i.id !== messageId));
     },
+    removeByNickname: (nickname: string) => {
+      update((v) =>
+        v.filter((m) => {
+          return m.state.username.toLowerCase() !== nickname.toLowerCase();
+        })
+      );
+    },
     clear: () => set(initialState)
   };
 };
