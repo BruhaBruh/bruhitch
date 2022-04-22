@@ -1,4 +1,5 @@
 import type { TwitchBadge } from '$types/chat/badge';
+import type { RequestHandler } from '@sveltejs/kit';
 
 const getHeaders = (clientId: string, accessToken: string): Headers => {
   const headers = new Headers();
@@ -9,10 +10,7 @@ const getHeaders = (clientId: string, accessToken: string): Headers => {
   return headers;
 };
 
-export const fetchGlobalBadges = async (
-  clientId: string,
-  accessToken: string
-): Promise<TwitchBadge[]> => {
+const fetchGlobalBadges = async (clientId: string, accessToken: string): Promise<TwitchBadge[]> => {
   const headers = getHeaders(clientId, accessToken);
 
   const globalBadges: { data: TwitchBadge[] } = await fetch(
@@ -27,7 +25,7 @@ export const fetchGlobalBadges = async (
   return globalBadges?.data ?? [];
 };
 
-export const fetchChannelBadges = async (
+const fetchChannelBadges = async (
   broadcasterId: string | number,
   clientId: string,
   accessToken: string
@@ -46,7 +44,7 @@ export const fetchChannelBadges = async (
   return chatBadges?.data ?? [];
 };
 
-export const mergeBadges = (badges: TwitchBadge[], badges2: TwitchBadge[]): TwitchBadge[] => {
+const mergeBadges = (badges: TwitchBadge[], badges2: TwitchBadge[]): TwitchBadge[] => {
   let mergedBadges = badges2;
 
   badges.forEach((twitchBadge) => {
@@ -65,7 +63,7 @@ export const mergeBadges = (badges: TwitchBadge[], badges2: TwitchBadge[]): Twit
   return mergedBadges;
 };
 
-export const getAccessToken = async (clientId: string, secretKey: string): Promise<string> => {
+const getAccessToken = async (clientId: string, secretKey: string): Promise<string> => {
   const data: { access_token: string } = await fetch(
     `https://id.twitch.tv/oauth2/token?client_id=${clientId}&client_secret=${secretKey}&grant_type=client_credentials`,
     {
@@ -77,7 +75,7 @@ export const getAccessToken = async (clientId: string, secretKey: string): Promi
   return data?.access_token || '';
 };
 
-export const getBroadcasterId = async (
+const getBroadcasterId = async (
   channel: string,
   clientId: string,
   accessToken: string
@@ -92,4 +90,45 @@ export const getBroadcasterId = async (
   }).then((r) => r.json());
 
   return broadcaster?.data[0]?.id;
+};
+
+const fetchAllBadges = async (
+  broadcasterId: string,
+  clientId: string,
+  accessToken: string
+): Promise<TwitchBadge[]> => {
+  const globalBadges = await fetchGlobalBadges(clientId, accessToken);
+
+  const chatBadges = await fetchChannelBadges(broadcasterId, clientId, accessToken);
+
+  return mergeBadges(globalBadges, chatBadges);
+};
+
+export const get: RequestHandler = async ({ request }) => {
+  const clientId = process.env.TWITCH_CLIENT_ID;
+  const secretKey = process.env.TWITCH_SECRET_KEY;
+
+  const channel = new URL(request.url).searchParams.get('channel');
+  if (!channel)
+    return {
+      status: 403,
+      body: {
+        message: 'channel is not defined'
+      }
+    };
+
+  const accessToken = await getAccessToken(clientId, secretKey);
+
+  const broadcasterId = await getBroadcasterId(channel, clientId, accessToken);
+
+  if (!broadcasterId) return { status: 500, body: { message: 'Error when get broadcaster id' } };
+
+  const badges = await fetchAllBadges(broadcasterId, clientId, accessToken);
+
+  return {
+    body: {
+      badges,
+      broadcasterId
+    }
+  };
 };

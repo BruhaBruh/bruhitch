@@ -25,7 +25,7 @@
   const loadBadgesWithEmotes = async () => {
     try {
       const { badges: TBadges, broadcasterId }: { badges: TwitchBadge[]; broadcasterId: string } =
-        await fetch('/chat/badges?channel=' + debouncedChannel).then((r) => r.json());
+        await fetch('/api/v1/chat/badges?channel=' + debouncedChannel).then((r) => r.json());
 
       badges.set(TBadges);
 
