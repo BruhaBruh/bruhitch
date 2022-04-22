@@ -12,7 +12,7 @@
 - [x] Create basic UI
 - [x] Import twitch-chat to bruhitch
 - [x] Add responsive to chat generator
-- [ ] Check contrast on nickname
+- [x] Check contrast on nickname
 - [x] Add clear chat on ban user
 - [ ] Donation Alerts
 - [ ] Follow Alerts

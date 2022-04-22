@@ -1,10 +1,10 @@
 <script lang="ts">
   import config from '$lib/stores/chat/config';
   import type { ColorGradient } from '$types/chat/nickname';
-  import { hex, scale } from 'chroma-js';
+  import { contrast, deltaE, hex, mix, rgb, scale } from 'chroma-js';
+  import type { Badges as TBadges } from 'tmi.js';
   import Badges from './Badges.svelte';
   import Separator from './Separator.svelte';
-  import type { Badges as TBadges } from 'tmi.js';
 
   export let userBadges: TBadges;
   export let color: string | null;
@@ -41,6 +41,13 @@
     }
 
     if (color !== null) {
+      // TODO Check in action
+      while (contrast(color, rgb(23, 23, 23).alpha(0.75)) < 4.5) {
+        color = hex(color).brighten(0.2).hex();
+      }
+      if (deltaE(color, '#fafafa') < 30) {
+        color = mix($config.defaultColor, color, 0.25).hex();
+      }
       nicknameStartColor = color;
       nicknameEndColor = hex(color).brighten(1.25).hex();
     }
