@@ -168,6 +168,30 @@ type RootTranslation = {
 		 */
 		name: string
 	}
+	followAlerts: {
+		/**
+		 * Follow alerts
+		 */
+		name: string
+	}
+	subscribeAlerts: {
+		/**
+		 * Subscribe alerts
+		 */
+		name: string
+	}
+	raidAlerts: {
+		/**
+		 * Raid alerts
+		 */
+		name: string
+	}
+	bitsAlerts: {
+		/**
+		 * Bits alerts
+		 */
+		name: string
+	}
 	/**
 	 * Copy
 	 */
@@ -350,6 +374,30 @@ export type TranslationFunctions = {
 	donationAlerts: {
 		/**
 		 * Donation alerts
+		 */
+		name: () => LocalizedString
+	}
+	followAlerts: {
+		/**
+		 * Follow alerts
+		 */
+		name: () => LocalizedString
+	}
+	subscribeAlerts: {
+		/**
+		 * Subscribe alerts
+		 */
+		name: () => LocalizedString
+	}
+	raidAlerts: {
+		/**
+		 * Raid alerts
+		 */
+		name: () => LocalizedString
+	}
+	bitsAlerts: {
+		/**
+		 * Bits alerts
 		 */
 		name: () => LocalizedString
 	}

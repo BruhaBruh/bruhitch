@@ -47,6 +47,18 @@ const en: BaseTranslation = {
   donationAlerts: {
     name: 'Donation alerts'
   },
+  followAlerts: {
+    name: 'Follow alerts'
+  },
+  subscribeAlerts: {
+    name: 'Subscribe alerts'
+  },
+  raidAlerts: {
+    name: 'Raid alerts'
+  },
+  bitsAlerts: {
+    name: 'Bits alerts'
+  },
   copy: 'Copy',
   copied: 'Copied',
   load: 'Load',

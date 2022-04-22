@@ -45,7 +45,19 @@ const ru: Translation = {
     loadConfigFromLink: 'Загрузить конфиг из ссылки'
   },
   donationAlerts: {
-    name: 'Донат оповещения'
+    name: 'Оповещения донатов'
+  },
+  followAlerts: {
+    name: 'Оповещения отслеживаний'
+  },
+  subscribeAlerts: {
+    name: 'Оповещение подписок'
+  },
+  raidAlerts: {
+    name: 'Оповещения рейдов'
+  },
+  bitsAlerts: {
+    name: 'Оповещения битов'
   },
   copy: 'Скопировать',
   copied: 'Скопировано',
