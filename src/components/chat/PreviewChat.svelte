@@ -6,12 +6,12 @@
   import chat from '$lib/stores/chat/chat';
   import config from '$lib/stores/chat/config';
   import emotes from '$lib/stores/chat/emotes';
-  import type { ChatTwitchBadge, TwitchBadge } from '$types/chat/badge';
+  import type { TwitchBadge } from '$types/chat/badge';
   import Icon from '@components/ui/Icon.svelte';
   import Typography from '@components/ui/Typography.svelte';
   import faker from '@faker-js/faker';
   import { onDestroy } from 'svelte';
-  import type { EmoteTag } from 'twitch-js';
+  import type { Badges } from 'tmi.js';
   import ChatWidget from './widget/ChatWidget.svelte';
 
   export let channel: string;
@@ -62,19 +62,16 @@
   //#endregion
 
   //#region Generating message functions
-  const getRandomBadges = (): ChatTwitchBadge[] => {
-    let badgeNames: ChatTwitchBadge[] = [];
+  const getRandomBadges = (): Badges => {
+    let badgeNames: Badges = {};
     for (let i = 0; i < Math.floor(Math.random() * 3); i++) {
       let hasAlready = true;
       while (hasAlready) {
         const randomBadgeId = Math.floor(Math.random() * $badges.length);
         const badge = $badges[randomBadgeId];
-        if (badgeNames.map((v) => v.set_id).includes(badge.set_id)) continue;
+        if (Object.keys(badgeNames).includes(badge.set_id)) continue;
 
-        badgeNames.push({
-          set_id: badge.set_id,
-          version: badge.versions[badge.versions.length - 1].id
-        });
+        badgeNames[badge.set_id] = badge.versions[badge.versions.length - 1].id;
         hasAlready = false;
       }
     }
@@ -101,6 +98,12 @@
     'Pepega',
     'andrewkraevskii'
   ];
+
+  type EmoteTag = {
+    id: string;
+    start: number;
+    end: number;
+  };
 
   const defaultEmotes: { emote: string; tag: EmoteTag }[] = [
     {
@@ -188,18 +191,13 @@
         });
       chat.add({
         id: (Math.random() * 1000000).toString(),
-        user: {
-          id: 'id',
-          badges: {},
+        state: {
+          'display-name': getNickname(),
+          badges: getRandomBadges(),
           color: getRandomColor(),
-          displayName: nickname,
-          emotes: emotes,
-          emoteSets: [],
-          username: nickname.toLowerCase(),
-          isModerator: false
+          id: Math.floor(Math.random() * 100000000).toString(16)
         },
-        message: newMessage,
-        badgeNames: getRandomBadges()
+        message: newMessage
       });
     }
 
