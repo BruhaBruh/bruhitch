@@ -87,8 +87,6 @@
       .map((v) => (BanWordRegex.test(v) ? '***' : v))
       .join(' ');
 
-    console.log(JSON.stringify([formattedMessage]));
-
     chat.add({ id: state.id, state, message: formattedMessage });
   };
 
