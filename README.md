@@ -14,6 +14,7 @@
 - [x] Add responsive to chat generator
 - [x] Check contrast on nickname
 - [x] Add clear chat on ban user
+- [ ] Replace SvelteKit api to Fastify external api
 - [ ] Donation Alerts
 - [ ] Follow Alerts
 - [ ] Subscriber Alerts
