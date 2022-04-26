@@ -8,7 +8,6 @@ export type ModalType = any | null;
 export type UIStore = {
   isDarkTheme: boolean;
   toastList: ToastItem[];
-  modal: ModalType;
 };
 
 const createUI = (initialState: UIStore) => {
@@ -65,17 +64,12 @@ const createUI = (initialState: UIStore) => {
     reset: () => set(initialState)
   };
 
-  const modal = {
-    set: (modal: ModalType) => update((v) => ({ ...v, modal }))
-  };
-
   return {
     subscribe,
     toast,
-    modal,
     theme,
     reset: () => set(initialState)
   };
 };
 
-export const ui = createUI({ isDarkTheme: false, toastList: [], modal: null });
+export const ui = createUI({ isDarkTheme: false, toastList: [] });

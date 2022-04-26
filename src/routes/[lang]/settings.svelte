@@ -2,7 +2,11 @@
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
   import replaceLocaleInUrl from '$lib/replaceLocaleInUrl';
+  import { me } from '$lib/stores/me';
   import { ui } from '$lib/stores/ui';
+  import FullScreenSpinner from '@components/FullScreenSpinner.svelte';
+  import Button from '@components/ui/Button.svelte';
+  import Modal from '@components/ui/Modal.svelte';
   import Select from '@components/ui/Select.svelte';
   import TextField from '@components/ui/TextField.svelte';
   import Typography from '@components/ui/Typography.svelte';
@@ -15,6 +19,8 @@
   let selectedTheme = [`${$ui.isDarkTheme}`];
   let selectedLocale = [$locale];
   let initialLocale = true;
+  let showDeleteAccountAlert = false;
+  let deleteAccountIsLoading = false;
 
   const localeLanguages = {
     en: 'English',
@@ -31,6 +37,19 @@
       setLocale(selectedLocale[0]);
     }
   }
+
+  const handleDeleteAccount = async () => {
+    deleteAccountIsLoading = true;
+
+    const status = await fetch('/api/v1/user/remove', { method: 'POST' }).then((r) => r.status);
+    deleteAccountIsLoading = false;
+    if (status !== 200) {
+      ui.toast.add('circle-cancel', 'Аккаунт не удален', 'Произошла ошибка', 'danger');
+    } else {
+      ui.toast.add('circle-check', 'Аккаунт удален', undefined, 'success');
+      me.reset();
+    }
+  };
 </script>
 
 <svelte:head>
@@ -57,4 +76,23 @@
       }))}
     />
   </TextField>
+  {#if $me}
+    <TextField title={'Удалить аккаунт'} class="mb-4">
+      <Button color="danger" on:click={() => (showDeleteAccountAlert = true)}
+        >Удалить аккаунт</Button
+      >
+    </TextField>
+    <Modal
+      show={showDeleteAccountAlert}
+      header={'Удалить аккаунт'}
+      on:close={() => (showDeleteAccountAlert = false)}
+    >
+      <Typography variant="b1">Это действие нельзя будет отменить, вы уверены?</Typography>
+      <div slot="footer" class="flex justify-end space-x-4 w-full">
+        <Button color="secondary" on:click={() => (showDeleteAccountAlert = false)}>Отмена</Button>
+        <Button color="danger" on:click={handleDeleteAccount}>Удалить</Button>
+      </div>
+    </Modal>
+    <FullScreenSpinner show={deleteAccountIsLoading} />
+  {/if}
 </div>

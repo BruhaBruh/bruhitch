@@ -1,9 +1,11 @@
 <script lang="ts">
+  import { browser } from '$app/env';
   import { page } from '$app/stores';
   import UrlEncoder from '$lib/chat/urlEncoder';
   import UrlParser from '$lib/chat/urlParser';
   import { copyText } from '$lib/copyText';
   import config from '$lib/stores/chat/config';
+  import { me } from '$lib/stores/me';
   import { ui } from '$lib/stores/ui';
   import type { UserNicknameColor } from '$types/chat/nickname';
   import type { ChatType } from '$types/chat/settings';
@@ -17,6 +19,7 @@
   import TextField from '@components/ui/TextField.svelte';
   import Typography from '@components/ui/Typography.svelte';
   import LL from '@i18n/i18n-svelte';
+  import { onMount } from 'svelte';
   import AnimationControl from './AnimationControl.svelte';
   import CustomColorNicknamesControl from './CustomColorNicknamesControl.svelte';
   import HiddenNicknamesControl from './HiddenNicknamesControl.svelte';
@@ -37,6 +40,8 @@
   ];
 
   export let channel = '';
+  let isLoadedLink = false;
+  //#region Config fields
   let chatType: SelectValue[] = [$config.chatType];
   let hideRewards: CheckboxValue[] = $config.hideReward ? ['true'] : [];
   let hiddenNicknames: string[] = $config.hiddenNicknames;
@@ -49,7 +54,9 @@
   let animation = $config.animation;
   let animationEasing = $config.animationEasing;
   let animationParams = $config.animationParams;
+  //#endregion
 
+  //#region Reactive set config
   $: config.setChatType(chatType[0] as ChatType);
   $: config.setHideReward(!!hideRewards.length);
   $: config.setHidden(hiddenNicknames);
@@ -62,23 +69,10 @@
   $: config.setAnimation(animation);
   $: config.setAnimationEasing(animationEasing);
   $: config.setAnimationParams(animationParams);
+  //#endregion
 
-  let url = '';
-  let loadUrl = '';
-
-  $: url = new UrlEncoder({ channel, ...$config }, $page.url.origin).getLink().href;
-
-  const handleClickCopy = async () => {
-    await copyText(url);
-    ui.toast.add('circle-check', $LL.copied(), undefined, 'success');
-  };
-
-  const handleClickLoad = () => {
-    if (!loadUrl) {
-      ui.toast.add('circle-warning', $LL.chat.incorrectUrl(), undefined, 'warning');
-      return;
-    }
-    const settings = new UrlParser(loadUrl).getSettings();
+  const loadFromLink = (link: string) => {
+    const settings = new UrlParser(link).getSettings();
 
     channel = settings.channel;
     chatType = [settings.chatType];
@@ -93,7 +87,52 @@
     animation = settings.animation;
     animationEasing = settings.animationEasing;
     animationParams = settings.animationParams;
+  };
 
+  //#region Load Saved link
+  me.subscribe(async (v) => {
+    if (!v || isLoadedLink || !browser) return;
+    const { link } = await fetch('/api/v1/chat/link')
+      .then((r) => r.json())
+      .catch(console.error);
+
+    isLoadedLink = true;
+
+    loadFromLink(link);
+  });
+  onMount(async () => {
+    if (!$me) return;
+  });
+  //#endregion
+
+  let url = '';
+  let loadUrl = '';
+
+  $: url = new UrlEncoder({ channel, ...$config }, $page.url.origin).getLink().href;
+
+  const handleClickCopy = async () => {
+    await copyText(url);
+    if ($me) {
+      await fetch('/api/v1/chat/save', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ link: url })
+      })
+        .then((r) => r.json())
+        .catch(console.error);
+    }
+    ui.toast.add('circle-check', $LL.copied(), undefined, 'success');
+  };
+
+  const handleClickLoad = () => {
+    if (!loadUrl) {
+      ui.toast.add('circle-warning', $LL.chat.incorrectUrl(), undefined, 'warning');
+      return;
+    }
+
+    loadFromLink(loadUrl);
     ui.toast.add('circle-check', $LL.loaded(), undefined, 'success');
   };
 </script>

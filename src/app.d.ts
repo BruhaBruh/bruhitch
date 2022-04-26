@@ -1,5 +1,7 @@
 /// <reference types="@sveltejs/kit" />
 
+type User = import('$types/prisma').User;
+
 type Locales = import('@i18n/i18n-types').Locales;
 
 declare namespace App {
@@ -14,7 +16,6 @@ declare namespace App {
 
   interface Stuff {}
 }
-
 
 declare namespace NodeJS {
   // interface ProcessEnv { }

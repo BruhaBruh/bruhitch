@@ -1,7 +1,10 @@
 <script lang="ts">
+  import { me } from '$lib/stores/me';
   import { ui } from '$lib/stores/ui';
   import Typography from '@components/ui/Typography.svelte';
-  import { locale } from '@i18n/i18n-svelte';
+  import LL, { locale } from '@i18n/i18n-svelte';
+  import Avatar from './ui/Avatar.svelte';
+  import Button from './ui/Button.svelte';
 
   let isDarkTheme = $ui.isDarkTheme;
 
@@ -9,11 +12,19 @@
 </script>
 
 <header
-  class="w-full h-16 border-b border-gray-base shadow-xs px-2 sm:px-4 flex items-center justify-start"
+  class="w-full h-16 border-b border-gray-base shadow-xs px-2 sm:px-4 flex items-center justify-between"
 >
   <nav>
     <a href={'/' + $locale} sveltekit:prefetch>
       <Typography variant="h3">Bruhitch</Typography>
     </a>
   </nav>
+  {#if $me}
+    <div class="flex space-x-2 items-center">
+      <Typography variant="button">{$me.username}</Typography>
+      <Avatar size="large" variant="circle" src={$me.avatar} alt={$me.username} />
+    </div>
+  {:else}
+    <Button color="primary" link href="/api/v1/auth/login">{$LL.continueWithTwitch()}</Button>
+  {/if}
 </header>

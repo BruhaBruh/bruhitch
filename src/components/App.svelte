@@ -4,6 +4,7 @@
 
 <div class:dark={$ui.isDarkTheme}>
   <div
+    id="app-container"
     class="font-sans h-screen overflow-y-auto bg-gray-lightest text-gray-darkest dark:bg-gray-darkest dark:text-gray-lightest relative transition ease-in"
   >
     <slot />

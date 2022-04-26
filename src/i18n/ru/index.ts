@@ -6,6 +6,7 @@ const ru: Translation = {
     settings: 'Bruhitch › Настройки',
     chat: 'Bruhitch › Чат'
   },
+  continueWithTwitch: 'Продолжить с Twitch',
   settings: {
     name: 'Настройки',
     theme: 'Тема',

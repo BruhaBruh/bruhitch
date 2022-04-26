@@ -28,6 +28,10 @@ type RootTranslation = {
 		 */
 		chat: string
 	}
+	/**
+	 * Continue with Twitch
+	 */
+	continueWithTwitch: string
 	settings: {
 		/**
 		 * Settings
@@ -237,6 +241,10 @@ export type TranslationFunctions = {
 		 */
 		chat: () => LocalizedString
 	}
+	/**
+	 * Continue with Twitch
+	 */
+	continueWithTwitch: () => LocalizedString
 	settings: {
 		/**
 		 * Settings

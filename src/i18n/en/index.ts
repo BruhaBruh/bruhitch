@@ -6,6 +6,7 @@ const en: BaseTranslation = {
     settings: 'Bruhitch › Settings',
     chat: 'Bruhitch › Chat'
   },
+  continueWithTwitch: 'Continue with Twitch',
   settings: {
     name: 'Settings',
     theme: 'Theme',
