@@ -12,7 +12,11 @@ const en: BaseTranslation = {
     theme: 'Theme',
     darkTheme: 'Dark',
     lightTheme: 'Light',
-    language: 'Language'
+    language: 'Language',
+    deleteAccount: 'Delete account',
+    deleteAccountDescription: 'This action cannot be undone, are you sure?',
+    accountDeleted: 'Account deleted',
+    accountNotDeleted: 'Account not deleted'
   },
   chat: {
     name: 'Chat',
@@ -66,6 +70,8 @@ const en: BaseTranslation = {
   loaded: 'Loaded',
   add: 'Add',
   remove: 'Remove',
+  delete: 'Delete',
+  cancel: 'Cancel',
   wip: 'Work In Progress'
 };
 

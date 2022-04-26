@@ -53,6 +53,22 @@ type RootTranslation = {
 		 * Language
 		 */
 		language: string
+		/**
+		 * Delete account
+		 */
+		deleteAccount: string
+		/**
+		 * This action cannot be undone, are you sure?
+		 */
+		deleteAccountDescription: string
+		/**
+		 * Account deleted
+		 */
+		accountDeleted: string
+		/**
+		 * Account not deleted
+		 */
+		accountNotDeleted: string
 	}
 	chat: {
 		/**
@@ -221,6 +237,14 @@ type RootTranslation = {
 	 */
 	remove: string
 	/**
+	 * Delete
+	 */
+	'delete': string
+	/**
+	 * Cancel
+	 */
+	cancel: string
+	/**
 	 * Work In Progress
 	 */
 	wip: string
@@ -266,6 +290,22 @@ export type TranslationFunctions = {
 		 * Language
 		 */
 		language: () => LocalizedString
+		/**
+		 * Delete account
+		 */
+		deleteAccount: () => LocalizedString
+		/**
+		 * This action cannot be undone, are you sure?
+		 */
+		deleteAccountDescription: () => LocalizedString
+		/**
+		 * Account deleted
+		 */
+		accountDeleted: () => LocalizedString
+		/**
+		 * Account not deleted
+		 */
+		accountNotDeleted: () => LocalizedString
 	}
 	chat: {
 		/**
@@ -433,6 +473,14 @@ export type TranslationFunctions = {
 	 * Remove
 	 */
 	remove: () => LocalizedString
+	/**
+	 * Delete
+	 */
+	'delete': () => LocalizedString
+	/**
+	 * Cancel
+	 */
+	cancel: () => LocalizedString
 	/**
 	 * Work In Progress
 	 */

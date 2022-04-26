@@ -12,7 +12,11 @@ const ru: Translation = {
     theme: 'Тема',
     darkTheme: 'Темная',
     lightTheme: 'Светлая',
-    language: 'Язык'
+    language: 'Язык',
+    deleteAccount: 'Удалить аккаунт',
+    deleteAccountDescription: 'Это действие нельзя будет отменить, вы уверены?',
+    accountDeleted: 'Аккаунт удален',
+    accountNotDeleted: 'Аккаунт не удален'
   },
   chat: {
     name: 'Чат',
@@ -66,6 +70,8 @@ const ru: Translation = {
   loaded: 'Загружено',
   add: 'Добавить',
   remove: 'Удалить',
+  delete: 'Удалить',
+  cancel: 'Отмена',
   wip: 'В разработке'
 };
 

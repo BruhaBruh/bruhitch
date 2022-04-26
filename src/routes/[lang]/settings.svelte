@@ -44,9 +44,9 @@
     const status = await fetch('/api/v1/user/remove', { method: 'POST' }).then((r) => r.status);
     deleteAccountIsLoading = false;
     if (status !== 200) {
-      ui.toast.add('circle-cancel', 'Аккаунт не удален', 'Произошла ошибка', 'danger');
+      ui.toast.add('circle-cancel', $LL.settings.accountNotDeleted(), 'Произошла ошибка', 'danger');
     } else {
-      ui.toast.add('circle-check', 'Аккаунт удален', undefined, 'success');
+      ui.toast.add('circle-check', $LL.settings.accountDeleted(), undefined, 'success');
       me.reset();
     }
   };
@@ -77,20 +77,24 @@
     />
   </TextField>
   {#if $me}
-    <TextField title={'Удалить аккаунт'} class="mb-4">
-      <Button color="danger" on:click={() => (showDeleteAccountAlert = true)}
-        >Удалить аккаунт</Button
-      >
+    <TextField title={$LL.settings.deleteAccount()} class="mb-4">
+      <Button color="danger" on:click={() => (showDeleteAccountAlert = true)}>
+        {$LL.settings.deleteAccount()}
+      </Button>
     </TextField>
     <Modal
       show={showDeleteAccountAlert}
-      header={'Удалить аккаунт'}
+      header={$LL.settings.deleteAccount()}
       on:close={() => (showDeleteAccountAlert = false)}
     >
-      <Typography variant="b1">Это действие нельзя будет отменить, вы уверены?</Typography>
+      <Typography variant="b1">
+        {$LL.settings.deleteAccountDescription()}
+      </Typography>
       <div slot="footer" class="flex justify-end space-x-4 w-full">
-        <Button color="secondary" on:click={() => (showDeleteAccountAlert = false)}>Отмена</Button>
-        <Button color="danger" on:click={handleDeleteAccount}>Удалить</Button>
+        <Button color="secondary" on:click={() => (showDeleteAccountAlert = false)}
+          >{$LL.cancel()}</Button
+        >
+        <Button color="danger" on:click={handleDeleteAccount}>{$LL.delete()}</Button>
       </div>
     </Modal>
     <FullScreenSpinner show={deleteAccountIsLoading} />
