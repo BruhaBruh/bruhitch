@@ -7,6 +7,7 @@ export type User = {
   username: string;
   avatar: string;
   createdAt: Date;
+  updatedAt: Date;
 };
 
 /**
@@ -36,5 +37,14 @@ export type Twitch = {
   id: string;
   accessToken: string;
   refreshToken: string;
+  userId: string;
+};
+
+/**
+ * Model TwitchToken
+ *
+ */
+export type TwitchToken = {
+  id: string;
   userId: string;
 };

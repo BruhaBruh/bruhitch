@@ -21,19 +21,19 @@
       LL: 'followAlerts'
     },
     {
-      path: 'subscribealerts',
+      path: 'wip',
       LL: 'subscribeAlerts'
     },
     {
-      path: 'bitsalerts',
+      path: 'wip',
       LL: 'bitsAlerts'
     },
     {
-      path: 'raidalerts',
+      path: 'wip',
       LL: 'raidAlerts'
     },
     {
-      path: 'donationalerts',
+      path: 'wip',
       LL: 'donationAlerts'
     }
   ];
