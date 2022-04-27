@@ -41,7 +41,11 @@
 
     const isSecure = $page.url.protocol.includes('https');
 
-    const wsURL = `ws${isSecure ? 's' : ''}://${$page.url.host}/ws/v1?token=${token}`;
+    const isLocalhost = $page.url.host.includes('localhost');
+
+    const wsURL = `ws${isSecure ? 's' : ''}://${
+      isLocalhost ? 'localhost' : '893589-cm69223.tmweb.ru'
+    }/ws/v1?token=${token}`;
 
     ws = new WebSocket(wsURL);
 

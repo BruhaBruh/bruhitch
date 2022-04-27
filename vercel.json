@@ -1,6 +1,6 @@
 {
   "version": 2,
   "rewrites": [
-    { "source": "/api/:match*", "destination": "https://bruhitch-api.vercel.app/api/:match*" }
+    { "source": "/api/:match*", "destination": "https://893589-cm69223.tmweb.ru/api/:match*" }
   ]
 }
