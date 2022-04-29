@@ -93,10 +93,7 @@
         alt=""
       />
     {/if}
-
-    {@html beforeUsername}
-    <UserName username={current.user_name} />
-    {@html afterUsername}
+    {@html beforeUsername}<UserName username={current.user_name} />{@html afterUsername}
   </div>
 </div>
 
