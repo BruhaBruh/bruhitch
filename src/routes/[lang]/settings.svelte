@@ -53,7 +53,7 @@
 </script>
 
 <svelte:head>
-  <title>{$LL.pageNames.settings()}</title>
+  <title>{$LL.pageNames.another($LL.settings.name())}</title>
 </svelte:head>
 
 <div class="container mx-auto">

@@ -25,7 +25,17 @@
 </script>
 
 <div
-  class="max-h-full h-screen flex flex-col-reverse items-stretch"
+  class={[
+    'max-h-full h-screen flex',
+    $config.vertical === 'top' ? 'items-start' : '',
+    $config.vertical === 'center' ? 'items-center' : '',
+    $config.vertical === 'bottom' ? 'items-end' : '',
+    $config.horizontal === 'left' ? 'justify-start' : '',
+    $config.horizontal === 'center' ? 'justify-center' : '',
+    $config.horizontal === 'right' ? 'justify-end' : ''
+  ]
+    .filter(Boolean)
+    .join(' ')}
   style={[$config.disablePadding ? '' : `padding: ${$config.fontSize}px`]
     .filter(Boolean)
     .join('; ')}

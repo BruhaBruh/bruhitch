@@ -3,9 +3,9 @@ import type { Translation } from '../i18n-types';
 const ru: Translation = {
   pageNames: {
     index: 'Bruhitch',
-    settings: 'Bruhitch › Настройки',
-    chat: 'Bruhitch › Чат'
+    another: 'Bruhitch › {0}'
   },
+  authorization: 'Требуется авторизация',
   continueWithTwitch: 'Продолжить с Twitch',
   settings: {
     name: 'Настройки',
@@ -53,7 +53,28 @@ const ru: Translation = {
     name: 'Оповещения донатов'
   },
   followAlerts: {
-    name: 'Оповещения отслеживаний'
+    name: 'Оповещения отслеживаний',
+    title: 'Настройка оповещений отслеживания',
+    preview: 'Предпросмотр оповещений отслеживания',
+    font: 'Шрифт',
+    fontSize: 'Размер шрифта',
+    disablePadding: 'Выключить отступы',
+    pattern: 'Паттерн',
+    patternDescription: '$username$ - показать ник. ![текст](ссылка) - изображение',
+    textColor: 'Цвет текста',
+    backgroundColor: 'Цвет фона',
+    backgroundImage: 'Фоновое изображение',
+    backgroundImageDescription: 'Ссылка на изображение',
+    colorNickname: 'Цвет ника',
+    isGradientNickname: 'Градиент на нике?',
+    verticalAlign: 'Вертикальное выравнивание',
+    horizontalAlign: 'Горизонтальное выравнивание',
+    top: 'Верх',
+    bottom: 'Низ',
+    center: 'Центр',
+    right: 'Право',
+    left: 'Лево',
+    widgetLink: 'Ссылка на виджет оповещений отслеживаний'
   },
   subscribeAlerts: {
     name: 'Оповещение подписок'
@@ -69,6 +90,8 @@ const ru: Translation = {
   load: 'Загрузить',
   loaded: 'Загружено',
   add: 'Добавить',
+  save: 'Сохранить',
+  saved: 'Сохранено',
   remove: 'Удалить',
   delete: 'Удалить',
   cancel: 'Отмена',

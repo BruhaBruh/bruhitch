@@ -3,9 +3,9 @@ import type { BaseTranslation } from 'typesafe-i18n';
 const en: BaseTranslation = {
   pageNames: {
     index: 'Bruhitch',
-    settings: 'Bruhitch › Settings',
-    chat: 'Bruhitch › Chat'
+    another: 'Bruhitch › {0}'
   },
+  authorization: 'Authorization is required',
   continueWithTwitch: 'Continue with Twitch',
   settings: {
     name: 'Settings',
@@ -53,7 +53,28 @@ const en: BaseTranslation = {
     name: 'Donation alerts'
   },
   followAlerts: {
-    name: 'Follow alerts'
+    name: 'Follow alerts',
+    title: 'Follow alert settings',
+    preview: 'Follow alert preview',
+    font: 'Font',
+    fontSize: 'Font size',
+    disablePadding: 'Disable padding',
+    pattern: 'Pattern',
+    patternDescription: '$username$ - show username. ![text](link) - image',
+    textColor: 'Text color',
+    backgroundColor: 'Background color',
+    backgroundImage: 'Background image',
+    backgroundImageDescription: 'Link to image',
+    colorNickname: 'Nickname color',
+    isGradientNickname: 'Is gradient nickname?',
+    verticalAlign: 'Vertical align',
+    horizontalAlign: 'Horizontal align',
+    top: 'Top',
+    bottom: 'Bottom',
+    center: 'Center',
+    right: 'Right',
+    left: 'Left',
+    widgetLink: 'Follow alert widget link'
   },
   subscribeAlerts: {
     name: 'Subscribe alerts'
@@ -69,6 +90,8 @@ const en: BaseTranslation = {
   load: 'Load',
   loaded: 'Loaded',
   add: 'Add',
+  save: 'Save',
+  saved: 'Saved',
   remove: 'Remove',
   delete: 'Delete',
   cancel: 'Cancel',

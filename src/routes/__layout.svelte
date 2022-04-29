@@ -29,7 +29,7 @@
     }
 
     if (!locales.includes(lang)) {
-      if (['chat'].includes(lang)) {
+      if (['chat', 'follow'].includes(lang)) {
         // delete session.locale;
         await loadLocaleAsync(baseLocale);
         return { props: { locale: baseLocale, isDark: session.isDark } };
@@ -65,7 +65,7 @@
       }));
       if (res.status !== 200) return me.reset();
       me.set(res.data);
-      timeout = setTimeout(refreshToken, 1000 * 60 * 4);
+      timeout = setTimeout(refreshToken, 1000 * 60 * 3);
     } catch (e) {}
   };
 

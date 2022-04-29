@@ -2,40 +2,29 @@
 </script>
 
 <script lang="ts">
-  import { browser } from '$app/env';
-  import { page } from '$app/stores';
   import { me } from '$lib/stores/me';
-  import { MessageType, type MessageResponse } from '$types/ws';
-  import { onDestroy } from 'svelte';
-
-  let ws: WebSocket;
-
-  me.subscribe(async (v) => {
-    if (!browser || !!ws || !v) return;
-
-    const { id } = await fetch('/api/v1/user/twitch').then((r) => r.json());
-
-    const isSecure = $page.url.protocol.includes('https');
-
-    const wsURL = `ws${isSecure ? 's' : ''}://${$page.url.host}/ws/v1?token=${id}`;
-
-    ws = new WebSocket(wsURL);
-
-    ws.addEventListener('open', () => {
-      setTimeout(() => ws.send(JSON.stringify({ type: MessageType.SubscribeFollow })), 100);
-    });
-
-    ws.addEventListener('message', (e) => {
-      const data: MessageResponse = JSON.parse(e.data);
-      console.log(data);
-    });
-  });
-
-  onDestroy(() => {
-    if (!browser || !ws) return;
-
-    ws.close();
-  });
+  import Controls from '@components/follow/Controls.svelte';
+  import PreviewFollow from '@components/follow/PreviewFollow.svelte';
+  import Typography from '@components/ui/Typography.svelte';
+  import LL from '@i18n/i18n-svelte';
 </script>
 
-Testing WebSocket
+<svelte:head>
+  <title>{$LL.pageNames.another($LL.followAlerts.name())}</title>
+</svelte:head>
+
+{#if $me}
+  <div class="container mx-auto grid grid-cols-12 gap-8">
+    <Typography variant="h1" class="col-span-12">
+      {$LL.followAlerts.title()}
+    </Typography>
+    <Controls class="col-span-12 md:col-span-6" />
+    <PreviewFollow class="col-span-12 md:col-span-6" />
+  </div>
+{:else}
+  <div class="container mx-auto">
+    <Typography variant="h1" class="col-span-12">
+      {$LL.authorization()}
+    </Typography>
+  </div>
+{/if}

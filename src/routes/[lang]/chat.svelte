@@ -1,4 +1,5 @@
 <script lang="ts" context="module">
+  import { me } from '$lib/stores/me';
   import Controls from '@components/chat/Controls.svelte';
   import PreviewChat from '@components/chat/PreviewChat.svelte';
   import Typography from '@components/ui/Typography.svelte';
@@ -10,13 +11,21 @@
 </script>
 
 <svelte:head>
-  <title>{$LL.pageNames.chat()}</title>
+  <title>{$LL.pageNames.another($LL.chat.name())}</title>
 </svelte:head>
 
-<div class="container mx-auto grid grid-cols-12 gap-4">
-  <Typography variant="h1" class="mb-8 col-span-12">
-    {$LL.chat.title()}
-  </Typography>
-  <Controls bind:channel class="col-span-12 md:col-span-6" />
-  <PreviewChat {channel} class="col-span-12 md:col-span-6" />
-</div>
+{#if $me}
+  <div class="container mx-auto grid grid-cols-12 gap-8">
+    <Typography variant="h1" class="col-span-12">
+      {$LL.chat.title()}
+    </Typography>
+    <Controls bind:channel class="col-span-12 md:col-span-6" />
+    <PreviewChat {channel} class="col-span-12 md:col-span-6" />
+  </div>
+{:else}
+  <div class="container mx-auto">
+    <Typography variant="h1" class="col-span-12">
+      {$LL.authorization()}
+    </Typography>
+  </div>
+{/if}

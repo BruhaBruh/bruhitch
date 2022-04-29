@@ -113,7 +113,7 @@
   const handleClickCopy = async () => {
     await copyText(url);
     if ($me) {
-      await fetch('/api/v1/chat/save', {
+      await fetch('/api/v1/chat/link', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

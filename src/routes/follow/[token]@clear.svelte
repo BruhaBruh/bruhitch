@@ -1,6 +1,7 @@
 <script lang="ts" context="module">
   import { browser } from '$app/env';
   import { page } from '$app/stores';
+  import config from '$lib/stores/follow/config';
   import follow from '$lib/stores/follow/follow';
   import { MessageResponseType, MessageType, type SubscribeFollowResponse } from '$types/ws';
   import FollowWidget from '@components/follow/widget/FollowWidget.svelte';
@@ -21,6 +22,14 @@
         status: 403,
         error: new Error('token is not defined')
       };
+    }
+
+    const settings = await fetch('/api/v1/follow/settings?token=' + token)
+      .then(async (r) => ({ status: r.status, data: await r.json() }))
+      .catch(console.error);
+
+    if (settings && settings.status === 200) {
+      config.loadSettings(settings.data);
     }
 
     return {

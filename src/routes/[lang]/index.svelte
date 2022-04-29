@@ -1,10 +1,11 @@
 <script lang="ts" context="module">
+  import { me } from '$lib/stores/me';
   import Card from '@components/index/Card.svelte';
   import LL, { locale } from '@i18n/i18n-svelte';
 </script>
 
 <script lang="ts">
-  const cards: {
+  let cards: {
     path: string;
     LL: string;
   }[] = [
@@ -15,28 +16,49 @@
     {
       path: 'chat',
       LL: 'chat'
-    },
-    {
-      path: 'followalerts',
-      LL: 'followAlerts'
-    },
-    {
-      path: 'wip',
-      LL: 'subscribeAlerts'
-    },
-    {
-      path: 'wip',
-      LL: 'bitsAlerts'
-    },
-    {
-      path: 'wip',
-      LL: 'raidAlerts'
-    },
-    {
-      path: 'wip',
-      LL: 'donationAlerts'
     }
   ];
+  $: cards = $me
+    ? [
+        {
+          path: 'settings',
+          LL: 'settings'
+        },
+        {
+          path: 'chat',
+          LL: 'chat'
+        },
+        {
+          path: 'followalerts',
+          LL: 'followAlerts'
+        },
+        {
+          path: 'wip',
+          LL: 'subscribeAlerts'
+        },
+        {
+          path: 'wip',
+          LL: 'bitsAlerts'
+        },
+        {
+          path: 'wip',
+          LL: 'raidAlerts'
+        },
+        {
+          path: 'wip',
+          LL: 'donationAlerts'
+        }
+      ]
+    : [
+        {
+          path: 'settings',
+          LL: 'settings'
+        },
+        {
+          path: 'chat',
+          LL: 'chat'
+        }
+      ];
 </script>
 
 <svelte:head>
