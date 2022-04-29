@@ -3,7 +3,7 @@
   import Button from '@components/ui/Button.svelte';
   import Typography from '@components/ui/Typography.svelte';
   import LL from '@i18n/i18n-svelte';
-  import { scale } from 'chroma-js';
+  import * as chroma from 'chroma-js';
   import { createEventDispatcher } from 'svelte';
   import { slide } from 'svelte/transition';
 
@@ -14,7 +14,7 @@
   $: colorStart = typeof color === 'string' ? color : color.start;
   $: colorEnd = typeof color === 'string' ? color : color.end;
 
-  $: gradient = scale([colorStart, colorEnd]).mode('hcl').colors(8, 'hex');
+  $: gradient = chroma.scale([colorStart, colorEnd]).mode('hcl').colors(8, 'hex');
 
   const dispatch = createEventDispatcher();
 

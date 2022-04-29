@@ -8,7 +8,7 @@
   import TextField from '@components/ui/TextField.svelte';
   import Typography from '@components/ui/Typography.svelte';
   import LL from '@i18n/i18n-svelte';
-  import { scale } from 'chroma-js';
+  import * as chroma from 'chroma-js';
   import CustomColorNicknamesControlItem from './CustomColorNicknamesControlItem.svelte';
 
   export let userNicknames: UserNicknameColor = {};
@@ -19,7 +19,8 @@
   let isGradient: CheckboxValue[] = [];
   let input: HTMLInputElement;
 
-  $: gradient = scale([start, isGradient.length ? end : start])
+  $: gradient = chroma
+    .scale([start, isGradient.length ? end : start])
     .mode('hcl')
     .colors(8, 'hex');
 

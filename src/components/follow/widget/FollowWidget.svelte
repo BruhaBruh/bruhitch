@@ -2,7 +2,7 @@
   import config from '$lib/stores/follow/config';
   import follow from '$lib/stores/follow/follow';
   import { onDestroy } from 'svelte';
-  import Message from './Message.svelte';
+import Message from './Message.svelte';
 
   let current: number | null = null;
   let timeout: NodeJS.Timeout;

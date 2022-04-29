@@ -1,15 +1,15 @@
 <script lang="ts">
   import config from '$lib/stores/follow/config';
-  import { hex, scale } from 'chroma-js';
+  import * as chroma from 'chroma-js';
 
   export let username: string;
 
   let nicknameStartColor = $config.colorNickname;
   let nicknameEndColor = $config.isGradientNickname
-    ? hex($config.colorNickname).brighten(1.15).hex()
+    ? chroma.hex($config.colorNickname).brighten(1.15).hex()
     : $config.colorNickname;
 
-  $: gradient = scale([nicknameStartColor, nicknameEndColor]).mode('hcl').colors(8, 'hex');
+  $: gradient = chroma.scale([nicknameStartColor, nicknameEndColor]).mode('hcl').colors(8, 'hex');
 </script>
 
 <span

@@ -1,7 +1,7 @@
 <script lang="ts">
   import config from '$lib/stores/chat/config';
   import type { ColorGradient } from '$types/chat/nickname';
-  import { contrast, deltaE, hex, mix, rgb, scale } from 'chroma-js';
+  import * as chroma from 'chroma-js';
   import type { Badges as TBadges } from 'tmi.js';
   import Badges from './Badges.svelte';
   import Separator from './Separator.svelte';
@@ -13,7 +13,7 @@
 
   // default gradient color
   let nicknameStartColor = $config.defaultColor;
-  let nicknameEndColor = hex($config.defaultColor).brighten(1.25).hex();
+  let nicknameEndColor = chroma.hex($config.defaultColor).brighten(1.25).hex();
 
   const updateNicknameColors = () => {
     const customNicknames = $config.nicknameColors;
@@ -42,20 +42,20 @@
 
     if (color !== null) {
       // TODO Check in action
-      while (contrast(color, rgb(23, 23, 23).alpha(0.75)) < 4.5) {
-        color = hex(color).brighten(0.2).hex();
+      while (chroma.contrast(color, chroma.rgb(23, 23, 23).alpha(0.75)) < 4.5) {
+        color = chroma.hex(color).brighten(0.2).hex();
       }
-      if (deltaE(color, '#fafafa') < 30) {
-        color = mix($config.defaultColor, color, 0.25).hex();
+      if (chroma.deltaE(color, '#fafafa') < 30) {
+        color = chroma.mix($config.defaultColor, color, 0.25).hex();
       }
       nicknameStartColor = color;
-      nicknameEndColor = hex(color).brighten(1.25).hex();
+      nicknameEndColor = chroma.hex(color).brighten(1.25).hex();
     }
   };
 
   $: color && updateNicknameColors();
 
-  $: gradient = scale([nicknameStartColor, nicknameEndColor]).mode('hcl').colors(8, 'hex');
+  $: gradient = chroma.scale([nicknameStartColor, nicknameEndColor]).mode('hcl').colors(8, 'hex');
 </script>
 
 <div class="username">

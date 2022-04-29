@@ -39,7 +39,7 @@
     .filter(Boolean)
     .join(' ')}
 >
-  <div class="h-full w-full flex flex-col items-stretch justify-end overflow-hidden">
+  <div class="h-full w-full flex flex-col items-stretch justify-start overflow-hidden">
     <FollowWidget />
   </div>
 </div>

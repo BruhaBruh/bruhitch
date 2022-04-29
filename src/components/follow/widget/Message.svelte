@@ -5,8 +5,8 @@
   import follow from '$lib/stores/follow/follow';
   import { Animation } from '$types/animation';
   import type { TwitchEventFollowData } from '$types/ws';
-  import { hex } from 'chroma-js';
-  import * as sanitizeHtml from 'sanitize-html';
+  import * as chroma from 'chroma-js';
+  // import * as sanitizeHtml from 'sanitize-html';
   import { onDestroy, onMount } from 'svelte';
   import { fade, scale, slide } from 'svelte/transition';
   import UserName from './UserName.svelte';
@@ -26,7 +26,7 @@
     clearTimeout(timeout);
   });
 
-  $: bg = hex($config.backgroundColor).alpha(0.75).hex();
+  $: bg = chroma.hex($config.backgroundColor).alpha(0.75).hex();
 
   const getAnimation = (animation: Animation) => {
     switch (animation) {
@@ -62,16 +62,16 @@
   $: {
     const [before, after] = $config.pattern.split('$username$');
 
-    const options: sanitizeHtml.IOptions = {
-      allowedTags: ['span', 'img'],
-      allowedAttributes: {
-        span: ['class', 'style'],
-        img: ['class', 'src', 'alt']
-      }
-    };
+    // const options: sanitizeHtml.IOptions = {
+    //   allowedTags: ['span', 'img'],
+    //   allowedAttributes: {
+    //     span: ['class', 'style'],
+    //     img: ['class', 'src', 'alt']
+    //   }
+    // };
 
-    beforeUsername = sanitizeHtml(withReplaceImages(before), options);
-    afterUsername = sanitizeHtml(withReplaceImages(after), options);
+    beforeUsername = withReplaceImages(before);
+    afterUsername = withReplaceImages(after);
   }
 </script>
 
