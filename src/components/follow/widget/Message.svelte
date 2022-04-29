@@ -5,10 +5,11 @@
   import follow from '$lib/stores/follow/follow';
   import { Animation } from '$types/animation';
   import type { TwitchEventFollowData } from '$types/ws';
-  import { hex, scale } from 'chroma-js';
+  import { hex } from 'chroma-js';
   import * as sanitizeHtml from 'sanitize-html';
   import { onDestroy, onMount } from 'svelte';
-  import { fade, scale as Scale, slide } from 'svelte/transition';
+  import { fade, scale, slide } from 'svelte/transition';
+  import UserName from './UserName.svelte';
 
   export let id: number;
   export let current: TwitchEventFollowData;
@@ -25,13 +26,6 @@
     clearTimeout(timeout);
   });
 
-  let nicknameStartColor = $config.colorNickname;
-  let nicknameEndColor = $config.isGradientNickname
-    ? hex($config.colorNickname).brighten(1.15).hex()
-    : $config.colorNickname;
-
-  $: gradient = scale([nicknameStartColor, nicknameEndColor]).mode('hcl').colors(8, 'hex');
-
   $: bg = hex($config.backgroundColor).alpha(0.75).hex();
 
   const getAnimation = (animation: Animation) => {
@@ -41,18 +35,13 @@
       case Animation.Fade:
         return fade;
       case Animation.Scale:
-        return Scale;
+        return scale;
       default:
         return undefined;
     }
   };
 
   $: animation = getAnimation($config.animation);
-
-  type Item = {
-    type: 'image' | 'text';
-    value: string;
-  };
 
   let beforeUsername: string = '';
   let afterUsername: string = '';
@@ -115,13 +104,7 @@
     {/if}
 
     {@html beforeUsername}
-    <span
-      class="font-semibold"
-      style={`background: linear-gradient(to right, ${gradient.join(
-        ', '
-      )}); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent`}
-      >{current.user_name}</span
-    >
+    <UserName username={current.user_name} />
     {@html afterUsername}
   </div>
 </div>
