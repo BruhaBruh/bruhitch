@@ -3,7 +3,13 @@
   import { page } from '$app/stores';
   import config from '$lib/stores/follow/config';
   import follow from '$lib/stores/follow/follow';
-  import { MessageResponseType, MessageType, type SubscribeFollowResponse } from '$types/ws';
+  import {
+    CallbackResponseMessageType,
+    RequestMessageType,
+    type TwitchEventFollowData,
+    type WSRequest,
+    type WSResponse
+  } from '$types/ws';
   import FollowWidget from '@components/follow/widget/FollowWidget.svelte';
   import type { Load } from '@sveltejs/kit';
   import { onDestroy, onMount } from 'svelte';
@@ -59,12 +65,14 @@
     ws = new WebSocket(wsURL);
 
     ws.addEventListener('open', () => {
-      setTimeout(() => ws.send(JSON.stringify({ type: MessageType.SubscribeFollow })), 500);
+      const subscribeRequest: WSRequest<undefined> = { type: RequestMessageType.SubscribeFollow };
+
+      setTimeout(() => ws.send(JSON.stringify(subscribeRequest)), 500);
     });
 
     ws.addEventListener('message', (e) => {
-      const data: SubscribeFollowResponse = JSON.parse(e.data);
-      if (data.type !== MessageResponseType.SubscribeFollow) return;
+      const data: WSResponse<TwitchEventFollowData> = JSON.parse(e.data);
+      if (data.type !== CallbackResponseMessageType.SubscribeFollow) return;
 
       follow.add(data.data);
     });
