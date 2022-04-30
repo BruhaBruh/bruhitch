@@ -54,7 +54,6 @@
         `<span class="emote"><span style="width: 0.5em; height: 0.5em;"><img class="emote-image" src="$2" alt="$1"/></span></span>`
       )
       .split(' ')
-      .filter(Boolean)
       .join(' ');
   };
 
