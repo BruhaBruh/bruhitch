@@ -4,6 +4,7 @@
   import config from '$lib/stores/follow/config';
   import follow from '$lib/stores/follow/follow';
   import {
+    BaseResponseMessageType,
     CallbackResponseMessageType,
     RequestMessageType,
     type TwitchEventFollowData,
@@ -51,9 +52,7 @@
 
   let ws: WebSocket;
 
-  onMount(async () => {
-    if (!browser || !!ws) return;
-
+  const connect = async () => {
     const isSecure = $page.url.protocol.includes('https');
 
     const isLocalhost = $page.url.host.includes('localhost');
@@ -76,6 +75,19 @@
 
       follow.add(data.data);
     });
+
+    ws.addEventListener('close', (e) => {
+      const data: WSResponse<undefined> = JSON.parse(e.reason);
+      if (data.type === BaseResponseMessageType.Reconnect) {
+        ws.close(3000);
+        connect();
+      }
+    });
+  };
+
+  onMount(() => {
+    if (!browser || !!ws) return;
+    connect();
   });
 
   onDestroy(() => {

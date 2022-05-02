@@ -19,7 +19,7 @@ export type WSRequest<T> = {
 
 export enum BaseResponseMessageType {
   Error = 'error',
-  Status = 'status'
+  Reconnect = 'reconnect'
 }
 
 export enum WSResponseMessageType {
