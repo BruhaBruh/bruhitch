@@ -44,10 +44,29 @@
     const status = await fetch('/api/v1/user/remove', { method: 'POST' }).then((r) => r.status);
     deleteAccountIsLoading = false;
     if (status !== 200) {
-      ui.toast.add('circle-cancel', $LL.settings.accountNotDeleted(), 'Произошла ошибка', 'danger');
+      ui.toast.add(
+        'circle-cancel',
+        $LL.settings.accountNotDeleted(),
+        $LL.errorOccurred(),
+        'danger'
+      );
     } else {
       ui.toast.add('circle-check', $LL.settings.accountDeleted(), undefined, 'success');
       me.reset();
+    }
+  };
+
+  const handleRefreshToken = async () => {
+    const status = await fetch('/api/v1/user/twitch', { method: 'DELETE' }).then((r) => r.status);
+    if (status !== 200) {
+      ui.toast.add('circle-cancel', $LL.settings.refreshError(), $LL.errorOccurred(), 'danger');
+    } else {
+      ui.toast.add(
+        'circle-check',
+        $LL.settings.refreshSuccess(),
+        $LL.settings.refreshSuccessDescription(),
+        'success'
+      );
     }
   };
 </script>
@@ -77,11 +96,6 @@
     />
   </TextField>
   {#if $me}
-    <TextField title={$LL.settings.deleteAccount()} class="mb-4">
-      <Button color="danger" on:click={() => (showDeleteAccountAlert = true)}>
-        {$LL.settings.deleteAccount()}
-      </Button>
-    </TextField>
     <Modal
       show={showDeleteAccountAlert}
       header={$LL.settings.deleteAccount()}
@@ -98,5 +112,18 @@
       </div>
     </Modal>
     <FullScreenSpinner show={deleteAccountIsLoading} />
+    <TextField
+      title={$LL.settings.refreshToken()}
+      status="validation"
+      statusText={$LL.settings.refreshTokenDescription()}
+      class="mb-4"
+    >
+      <Button color="warning" on:click={handleRefreshToken}>{$LL.settings.refreshToken()}</Button>
+    </TextField>
+    <TextField title={$LL.settings.deleteAccount()} class="mb-4">
+      <Button color="danger" on:click={() => (showDeleteAccountAlert = true)}>
+        {$LL.settings.deleteAccount()}
+      </Button>
+    </TextField>
   {/if}
 </div>

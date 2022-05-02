@@ -70,6 +70,26 @@ type RootTranslation = {
 		 * Account not deleted
 		 */
 		accountNotDeleted: string
+		/**
+		 * Refresh token
+		 */
+		refreshToken: string
+		/**
+		 * After this update your widget links. Just copy
+		 */
+		refreshTokenDescription: string
+		/**
+		 * Error on refresh token
+		 */
+		refreshError: string
+		/**
+		 * Token is Refreshed
+		 */
+		refreshSuccess: string
+		/**
+		 * Update your widget links
+		 */
+		refreshSuccessDescription: string
 	}
 	chat: {
 		/**
@@ -341,6 +361,10 @@ type RootTranslation = {
 	 * Work In Progress
 	 */
 	wip: string
+	/**
+	 * An error has occurred
+	 */
+	errorOccurred: string
 }
 
 export type TranslationFunctions = {
@@ -399,6 +423,26 @@ export type TranslationFunctions = {
 		 * Account not deleted
 		 */
 		accountNotDeleted: () => LocalizedString
+		/**
+		 * Refresh token
+		 */
+		refreshToken: () => LocalizedString
+		/**
+		 * After this update your widget links. Just copy
+		 */
+		refreshTokenDescription: () => LocalizedString
+		/**
+		 * Error on refresh token
+		 */
+		refreshError: () => LocalizedString
+		/**
+		 * Token is Refreshed
+		 */
+		refreshSuccess: () => LocalizedString
+		/**
+		 * Update your widget links
+		 */
+		refreshSuccessDescription: () => LocalizedString
 	}
 	chat: {
 		/**
@@ -670,6 +714,10 @@ export type TranslationFunctions = {
 	 * Work In Progress
 	 */
 	wip: () => LocalizedString
+	/**
+	 * An error has occurred
+	 */
+	errorOccurred: () => LocalizedString
 }
 
 export type Formatters = {}

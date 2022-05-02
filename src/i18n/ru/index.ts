@@ -16,7 +16,12 @@ const ru: Translation = {
     deleteAccount: 'Удалить аккаунт',
     deleteAccountDescription: 'Это действие нельзя будет отменить, вы уверены?',
     accountDeleted: 'Аккаунт удален',
-    accountNotDeleted: 'Аккаунт не удален'
+    accountNotDeleted: 'Аккаунт не удален',
+    refreshToken: 'Обновить токен',
+    refreshTokenDescription: 'После обновления обновите ссылки на виджеты, просто скопируйте',
+    refreshError: 'Ошибка обновления токена',
+    refreshSuccess: 'Токен обновлен',
+    refreshSuccessDescription: 'Обновите свои ссылки на виджеты'
   },
   chat: {
     name: 'Чат',
@@ -95,7 +100,8 @@ const ru: Translation = {
   remove: 'Удалить',
   delete: 'Удалить',
   cancel: 'Отмена',
-  wip: 'В разработке'
+  wip: 'В разработке',
+  errorOccurred: 'Произошла ошибка'
 };
 
 export default ru;

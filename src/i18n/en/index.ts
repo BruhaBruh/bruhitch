@@ -16,7 +16,12 @@ const en: BaseTranslation = {
     deleteAccount: 'Delete account',
     deleteAccountDescription: 'This action cannot be undone, are you sure?',
     accountDeleted: 'Account deleted',
-    accountNotDeleted: 'Account not deleted'
+    accountNotDeleted: 'Account not deleted',
+    refreshToken: 'Refresh token',
+    refreshTokenDescription: 'After this update your widget links. Just copy',
+    refreshError: 'Error on refresh token',
+    refreshSuccess: 'Token is Refreshed',
+    refreshSuccessDescription: 'Update your widget links'
   },
   chat: {
     name: 'Chat',
@@ -95,7 +100,8 @@ const en: BaseTranslation = {
   remove: 'Remove',
   delete: 'Delete',
   cancel: 'Cancel',
-  wip: 'Work In Progress'
+  wip: 'Work In Progress',
+  errorOccurred: 'An error has occurred'
 };
 
 export default en;
