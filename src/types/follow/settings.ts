@@ -29,8 +29,6 @@ export type Settings = {
   disablePadding: boolean;
   fontSize: number;
   font: string;
-  textColor: string;
-  backgroundColor: string;
   backgroundImage: string;
   colorNickname: string;
   isGradientNickname: boolean;

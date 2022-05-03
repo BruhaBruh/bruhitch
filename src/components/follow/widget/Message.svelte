@@ -25,7 +25,7 @@
     clearTimeout(timeout);
   });
 
-  $: bg = chroma.hex($config.backgroundColor).alpha(0.75).hex();
+  $: bg = chroma.hex('#171717').alpha(0.75).hex();
 
   const getAnimation = (animation: Animation) => {
     switch (animation) {
@@ -82,7 +82,7 @@
     class="whitespace-nowrap relative overflow-hidden"
     style={`padding: ${$config.fontSize}px; border-radius: ${$config.fontSize}px; font-size: ${
       $config.fontSize * 2
-    }px; background-color: ${bg}; color: ${$config.textColor}`}
+    }px; background-color: ${bg}; color: #fafafa`}
   >
     {#if $config.backgroundImage}
       <img

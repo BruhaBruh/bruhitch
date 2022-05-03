@@ -8,7 +8,7 @@
 - [x] Check contrast on nickname
 - [x] Add clear chat on ban user
 - [ ] Donation Alerts
-- [ ] Follow Alerts
+- [x] Follow Alerts
 - [ ] Subscriber Alerts
 - [ ] Raid Alerts
 - [ ] Bits Alerts

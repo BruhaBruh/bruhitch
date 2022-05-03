@@ -56,8 +56,6 @@
   let disablePadding = $config.disablePadding ? ['true'] : [];
   let font = $config.font;
   let fontSize = $config.fontSize;
-  let textColor = $config.textColor;
-  let backgroundColor = $config.backgroundColor;
   let backgroundImage = $config.backgroundImage;
   let colorNickname = $config.colorNickname;
   let isGradientNickname = $config.isGradientNickname ? ['true'] : [];
@@ -73,8 +71,6 @@
   $: config.setDisablePadding(!!disablePadding.length);
   $: config.setFont(font);
   $: config.setFontSize(fontSize);
-  $: config.setTextColor(textColor);
-  $: config.setBackgroundColor(backgroundColor);
   $: config.setBackgroundImage(backgroundImage);
   $: config.setColorNickname(colorNickname);
   $: config.setIsGradientNickname(!!isGradientNickname.length);
@@ -105,8 +101,6 @@
     disablePadding = settings.disablePadding ? ['true'] : [];
     font = settings.font;
     fontSize = settings.fontSize;
-    textColor = settings.textColor;
-    backgroundColor = settings.backgroundColor;
     backgroundImage = settings.backgroundImage;
     colorNickname = settings.colorNickname;
     isGradientNickname = settings.isGradientNickname ? ['true'] : [];
@@ -138,7 +132,7 @@
       })
         .then((r) => r.json())
         .catch(console.error);
-      ui.toast.add('circle-check', $LL.copied(), undefined, 'success');
+      ui.toast.add('circle-check', $LL.saved(), undefined, 'success');
     } else {
       ui.toast.add('circle-cancel', $LL.authorization(), undefined, 'danger');
     }
@@ -177,18 +171,6 @@
         {$LL.chat.disablePadding()}
       </Typography>
     </label>
-  </TextField>
-  <!-- #endregion -->
-
-  <!-- #region Text Color -->
-  <TextField title={$LL.followAlerts.textColor()} class="mb-4">
-    <ColorPicker bind:value={textColor} />
-  </TextField>
-  <!-- #endregion -->
-
-  <!-- #region Background Color -->
-  <TextField title={$LL.followAlerts.backgroundColor()} class="mb-4">
-    <ColorPicker bind:value={backgroundColor} />
   </TextField>
   <!-- #endregion -->
 

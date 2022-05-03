@@ -1,23 +1,30 @@
 <script lang="ts">
   import config from '$lib/stores/follow/config';
-  import follow from '$lib/stores/follow/follow';
+  import subscribe, { type SubscribeItem } from '$lib/stores/subscribe/subscribe';
+  import { rawDataSymbol } from '@twurple/common';
   import { onDestroy } from 'svelte';
-  import Message from './Message.svelte';
 
-  let current: number | null = null;
+  let current: SubscribeItem = null;
   let timeout: NodeJS.Timeout;
 
-  follow.subscribe((v) => {
+  subscribe.subscribe((v) => {
     const sorted = v.sort((a, b) => a.id - b.id);
     if (sorted.length === 0) return (current = null);
-    if (sorted[0].id === current) return;
+    if (JSON.stringify(sorted[0]) === JSON.stringify(current)) return;
     if (current === null) {
-      current = sorted[0].id;
+      current = sorted[0];
+      timeout = setTimeout(() => subscribe.removeById(current.id), 5000);
     } else {
       current = null;
-      timeout = setTimeout(() => (current = sorted[0].id), 300);
+      timeout = setTimeout(() => {
+        current = sorted[0];
+
+        timeout = setTimeout(() => subscribe.removeById(current.id), 5000);
+      }, 300);
     }
   });
+
+  $: rawData = current?.data[rawDataSymbol];
 
   onDestroy(() => {
     clearTimeout(timeout);
@@ -42,7 +49,10 @@
 >
   {#key current}
     {#if current}
-      <Message id={current} current={$follow.find((v) => v.id === current).data} />
+      {rawData.context}
+      <pre>
+        {JSON.stringify(rawData, null, 2)}
+      </pre>
     {/if}
   {/key}
 </div>

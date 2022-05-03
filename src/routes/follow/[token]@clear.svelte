@@ -14,6 +14,7 @@
   import FollowWidget from '@components/follow/widget/FollowWidget.svelte';
   import type { Load } from '@sveltejs/kit';
   import { onDestroy, onMount } from 'svelte';
+  import './follow.css';
 
   export const prerender = true;
 

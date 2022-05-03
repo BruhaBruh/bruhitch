@@ -1,7 +1,7 @@
 <script lang="ts">
+  import { generateColors, generateGradient, generateLightenColor } from '$lib/color';
   import config from '$lib/stores/chat/config';
   import type { ColorGradient } from '$types/chat/nickname';
-  import * as chroma from 'chroma-js';
   import type { Badges as TBadges } from 'tmi.js';
   import Badges from './Badges.svelte';
   import Separator from './Separator.svelte';
@@ -13,7 +13,7 @@
 
   // default gradient color
   let nicknameStartColor = $config.defaultColor;
-  let nicknameEndColor = chroma.hex($config.defaultColor).brighten(1.25).hex();
+  let nicknameEndColor = generateLightenColor($config.defaultColor);
 
   const updateNicknameColors = () => {
     const customNicknames = $config.nicknameColors;
@@ -41,21 +41,13 @@
     }
 
     if (color !== null) {
-      // TODO Check in action
-      while (chroma.contrast(color, chroma.rgb(23, 23, 23).alpha(0.75)) < 4.5) {
-        color = chroma.hex(color).brighten(0.2).hex();
-      }
-      if (chroma.deltaE(color, '#fafafa') < 30) {
-        color = chroma.mix($config.defaultColor, color, 0.25).hex();
-      }
-      nicknameStartColor = color;
-      nicknameEndColor = chroma.hex(color).brighten(1.25).hex();
+      [nicknameStartColor, nicknameEndColor] = generateColors(color, $config.defaultColor);
     }
   };
 
   $: color && updateNicknameColors();
 
-  $: gradient = chroma.scale([nicknameStartColor, nicknameEndColor]).mode('hcl').colors(8, 'hex');
+  $: gradient = generateGradient(nicknameStartColor, nicknameEndColor);
 </script>
 
 <div class="username">

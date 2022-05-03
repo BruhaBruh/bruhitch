@@ -18,14 +18,6 @@ const createConfig = (initialState: Config) => {
     setDisablePadding: (disablePadding: boolean) => update((v) => ({ ...v, disablePadding })),
     setFont: (font: string) => update((v) => ({ ...v, font })),
     setFontSize: (fontSize: number) => update((v) => ({ ...v, fontSize })),
-    setTextColor: (textColor: string) => {
-      if (!isColor(textColor)) return;
-      update((v) => ({ ...v, textColor }));
-    },
-    setBackgroundColor: (backgroundColor: string) => {
-      if (!isColor(backgroundColor)) return;
-      update((v) => ({ ...v, backgroundColor }));
-    },
     setBackgroundImage: (backgroundImage: string) => {
       update((v) => ({ ...v, backgroundImage }));
     },
@@ -65,8 +57,6 @@ const config = createConfig({
   disablePadding: false,
   font: '',
   fontSize: 16,
-  textColor: '#fafafa',
-  backgroundColor: '#171717',
   backgroundImage: 'https://i.postimg.cc/7hZRH7Ls/giphy.webp',
   colorNickname: '#8CF2A5',
   isGradientNickname: false,
