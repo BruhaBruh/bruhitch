@@ -33,6 +33,10 @@ type RootTranslation = {
 	 * Continue with Twitch
 	 */
 	continueWithTwitch: string
+	/**
+	 * Dont show link anyone
+	 */
+	dontShowLinkAnyone: string
 	settings: {
 		/**
 		 * Settings
@@ -108,100 +112,102 @@ type RootTranslation = {
 		 * Chat preview
 		 */
 		preview: string
-		/**
-		 * Nickname
-		 */
-		nickname: string
-		/**
-		 * Channel
-		 */
-		channel: string
-		/**
-		 * Chat type
-		 */
-		chatType: string
-		/**
-		 * Default
-		 */
-		'default': string
-		/**
-		 * Block
-		 */
-		block: string
-		/**
-		 * Alternative block
-		 */
-		alternativeBlock: string
-		/**
-		 * Hide rewards
-		 */
-		hideRewards: string
-		/**
-		 * Hide claim channel points rewards in chat
-		 */
-		hideRewardsDescription: string
-		/**
-		 * Hidden nicknames
-		 */
-		hiddenNicknames: string
-		/**
-		 * Default color
-		 */
-		defaultColor: string
-		/**
-		 * Gradient only to custom nicknames
-		 */
-		gradientOnlyToCustomNicknames: string
-		/**
-		 * Custom color nicknames
-		 */
-		customColorNicknames: string
-		/**
-		 * Is gradient?
-		 */
-		isGradient: string
-		/**
-		 * Font
-		 */
-		font: string
-		/**
-		 * Font size
-		 */
-		fontSize: string
-		/**
-		 * Disable padding
-		 */
-		disablePadding: string
-		/**
-		 * Animation
-		 */
-		animation: string
-		animationParams: {
+		controls: {
 			/**
-			 * Animation parameters
+			 * Nickname
 			 */
-			name: string
+			nickname: string
 			/**
-			 * duration in ms
+			 * Channel
 			 */
-			duration: string
+			channel: string
 			/**
-			 * start scale
+			 * Chat type
 			 */
-			startScale: string
+			chatType: string
 			/**
-			 * opacity
+			 * Default
 			 */
-			opacity: string
+			'default': string
+			/**
+			 * Block
+			 */
+			block: string
+			/**
+			 * Alternative block
+			 */
+			alternativeBlock: string
+			/**
+			 * Hide rewards
+			 */
+			hideRewards: string
+			/**
+			 * Hide claim channel points rewards in chat
+			 */
+			hideRewardsDescription: string
+			/**
+			 * Hidden nicknames
+			 */
+			hiddenNicknames: string
+			/**
+			 * Default color
+			 */
+			defaultColor: string
+			/**
+			 * Gradient only to custom nicknames
+			 */
+			gradientOnlyToCustomNicknames: string
+			/**
+			 * Custom color nicknames
+			 */
+			customColorNicknames: string
+			/**
+			 * Is gradient?
+			 */
+			isGradient: string
+			/**
+			 * Font
+			 */
+			font: string
+			/**
+			 * Font size
+			 */
+			fontSize: string
+			/**
+			 * Disable padding
+			 */
+			disablePadding: string
+			/**
+			 * Animation
+			 */
+			animation: string
+			animationParams: {
+				/**
+				 * Animation parameters
+				 */
+				name: string
+				/**
+				 * duration in ms
+				 */
+				duration: string
+				/**
+				 * start scale
+				 */
+				startScale: string
+				/**
+				 * opacity
+				 */
+				opacity: string
+			}
+			/**
+			 * Chat widget link
+			 */
+			chatLink: string
+			/**
+			 * Load config from link
+			 */
+			loadConfigFromLink: string
 		}
-		/**
-		 * Chat widget link
-		 */
-		chatLink: string
-		/**
-		 * Load config from link
-		 */
-		loadConfigFromLink: string
 	}
 	donationAlerts: {
 		/**
@@ -222,82 +228,102 @@ type RootTranslation = {
 		 * Follow alert preview
 		 */
 		preview: string
-		/**
-		 * Font
-		 */
-		font: string
-		/**
-		 * Font size
-		 */
-		fontSize: string
-		/**
-		 * Disable padding
-		 */
-		disablePadding: string
-		/**
-		 * Pattern
-		 */
-		pattern: string
-		/**
-		 * $username$ - show username. ![text](link) - image
-		 */
-		patternDescription: string
-		/**
-		 * Text color
-		 */
-		textColor: string
-		/**
-		 * Background color
-		 */
-		backgroundColor: string
-		/**
-		 * Background image
-		 */
-		backgroundImage: string
-		/**
-		 * Link to image
-		 */
-		backgroundImageDescription: string
-		/**
-		 * Nickname color
-		 */
-		colorNickname: string
-		/**
-		 * Is gradient nickname?
-		 */
-		isGradientNickname: string
-		/**
-		 * Vertical align
-		 */
-		verticalAlign: string
-		/**
-		 * Horizontal align
-		 */
-		horizontalAlign: string
-		/**
-		 * Top
-		 */
-		top: string
-		/**
-		 * Bottom
-		 */
-		bottom: string
-		/**
-		 * Center
-		 */
-		center: string
-		/**
-		 * Right
-		 */
-		right: string
-		/**
-		 * Left
-		 */
-		left: string
-		/**
-		 * Follow alert widget link
-		 */
-		widgetLink: string
+		controls: {
+			/**
+			 * Font
+			 */
+			font: string
+			/**
+			 * Font size
+			 */
+			fontSize: string
+			/**
+			 * Disable padding
+			 */
+			disablePadding: string
+			/**
+			 * Animation
+			 */
+			animation: string
+			animationParams: {
+				/**
+				 * Animation parameters
+				 */
+				name: string
+				/**
+				 * start scale
+				 */
+				startScale: string
+				/**
+				 * opacity
+				 */
+				opacity: string
+			}
+			/**
+			 * Pattern
+			 */
+			pattern: string
+			/**
+			 * $username$ - show username. ![text](link) - image
+			 */
+			patternDescription: string
+			/**
+			 * Text color
+			 */
+			textColor: string
+			/**
+			 * Background color
+			 */
+			backgroundColor: string
+			/**
+			 * Background image
+			 */
+			backgroundImage: string
+			/**
+			 * Link to image
+			 */
+			backgroundImageDescription: string
+			/**
+			 * Nickname color
+			 */
+			colorNickname: string
+			/**
+			 * Is gradient nickname?
+			 */
+			isGradientNickname: string
+			/**
+			 * Vertical align
+			 */
+			verticalAlign: string
+			/**
+			 * Horizontal align
+			 */
+			horizontalAlign: string
+			/**
+			 * Top
+			 */
+			top: string
+			/**
+			 * Bottom
+			 */
+			bottom: string
+			/**
+			 * Center
+			 */
+			center: string
+			/**
+			 * Right
+			 */
+			right: string
+			/**
+			 * Left
+			 */
+			left: string
+			/**
+			 * Follow alert widget link
+			 */
+			widgetLink: string
+		}
 	}
 	subscribeAlerts: {
 		/**
@@ -386,6 +412,10 @@ export type TranslationFunctions = {
 	 * Continue with Twitch
 	 */
 	continueWithTwitch: () => LocalizedString
+	/**
+	 * Dont show link anyone
+	 */
+	dontShowLinkAnyone: () => LocalizedString
 	settings: {
 		/**
 		 * Settings
@@ -461,100 +491,102 @@ export type TranslationFunctions = {
 		 * Chat preview
 		 */
 		preview: () => LocalizedString
-		/**
-		 * Nickname
-		 */
-		nickname: () => LocalizedString
-		/**
-		 * Channel
-		 */
-		channel: () => LocalizedString
-		/**
-		 * Chat type
-		 */
-		chatType: () => LocalizedString
-		/**
-		 * Default
-		 */
-		'default': () => LocalizedString
-		/**
-		 * Block
-		 */
-		block: () => LocalizedString
-		/**
-		 * Alternative block
-		 */
-		alternativeBlock: () => LocalizedString
-		/**
-		 * Hide rewards
-		 */
-		hideRewards: () => LocalizedString
-		/**
-		 * Hide claim channel points rewards in chat
-		 */
-		hideRewardsDescription: () => LocalizedString
-		/**
-		 * Hidden nicknames
-		 */
-		hiddenNicknames: () => LocalizedString
-		/**
-		 * Default color
-		 */
-		defaultColor: () => LocalizedString
-		/**
-		 * Gradient only to custom nicknames
-		 */
-		gradientOnlyToCustomNicknames: () => LocalizedString
-		/**
-		 * Custom color nicknames
-		 */
-		customColorNicknames: () => LocalizedString
-		/**
-		 * Is gradient?
-		 */
-		isGradient: () => LocalizedString
-		/**
-		 * Font
-		 */
-		font: () => LocalizedString
-		/**
-		 * Font size
-		 */
-		fontSize: () => LocalizedString
-		/**
-		 * Disable padding
-		 */
-		disablePadding: () => LocalizedString
-		/**
-		 * Animation
-		 */
-		animation: () => LocalizedString
-		animationParams: {
+		controls: {
 			/**
-			 * Animation parameters
+			 * Nickname
 			 */
-			name: () => LocalizedString
+			nickname: () => LocalizedString
 			/**
-			 * duration in ms
+			 * Channel
 			 */
-			duration: () => LocalizedString
+			channel: () => LocalizedString
 			/**
-			 * start scale
+			 * Chat type
 			 */
-			startScale: () => LocalizedString
+			chatType: () => LocalizedString
 			/**
-			 * opacity
+			 * Default
 			 */
-			opacity: () => LocalizedString
+			'default': () => LocalizedString
+			/**
+			 * Block
+			 */
+			block: () => LocalizedString
+			/**
+			 * Alternative block
+			 */
+			alternativeBlock: () => LocalizedString
+			/**
+			 * Hide rewards
+			 */
+			hideRewards: () => LocalizedString
+			/**
+			 * Hide claim channel points rewards in chat
+			 */
+			hideRewardsDescription: () => LocalizedString
+			/**
+			 * Hidden nicknames
+			 */
+			hiddenNicknames: () => LocalizedString
+			/**
+			 * Default color
+			 */
+			defaultColor: () => LocalizedString
+			/**
+			 * Gradient only to custom nicknames
+			 */
+			gradientOnlyToCustomNicknames: () => LocalizedString
+			/**
+			 * Custom color nicknames
+			 */
+			customColorNicknames: () => LocalizedString
+			/**
+			 * Is gradient?
+			 */
+			isGradient: () => LocalizedString
+			/**
+			 * Font
+			 */
+			font: () => LocalizedString
+			/**
+			 * Font size
+			 */
+			fontSize: () => LocalizedString
+			/**
+			 * Disable padding
+			 */
+			disablePadding: () => LocalizedString
+			/**
+			 * Animation
+			 */
+			animation: () => LocalizedString
+			animationParams: {
+				/**
+				 * Animation parameters
+				 */
+				name: () => LocalizedString
+				/**
+				 * duration in ms
+				 */
+				duration: () => LocalizedString
+				/**
+				 * start scale
+				 */
+				startScale: () => LocalizedString
+				/**
+				 * opacity
+				 */
+				opacity: () => LocalizedString
+			}
+			/**
+			 * Chat widget link
+			 */
+			chatLink: () => LocalizedString
+			/**
+			 * Load config from link
+			 */
+			loadConfigFromLink: () => LocalizedString
 		}
-		/**
-		 * Chat widget link
-		 */
-		chatLink: () => LocalizedString
-		/**
-		 * Load config from link
-		 */
-		loadConfigFromLink: () => LocalizedString
 	}
 	donationAlerts: {
 		/**
@@ -575,82 +607,102 @@ export type TranslationFunctions = {
 		 * Follow alert preview
 		 */
 		preview: () => LocalizedString
-		/**
-		 * Font
-		 */
-		font: () => LocalizedString
-		/**
-		 * Font size
-		 */
-		fontSize: () => LocalizedString
-		/**
-		 * Disable padding
-		 */
-		disablePadding: () => LocalizedString
-		/**
-		 * Pattern
-		 */
-		pattern: () => LocalizedString
-		/**
-		 * $username$ - show username. ![text](link) - image
-		 */
-		patternDescription: () => LocalizedString
-		/**
-		 * Text color
-		 */
-		textColor: () => LocalizedString
-		/**
-		 * Background color
-		 */
-		backgroundColor: () => LocalizedString
-		/**
-		 * Background image
-		 */
-		backgroundImage: () => LocalizedString
-		/**
-		 * Link to image
-		 */
-		backgroundImageDescription: () => LocalizedString
-		/**
-		 * Nickname color
-		 */
-		colorNickname: () => LocalizedString
-		/**
-		 * Is gradient nickname?
-		 */
-		isGradientNickname: () => LocalizedString
-		/**
-		 * Vertical align
-		 */
-		verticalAlign: () => LocalizedString
-		/**
-		 * Horizontal align
-		 */
-		horizontalAlign: () => LocalizedString
-		/**
-		 * Top
-		 */
-		top: () => LocalizedString
-		/**
-		 * Bottom
-		 */
-		bottom: () => LocalizedString
-		/**
-		 * Center
-		 */
-		center: () => LocalizedString
-		/**
-		 * Right
-		 */
-		right: () => LocalizedString
-		/**
-		 * Left
-		 */
-		left: () => LocalizedString
-		/**
-		 * Follow alert widget link
-		 */
-		widgetLink: () => LocalizedString
+		controls: {
+			/**
+			 * Font
+			 */
+			font: () => LocalizedString
+			/**
+			 * Font size
+			 */
+			fontSize: () => LocalizedString
+			/**
+			 * Disable padding
+			 */
+			disablePadding: () => LocalizedString
+			/**
+			 * Animation
+			 */
+			animation: () => LocalizedString
+			animationParams: {
+				/**
+				 * Animation parameters
+				 */
+				name: () => LocalizedString
+				/**
+				 * start scale
+				 */
+				startScale: () => LocalizedString
+				/**
+				 * opacity
+				 */
+				opacity: () => LocalizedString
+			}
+			/**
+			 * Pattern
+			 */
+			pattern: () => LocalizedString
+			/**
+			 * $username$ - show username. ![text](link) - image
+			 */
+			patternDescription: () => LocalizedString
+			/**
+			 * Text color
+			 */
+			textColor: () => LocalizedString
+			/**
+			 * Background color
+			 */
+			backgroundColor: () => LocalizedString
+			/**
+			 * Background image
+			 */
+			backgroundImage: () => LocalizedString
+			/**
+			 * Link to image
+			 */
+			backgroundImageDescription: () => LocalizedString
+			/**
+			 * Nickname color
+			 */
+			colorNickname: () => LocalizedString
+			/**
+			 * Is gradient nickname?
+			 */
+			isGradientNickname: () => LocalizedString
+			/**
+			 * Vertical align
+			 */
+			verticalAlign: () => LocalizedString
+			/**
+			 * Horizontal align
+			 */
+			horizontalAlign: () => LocalizedString
+			/**
+			 * Top
+			 */
+			top: () => LocalizedString
+			/**
+			 * Bottom
+			 */
+			bottom: () => LocalizedString
+			/**
+			 * Center
+			 */
+			center: () => LocalizedString
+			/**
+			 * Right
+			 */
+			right: () => LocalizedString
+			/**
+			 * Left
+			 */
+			left: () => LocalizedString
+			/**
+			 * Follow alert widget link
+			 */
+			widgetLink: () => LocalizedString
+		}
 	}
 	subscribeAlerts: {
 		/**

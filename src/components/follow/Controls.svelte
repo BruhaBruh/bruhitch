@@ -22,29 +22,29 @@
   const verticalAlignTypes: SelectItem[] = [
     {
       value: 'top',
-      label: $LL.followAlerts.top()
+      label: $LL.followAlerts.controls.top()
     },
     {
       value: 'center',
-      label: $LL.followAlerts.center()
+      label: $LL.followAlerts.controls.center()
     },
     {
       value: 'bottom',
-      label: $LL.followAlerts.bottom()
+      label: $LL.followAlerts.controls.bottom()
     }
   ];
   const horizontalAlignTypes: SelectItem[] = [
     {
       value: 'left',
-      label: $LL.followAlerts.left()
+      label: $LL.followAlerts.controls.left()
     },
     {
       value: 'center',
-      label: $LL.followAlerts.center()
+      label: $LL.followAlerts.controls.center()
     },
     {
       value: 'right',
-      label: $LL.followAlerts.right()
+      label: $LL.followAlerts.controls.right()
     }
   ];
 
@@ -142,33 +142,33 @@
 <div {...$$restProps}>
   <!-- #region Pattern -->
   <TextField
-    title={$LL.followAlerts.pattern()}
+    title={$LL.followAlerts.controls.pattern()}
     class="mb-4"
     status="validation"
-    statusText={$LL.followAlerts.patternDescription()}
+    statusText={$LL.followAlerts.controls.patternDescription()}
   >
     <Input bind:value={pattern} />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Font -->
-  <TextField title={$LL.chat.font()} class="mb-4">
+  <TextField title={$LL.followAlerts.controls.font()} class="mb-4">
     <Input bind:value={font} />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Font Size -->
-  <TextField title={$LL.chat.fontSize()} class="mb-4">
+  <TextField title={$LL.followAlerts.controls.fontSize()} class="mb-4">
     <Input bind:value={fontSize} type="number" />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Disable Padding -->
-  <TextField title={$LL.chat.disablePadding()} class="mb-4">
+  <TextField title={$LL.followAlerts.controls.disablePadding()} class="mb-4">
     <label for="disable-padding" class="cursor-pointer flex items-center space-x-1 select-none ">
       <Checkbox bind:group={disablePadding} value={'true'} id="disable-padding" />
       <Typography variant="b1">
-        {$LL.chat.disablePadding()}
+        {$LL.followAlerts.controls.disablePadding()}
       </Typography>
     </label>
   </TextField>
@@ -176,9 +176,9 @@
 
   <!-- #region Background Image -->
   <TextField
-    title={$LL.followAlerts.backgroundImage()}
+    title={$LL.followAlerts.controls.backgroundImage()}
     status="validation"
-    statusText={$LL.followAlerts.backgroundImageDescription()}
+    statusText={$LL.followAlerts.controls.backgroundImageDescription()}
     class="mb-4"
   >
     <Input bind:value={backgroundImage} />
@@ -186,17 +186,17 @@
   <!-- #endregion -->
 
   <!-- #region Color Nickname -->
-  <TextField title={$LL.followAlerts.colorNickname()} class="mb-4">
+  <TextField title={$LL.followAlerts.controls.colorNickname()} class="mb-4">
     <ColorPicker bind:value={colorNickname} />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Is Gradient Nickname -->
-  <TextField title={$LL.followAlerts.isGradientNickname()} class="mb-4">
+  <TextField title={$LL.followAlerts.controls.isGradientNickname()} class="mb-4">
     <label for="gradient-nickname" class="cursor-pointer flex items-center space-x-1 select-none ">
       <Checkbox bind:group={isGradientNickname} value={'true'} id="gradient-nickname" />
       <Typography variant="b1">
-        {$LL.followAlerts.isGradientNickname()}
+        {$LL.followAlerts.controls.isGradientNickname()}
       </Typography>
     </label>
   </TextField>
@@ -206,21 +206,21 @@
   <AnimationControl bind:animation bind:animationEasing bind:animationParams class="mb-4" />
   <!-- #endregion -->
 
-  <TextField title={$LL.followAlerts.verticalAlign()} class="mb-4">
+  <TextField title={$LL.followAlerts.controls.verticalAlign()} class="mb-4">
     <Select bind:selected={vertical} values={verticalAlignTypes} />
   </TextField>
-  <TextField title={$LL.followAlerts.horizontalAlign()} class="mb-4">
+  <TextField title={$LL.followAlerts.controls.horizontalAlign()} class="mb-4">
     <Select bind:selected={horizontal} values={horizontalAlignTypes} />
   </TextField>
-
-  <!--
-  let vertical = $config.vertical;
-  let horizontal = $config.horizontal;-->
 
   <TextField title={$LL.save()} class="mb-4">
     <Button disabled={settingsIsSame} on:click={handleSave} color="success">{$LL.save()}</Button>
   </TextField>
-  <TextField title={$LL.followAlerts.widgetLink()}>
+  <TextField
+    status="validation"
+    statusText={$LL.dontShowLinkAnyone()}
+    title={$LL.followAlerts.controls.widgetLink()}
+  >
     <Button color="secondary" on:click={handleCopy}>
       {$LL.copy()}
     </Button>

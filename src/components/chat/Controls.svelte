@@ -27,15 +27,15 @@
   const chatTypes: SelectItem[] = [
     {
       value: 'default',
-      label: $LL.chat.default()
+      label: $LL.chat.controls.default()
     },
     {
       value: 'block',
-      label: $LL.chat.block()
+      label: $LL.chat.controls.block()
     },
     {
       value: 'alternative-block',
-      label: $LL.chat.alternativeBlock()
+      label: $LL.chat.controls.alternativeBlock()
     }
   ];
 
@@ -139,23 +139,23 @@
 
 <div {...$$restProps}>
   <!--#region Channel-->
-  <TextField title={$LL.chat.channel()} class="mb-4">
+  <TextField title={$LL.chat.controls.channel()} class="mb-4">
     <Input bind:value={channel} />
   </TextField>
   <!--#endregion-->
 
   <!--#region ChatType-->
-  <TextField title={$LL.chat.chatType()} class="mb-4">
+  <TextField title={$LL.chat.controls.chatType()} class="mb-4">
     <Select bind:selected={chatType} values={chatTypes} />
   </TextField>
   <!--#endregion-->
 
   <!-- #region Hide Rewards -->
-  <TextField title={$LL.chat.hideRewards()} class="mb-4">
+  <TextField title={$LL.chat.controls.hideRewards()} class="mb-4">
     <label for="hide-rewards" class="cursor-pointer flex items-center space-x-1 select-none">
       <Checkbox bind:group={hideRewards} value={'true'} id="hide-rewards" />
       <Typography variant="b1">
-        {$LL.chat.hideRewardsDescription()}
+        {$LL.chat.controls.hideRewardsDescription()}
       </Typography>
     </label>
   </TextField>
@@ -166,17 +166,17 @@
   <!-- #endregion -->
 
   <!-- #region Default Color -->
-  <TextField title={$LL.chat.defaultColor()} class="mb-4">
+  <TextField title={$LL.chat.controls.defaultColor()} class="mb-4">
     <ColorPicker bind:value={defaultColor} />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Gradient Only to custom nicknames -->
-  <TextField title={$LL.chat.gradientOnlyToCustomNicknames()} class="mb-4">
+  <TextField title={$LL.chat.controls.gradientOnlyToCustomNicknames()} class="mb-4">
     <label for="gradient-only" class="cursor-pointer flex items-center space-x-1 select-none ">
       <Checkbox bind:group={onlyGradient} value={'true'} id="gradient-only" />
       <Typography variant="b1">
-        {$LL.chat.gradientOnlyToCustomNicknames()}
+        {$LL.chat.controls.gradientOnlyToCustomNicknames()}
       </Typography>
     </label>
   </TextField>
@@ -187,23 +187,23 @@
   <!-- #endregion -->
 
   <!-- #region Font -->
-  <TextField title={$LL.chat.font()} class="mb-4">
+  <TextField title={$LL.chat.controls.font()} class="mb-4">
     <Input bind:value={font} />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Font Size -->
-  <TextField title={$LL.chat.fontSize()} class="mb-4">
+  <TextField title={$LL.chat.controls.fontSize()} class="mb-4">
     <Input bind:value={fontSize} type="number" />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Disable Padding -->
-  <TextField title={$LL.chat.disablePadding()} class="mb-4">
+  <TextField title={$LL.chat.controls.disablePadding()} class="mb-4">
     <label for="disable-padding" class="cursor-pointer flex items-center space-x-1 select-none ">
       <Checkbox bind:group={disablePadding} value={'true'} id="disable-padding" />
       <Typography variant="b1">
-        {$LL.chat.disablePadding()}
+        {$LL.chat.controls.disablePadding()}
       </Typography>
     </label>
   </TextField>
@@ -214,7 +214,7 @@
   <!-- #endregion -->
 
   <!-- #region Generated Link -->
-  <TextField title={$LL.chat.chatLink()} class="mb-4">
+  <TextField title={$LL.chat.controls.chatLink()} class="mb-4">
     <div class="flex space-x-2">
       <Input readonly value={url} class="flex-1" />
       <Button color="secondary" on:click={handleClickCopy}>{$LL.copy()}</Button>
@@ -223,7 +223,7 @@
   <!-- #endregion -->
 
   <!-- #region Load Config From Link -->
-  <TextField title={$LL.chat.loadConfigFromLink()}>
+  <TextField title={$LL.chat.controls.loadConfigFromLink()}>
     <div class="flex space-x-2">
       <Input bind:value={loadUrl} class="flex-1" />
       <Button color="secondary" on:click={handleClickLoad}>{$LL.load()}</Button>

@@ -33,7 +33,7 @@
 </script>
 
 <div {...$$restProps}>
-  <TextField title={$LL.chat.animation()} class="mb-4">
+  <TextField title={$LL.followAlerts.controls.animation()} class="mb-4">
     <div class={'flex space-x-2'}>
       <Select bind:selected={selectedAnimation} values={animations} class="flex-1" />
       {#if animation !== Animation.Nothing}
@@ -42,17 +42,17 @@
     </div>
   </TextField>
   {#if animation === Animation.Scale}
-    <TextField title={$LL.chat.animationParams.name()}>
+    <TextField title={$LL.followAlerts.controls.animationParams.name()}>
       <div class={'flex space-x-2'}>
         <Input
           class="flex-1"
           bind:value={start}
-          placeholder={$LL.chat.animationParams.startScale()}
+          placeholder={$LL.followAlerts.controls.animationParams.startScale()}
         />
         <Input
           class="flex-1"
           bind:value={opacity}
-          placeholder={$LL.chat.animationParams.opacity()}
+          placeholder={$LL.followAlerts.controls.animationParams.opacity()}
         />
       </div>
     </TextField>

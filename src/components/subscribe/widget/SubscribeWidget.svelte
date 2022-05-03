@@ -1,8 +1,8 @@
 <script lang="ts">
-  import config from '$lib/stores/follow/config';
+  import config from '$lib/stores/subscribe/config';
   import subscribe, { type SubscribeItem } from '$lib/stores/subscribe/subscribe';
-  import { rawDataSymbol } from '@twurple/common';
   import { onDestroy } from 'svelte';
+  import Notification from './Notification.svelte';
 
   let current: SubscribeItem = null;
   let timeout: NodeJS.Timeout;
@@ -13,18 +13,11 @@
     if (JSON.stringify(sorted[0]) === JSON.stringify(current)) return;
     if (current === null) {
       current = sorted[0];
-      timeout = setTimeout(() => subscribe.removeById(current.id), 5000);
     } else {
       current = null;
-      timeout = setTimeout(() => {
-        current = sorted[0];
-
-        timeout = setTimeout(() => subscribe.removeById(current.id), 5000);
-      }, 300);
+      timeout = setTimeout(() => (current = sorted[0]), 300);
     }
   });
-
-  $: rawData = current?.data[rawDataSymbol];
 
   onDestroy(() => {
     clearTimeout(timeout);
@@ -36,10 +29,7 @@
     'max-h-full h-screen flex',
     $config.vertical === 'top' ? 'items-start' : '',
     $config.vertical === 'center' ? 'items-center' : '',
-    $config.vertical === 'bottom' ? 'items-end' : '',
-    $config.horizontal === 'left' ? 'justify-start' : '',
-    $config.horizontal === 'center' ? 'justify-center' : '',
-    $config.horizontal === 'right' ? 'justify-end' : ''
+    $config.vertical === 'bottom' ? 'items-end' : ''
   ]
     .filter(Boolean)
     .join(' ')}
@@ -49,10 +39,7 @@
 >
   {#key current}
     {#if current}
-      {rawData.context}
-      <pre>
-        {JSON.stringify(rawData, null, 2)}
-      </pre>
+      <Notification {current} />
     {/if}
   {/key}
 </div>

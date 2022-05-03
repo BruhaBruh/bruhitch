@@ -1,5 +1,5 @@
 import { Animation, AnimationEasing, type AnimationParams } from '$types/animation';
-import type { HorizontalAlign, Settings, VerticalAlign } from '$types/follow/settings';
+import type { Settings, VerticalAlign } from '$types/subscribe/settings';
 import { writable } from 'svelte/store';
 
 export type Config = Settings;
@@ -14,19 +14,28 @@ const createConfig = (initialState: Config) => {
   return {
     subscribe,
     loadSettings: (settings: Settings) => update((v) => ({ ...v, ...settings })),
-    setPattern: (pattern: string) => update((v) => ({ ...v, pattern })),
+    setSubPattern: (subPattern: string) => update((v) => ({ ...v, subPattern })),
+    setGiftPattern: (giftPattern: string) => update((v) => ({ ...v, giftPattern })),
+    setGiftMultiMonthPattern: (giftMultiMonthPattern: string) =>
+      update((v) => ({ ...v, giftMultiMonthPattern })),
     setDisablePadding: (disablePadding: boolean) => update((v) => ({ ...v, disablePadding })),
     setFont: (font: string) => update((v) => ({ ...v, font })),
     setFontSize: (fontSize: number) => update((v) => ({ ...v, fontSize })),
-    setBackgroundImage: (backgroundImage: string) => {
-      update((v) => ({ ...v, backgroundImage }));
+    setImage: (image: string) => {
+      update((v) => ({ ...v, image }));
     },
-    setColorNickname: (colorNickname: string) => {
-      if (!isColor(colorNickname)) return;
-      update((v) => ({ ...v, colorNickname }));
+    setUsernameColor: (usernameColor: string) => {
+      if (!isColor(usernameColor)) return;
+      update((v) => ({ ...v, usernameColor }));
     },
-    setIsGradientNickname: (isGradientNickname: boolean) =>
-      update((v) => ({ ...v, isGradientNickname })),
+    setRecipientColor: (recipientColor: string) => {
+      if (!isColor(recipientColor)) return;
+      update((v) => ({ ...v, recipientColor }));
+    },
+    setIsGradientUsername: (isGradientUsername: boolean) =>
+      update((v) => ({ ...v, isGradientUsername })),
+    setIsGradientRecipient: (isGradientRecipient: boolean) =>
+      update((v) => ({ ...v, isGradientRecipient })),
     setAnimation: (animation: Animation) => {
       if (Object.values(Animation).includes(animation)) {
         update((v) => ({ ...v, animation }));
@@ -44,27 +53,29 @@ const createConfig = (initialState: Config) => {
     setVertical: (vertical: VerticalAlign) => {
       update((v) => ({ ...v, vertical }));
     },
-    setHorizontal: (horizontal: HorizontalAlign) => {
-      update((v) => ({ ...v, horizontal }));
-    },
     reset: () => set(initialState)
   };
 };
 
 const config = createConfig({
-  pattern:
-    '![alt](https://cdn.7tv.app/emote/60ccf4479f5edeff9938fa77/4x) $username$ just followed :0',
+  subPattern:
+    '![alt](https://cdn.7tv.app/emote/60ccf4479f5edeff9938fa77/4x) $username$ just subscribed',
+  giftPattern:
+    '![alt](https://cdn.7tv.app/emote/60ccf4479f5edeff9938fa77/4x) $username$ gift sub to $recipient$',
+  giftMultiMonthPattern:
+    '![alt](https://cdn.7tv.app/emote/60ccf4479f5edeff9938fa77/4x) $username$ gift sub to $recipient$ on $duration$ months',
   disablePadding: false,
   font: '',
   fontSize: 16,
-  backgroundImage: 'https://i.postimg.cc/7hZRH7Ls/giphy.webp',
-  colorNickname: '#8CF2A5',
-  isGradientNickname: false,
+  image: 'https://i.postimg.cc/7hZRH7Ls/giphy.webp',
+  usernameColor: '#8CF2A5',
+  recipientColor: '#8CF2A5',
+  isGradientUsername: false,
+  isGradientRecipient: false,
   animation: Animation.Fade,
   animationEasing: AnimationEasing.Linear,
   animationParams: {},
-  vertical: 'top',
-  horizontal: 'left'
+  vertical: 'top'
 });
 
 export default config;

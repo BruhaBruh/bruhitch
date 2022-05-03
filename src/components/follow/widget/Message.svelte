@@ -5,7 +5,6 @@
   import follow from '$lib/stores/follow/follow';
   import { Animation } from '$types/animation';
   import type { TwitchEventFollowData } from '$types/ws';
-  import * as chroma from 'chroma-js';
   import { onDestroy, onMount } from 'svelte';
   import { fade, scale, slide } from 'svelte/transition';
   import UserName from './UserName.svelte';
@@ -24,8 +23,6 @@
   onDestroy(() => {
     clearTimeout(timeout);
   });
-
-  $: bg = chroma.hex('#171717').alpha(0.75).hex();
 
   const getAnimation = (animation: Animation) => {
     switch (animation) {
@@ -67,14 +64,14 @@
 
 <div
   in:animation={{
+    ...$config.animationParams,
     duration: 150,
     delay: 250,
-    ...$config.animationParams,
     easing: getEasing($config.animationEasing)
   }}
   out:animation={{
-    duration: 150,
     ...$config.animationParams,
+    duration: 150,
     easing: getEasing($config.animationEasing)
   }}
 >
@@ -82,7 +79,7 @@
     class="whitespace-nowrap relative overflow-hidden"
     style={`padding: ${$config.fontSize}px; border-radius: ${$config.fontSize}px; font-size: ${
       $config.fontSize * 2
-    }px; background-color: ${bg}; color: #fafafa`}
+    }px; background-color: rgba(17, 17, 17, 0.75); color: #fafafa`}
   >
     {#if $config.backgroundImage}
       <img

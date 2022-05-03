@@ -24,9 +24,14 @@
 </script>
 
 <div {...$$restProps}>
-  <TextField title={$LL.chat.hiddenNicknames()} class="mb-2">
+  <TextField title={$LL.chat.controls.hiddenNicknames()} class="mb-2">
     <div class="flex space-x-2">
-      <Input placeholder={$LL.chat.nickname()} bind:input class="w-full" bind:value={nickname} />
+      <Input
+        placeholder={$LL.chat.controls.nickname()}
+        bind:input
+        class="w-full"
+        bind:value={nickname}
+      />
       <Button color="secondary" on:click={handleAddClick}>{$LL.add()}</Button>
     </div>
   </TextField>

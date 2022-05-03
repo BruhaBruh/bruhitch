@@ -44,9 +44,14 @@
 </script>
 
 <div {...$$restProps}>
-  <TextField title={$LL.chat.customColorNicknames()} class="mb-2">
+  <TextField title={$LL.chat.controls.customColorNicknames()} class="mb-2">
     <div class="flex space-x-2">
-      <Input placeholder={$LL.chat.nickname()} bind:input class="w-full" bind:value={nickname} />
+      <Input
+        placeholder={$LL.chat.controls.nickname()}
+        bind:input
+        class="w-full"
+        bind:value={nickname}
+      />
       <Button color="secondary" on:click={handleAddClick}>{$LL.add()}</Button>
     </div>
   </TextField>
@@ -54,7 +59,7 @@
     <label for="is-gradient" class="cursor-pointer flex items-center space-x-1 select-none">
       <Checkbox bind:group={isGradient} value={'true'} id="is-gradient" />
       <Typography variant="b1">
-        {$LL.chat.isGradient()}
+        {$LL.chat.controls.isGradient()}
       </Typography>
     </label>
     <ColorPicker bind:value={start} />

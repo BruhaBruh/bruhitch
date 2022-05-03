@@ -1,5 +1,6 @@
 <script lang="ts" context="module">
   import { browser } from '$app/env';
+  import subscribe from '$lib/stores/subscribe/subscribe';
   import SubscribeWidget from '@components/subscribe/widget/SubscribeWidget.svelte';
   import type { Load } from '@sveltejs/kit';
   import { StaticAuthProvider } from '@twurple/auth';
@@ -62,7 +63,7 @@
     pubSubClient = new PubSubClient();
     userId = await pubSubClient.registerUserListener(authProvider);
     listener = await pubSubClient.onSubscription(userId, (message: PubSubSubscriptionMessage) => {
-      console.log(`${message.userDisplayName} just subscribed!`);
+      subscribe.add(message);
     });
   });
 
