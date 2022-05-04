@@ -7,9 +7,10 @@
 - [x] Add responsive to chat generator
 - [x] Check contrast on nickname
 - [x] Add clear chat on ban user
-- [ ] Donation Alerts
 - [x] Follow Alerts
 - [x] Subscriber Alerts
   - [ ] Add 7tv, bttv, ffz emotes in message
-- [ ] Raid Alerts
-- [ ] Bits Alerts
+- [ ] ? Raid Alerts
+- [ ] ? Bits Alerts
+- [ ] ? Donation Alerts
+- [ ] Add menu in header like drawer from right. on mobile from bottom
