@@ -2,15 +2,19 @@
   import Checkbox from '@components/ui/Checkbox.svelte';
   import type { SelectValue } from '@components/ui/Select';
   import Typography from '@components/ui/Typography.svelte';
+  import { createEventDispatcher } from 'svelte';
 
   export let selected: SelectValue[] = [];
   export let value: SelectValue;
   export let multi = false;
   export let disabled = false;
 
+  const dispatch = createEventDispatcher();
+
   $: isSelected = selected.includes(value);
 
   const handleClick = () => {
+    dispatch('select', !isSelected);
     if (multi) {
       if (isSelected) {
         selected = selected.filter((v) => v !== value);

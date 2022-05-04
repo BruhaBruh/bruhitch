@@ -7,14 +7,11 @@
   import config from '$lib/stores/chat/config';
   import { me } from '$lib/stores/me';
   import { ui } from '$lib/stores/ui';
-  import type { UserNicknameColor } from '$types/chat/nickname';
-  import type { ChatType } from '$types/chat/settings';
   import Button from '@components/ui/Button.svelte';
-  import type { CheckboxValue } from '@components/ui/Checkbox';
   import Checkbox from '@components/ui/Checkbox.svelte';
   import ColorPicker from '@components/ui/ColorPicker.svelte';
   import Input from '@components/ui/Input.svelte';
-  import type { SelectItem, SelectValue } from '@components/ui/Select';
+  import type { SelectItem } from '@components/ui/Select';
   import Select from '@components/ui/Select.svelte';
   import TextField from '@components/ui/TextField.svelte';
   import Typography from '@components/ui/Typography.svelte';
@@ -39,54 +36,11 @@
     }
   ];
 
-  export let channel = '';
   let isLoadedLink = false;
-  //#region Config fields
-  let chatType: SelectValue[] = [$config.chatType];
-  let hideRewards: CheckboxValue[] = $config.hideReward ? ['true'] : [];
-  let hiddenNicknames: string[] = $config.hiddenNicknames;
-  let defaultColor = $config.defaultColor;
-  let onlyGradient: CheckboxValue[] = $config.gradientOnlyCustom ? ['true'] : [];
-  let userNicknames: UserNicknameColor = $config.nicknameColors;
-  let font = $config.font;
-  let fontSize = $config.fontSize.toString();
-  let disablePadding: CheckboxValue[] = $config.disablePadding ? ['true'] : [];
-  let animation = $config.animation;
-  let animationEasing = $config.animationEasing;
-  let animationParams = $config.animationParams;
-  //#endregion
-
-  //#region Reactive set config
-  $: config.setChatType(chatType[0] as ChatType);
-  $: config.setHideReward(!!hideRewards.length);
-  $: config.setHidden(hiddenNicknames);
-  $: config.setDefaultColor(defaultColor);
-  $: config.setGradientOnlyCustom(!!onlyGradient.length);
-  $: config.setCustomColor(userNicknames);
-  $: config.setFont(font);
-  $: config.setFontSize(Number.isNaN(Number(fontSize)) ? 16 : Number(fontSize));
-  $: config.setDisablePadding(!!disablePadding.length);
-  $: config.setAnimation(animation);
-  $: config.setAnimationEasing(animationEasing);
-  $: config.setAnimationParams(animationParams);
-  //#endregion
 
   const loadFromLink = (link: string) => {
     const settings = new UrlParser(link).getSettings();
-
-    channel = settings.channel;
-    chatType = [settings.chatType];
-    hideRewards = settings.hideReward ? ['true'] : [];
-    hiddenNicknames = settings.hiddenNicknames;
-    defaultColor = settings.defaultColor;
-    onlyGradient = settings.gradientOnlyCustom ? ['true'] : [];
-    userNicknames = settings.nicknameColors;
-    font = settings.font;
-    fontSize = settings.fontSize.toString();
-    disablePadding = settings.disablePadding ? ['true'] : [];
-    animation = settings.animation;
-    animationEasing = settings.animationEasing;
-    animationParams = settings.animationParams;
+    config.loadSettings(settings);
   };
 
   //#region Load Saved link
@@ -109,9 +63,9 @@
   let previewUrl = '';
   let loadUrl = '';
 
-  $: url = new UrlEncoder({ channel, ...$config }, $page.url.origin).getLink().href;
+  $: url = new UrlEncoder($config, $page.url.origin).getLink().href;
   $: {
-    const u = new UrlEncoder({ channel, ...$config }, $page.url.origin).getLink();
+    const u = new UrlEncoder($config, $page.url.origin).getLink();
     u.pathname = u.pathname + '-preview';
     previewUrl = u.href;
   }
@@ -151,20 +105,29 @@
 <div {...$$restProps}>
   <!--#region Channel-->
   <TextField title={$LL.chat.controls.channel()} class="mb-4">
-    <Input bind:value={channel} />
+    <Input bind:value={$config.channel} />
   </TextField>
   <!--#endregion-->
 
   <!--#region ChatType-->
   <TextField title={$LL.chat.controls.chatType()} class="mb-4">
-    <Select bind:selected={chatType} values={chatTypes} />
+    <Select
+      on:selectitem={(e) => config.setChatType(e.detail)}
+      selected={[$config.chatType]}
+      values={chatTypes}
+    />
   </TextField>
   <!--#endregion-->
 
   <!-- #region Hide Rewards -->
   <TextField title={$LL.chat.controls.hideRewards()} class="mb-4">
     <label for="hide-rewards" class="cursor-pointer flex items-center space-x-1 select-none">
-      <Checkbox bind:group={hideRewards} value={'true'} id="hide-rewards" />
+      <Checkbox
+        on:change={(e) => config.setHideReward(e.detail)}
+        group={$config.hideReward ? ['true'] : []}
+        value={'true'}
+        id="hide-rewards"
+      />
       <Typography variant="b1">
         {$LL.chat.controls.hideRewardsDescription()}
       </Typography>
@@ -173,19 +136,24 @@
   <!-- #endregion -->
 
   <!-- #region Hidden Nicknames -->
-  <HiddenNicknamesControl bind:hiddenNicknames class="mb-4" />
+  <HiddenNicknamesControl bind:hiddenNicknames={$config.hiddenNicknames} class="mb-4" />
   <!-- #endregion -->
 
   <!-- #region Default Color -->
   <TextField title={$LL.chat.controls.defaultColor()} class="mb-4">
-    <ColorPicker bind:value={defaultColor} />
+    <ColorPicker bind:value={$config.defaultColor} />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Gradient Only to custom nicknames -->
   <TextField title={$LL.chat.controls.gradientOnlyToCustomNicknames()} class="mb-4">
     <label for="gradient-only" class="cursor-pointer flex items-center space-x-1 select-none ">
-      <Checkbox bind:group={onlyGradient} value={'true'} id="gradient-only" />
+      <Checkbox
+        on:change={(e) => config.setGradientOnlyCustom(e.detail)}
+        group={$config.gradientOnlyCustom ? ['true'] : []}
+        value={'true'}
+        id="gradient-only"
+      />
       <Typography variant="b1">
         {$LL.chat.controls.gradientOnlyToCustomNicknames()}
       </Typography>
@@ -194,25 +162,30 @@
   <!-- #endregion -->
 
   <!-- #region Custom Nicknames -->
-  <CustomColorNicknamesControl bind:userNicknames class="mb-4" />
+  <CustomColorNicknamesControl bind:userNicknames={$config.nicknameColors} class="mb-4" />
   <!-- #endregion -->
 
   <!-- #region Font -->
   <TextField title={$LL.chat.controls.font()} class="mb-4">
-    <Input bind:value={font} />
+    <Input bind:value={$config.font} />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Font Size -->
   <TextField title={$LL.chat.controls.fontSize()} class="mb-4">
-    <Input bind:value={fontSize} type="number" />
+    <Input bind:value={$config.fontSize} type="number" />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Disable Padding -->
   <TextField title={$LL.chat.controls.disablePadding()} class="mb-4">
     <label for="disable-padding" class="cursor-pointer flex items-center space-x-1 select-none ">
-      <Checkbox bind:group={disablePadding} value={'true'} id="disable-padding" />
+      <Checkbox
+        on:change={(e) => config.setDisablePadding(e.detail)}
+        group={$config.disablePadding ? ['true'] : []}
+        value={'true'}
+        id="disable-padding"
+      />
       <Typography variant="b1">
         {$LL.chat.controls.disablePadding()}
       </Typography>
@@ -221,7 +194,12 @@
   <!-- #endregion -->
 
   <!-- #region Animation -->
-  <AnimationControl bind:animation bind:animationEasing bind:animationParams class="mb-4" />
+  <AnimationControl
+    bind:animation={$config.animation}
+    bind:animationEasing={$config.animationEasing}
+    bind:animationParams={$config.animationParams}
+    class="mb-4"
+  />
   <!-- #endregion -->
 
   <!-- #region Generated Link -->

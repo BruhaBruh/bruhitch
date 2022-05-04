@@ -1,7 +1,10 @@
 <script lang="ts">
   import type { CheckboxValue } from '@components/ui/Checkbox';
   import Icon from '@components/ui/Icon.svelte';
+  import { createEventDispatcher } from 'svelte';
   import { scale } from 'svelte/transition';
+
+  const dispath = createEventDispatcher();
 
   export let group: CheckboxValue[] = [];
   export let disabled = false;
@@ -16,6 +19,7 @@
     } else {
       group = group.filter((item) => item !== value);
     }
+    dispath('change', checked);
   };
 </script>
 

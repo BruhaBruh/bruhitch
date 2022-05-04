@@ -5,8 +5,6 @@ import * as easing from 'svelte/easing';
 import { writable } from 'svelte/store';
 import type { EasingFunction } from 'svelte/types/runtime/transition';
 
-export type Config = Omit<Settings, 'channel'>;
-
 const colorRegex = /^#[a-f0-9]{6}$/i;
 
 export const isColor = (color: string) => colorRegex.test(color);
@@ -14,11 +12,19 @@ export const isColor = (color: string) => colorRegex.test(color);
 export const getEasing = (animationEasing: AnimationEasing): EasingFunction =>
   easing[animationEasing];
 
-const createConfig = (initialState: Config) => {
+const createConfig = (initialState: Settings) => {
   const { set, update, subscribe } = writable(initialState);
 
   return {
     subscribe,
+    set,
+    loadSettings: (settings: Settings) => {
+      set(settings);
+      config.setFontSize(settings.fontSize);
+    },
+    setChannel: (channel: string) => {
+      update((v) => ({ ...v, channel }));
+    },
     setDefaultColor: (defaultColor: string) => {
       if (!isColor(defaultColor)) return;
       update((v) => ({ ...v, defaultColor }));
@@ -68,7 +74,14 @@ const createConfig = (initialState: Config) => {
     },
     setHideReward: (hideReward: boolean) => update((v) => ({ ...v, hideReward })),
     setDisablePadding: (disablePadding: boolean) => update((v) => ({ ...v, disablePadding })),
-    setFontSize: (fontSize: number) => update((v) => ({ ...v, fontSize })),
+    setFontSize: (fontSize: number | string) => {
+      if (typeof fontSize === 'number') {
+        update((v) => ({ ...v, fontSize }));
+      }
+      const n = Number(fontSize);
+      if (isNaN(n)) return;
+      update((v) => ({ ...v, fontSize: n }));
+    },
     setGradientOnlyCustom: (gradientOnlyCustom: boolean) =>
       update((v) => ({ ...v, gradientOnlyCustom })),
     setChatType: (chatType: ChatType) => update((v) => ({ ...v, chatType })),
@@ -77,6 +90,7 @@ const createConfig = (initialState: Config) => {
 };
 
 const config = createConfig({
+  channel: '',
   hiddenNicknames: [],
   defaultColor: '#8CF2A5',
   nicknameColors: {},

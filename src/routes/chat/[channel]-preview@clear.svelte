@@ -29,9 +29,10 @@
       '/api/v1/chat/badges?channel=' + channel
     ).then((r) => r.json());
 
+    config.setChannel(channel);
+
     return {
       props: {
-        channel,
         tbadges: badges,
         broadcasterId
       }

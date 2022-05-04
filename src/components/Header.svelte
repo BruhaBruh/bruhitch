@@ -2,7 +2,7 @@
   import { me } from '$lib/stores/me';
   import { ui } from '$lib/stores/ui';
   import Typography from '@components/ui/Typography.svelte';
-  import LL,{ locale } from '@i18n/i18n-svelte';
+  import LL, { locale } from '@i18n/i18n-svelte';
   import Avatar from './ui/Avatar.svelte';
   import Button from './ui/Button.svelte';
 
@@ -15,7 +15,7 @@
   class="w-full h-16 border-b border-gray-base shadow-xs px-2 sm:px-4 flex items-center justify-between"
 >
   <nav>
-    <a href={'/' + $locale} sveltekit:prefetch>
+    <a href={'/' + $locale}>
       <Typography variant="h3">Bruhitch</Typography>
     </a>
   </nav>

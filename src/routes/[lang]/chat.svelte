@@ -1,4 +1,5 @@
 <script lang="ts" context="module">
+  import config from '$lib/stores/chat/config';
   import { me } from '$lib/stores/me';
   import Controls from '@components/chat/Controls.svelte';
   import PreviewChat from '@components/chat/PreviewChat.svelte';
@@ -19,8 +20,8 @@
     <Typography variant="h1" class="col-span-12">
       {$LL.chat.title()}
     </Typography>
-    <Controls bind:channel class="col-span-12 md:col-span-6" />
-    <PreviewChat {channel} class="col-span-12 md:col-span-6" />
+    <Controls class="col-span-12 md:col-span-6" />
+    <PreviewChat channel={$config.channel} class="col-span-12 md:col-span-6" />
   </div>
 {:else}
   <div class="container mx-auto">

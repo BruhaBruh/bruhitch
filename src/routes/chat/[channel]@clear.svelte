@@ -34,9 +34,10 @@
       '/api/v1/chat/badges?channel=' + channel
     ).then((r) => r.json());
 
+    config.setChannel(channel);
+
     return {
       props: {
-        channel,
         tbadges: badges,
         broadcasterId
       }
@@ -45,7 +46,6 @@
 </script>
 
 <script lang="ts">
-  export let channel: string;
   export let broadcasterId: string;
   export let tbadges: TwitchBadge[];
   export let client: Client = undefined;
@@ -127,14 +127,14 @@
 
     badges.set(tbadges);
 
-    await fetchAllEmotes(channel, broadcasterId);
+    await fetchAllEmotes($config.channel, broadcasterId);
 
     client = new tmi.Client({
       connection: {
         reconnect: true,
         secure: true
       },
-      channels: [channel]
+      channels: [$config.channel]
     });
 
     client.on('message', (_, userState, message, self) =>

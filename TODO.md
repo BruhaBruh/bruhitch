@@ -9,6 +9,7 @@
 - [x] Add clear chat on ban user
 - [ ] Donation Alerts
 - [x] Follow Alerts
-- [ ] Subscriber Alerts
+- [x] Subscriber Alerts
+  - [ ] Add 7tv, bttv, ffz emotes in message
 - [ ] Raid Alerts
 - [ ] Bits Alerts

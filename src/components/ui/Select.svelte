@@ -3,9 +3,12 @@
   import type { SelectItem, SelectValue } from '@components/ui/Select';
   import type { TextFieldStatus } from '@components/ui/TextField';
   import Typography from '@components/ui/Typography.svelte';
+  import { createEventDispatcher } from 'svelte';
   import Chip from './Chip.svelte';
   import DropDown from './DropDown.svelte';
   import DropDownItem from './DropDownItem.svelte';
+
+  const dispatch = createEventDispatcher();
 
   export let status: TextFieldStatus = undefined;
   export let disabled = false;
@@ -121,7 +124,17 @@
       .join(' ')}
   >
     {#each values as item (item.value)}
-      <DropDownItem value={item.value} disabled={item.disabled} {multi} bind:selected>
+      <DropDownItem
+        value={item.value}
+        disabled={item.disabled}
+        {multi}
+        on:select={(e) => {
+          if (e.detail) {
+            dispatch('selectitem', item.value);
+          }
+        }}
+        bind:selected
+      >
         {item.label}
       </DropDownItem>
     {/each}
