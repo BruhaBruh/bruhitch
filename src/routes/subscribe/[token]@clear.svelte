@@ -1,5 +1,6 @@
 <script lang="ts" context="module">
   import { browser } from '$app/env';
+  import config from '$lib/stores/subscribe/config';
   import subscribe from '$lib/stores/subscribe/subscribe';
   import SubscribeWidget from '@components/subscribe/widget/SubscribeWidget.svelte';
   import type { Load } from '@sveltejs/kit';
@@ -34,6 +35,15 @@
         t.data.accessToken,
         t.data.scope
       );
+
+      const settings = await fetch('/api/v1/subscribe/settings?token=' + token)
+        .then(async (r) => ({ status: r.status, data: await r.json() }))
+        .catch(console.error);
+
+      if (settings && settings.status === 200) {
+        config.loadSettings(settings.data);
+      }
+
       return {
         props: {
           authProvider

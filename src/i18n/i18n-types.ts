@@ -37,6 +37,10 @@ type RootTranslation = {
 	 * Dont show link anyone
 	 */
 	dontShowLinkAnyone: string
+	/**
+	 * Preview widget link
+	 */
+	preview: string
 	settings: {
 		/**
 		 * Settings
@@ -108,10 +112,6 @@ type RootTranslation = {
 		 * Incorrect url
 		 */
 		incorrectUrl: string
-		/**
-		 * Chat preview
-		 */
-		preview: string
 		controls: {
 			/**
 			 * Nickname
@@ -224,10 +224,6 @@ type RootTranslation = {
 		 * Follow alert settings
 		 */
 		title: string
-		/**
-		 * Follow alert preview
-		 */
-		preview: string
 		controls: {
 			/**
 			 * Font
@@ -292,11 +288,11 @@ type RootTranslation = {
 			 */
 			isGradientNickname: string
 			/**
-			 * Vertical align
+			 * Vertical alignment
 			 */
 			verticalAlign: string
 			/**
-			 * Horizontal align
+			 * Horizontal alignment
 			 */
 			horizontalAlign: string
 			/**
@@ -330,6 +326,114 @@ type RootTranslation = {
 		 * Subscribe alerts
 		 */
 		name: string
+		/**
+		 * Subscribe alert settings
+		 */
+		title: string
+		controls: {
+			/**
+			 * Subscribe/Resubscribe pattern
+			 */
+			subPattern: string
+			/**
+			 * $username$ - new sub. ![](link) - image
+			 */
+			subPatternDescription: string
+			/**
+			 * Gift pattern
+			 */
+			giftPattern: string
+			/**
+			 * $username$ - who gift sub. $recipient$ - new sub. ![](link) - image
+			 */
+			giftPatternDescription: string
+			/**
+			 * Gift with multiple months
+			 */
+			giftMultiMonthPattern: string
+			/**
+			 * $username$ - who gift sub. $recipient$ - new sub. $duration$ - months. ![](link) - image
+			 */
+			giftMultiMonthPatternDescription: string
+			/**
+			 * Anonymous
+			 */
+			anonymous: string
+			/**
+			 * This replaces $username$ when anonymous gifts a subscription
+			 */
+			anonymousDescription: string
+			/**
+			 * Disable padding
+			 */
+			disablePadding: string
+			/**
+			 * Font
+			 */
+			font: string
+			/**
+			 * Font size
+			 */
+			fontSize: string
+			/**
+			 * Image
+			 */
+			image: string
+			/**
+			 * Username color
+			 */
+			usernameColor: string
+			/**
+			 * Recipient color
+			 */
+			recipientColor: string
+			/**
+			 * Is gradient username?
+			 */
+			isGradientUsername: string
+			/**
+			 * Is gradient recipient?
+			 */
+			isGradientRecipient: string
+			/**
+			 * Animation
+			 */
+			animation: string
+			animationParams: {
+				/**
+				 * Animation parameters
+				 */
+				name: string
+				/**
+				 * start scale
+				 */
+				startScale: string
+				/**
+				 * opacity
+				 */
+				opacity: string
+			}
+			/**
+			 * Vertical alignment
+			 */
+			verticalAlign: string
+			/**
+			 * Top
+			 */
+			top: string
+			/**
+			 * Bottom
+			 */
+			bottom: string
+			/**
+			 * Center
+			 */
+			center: string
+			/**
+			 * Subscribe alert widget link
+			 */
+			widgetLink: string
+		}
 	}
 	raidAlerts: {
 		/**
@@ -416,6 +520,10 @@ export type TranslationFunctions = {
 	 * Dont show link anyone
 	 */
 	dontShowLinkAnyone: () => LocalizedString
+	/**
+	 * Preview widget link
+	 */
+	preview: () => LocalizedString
 	settings: {
 		/**
 		 * Settings
@@ -487,10 +595,6 @@ export type TranslationFunctions = {
 		 * Incorrect url
 		 */
 		incorrectUrl: () => LocalizedString
-		/**
-		 * Chat preview
-		 */
-		preview: () => LocalizedString
 		controls: {
 			/**
 			 * Nickname
@@ -603,10 +707,6 @@ export type TranslationFunctions = {
 		 * Follow alert settings
 		 */
 		title: () => LocalizedString
-		/**
-		 * Follow alert preview
-		 */
-		preview: () => LocalizedString
 		controls: {
 			/**
 			 * Font
@@ -671,11 +771,11 @@ export type TranslationFunctions = {
 			 */
 			isGradientNickname: () => LocalizedString
 			/**
-			 * Vertical align
+			 * Vertical alignment
 			 */
 			verticalAlign: () => LocalizedString
 			/**
-			 * Horizontal align
+			 * Horizontal alignment
 			 */
 			horizontalAlign: () => LocalizedString
 			/**
@@ -709,6 +809,114 @@ export type TranslationFunctions = {
 		 * Subscribe alerts
 		 */
 		name: () => LocalizedString
+		/**
+		 * Subscribe alert settings
+		 */
+		title: () => LocalizedString
+		controls: {
+			/**
+			 * Subscribe/Resubscribe pattern
+			 */
+			subPattern: () => LocalizedString
+			/**
+			 * $username$ - new sub. ![](link) - image
+			 */
+			subPatternDescription: () => LocalizedString
+			/**
+			 * Gift pattern
+			 */
+			giftPattern: () => LocalizedString
+			/**
+			 * $username$ - who gift sub. $recipient$ - new sub. ![](link) - image
+			 */
+			giftPatternDescription: () => LocalizedString
+			/**
+			 * Gift with multiple months
+			 */
+			giftMultiMonthPattern: () => LocalizedString
+			/**
+			 * $username$ - who gift sub. $recipient$ - new sub. $duration$ - months. ![](link) - image
+			 */
+			giftMultiMonthPatternDescription: () => LocalizedString
+			/**
+			 * Anonymous
+			 */
+			anonymous: () => LocalizedString
+			/**
+			 * This replaces $username$ when anonymous gifts a subscription
+			 */
+			anonymousDescription: () => LocalizedString
+			/**
+			 * Disable padding
+			 */
+			disablePadding: () => LocalizedString
+			/**
+			 * Font
+			 */
+			font: () => LocalizedString
+			/**
+			 * Font size
+			 */
+			fontSize: () => LocalizedString
+			/**
+			 * Image
+			 */
+			image: () => LocalizedString
+			/**
+			 * Username color
+			 */
+			usernameColor: () => LocalizedString
+			/**
+			 * Recipient color
+			 */
+			recipientColor: () => LocalizedString
+			/**
+			 * Is gradient username?
+			 */
+			isGradientUsername: () => LocalizedString
+			/**
+			 * Is gradient recipient?
+			 */
+			isGradientRecipient: () => LocalizedString
+			/**
+			 * Animation
+			 */
+			animation: () => LocalizedString
+			animationParams: {
+				/**
+				 * Animation parameters
+				 */
+				name: () => LocalizedString
+				/**
+				 * start scale
+				 */
+				startScale: () => LocalizedString
+				/**
+				 * opacity
+				 */
+				opacity: () => LocalizedString
+			}
+			/**
+			 * Vertical alignment
+			 */
+			verticalAlign: () => LocalizedString
+			/**
+			 * Top
+			 */
+			top: () => LocalizedString
+			/**
+			 * Bottom
+			 */
+			bottom: () => LocalizedString
+			/**
+			 * Center
+			 */
+			center: () => LocalizedString
+			/**
+			 * Subscribe alert widget link
+			 */
+			widgetLink: () => LocalizedString
+		}
 	}
 	raidAlerts: {
 		/**

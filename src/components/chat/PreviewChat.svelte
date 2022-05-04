@@ -1,6 +1,7 @@
 <script lang="ts">
   import { browser } from '$app/env';
   import fetchAllEmotes from '$lib/chat/fetchEmotes';
+  import { getRandomColor } from '$lib/color';
   import { replaceBetween } from '$lib/replaceBetween';
   import badges from '$lib/stores/chat/badges';
   import chat from '$lib/stores/chat/chat';
@@ -15,6 +16,7 @@
   import ChatWidget from './widget/ChatWidget.svelte';
 
   export let channel: string;
+  export let withWrapper = true;
 
   let debouncedChannel: string;
   let isDebounceWork = true;
@@ -76,18 +78,6 @@
       }
     }
     return badgeNames;
-  };
-
-  const getRandomColor = (): string | null => {
-    const randomType = Math.floor(Math.random() * 2);
-    if (randomType === 0) return null;
-
-    // Has color
-    const r = Math.floor(Math.random() * 255);
-    const g = Math.floor(Math.random() * 255);
-    const b = Math.floor(Math.random() * 255);
-
-    return `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`;
   };
 
   const defaultNicknames = [
@@ -208,25 +198,29 @@
   onDestroy(() => clearTimeout(timeout));
 </script>
 
-<div
-  {...$$restProps}
-  class={[
-    'preview border border-gray-base h-full sticky top-4 flex items-center justify-center overflow-hidden bg-gray-lightest',
-    $$restProps.class
-  ]
-    .filter(Boolean)
-    .join(' ')}
->
-  {#if isDebounceWork}
-    <Icon icon="spinner" class="fill-gray-base animate-spin" size={64} />
-  {:else if debouncedChannel}
-    <div class="h-full w-full flex flex-col items-stretch justify-end overflow-hidden">
-      <ChatWidget />
-    </div>
-  {:else}
-    <Typography variant="b1" class="m-4 text-gray-darkest">Type channel name</Typography>
-  {/if}
-</div>
+{#if withWrapper}
+  <div
+    {...$$restProps}
+    class={[
+      'preview border border-gray-base h-full sticky top-4 flex items-center justify-center overflow-hidden bg-gray-lightest',
+      $$restProps.class
+    ]
+      .filter(Boolean)
+      .join(' ')}
+  >
+    {#if isDebounceWork}
+      <Icon icon="spinner" class="fill-gray-base animate-spin" size={64} />
+    {:else if debouncedChannel}
+      <div class="h-full w-full flex flex-col items-stretch justify-end overflow-hidden">
+        <ChatWidget />
+      </div>
+    {:else}
+      <Typography variant="b1" class="m-4 text-gray-darkest">Type channel name</Typography>
+    {/if}
+  </div>
+{:else}
+  <ChatWidget />
+{/if}
 
 <style lang="postcss">
   .preview {

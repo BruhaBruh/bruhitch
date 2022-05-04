@@ -33,7 +33,7 @@
           LL: 'followAlerts'
         },
         {
-          path: 'wip',
+          path: 'subscribealerts',
           LL: 'subscribeAlerts'
         },
         {

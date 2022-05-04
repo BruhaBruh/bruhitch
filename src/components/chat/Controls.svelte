@@ -106,11 +106,22 @@
   //#endregion
 
   let url = '';
+  let previewUrl = '';
   let loadUrl = '';
 
   $: url = new UrlEncoder({ channel, ...$config }, $page.url.origin).getLink().href;
+  $: {
+    const u = new UrlEncoder({ channel, ...$config }, $page.url.origin).getLink();
+    u.pathname = u.pathname + '-preview';
+    previewUrl = u.href;
+  }
 
-  const handleClickCopy = async () => {
+  const handleClickCopy = async (isPreview: boolean) => {
+    if (isPreview) {
+      await copyText(previewUrl);
+      ui.toast.add('circle-check', $LL.copied(), undefined, 'success');
+      return;
+    }
     await copyText(url);
     if ($me) {
       await fetch('/api/v1/chat/link', {
@@ -217,7 +228,16 @@
   <TextField title={$LL.chat.controls.chatLink()} class="mb-4">
     <div class="flex space-x-2">
       <Input readonly value={url} class="flex-1" />
-      <Button color="secondary" on:click={handleClickCopy}>{$LL.copy()}</Button>
+      <Button color="secondary" on:click={() => handleClickCopy(false)}>{$LL.copy()}</Button>
+    </div>
+  </TextField>
+  <!-- #endregion -->
+
+  <!-- #region Preview Link -->
+  <TextField title={$LL.preview()} class="mb-4">
+    <div class="flex space-x-2">
+      <Input readonly value={previewUrl} class="flex-1" />
+      <Button color="secondary" on:click={() => handleClickCopy(true)}>{$LL.copy()}</Button>
     </div>
   </TextField>
   <!-- #endregion -->

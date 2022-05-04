@@ -17,11 +17,13 @@
 
   onMount(() => {
     let newMsg = message.message;
-    message.emotes
-      .sort((a, b) => b.start - a.start)
-      .forEach((emote) => {
-        newMsg = replaceBetween(newMsg, emote.start, emote.end + 1, getImage(emote.id));
-      });
+    if (message.emotes) {
+      message.emotes
+        .sort((a, b) => b.start - a.start)
+        .forEach((emote) => {
+          newMsg = replaceBetween(newMsg, emote.start, emote.end + 1, getImage(emote.id));
+        });
+    }
     formattedMessage = sanitizeHtml(`<style></style>${newMsg}`, [
       {
         tag: 'span',
@@ -33,15 +35,11 @@
       }
     ]);
   });
-
-  $: console.log(formattedMessage);
 </script>
 
 <p
   class="whitespace-normal"
-  style={`color: #CCCCCC; margin-top: ${$config.fontSize / 2}; font-size: ${
-    $config.fontSize * 0.75
-  }px`}
+  style={`color: #CCCCCC; margin-top: ${$config.fontSize / 2}; font-size: ${$config.fontSize}px`}
 >
   {@html formattedMessage}
 </p>

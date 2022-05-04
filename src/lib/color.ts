@@ -17,3 +17,7 @@ export const generateColors = (color: string, defaultColor: string) => {
 export const generateLightenColor = (color: string) => {
   return chroma.hex(color).brighten(1.25).hex();
 };
+
+export const getRandomColor = () => {
+  return chroma.random().hex();
+};

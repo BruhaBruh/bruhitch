@@ -28,7 +28,7 @@
     return `<span style="background: linear-gradient(to right, ${gradient.join(
       ', '
     )}); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent">${
-      username ? username : 'Anonymous'
+      username ? username : $config.anonymous
     }</span>`;
   };
 
@@ -45,23 +45,23 @@
         m = $config.giftPattern;
       }
     }
-    const user = getUsername(
-      msg.userDisplayName,
-      $config.usernameColor,
-      $config.isGradientUsername
+    m = m.replaceAll(
+      '$username$',
+      getUsername(
+        msg.isGift ? msg.gifterDisplayName : msg.userDisplayName,
+        $config.usernameColor,
+        $config.isGradientUsername
+      )
     );
-    const gifter = getUsername(
-      msg.gifterDisplayName,
-      $config.recipientColor,
-      $config.isGradientRecipient
-    );
-    m = m.replaceAll('$username$', msg.isGift ? gifter : user);
-    m = m.replaceAll('$tier$', msg.subPlan === 'Prime' ? 'P' : msg.subPlan[0]);
-    m = m.replaceAll('$months$', msg.cumulativeMonths.toString());
-    m = m.replaceAll('$streak$', msg.streakMonths.toString());
+    m = m.replaceAll('$tier$', msg.subPlan === 'Prime' ? 'prime' : msg.subPlan[0]);
+    m = m.replaceAll('$months$', msg.cumulativeMonths?.toString());
+    m = m.replaceAll('$streak$', msg.streakMonths?.toString());
     if (msg.isGift) {
-      m = m.replaceAll('$recipient$', user);
-      m = m.replaceAll('$duration$', msg.giftDuration.toString());
+      m = m.replaceAll(
+        '$recipient$',
+        getUsername(msg.userDisplayName, $config.recipientColor, $config.isGradientRecipient)
+      );
+      m = m.replaceAll('$duration$', msg.giftDuration?.toString());
     }
     heading = withReplaceImages(m);
   };

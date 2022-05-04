@@ -8,6 +8,7 @@ const en: BaseTranslation = {
   authorization: 'Authorization is required',
   continueWithTwitch: 'Continue with Twitch',
   dontShowLinkAnyone: 'Dont show link anyone',
+  preview: 'Preview widget link',
   settings: {
     name: 'Settings',
     theme: 'Theme',
@@ -28,7 +29,6 @@ const en: BaseTranslation = {
     name: 'Chat',
     title: 'Chat widget link generator',
     incorrectUrl: 'Incorrect url',
-    preview: 'Chat preview',
     controls: {
       nickname: 'Nickname',
       channel: 'Channel',
@@ -63,7 +63,6 @@ const en: BaseTranslation = {
   followAlerts: {
     name: 'Follow alerts',
     title: 'Follow alert settings',
-    preview: 'Follow alert preview',
     controls: {
       font: 'Font',
       fontSize: 'Font size',
@@ -82,8 +81,8 @@ const en: BaseTranslation = {
       backgroundImageDescription: 'Link to image',
       colorNickname: 'Nickname color',
       isGradientNickname: 'Is gradient nickname?',
-      verticalAlign: 'Vertical align',
-      horizontalAlign: 'Horizontal align',
+      verticalAlign: 'Vertical alignment',
+      horizontalAlign: 'Horizontal alignment',
       top: 'Top',
       bottom: 'Bottom',
       center: 'Center',
@@ -93,7 +92,38 @@ const en: BaseTranslation = {
     }
   },
   subscribeAlerts: {
-    name: 'Subscribe alerts'
+    name: 'Subscribe alerts',
+    title: 'Subscribe alert settings',
+    controls: {
+      subPattern: 'Subscribe/Resubscribe pattern',
+      subPatternDescription: '$username$ - new sub. ![](link) - image',
+      giftPattern: 'Gift pattern',
+      giftPatternDescription: '$username$ - who gift sub. $recipient$ - new sub. ![](link) - image',
+      giftMultiMonthPattern: 'Gift with multiple months',
+      giftMultiMonthPatternDescription:
+        '$username$ - who gift sub. $recipient$ - new sub. $duration$ - months. ![](link) - image',
+      anonymous: 'Anonymous',
+      anonymousDescription: 'This replaces $username$ when anonymous gifts a subscription',
+      disablePadding: 'Disable padding',
+      font: 'Font',
+      fontSize: 'Font size',
+      image: 'Image',
+      usernameColor: 'Username color',
+      recipientColor: 'Recipient color',
+      isGradientUsername: 'Is gradient username?',
+      isGradientRecipient: 'Is gradient recipient?',
+      animation: 'Animation',
+      animationParams: {
+        name: 'Animation parameters',
+        startScale: 'start scale',
+        opacity: 'opacity'
+      },
+      verticalAlign: 'Vertical alignment',
+      top: 'Top',
+      bottom: 'Bottom',
+      center: 'Center',
+      widgetLink: 'Subscribe alert widget link'
+    }
   },
   raidAlerts: {
     name: 'Raid alerts'

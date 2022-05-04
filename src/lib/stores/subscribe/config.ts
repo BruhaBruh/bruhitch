@@ -18,6 +18,7 @@ const createConfig = (initialState: Config) => {
     setGiftPattern: (giftPattern: string) => update((v) => ({ ...v, giftPattern })),
     setGiftMultiMonthPattern: (giftMultiMonthPattern: string) =>
       update((v) => ({ ...v, giftMultiMonthPattern })),
+    setAnonymous: (anonymous: string) => update((v) => ({ ...v, anonymous })),
     setDisablePadding: (disablePadding: boolean) => update((v) => ({ ...v, disablePadding })),
     setFont: (font: string) => update((v) => ({ ...v, font })),
     setFontSize: (fontSize: number) => update((v) => ({ ...v, fontSize })),
@@ -64,6 +65,7 @@ const config = createConfig({
     '![alt](https://cdn.7tv.app/emote/60ccf4479f5edeff9938fa77/4x) $username$ gift sub to $recipient$',
   giftMultiMonthPattern:
     '![alt](https://cdn.7tv.app/emote/60ccf4479f5edeff9938fa77/4x) $username$ gift sub to $recipient$ on $duration$ months',
+  anonymous: 'Anonymous',
   disablePadding: false,
   font: '',
   fontSize: 16,

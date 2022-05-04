@@ -28,6 +28,7 @@ export type Settings = {
    * ![alt text](link) - image
    */
   giftMultiMonthPattern: string;
+  anonymous: string;
   disablePadding: boolean;
   fontSize: number;
   font: string;

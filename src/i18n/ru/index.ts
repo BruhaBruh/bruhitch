@@ -8,6 +8,7 @@ const ru: Translation = {
   authorization: 'Требуется авторизация',
   continueWithTwitch: 'Продолжить с Twitch',
   dontShowLinkAnyone: 'Никому не показывайте ссылку',
+  preview: 'Ссылка на виджет предварительного просмотра',
   settings: {
     name: 'Настройки',
     theme: 'Тема',
@@ -28,7 +29,6 @@ const ru: Translation = {
     name: 'Чат',
     title: 'Генератор ссылки на виджет чата',
     incorrectUrl: 'Неверный url',
-    preview: 'Предпросмотр чата',
     controls: {
       nickname: 'Ник',
       channel: 'Канал',
@@ -63,7 +63,6 @@ const ru: Translation = {
   followAlerts: {
     name: 'Оповещения отслеживаний',
     title: 'Настройка оповещений отслеживания',
-    preview: 'Предпросмотр оповещений отслеживания',
     controls: {
       font: 'Шрифт',
       fontSize: 'Размер шрифта',
@@ -93,7 +92,39 @@ const ru: Translation = {
     }
   },
   subscribeAlerts: {
-    name: 'Оповещение подписок'
+    name: 'Оповещение подписок',
+    title: 'Настройка оповещений подписок',
+    controls: {
+      subPattern: 'Шаблон сабки/ресабки',
+      subPatternDescription: '$username$ - новый саб. ![](ссылка) - изображение',
+      giftPattern: 'Шаблон подарка',
+      giftPatternDescription:
+        '$username$ - даритель. $recipient$ - новый саб. ![](ссылка) - изображение',
+      giftMultiMonthPattern: 'Шаблон подарка с несколькими месяцами',
+      giftMultiMonthPatternDescription:
+        '$username$ - даритель. $recipient$ - новый саб. $duration$ - месяцы. ![](ссылка) - изображение',
+      anonymous: 'Аноним',
+      anonymousDescription: 'Заменяет $username$ при анонимном подарке',
+      disablePadding: 'Выключить отступы',
+      font: 'Шрифт',
+      fontSize: 'Размер шрифта',
+      image: 'Изображение',
+      usernameColor: 'Цвет саба/дарителя',
+      recipientColor: 'Цвет получателя',
+      isGradientUsername: 'Градиент на сабе/дарителе?',
+      isGradientRecipient: 'Градиент на получателе?',
+      animation: 'Анимация',
+      animationParams: {
+        name: 'Параметры анимации',
+        startScale: 'начальный размер',
+        opacity: 'непрозрачность'
+      },
+      verticalAlign: 'Вертикальное выравнивание',
+      top: 'Верх',
+      bottom: 'Низ',
+      center: 'Центр',
+      widgetLink: 'Ссылка на виджет оповещений сабок'
+    }
   },
   raidAlerts: {
     name: 'Оповещения рейдов'
