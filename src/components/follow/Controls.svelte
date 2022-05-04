@@ -52,31 +52,11 @@
   let prevSettings: Settings = undefined;
 
   //#region Fields
-  let pattern = $config.pattern;
-  let disablePadding = $config.disablePadding ? ['true'] : [];
-  let font = $config.font;
-  let fontSize = $config.fontSize;
-  let backgroundImage = $config.backgroundImage;
-  let colorNickname = $config.colorNickname;
-  let isGradientNickname = $config.isGradientNickname ? ['true'] : [];
-  let animation = $config.animation;
-  let animationEasing = $config.animationEasing;
-  let animationParams = $config.animationParams;
   let vertical = [$config.vertical];
   let horizontal = [$config.horizontal];
   //#endregion
 
   //#region Reactive Fields
-  $: config.setPattern(pattern);
-  $: config.setDisablePadding(!!disablePadding.length);
-  $: config.setFont(font);
-  $: config.setFontSize(fontSize);
-  $: config.setBackgroundImage(backgroundImage);
-  $: config.setColorNickname(colorNickname);
-  $: config.setIsGradientNickname(!!isGradientNickname.length);
-  $: config.setAnimation(animation);
-  $: config.setAnimationEasing(animationEasing);
-  $: config.setAnimationParams(animationParams);
   $: config.setVertical(vertical[0]);
   $: config.setHorizontal(horizontal[0]);
   //#endregion
@@ -96,19 +76,6 @@
     config.loadSettings(prevSettings);
 
     prevSettings = settings;
-
-    pattern = settings.pattern;
-    disablePadding = settings.disablePadding ? ['true'] : [];
-    font = settings.font;
-    fontSize = settings.fontSize;
-    backgroundImage = settings.backgroundImage;
-    colorNickname = settings.colorNickname;
-    isGradientNickname = settings.isGradientNickname ? ['true'] : [];
-    animation = settings.animation;
-    animationEasing = settings.animationEasing;
-    animationParams = settings.animationParams;
-    vertical = [settings.vertical];
-    horizontal = [settings.horizontal];
   });
 
   $: settingsIsSame = deepEqual(prevSettings, $config);
@@ -147,26 +114,31 @@
     status="validation"
     statusText={$LL.followAlerts.controls.patternDescription()}
   >
-    <Input bind:value={pattern} />
+    <Input bind:value={$config.pattern} />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Font -->
   <TextField title={$LL.followAlerts.controls.font()} class="mb-4">
-    <Input bind:value={font} />
+    <Input bind:value={$config.font} />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Font Size -->
   <TextField title={$LL.followAlerts.controls.fontSize()} class="mb-4">
-    <Input bind:value={fontSize} type="number" />
+    <Input bind:value={$config.fontSize} type="number" />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Disable Padding -->
   <TextField title={$LL.followAlerts.controls.disablePadding()} class="mb-4">
     <label for="disable-padding" class="cursor-pointer flex items-center space-x-1 select-none ">
-      <Checkbox bind:group={disablePadding} value={'true'} id="disable-padding" />
+      <Checkbox
+        on:change={(e) => config.setDisablePadding(e.detail)}
+        group={$config.disablePadding ? ['true'] : []}
+        value={'true'}
+        id="disable-padding"
+      />
       <Typography variant="b1">
         {$LL.followAlerts.controls.disablePadding()}
       </Typography>
@@ -181,20 +153,25 @@
     statusText={$LL.followAlerts.controls.backgroundImageDescription()}
     class="mb-4"
   >
-    <Input bind:value={backgroundImage} />
+    <Input bind:value={$config.backgroundImage} />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Color Nickname -->
   <TextField title={$LL.followAlerts.controls.colorNickname()} class="mb-4">
-    <ColorPicker bind:value={colorNickname} />
+    <ColorPicker bind:value={$config.colorNickname} />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Is Gradient Nickname -->
   <TextField title={$LL.followAlerts.controls.isGradientNickname()} class="mb-4">
     <label for="gradient-nickname" class="cursor-pointer flex items-center space-x-1 select-none ">
-      <Checkbox bind:group={isGradientNickname} value={'true'} id="gradient-nickname" />
+      <Checkbox
+        on:change={(e) => config.setIsGradientNickname(e.detail)}
+        group={$config.isGradientNickname ? ['true'] : []}
+        value={'true'}
+        id="gradient-nickname"
+      />
       <Typography variant="b1">
         {$LL.followAlerts.controls.isGradientNickname()}
       </Typography>
@@ -203,14 +180,27 @@
   <!-- #endregion -->
 
   <!-- #region Animation -->
-  <AnimationControl bind:animation bind:animationEasing bind:animationParams class="mb-4" />
+  <AnimationControl
+    bind:animation={$config.animation}
+    bind:animationEasing={$config.animationEasing}
+    bind:animationParams={$config.animationParams}
+    class="mb-4"
+  />
   <!-- #endregion -->
 
   <TextField title={$LL.followAlerts.controls.verticalAlign()} class="mb-4">
-    <Select bind:selected={vertical} values={verticalAlignTypes} />
+    <Select
+      on:selectitem={(e) => config.setVertical(e.detail)}
+      selected={[$config.vertical]}
+      values={verticalAlignTypes}
+    />
   </TextField>
   <TextField title={$LL.followAlerts.controls.horizontalAlign()} class="mb-4">
-    <Select bind:selected={horizontal} values={horizontalAlignTypes} />
+    <Select
+      on:selectitem={(e) => config.setHorizontal(e.detail)}
+      selected={[$config.horizontal]}
+      values={horizontalAlignTypes}
+    />
   </TextField>
 
   <TextField title={$LL.save()} class="mb-4">

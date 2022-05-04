@@ -1,4 +1,4 @@
-import { isColor } from '$lib/stores/chat/config';
+import { isColor } from '$lib/color';
 import { Animation, AnimationEasing, type AnimationParams } from '$types/animation';
 import type { UserNicknameColor } from '$types/chat/nickname';
 import { SettingName, type ChatType, type Settings } from '$types/chat/settings';

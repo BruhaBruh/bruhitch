@@ -21,3 +21,7 @@ export const generateLightenColor = (color: string) => {
 export const getRandomColor = () => {
   return chroma.random().hex();
 };
+
+const colorRegex = /^#[a-f0-9]{6}$/i;
+
+export const isColor = (color: string) => colorRegex.test(color);

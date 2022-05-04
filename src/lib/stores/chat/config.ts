@@ -1,13 +1,10 @@
+import { isColor } from '$lib/color';
 import { Animation, AnimationEasing, type AnimationParams } from '$types/animation';
 import type { UserNicknameColor } from '$types/chat/nickname';
 import type { ChatType, Settings } from '$types/chat/settings';
 import * as easing from 'svelte/easing';
 import { writable } from 'svelte/store';
 import type { EasingFunction } from 'svelte/types/runtime/transition';
-
-const colorRegex = /^#[a-f0-9]{6}$/i;
-
-export const isColor = (color: string) => colorRegex.test(color);
 
 export const getEasing = (animationEasing: AnimationEasing): EasingFunction =>
   easing[animationEasing];

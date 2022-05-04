@@ -7,7 +7,6 @@
   import config from '$lib/stores/subscribe/config';
   import { ui } from '$lib/stores/ui';
   import type { Settings } from '$types/subscribe/settings';
-  // import AnimationControl from '@components/subscribe/AnimationControl.svelte';
   import Button from '@components/ui/Button.svelte';
   import Checkbox from '@components/ui/Checkbox.svelte';
   import ColorPicker from '@components/ui/ColorPicker.svelte';
@@ -38,44 +37,6 @@
   let token = '';
   let prevSettings: Settings = undefined;
 
-  //#region Fields
-  let subPattern = $config.subPattern;
-  let giftPattern = $config.giftPattern;
-  let giftMultiMonthPattern = $config.giftMultiMonthPattern;
-  let anonymous = $config.anonymous;
-  let disablePadding = $config.disablePadding ? ['true'] : [];
-  let font = $config.font;
-  let fontSize = $config.fontSize;
-  let image = $config.image;
-  let usernameColor = $config.usernameColor;
-  let isGradientUsername = $config.isGradientUsername ? ['true'] : [];
-  let recipientColor = $config.recipientColor;
-  let isGradientRecipient = $config.isGradientRecipient ? ['true'] : [];
-  let animation = $config.animation;
-  let animationEasing = $config.animationEasing;
-  let animationParams = $config.animationParams;
-  let vertical = [$config.vertical];
-  //#endregion
-
-  //#region Reactive Fields
-  $: config.setSubPattern(subPattern);
-  $: config.setGiftPattern(giftPattern);
-  $: config.setGiftMultiMonthPattern(giftMultiMonthPattern);
-  $: config.setAnonymous(anonymous);
-  $: config.setDisablePadding(!!disablePadding.length);
-  $: config.setFont(font);
-  $: config.setFontSize(fontSize);
-  $: config.setImage(image);
-  $: config.setUsernameColor(usernameColor);
-  $: config.setIsGradientUsername(!!isGradientUsername.length);
-  $: config.setRecipientColor(recipientColor);
-  $: config.setIsGradientRecipient(!!isGradientRecipient.length);
-  $: config.setAnimation(animation);
-  $: config.setAnimationEasing(animationEasing);
-  $: config.setAnimationParams(animationParams);
-  $: config.setVertical(vertical[0]);
-  //#endregion
-
   onMount(async () => {
     if (!browser) return;
     const data = await fetch('/api/v1/user/twitch')
@@ -91,23 +52,6 @@
     config.loadSettings(prevSettings);
 
     prevSettings = settings;
-
-    subPattern = settings.subPattern;
-    giftPattern = settings.giftPattern;
-    giftMultiMonthPattern = settings.giftMultiMonthPattern;
-    anonymous = settings.anonymous;
-    disablePadding = settings.disablePadding ? ['true'] : [];
-    font = settings.font;
-    fontSize = settings.fontSize;
-    image = settings.image;
-    usernameColor = settings.usernameColor;
-    isGradientUsername = settings.isGradientUsername ? ['true'] : [];
-    recipientColor = settings.recipientColor;
-    isGradientRecipient = settings.isGradientRecipient ? ['true'] : [];
-    animation = settings.animation;
-    animationEasing = settings.animationEasing;
-    animationParams = settings.animationParams;
-    vertical = [settings.vertical];
   });
 
   $: settingsIsSame = deepEqual(prevSettings, $config);
@@ -146,7 +90,7 @@
     status="validation"
     statusText={$LL.subscribeAlerts.controls.subPatternDescription()}
   >
-    <Input bind:value={subPattern} />
+    <Input bind:value={$config.subPattern} />
   </TextField>
   <!-- #endregion -->
 
@@ -157,7 +101,7 @@
     status="validation"
     statusText={$LL.subscribeAlerts.controls.giftPatternDescription()}
   >
-    <Input bind:value={giftPattern} />
+    <Input bind:value={$config.giftPattern} />
   </TextField>
   <!-- #endregion -->
 
@@ -168,7 +112,7 @@
     status="validation"
     statusText={$LL.subscribeAlerts.controls.giftMultiMonthPatternDescription()}
   >
-    <Input bind:value={giftMultiMonthPattern} />
+    <Input bind:value={$config.giftMultiMonthPattern} />
   </TextField>
   <!-- #endregion -->
 
@@ -179,26 +123,31 @@
     status="validation"
     statusText={$LL.subscribeAlerts.controls.anonymousDescription()}
   >
-    <Input bind:value={anonymous} />
+    <Input bind:value={$config.anonymous} />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Font -->
   <TextField title={$LL.subscribeAlerts.controls.font()} class="mb-4">
-    <Input bind:value={font} />
+    <Input bind:value={$config.font} />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Font Size -->
   <TextField title={$LL.subscribeAlerts.controls.fontSize()} class="mb-4">
-    <Input bind:value={fontSize} type="number" />
+    <Input bind:value={$config.fontSize} type="number" />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Disable Padding -->
   <TextField title={$LL.subscribeAlerts.controls.disablePadding()} class="mb-4">
     <label for="disable-padding" class="cursor-pointer flex items-center space-x-1 select-none ">
-      <Checkbox bind:group={disablePadding} value={'true'} id="disable-padding" />
+      <Checkbox
+        on:change={(e) => config.setDisablePadding(e.detail)}
+        group={$config.disablePadding ? ['true'] : []}
+        value={'true'}
+        id="disable-padding"
+      />
       <Typography variant="b1">
         {$LL.subscribeAlerts.controls.disablePadding()}
       </Typography>
@@ -213,20 +162,25 @@
     statusText={$LL.subscribeAlerts.controls.image()}
     class="mb-4"
   >
-    <Input bind:value={image} />
+    <Input bind:value={$config.image} />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region UserName Color -->
   <TextField title={$LL.subscribeAlerts.controls.usernameColor()} class="mb-4">
-    <ColorPicker bind:value={usernameColor} />
+    <ColorPicker bind:value={$config.usernameColor} />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Is Gradient UserName -->
   <TextField title={$LL.subscribeAlerts.controls.isGradientUsername()} class="mb-4">
     <label for="gradient-username" class="cursor-pointer flex items-center space-x-1 select-none">
-      <Checkbox bind:group={isGradientUsername} value={'true'} id="gradient-username" />
+      <Checkbox
+        on:change={(e) => config.setIsGradientUsername(e.detail)}
+        group={$config.isGradientUsername ? ['true'] : []}
+        value={'true'}
+        id="gradient-username"
+      />
       <Typography variant="b1">
         {$LL.subscribeAlerts.controls.isGradientUsername()}
       </Typography>
@@ -236,14 +190,19 @@
 
   <!-- #region Recipient Color -->
   <TextField title={$LL.subscribeAlerts.controls.recipientColor()} class="mb-4">
-    <ColorPicker bind:value={recipientColor} />
+    <ColorPicker bind:value={$config.recipientColor} />
   </TextField>
   <!-- #endregion -->
 
   <!-- #region Is Gradient Recipient -->
   <TextField title={$LL.subscribeAlerts.controls.isGradientRecipient()} class="mb-4">
     <label for="gradient-recipient" class="cursor-pointer flex items-center space-x-1 select-none">
-      <Checkbox bind:group={isGradientRecipient} value={'true'} id="gradient-recipient" />
+      <Checkbox
+        on:change={(e) => config.setIsGradientRecipient(e.detail)}
+        group={$config.isGradientRecipient ? ['true'] : []}
+        value={'true'}
+        id="gradient-recipient"
+      />
       <Typography variant="b1">
         {$LL.subscribeAlerts.controls.isGradientRecipient()}
       </Typography>
@@ -252,12 +211,21 @@
   <!-- #endregion -->
 
   <!-- #region Animation -->
-  <AnimationControl bind:animation bind:animationEasing bind:animationParams class="mb-4" />
+  <AnimationControl
+    bind:animation={$config.animation}
+    bind:animationEasing={$config.animationEasing}
+    bind:animationParams={$config.animationParams}
+    class="mb-4"
+  />
   <!-- #endregion -->
 
   <!-- #region Vertical Alignment -->
   <TextField title={$LL.subscribeAlerts.controls.verticalAlign()} class="mb-4">
-    <Select bind:selected={vertical} values={verticalAlignTypes} />
+    <Select
+      on:selectitem={(e) => config.setVertical(e.detail)}
+      selected={[$config.vertical]}
+      values={verticalAlignTypes}
+    />
   </TextField>
   <!-- #endregion -->
 

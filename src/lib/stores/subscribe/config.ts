@@ -1,19 +1,18 @@
+import { isColor } from '$lib/color';
 import { Animation, AnimationEasing, type AnimationParams } from '$types/animation';
 import type { Settings, VerticalAlign } from '$types/subscribe/settings';
 import { writable } from 'svelte/store';
 
-export type Config = Settings;
-
-const colorRegex = /^#[a-f0-9]{6}$/i;
-
-export const isColor = (color: string) => colorRegex.test(color);
-
-const createConfig = (initialState: Config) => {
+const createConfig = (initialState: Settings) => {
   const { set, update, subscribe } = writable(initialState);
 
   return {
     subscribe,
-    loadSettings: (settings: Settings) => update((v) => ({ ...v, ...settings })),
+    set,
+    loadSettings: (settings: Settings) => {
+      set(settings);
+      config.setFontSize(settings.fontSize);
+    },
     setSubPattern: (subPattern: string) => update((v) => ({ ...v, subPattern })),
     setGiftPattern: (giftPattern: string) => update((v) => ({ ...v, giftPattern })),
     setGiftMultiMonthPattern: (giftMultiMonthPattern: string) =>
@@ -21,8 +20,14 @@ const createConfig = (initialState: Config) => {
     setAnonymous: (anonymous: string) => update((v) => ({ ...v, anonymous })),
     setDisablePadding: (disablePadding: boolean) => update((v) => ({ ...v, disablePadding })),
     setFont: (font: string) => update((v) => ({ ...v, font })),
-    setFontSize: (fontSize: number) =>
-      update((v) => ({ ...v, fontSize: Number(fontSize.toString()) })),
+    setFontSize: (fontSize: number | string) => {
+      if (typeof fontSize === 'number') {
+        update((v) => ({ ...v, fontSize }));
+      }
+      const n = Number(fontSize);
+      if (isNaN(n)) return;
+      update((v) => ({ ...v, fontSize: n }));
+    },
     setImage: (image: string) => {
       update((v) => ({ ...v, image }));
     },
