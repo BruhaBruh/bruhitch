@@ -39,7 +39,9 @@
 
 <p
   class="whitespace-normal"
-  style={`color: #CCCCCC; margin-top: ${$config.fontSize / 2}; font-size: ${$config.fontSize}px`}
+  style={`color: #CCCCCC; margin-top: ${$config.fontSize / 2}; font-size: ${
+    $config.fontSize * 1.5
+  }px`}
 >
   {@html formattedMessage}
 </p>

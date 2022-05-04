@@ -14,28 +14,32 @@
     class="flex items-center justify-center"
     style={`background-color: rgba(17, 17, 17, 0.75); border-radius: ${
       $config.fontSize / 2
-    }px; padding: ${$config.fontSize / 2}px; font-size: ${$config.fontSize * 0.75}px; margin-${
+    }px; padding: ${$config.fontSize / 2}px; font-size: ${$config.fontSize * 1.5}px; margin-${
       toRight ? 'right' : 'left'
     }: ${$config.fontSize / 2}px;`}
   >
-    <div style={`margin-right: ${$config.fontSize / 4}px; line-height: ${$config.fontSize}px;`}>
+    <div
+      style={`margin-right: ${$config.fontSize / 4}px; line-height: ${$config.fontSize * 1.5}px;`}
+    >
       {tier === 'Prime' ? 'P' : tier[0]}
     </div>
-    <Icon icon="star" size={$config.fontSize} class="fill-warning-base" />
+    <Icon icon="star" size={$config.fontSize * 1.5} class="fill-warning-base" />
   </div>
   {#if months}
     <div
       class="flex items-center justify-center"
       style={`background-color: rgba(17, 17, 17, 0.75); border-radius: ${
         $config.fontSize / 2
-      }px; padding: ${$config.fontSize / 2}px; font-size: ${$config.fontSize * 0.75}px; margin-${
+      }px; padding: ${$config.fontSize / 2}px; font-size: ${$config.fontSize * 1.5}px; margin-${
         toRight ? 'right' : 'left'
       }: ${$config.fontSize / 2}px;`}
     >
-      <div style={`margin-right: ${$config.fontSize / 4}px; line-height: ${$config.fontSize}px;`}>
+      <div
+        style={`margin-right: ${$config.fontSize / 4}px; line-height: ${$config.fontSize * 1.5}px;`}
+      >
         {months}
       </div>
-      <Icon icon="calendar" size={$config.fontSize} class="fill-primary-base" />
+      <Icon icon="calendar" size={$config.fontSize * 1.5} class="fill-primary-base" />
     </div>
   {/if}
   {#if streak}
@@ -43,14 +47,16 @@
       class="flex items-center justify-center"
       style={`background-color: rgba(17, 17, 17, 0.75); border-radius: ${
         $config.fontSize / 2
-      }px; padding: ${$config.fontSize / 2}px; font-size: ${$config.fontSize * 0.75}px; margin-${
+      }px; padding: ${$config.fontSize / 2}px; font-size: ${$config.fontSize * 1.5}px; margin-${
         toRight ? 'right' : 'left'
       }: ${$config.fontSize / 2}px;`}
     >
-      <div style={`margin-right: ${$config.fontSize / 4}px; line-height: ${$config.fontSize}px;`}>
+      <div
+        style={`margin-right: ${$config.fontSize / 4}px; line-height: ${$config.fontSize * 1.5}px;`}
+      >
         {streak}
       </div>
-      <Icon icon="fire" size={$config.fontSize} class="fill-danger-base" />
+      <Icon icon="fire" size={$config.fontSize * 1.5} class="fill-danger-base" />
     </div>
   {/if}
   {#if isGift}
@@ -58,11 +64,11 @@
       class="flex items-center justify-center aspect-square"
       style={`background-color: rgba(17, 17, 17, 0.75); border-radius: ${
         $config.fontSize / 2
-      }px; padding: ${$config.fontSize / 2}px; font-size: ${$config.fontSize * 0.75}px; margin-${
+      }px; padding: ${$config.fontSize / 2}px; font-size: ${$config.fontSize * 2}px; margin-${
         toRight ? 'right' : 'left'
       }: ${$config.fontSize / 2}px;`}
     >
-      <Icon icon="gift" size={$config.fontSize} class="fill-[#C05DEF]" />
+      <Icon icon="gift" size={$config.fontSize * 1.5} class="fill-[#C05DEF]" />
     </div>
   {/if}
 </div>

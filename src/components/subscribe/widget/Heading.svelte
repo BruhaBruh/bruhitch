@@ -69,6 +69,6 @@
   $: msg && updateMessage();
 </script>
 
-<p class="whitespace-normal font-semibold" style={`font-size: ${$config.fontSize}px`}>
+<p class="whitespace-normal font-semibold" style={`font-size: ${$config.fontSize * 2}px`}>
   {@html heading}
 </p>
