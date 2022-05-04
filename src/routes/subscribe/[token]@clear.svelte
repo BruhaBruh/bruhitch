@@ -1,5 +1,6 @@
 <script lang="ts" context="module">
   import { browser } from '$app/env';
+  import fetchAllEmotes from '$lib/chat/fetchEmotes';
   import config from '$lib/stores/subscribe/config';
   import subscribe from '$lib/stores/subscribe/subscribe';
   import SubscribeWidget from '@components/subscribe/widget/SubscribeWidget.svelte';
@@ -44,6 +45,8 @@
         config.loadSettings(settings.data);
       }
 
+      await fetchAllEmotes(t.data.user, t.data.userId);
+
       return {
         props: {
           authProvider
@@ -51,13 +54,7 @@
       };
     }
 
-    return {
-      props: {
-        accessToken: '',
-        clientId: '',
-        scope: []
-      }
-    };
+    return {};
   };
 </script>
 
