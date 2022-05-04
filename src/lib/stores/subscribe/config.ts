@@ -21,7 +21,8 @@ const createConfig = (initialState: Config) => {
     setAnonymous: (anonymous: string) => update((v) => ({ ...v, anonymous })),
     setDisablePadding: (disablePadding: boolean) => update((v) => ({ ...v, disablePadding })),
     setFont: (font: string) => update((v) => ({ ...v, font })),
-    setFontSize: (fontSize: number) => update((v) => ({ ...v, fontSize })),
+    setFontSize: (fontSize: number) =>
+      update((v) => ({ ...v, fontSize: Number(fontSize.toString()) })),
     setImage: (image: string) => {
       update((v) => ({ ...v, image }));
     },
@@ -49,7 +50,13 @@ const createConfig = (initialState: Config) => {
     },
     setAnimationParams: (animationParams: AnimationParams) => {
       if (JSON.stringify(animationParams) === JSON.stringify({})) return;
-      update((v) => ({ ...v, animationParams }));
+      update((v) => ({
+        ...v,
+        animationParams: {
+          start: Number(animationParams.start.toString()),
+          opacity: Number(animationParams.opacity.toString())
+        }
+      }));
     },
     setVertical: (vertical: VerticalAlign) => {
       update((v) => ({ ...v, vertical }));
