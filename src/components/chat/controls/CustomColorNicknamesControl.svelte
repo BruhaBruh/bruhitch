@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { UserNicknameColor } from '$types/chat/nickname';
+  import config from '$lib/stores/chat/config';
   import Button from '@components/ui/Button.svelte';
   import type { CheckboxValue } from '@components/ui/Checkbox';
   import Checkbox from '@components/ui/Checkbox.svelte';
@@ -9,9 +9,7 @@
   import Typography from '@components/ui/Typography.svelte';
   import LL from '@i18n/i18n-svelte';
   import * as chroma from 'chroma-js';
-  import CustomColorNicknamesControlItem from './CustomColorNicknamesControlItem.svelte';
-
-  export let userNicknames: UserNicknameColor = {};
+  import CustomColorNicknameItem from './CustomColorNicknameItem.svelte';
 
   let nickname = '';
   let start = '#000000';
@@ -25,11 +23,11 @@
     .colors(8, 'hex');
 
   const handleAddClick = () => {
-    if (!nickname || Object.keys(userNicknames).includes(nickname)) return;
+    if (!nickname || Object.keys($config.nicknameColors).includes(nickname)) return;
     if (isGradient.length !== 0) {
-      userNicknames[nickname] = { start, end };
+      config.addCustomColor(nickname, undefined, { start, end });
     } else {
-      userNicknames[nickname] = start;
+      config.addCustomColor(nickname, start);
     }
     nickname = '';
     start = '#000000';
@@ -38,12 +36,11 @@
   };
 
   const removeNickname = (nickname: string) => {
-    delete userNicknames[nickname];
-    userNicknames = userNicknames;
+    config.removeCustomColor(nickname);
   };
 </script>
 
-<div {...$$restProps}>
+<div class="mb-4">
   <TextField title={$LL.chat.controls.customColorNicknames()} class="mb-2">
     <div class="flex space-x-2">
       <Input
@@ -77,10 +74,10 @@
     </Typography>
   </div>
   <ul class="space-y-1">
-    {#each Object.keys(userNicknames) as nickname (nickname)}
-      <CustomColorNicknamesControlItem
+    {#each Object.keys($config.nicknameColors) as nickname (nickname)}
+      <CustomColorNicknameItem
         {nickname}
-        color={userNicknames[nickname]}
+        color={$config.nicknameColors[nickname]}
         on:remove={() => removeNickname(nickname)}
       />
     {/each}
