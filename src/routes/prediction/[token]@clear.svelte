@@ -1,20 +1,17 @@
 <script lang="ts" context="module">
   import { browser } from '$app/env';
   import { page } from '$app/stores';
-  import config from '$lib/stores/follow/config';
-  import follow from '$lib/stores/follow/follow';
   import {
     BaseResponseMessageType,
     CallbackResponseMessageType,
     RequestMessageType,
-    type TwitchEventFollowData,
+    type TwitchEventPredictionData,
     type WSRequest,
     type WSResponse
   } from '$types/ws';
-  import FollowWidget from '@components/follow/widget/FollowWidget.svelte';
   import type { Load } from '@sveltejs/kit';
   import { onDestroy, onMount } from 'svelte';
-  import './follow.css';
+  import './prediction.css';
 
   export const prerender = true;
 
@@ -30,14 +27,6 @@
         status: 403,
         error: new Error('token is not defined')
       };
-    }
-
-    const settings = await fetch('/api/v1/follow/settings?token=' + token)
-      .then(async (r) => ({ status: r.status, data: await r.json() }))
-      .catch(console.error);
-
-    if (settings && settings.status === 200) {
-      config.loadSettings(settings.data);
     }
 
     return {
@@ -66,7 +55,9 @@
     ws = new WebSocket(wsURL);
 
     ws.addEventListener('open', () => {
-      const subscribeRequest: WSRequest<undefined> = { type: RequestMessageType.SubscribeFollow };
+      const subscribeRequest: WSRequest<undefined> = {
+        type: RequestMessageType.SubscribePrediction
+      };
       const pingRequest: WSRequest<undefined> = { type: RequestMessageType.Ping };
 
       interval = setInterval(() => ws.send(JSON.stringify(pingRequest)), 1000 * 20);
@@ -74,14 +65,25 @@
     });
 
     ws.addEventListener('message', (e) => {
-      const data: WSResponse<TwitchEventFollowData> = JSON.parse(e.data);
+      const data: WSResponse<TwitchEventPredictionData | TwitchEventPredictionData> = JSON.parse(
+        e.data
+      );
       if (data.type === BaseResponseMessageType.Error) {
         console.error(data.message);
         return;
       }
-      if (data.type !== CallbackResponseMessageType.SubscribeFollow) return;
+      if (
+        !(
+          [
+            CallbackResponseMessageType.SubscribePredictionBegin,
+            CallbackResponseMessageType.SubscribePredictionProgress,
+            CallbackResponseMessageType.SubscribePredictionEnd
+          ] as string[]
+        ).includes(data.type)
+      )
+        return;
 
-      follow.add(data.data);
+      console.log(data);
     });
 
     ws.addEventListener('close', (e) => {
@@ -109,4 +111,4 @@
   });
 </script>
 
-<FollowWidget />
+testing

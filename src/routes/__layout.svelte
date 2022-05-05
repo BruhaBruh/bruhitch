@@ -29,7 +29,7 @@
     }
 
     if (!locales.includes(lang)) {
-      if (['chat', 'follow', 'subscribe'].includes(lang)) {
+      if (['chat', 'follow', 'subscribe', 'prediction'].includes(lang)) {
         // delete session.locale;
         await loadLocaleAsync(baseLocale);
         return { props: { locale: baseLocale, isDark: session.isDark } };

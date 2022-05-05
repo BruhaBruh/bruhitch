@@ -15,7 +15,7 @@
   class="w-full h-16 border-b border-gray-base shadow-xs px-2 sm:px-4 flex items-center justify-between"
 >
   <nav>
-    <a href={'/' + $locale}>
+    <a href={`/${$locale}`}>
       <Typography variant="h3">Bruhitch</Typography>
     </a>
   </nav>

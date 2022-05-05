@@ -8,8 +8,51 @@ export type TwitchEventFollowData = {
   followed_at: string;
 };
 
+export type Predictor = {
+  user_id: string;
+  user_login: string;
+  user_name: string;
+  channel_points_won: number | null;
+  channel_points_used: number;
+};
+
+export type PredictionOutcome = {
+  id: string;
+  title: string;
+  color: 'blue' | 'pink';
+  users?: number;
+  channel_points?: number;
+  top_predictors?: Predictor[];
+};
+
+export type TwitchEventPredictionData = {
+  id: string;
+  broadcaster_user_id: string;
+  broadcaster_user_login: string;
+  broadcaster_user_name: string;
+  title: string;
+  outcomes: PredictionOutcome[];
+  started_at: string;
+  locks_at: string;
+};
+
+export type TwitchEventPredictionEndData = {
+  id: string;
+  broadcaster_user_id: string;
+  broadcaster_user_login: string;
+  broadcaster_user_name: string;
+  title: string;
+  winning_outcome_id: string;
+  outcomes: PredictionOutcome[];
+  status: 'resolved' | 'canceled';
+  started_at: string;
+  ended_at: string;
+};
+
 export enum RequestMessageType {
-  SubscribeFollow = 'subscribe/follow'
+  SubscribeFollow = 'subscribe/follow',
+  SubscribePrediction = 'subscribe/prediction',
+  Ping = 'PING'
 }
 
 export type WSRequest<T> = {
@@ -23,11 +66,15 @@ export enum BaseResponseMessageType {
 }
 
 export enum WSResponseMessageType {
-  Subscribed = 'subscribed'
+  Subscribed = 'subscribed',
+  Pong = 'PONG'
 }
 
 export enum CallbackResponseMessageType {
-  SubscribeFollow = 'subscribe/follow'
+  SubscribeFollow = 'subscribe/follow',
+  SubscribePredictionBegin = 'subscribe/prediction/begin',
+  SubscribePredictionProgress = 'subscribe/prediction/subscribePredictionProgress',
+  SubscribePredictionEnd = 'subscribe/prediction/end'
 }
 
 export type ResponseMessageType =
