@@ -125,6 +125,32 @@ const en: BaseTranslation = {
       widgetLink: 'Subscribe alert widget link'
     }
   },
+  predictionWidget: {
+    name: 'Predication widget',
+    title: 'Predication widget settings',
+    controls: {
+      textColor: 'Text color',
+      blueColor: 'Blue color',
+      pinkColor: 'Pink color',
+      channelPointImage: 'Channel points image',
+      disablePadding: 'Disable padding',
+      font: 'Font',
+      fontSize: 'Font size',
+      hideDelay: 'Hide delay',
+      animation: 'Animation',
+      animationParams: {
+        name: 'Animation parameters',
+        startScale: 'start scale',
+        duration: 'duration in ms',
+        opacity: 'opacity'
+      },
+      verticalAlign: 'Vertical alignment',
+      top: 'Top',
+      bottom: 'Bottom',
+      center: 'Center',
+      widgetLink: 'Predication widget link'
+    }
+  },
   raidAlerts: {
     name: 'Raid alerts'
   },
