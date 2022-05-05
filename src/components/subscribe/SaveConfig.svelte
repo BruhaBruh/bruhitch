@@ -1,15 +1,15 @@
 <script lang="ts">
   import { deepEqual } from '$lib/deepEqual';
-  import config from '$lib/stores/follow/config';
   import { me } from '$lib/stores/me';
+  import config from '$lib/stores/subscribe/config';
   import { ui } from '$lib/stores/ui';
-  import type { Settings } from '$types/follow/settings';
+  import type { Settings } from '$types/subscribe/settings';
   import Button from '@components/ui/Button.svelte';
   import TextField from '@components/ui/TextField.svelte';
   import LL from '@i18n/i18n-svelte';
   import { onMount } from 'svelte';
 
-  export let token: string;
+  export let token = '';
 
   let prevSettings: Settings = undefined;
 
@@ -20,7 +20,7 @@
 
     token = data.id;
 
-    const settings = await fetch('/api/v1/follow/settings?token=' + token)
+    const settings = await fetch('/api/v1/subscribe/settings?token=' + token)
       .then((r) => r.json())
       .catch(console.error);
 
@@ -34,7 +34,7 @@
 
   const handleSave = async () => {
     if ($me) {
-      prevSettings = await fetch('/api/v1/follow/settings', {
+      prevSettings = await fetch('/api/v1/subscribe/settings', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
