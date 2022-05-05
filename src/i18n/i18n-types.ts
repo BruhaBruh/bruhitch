@@ -41,6 +41,10 @@ type RootTranslation = {
 	 * Preview widget link
 	 */
 	preview: string
+	/**
+	 * This action cannot be undone, are you sure?
+	 */
+	actionCanNotBeUndone: string
 	settings: {
 		/**
 		 * Settings
@@ -66,10 +70,6 @@ type RootTranslation = {
 		 * Delete account
 		 */
 		deleteAccount: string
-		/**
-		 * This action cannot be undone, are you sure?
-		 */
-		deleteAccountDescription: string
 		/**
 		 * Account deleted
 		 */
@@ -456,6 +456,10 @@ type RootTranslation = {
 	 */
 	copied: string
 	/**
+	 * Refresh
+	 */
+	refresh: string
+	/**
 	 * Load
 	 */
 	load: string
@@ -524,6 +528,10 @@ export type TranslationFunctions = {
 	 * Preview widget link
 	 */
 	preview: () => LocalizedString
+	/**
+	 * This action cannot be undone, are you sure?
+	 */
+	actionCanNotBeUndone: () => LocalizedString
 	settings: {
 		/**
 		 * Settings
@@ -549,10 +557,6 @@ export type TranslationFunctions = {
 		 * Delete account
 		 */
 		deleteAccount: () => LocalizedString
-		/**
-		 * This action cannot be undone, are you sure?
-		 */
-		deleteAccountDescription: () => LocalizedString
 		/**
 		 * Account deleted
 		 */
@@ -938,6 +942,10 @@ export type TranslationFunctions = {
 	 * Copied
 	 */
 	copied: () => LocalizedString
+	/**
+	 * Refresh
+	 */
+	refresh: () => LocalizedString
 	/**
 	 * Load
 	 */

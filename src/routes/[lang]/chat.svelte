@@ -8,7 +8,6 @@
 </script>
 
 <script lang="ts">
-  let channel = '';
 </script>
 
 <svelte:head>

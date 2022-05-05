@@ -9,6 +9,7 @@ const ru: Translation = {
   continueWithTwitch: 'Продолжить с Twitch',
   dontShowLinkAnyone: 'Никому не показывайте ссылку',
   preview: 'Ссылка на виджет предварительного просмотра',
+  actionCanNotBeUndone: 'Это действие нельзя будет отменить, вы уверены?',
   settings: {
     name: 'Настройки',
     theme: 'Тема',
@@ -16,7 +17,6 @@ const ru: Translation = {
     lightTheme: 'Светлая',
     language: 'Язык',
     deleteAccount: 'Удалить аккаунт',
-    deleteAccountDescription: 'Это действие нельзя будет отменить, вы уверены?',
     accountDeleted: 'Аккаунт удален',
     accountNotDeleted: 'Аккаунт не удален',
     refreshToken: 'Обновить токен',
@@ -134,6 +134,7 @@ const ru: Translation = {
   },
   copy: 'Скопировать',
   copied: 'Скопировано',
+  refresh: 'Обновить',
   load: 'Загрузить',
   loaded: 'Загружено',
   add: 'Добавить',

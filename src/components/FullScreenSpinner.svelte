@@ -1,10 +1,7 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
   import Backdrop from './ui/Backdrop.svelte';
   import Icon from './ui/Icon.svelte';
   import Portal from './ui/Portal.svelte';
-
-  const dispatch = createEventDispatcher();
 
   export let show: boolean = false;
 </script>

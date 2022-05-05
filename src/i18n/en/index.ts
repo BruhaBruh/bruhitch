@@ -9,6 +9,7 @@ const en: BaseTranslation = {
   continueWithTwitch: 'Continue with Twitch',
   dontShowLinkAnyone: 'Dont show link anyone',
   preview: 'Preview widget link',
+  actionCanNotBeUndone: 'This action cannot be undone, are you sure?',
   settings: {
     name: 'Settings',
     theme: 'Theme',
@@ -16,7 +17,6 @@ const en: BaseTranslation = {
     lightTheme: 'Light',
     language: 'Language',
     deleteAccount: 'Delete account',
-    deleteAccountDescription: 'This action cannot be undone, are you sure?',
     accountDeleted: 'Account deleted',
     accountNotDeleted: 'Account not deleted',
     refreshToken: 'Refresh token',
@@ -133,6 +133,7 @@ const en: BaseTranslation = {
   },
   copy: 'Copy',
   copied: 'Copied',
+  refresh: 'Refresh',
   load: 'Load',
   loaded: 'Loaded',
   add: 'Add',

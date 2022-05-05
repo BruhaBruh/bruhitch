@@ -1,5 +1,6 @@
 <script lang="ts" context="module">
   import { browser } from '$app/env';
+  import allowedPaths from '$lib/allowedPaths';
   import replaceLocaleInUrl from '$lib/replaceLocaleInUrl';
   import { me } from '$lib/stores/me';
   import { ui } from '$lib/stores/ui';
@@ -29,7 +30,7 @@
     }
 
     if (!locales.includes(lang)) {
-      if (['chat', 'follow', 'subscribe', 'prediction'].includes(lang)) {
+      if (allowedPaths.includes(lang)) {
         // delete session.locale;
         await loadLocaleAsync(baseLocale);
         return { props: { locale: baseLocale, isDark: session.isDark } };
