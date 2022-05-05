@@ -1,13 +1,7 @@
-<script context="module">
+<script context="module" lang="ts">
   import { tick } from 'svelte';
 
-  /**
-   * Usage: <div use:portal={'css selector'}> or <div use:portal={document.body}>
-   *
-   * @param {HTMLElement} el
-   * @param {HTMLElement|string} target DOM Element or CSS Selector
-   */
-  export function portal(el, target = 'body') {
+  export function portal(el: HTMLElement, target: HTMLElement|string = 'body') {
     let targetEl;
     async function update(newTarget) {
       target = newTarget;
@@ -47,12 +41,8 @@
   }
 </script>
 
-<script>
-  /**
-   * DOM Element or CSS Selector
-   * @type { HTMLElement|string}
-   */
-  export let target = 'body';
+<script lang="ts">
+  export let target: HTMLElement|string = 'body';
 </script>
 
 <div use:portal={target} hidden>
