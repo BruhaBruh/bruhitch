@@ -196,6 +196,10 @@
   //#endregion
 
   onDestroy(() => clearTimeout(timeout));
+
+  config.subscribe(() => {
+    chat.clear();
+  });
 </script>
 
 {#if withWrapper}
