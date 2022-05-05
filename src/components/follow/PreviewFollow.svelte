@@ -1,4 +1,5 @@
 <script lang="ts">
+  import config from '$lib/stores/follow/config';
   import follow from '$lib/stores/follow/follow';
   import faker from '@faker-js/faker';
   import { onDestroy, onMount } from 'svelte';
@@ -30,13 +31,15 @@
   };
 
   onDestroy(() => clearTimeout(timeout));
+
+  config.subscribe((v) => follow.reset());
 </script>
 
 {#if withWrapper}
   <div
     {...$$restProps}
     class={[
-      'preview border border-gray-base h-full sticky top-4 flex items-center justify-center overflow-hidden bg-gray-lightest',
+      'preview border border-gray-base h-full sticky top-20 flex items-center justify-center overflow-hidden bg-gray-lightest',
       $$restProps.class
     ]
       .filter(Boolean)
