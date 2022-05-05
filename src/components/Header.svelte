@@ -12,7 +12,7 @@
 </script>
 
 <header
-  class="w-full h-16 border-b border-gray-base shadow-xs px-2 sm:px-4 flex items-center justify-between"
+  class="w-full h-16 border-b border-gray-base shadow-xs px-2 sm:px-4 flex items-center justify-between sticky top-0 z-30 bg-gray-lightest dark:bg-gray-darkest"
 >
   <nav>
     <a href={`/${$locale}`}>

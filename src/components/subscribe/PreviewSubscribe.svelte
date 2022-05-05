@@ -1,4 +1,5 @@
 <script lang="ts">
+  import config from '$lib/stores/subscribe/config';
   import subscribe from '$lib/stores/subscribe/subscribe';
   import faker from '@faker-js/faker';
   import { PubSubSubscriptionMessage } from '@twurple/pubsub';
@@ -234,13 +235,15 @@
   };
 
   onDestroy(() => clearTimeout(timeout));
+
+  config.subscribe((v) => subscribe.reset());
 </script>
 
 {#if withWrapper}
   <div
     {...$$restProps}
     class={[
-      'preview border border-gray-base h-full sticky top-4 flex items-center justify-center overflow-hidden bg-gray-lightest',
+      'preview border border-gray-base h-full sticky top-20 flex items-center justify-center overflow-hidden bg-gray-lightest',
       $$restProps.class
     ]
       .filter(Boolean)

@@ -16,7 +16,7 @@ class UrlParser {
 
   public getChannel(): string {
     const [, , channel] = this.url.pathname.split('/');
-    return channel;
+    return channel.replace(/-preview$/i, '');
   }
 
   public getHiddenNicknames(): string[] {

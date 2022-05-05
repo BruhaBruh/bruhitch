@@ -1,0 +1,29 @@
+<script lang="ts">
+  import { page } from '$app/stores';
+  import { copyText } from '$lib/copyText';
+  import { ui } from '$lib/stores/ui';
+  import Button from '@components/ui/Button.svelte';
+  import TextField from '@components/ui/TextField.svelte';
+  import LL from '@i18n/i18n-svelte';
+
+  export let token: string;
+
+  const handleCopy = async () => {
+    const url = $page.url;
+    url.pathname = '/follow/' + token;
+    await copyText(url.href);
+
+    ui.toast.add('circle-check', $LL.copied(), undefined, 'success');
+  };
+</script>
+
+<TextField
+  status="validation"
+  statusText={$LL.dontShowLinkAnyone()}
+  title={$LL.followAlerts.controls.widgetLink()}
+  class="mb-4"
+>
+  <Button color="secondary" on:click={handleCopy}>
+    {$LL.copy()}
+  </Button>
+</TextField>

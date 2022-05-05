@@ -16,6 +16,7 @@ const createConfig = (initialState: Settings) => {
     subscribe,
     set,
     loadSettings: (settings: Settings) => {
+      if (!settings) return;
       set(settings);
       config.setFontSize(settings.fontSize);
     },
@@ -51,6 +52,13 @@ const createConfig = (initialState: Settings) => {
         }));
       }
     },
+    removeCustomColor: (nickname: string) =>
+      update((v) => {
+        const nicknames = v.nicknameColors;
+        delete nicknames[nickname];
+        v.nicknameColors = nicknames;
+        return v;
+      }),
     setCustomColor: (nicknameColors: UserNicknameColor) =>
       update((v) => ({ ...v, nicknameColors })),
     setHidden: (hiddenNicknames: string[]) => update((v) => ({ ...v, hiddenNicknames })),

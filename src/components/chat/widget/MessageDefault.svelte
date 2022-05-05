@@ -25,7 +25,7 @@
 </script>
 
 <div
-  transition:animation={{ ...$config.animationParams, easing: getEasing($config.animationEasing) }}
+  in:animation={{ ...$config.animationParams, easing: getEasing($config.animationEasing) }}
   class="chat-message"
 >
   <div class="layout">
