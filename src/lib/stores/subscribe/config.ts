@@ -10,7 +10,6 @@ const createConfig = (initialState: Settings) => {
     subscribe,
     set,
     loadSettings: (settings: Settings) => {
-      if (!settings) return;
       set(settings);
       config.setFontSize(settings.fontSize);
     },

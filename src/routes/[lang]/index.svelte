@@ -32,6 +32,10 @@
       LL: 'subscribeAlerts'
     },
     {
+      path: 'prediction',
+      LL: 'predictionWidget'
+    },
+    {
       path: 'wip',
       LL: 'bitsAlerts'
     },

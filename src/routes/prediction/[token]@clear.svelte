@@ -1,6 +1,8 @@
 <script lang="ts" context="module">
   import { browser } from '$app/env';
   import { page } from '$app/stores';
+  import config from '$lib/stores/prediction/config';
+  import prediction from '$lib/stores/prediction/prediction';
   import {
     BaseResponseMessageType,
     CallbackResponseMessageType,
@@ -9,6 +11,7 @@
     type WSRequest,
     type WSResponse
   } from '$types/ws';
+  import PredictionWidget from '@components/prediction/widget/PredictionWidget.svelte';
   import type { Load } from '@sveltejs/kit';
   import { onDestroy, onMount } from 'svelte';
   import './prediction.css';
@@ -27,6 +30,14 @@
         status: 403,
         error: new Error('token is not defined')
       };
+    }
+
+    const settings = await fetch('/api/v1/prediction/settings?token=' + token)
+      .then(async (r) => ({ status: r.status, data: await r.json() }))
+      .catch(console.error);
+
+    if (settings && settings.status === 200) {
+      config.loadSettings(settings.data);
     }
 
     return {
@@ -83,7 +94,23 @@
       )
         return;
 
-      console.log(data);
+      switch (data.type) {
+        case CallbackResponseMessageType.SubscribePredictionBegin: {
+          prediction.setPrediction('begin', data.data);
+          break;
+        }
+        case CallbackResponseMessageType.SubscribePredictionProgress: {
+          prediction.setPrediction('progress', data.data);
+          break;
+        }
+        case CallbackResponseMessageType.SubscribePredictionEnd: {
+          prediction.setPrediction('end', data.data);
+          setTimeout(() => {
+            prediction.reset();
+          }, $config.hideDelay);
+          break;
+        }
+      }
     });
 
     ws.addEventListener('close', (e) => {
@@ -111,4 +138,4 @@
   });
 </script>
 
-testing
+<PredictionWidget />

@@ -435,6 +435,92 @@ type RootTranslation = {
 			widgetLink: string
 		}
 	}
+	predictionWidget: {
+		/**
+		 * Predication widget
+		 */
+		name: string
+		/**
+		 * Predication widget settings
+		 */
+		title: string
+		controls: {
+			/**
+			 * Text color
+			 */
+			textColor: string
+			/**
+			 * Blue color
+			 */
+			blueColor: string
+			/**
+			 * Pink color
+			 */
+			pinkColor: string
+			/**
+			 * Channel points image
+			 */
+			channelPointImage: string
+			/**
+			 * Disable padding
+			 */
+			disablePadding: string
+			/**
+			 * Font
+			 */
+			font: string
+			/**
+			 * Font size
+			 */
+			fontSize: string
+			/**
+			 * Hide delay
+			 */
+			hideDelay: string
+			/**
+			 * Animation
+			 */
+			animation: string
+			animationParams: {
+				/**
+				 * Animation parameters
+				 */
+				name: string
+				/**
+				 * start scale
+				 */
+				startScale: string
+				/**
+				 * duration in ms
+				 */
+				duration: string
+				/**
+				 * opacity
+				 */
+				opacity: string
+			}
+			/**
+			 * Vertical alignment
+			 */
+			verticalAlign: string
+			/**
+			 * Top
+			 */
+			top: string
+			/**
+			 * Bottom
+			 */
+			bottom: string
+			/**
+			 * Center
+			 */
+			center: string
+			/**
+			 * Predication widget link
+			 */
+			widgetLink: string
+		}
+	}
 	raidAlerts: {
 		/**
 		 * Raid alerts
@@ -918,6 +1004,92 @@ export type TranslationFunctions = {
 			center: () => LocalizedString
 			/**
 			 * Subscribe alert widget link
+			 */
+			widgetLink: () => LocalizedString
+		}
+	}
+	predictionWidget: {
+		/**
+		 * Predication widget
+		 */
+		name: () => LocalizedString
+		/**
+		 * Predication widget settings
+		 */
+		title: () => LocalizedString
+		controls: {
+			/**
+			 * Text color
+			 */
+			textColor: () => LocalizedString
+			/**
+			 * Blue color
+			 */
+			blueColor: () => LocalizedString
+			/**
+			 * Pink color
+			 */
+			pinkColor: () => LocalizedString
+			/**
+			 * Channel points image
+			 */
+			channelPointImage: () => LocalizedString
+			/**
+			 * Disable padding
+			 */
+			disablePadding: () => LocalizedString
+			/**
+			 * Font
+			 */
+			font: () => LocalizedString
+			/**
+			 * Font size
+			 */
+			fontSize: () => LocalizedString
+			/**
+			 * Hide delay
+			 */
+			hideDelay: () => LocalizedString
+			/**
+			 * Animation
+			 */
+			animation: () => LocalizedString
+			animationParams: {
+				/**
+				 * Animation parameters
+				 */
+				name: () => LocalizedString
+				/**
+				 * start scale
+				 */
+				startScale: () => LocalizedString
+				/**
+				 * duration in ms
+				 */
+				duration: () => LocalizedString
+				/**
+				 * opacity
+				 */
+				opacity: () => LocalizedString
+			}
+			/**
+			 * Vertical alignment
+			 */
+			verticalAlign: () => LocalizedString
+			/**
+			 * Top
+			 */
+			top: () => LocalizedString
+			/**
+			 * Bottom
+			 */
+			bottom: () => LocalizedString
+			/**
+			 * Center
+			 */
+			center: () => LocalizedString
+			/**
+			 * Predication widget link
 			 */
 			widgetLink: () => LocalizedString
 		}

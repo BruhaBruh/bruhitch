@@ -126,6 +126,32 @@ const ru: Translation = {
       widgetLink: 'Ссылка на виджет оповещений сабок'
     }
   },
+  predictionWidget: {
+    name: 'Виджет прогноза',
+    title: 'Настройки виджета прогноза',
+    controls: {
+      textColor: 'Цвет текста',
+      blueColor: 'Синий цвет',
+      pinkColor: 'Розовый цвет',
+      channelPointImage: 'Изображение поинтов канала',
+      disablePadding: 'Выключить отступы',
+      font: 'Шрифт',
+      fontSize: 'Размер шрифта',
+      hideDelay: 'Задержка скрытия',
+      animation: 'Анимация',
+      animationParams: {
+        name: 'Параметры анимации',
+        startScale: 'начальный размер',
+        duration: 'продолжительность в мс',
+        opacity: 'непрозрачность'
+      },
+      verticalAlign: 'Вертикальное выравнивание',
+      top: 'Верх',
+      bottom: 'Низ',
+      center: 'Центр',
+      widgetLink: 'Ссылка на виджет прогноза'
+    }
+  },
   raidAlerts: {
     name: 'Оповещения рейдов'
   },

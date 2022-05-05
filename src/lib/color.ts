@@ -22,6 +22,10 @@ export const getRandomColor = () => {
   return chroma.random().hex();
 };
 
+export const getColorWithAlpha = (color: string) => {
+  return chroma.hex(color).alpha(0.75).rgba();
+};
+
 const colorRegex = /^#[a-f0-9]{6}$/i;
 
 export const isColor = (color: string) => colorRegex.test(color);

@@ -2,42 +2,31 @@
   import type { TypographyVariant } from '@components/ui/Typography';
 
   export let variant: TypographyVariant;
+
+  const variants: {
+    [variant in TypographyVariant]: {
+      element: 'h1' | 'h2' | 'h3' | 'p' | 'span';
+      class: string;
+    };
+  } = {
+    h1: { element: 'h1', class: 'font-semibold text-2xl' },
+    h2: { element: 'h2', class: 'font-semibold text-2xl' },
+    h3: { element: 'h3', class: 'font-semibold text-lg' },
+    b1: { element: 'p', class: 'text-base' },
+    b2: { element: 'p', class: 'text-sm' },
+    ht: { element: 'p', class: 'text-xs' },
+    button: { element: 'span', class: 'font-medium text-base' }
+  };
 </script>
 
-{#if variant === 'h1'}
-  <h1
+{#if variants[variant]}
+  <svelte:element
+    this={variants[variant].element}
     {...$$restProps}
-    class={['font-semibold text-2xl', $$restProps.class].filter(Boolean).join(' ')}
+    class={[variants[variant].class, $$restProps.class].filter(Boolean).join(' ')}
   >
     <slot />
-  </h1>
-{:else if variant === 'h2'}
-  <h2
-    {...$$restProps}
-    class={['font-semibold text-xl', $$restProps.class].filter(Boolean).join(' ')}
-  >
-    <slot />
-  </h2>
-{:else if variant === 'h3'}
-  <h3
-    {...$$restProps}
-    class={['font-semibold text-lg', $$restProps.class].filter(Boolean).join(' ')}
-  >
-    <slot />
-  </h3>
-{:else if variant === 'b1'}
-  <p {...$$restProps} class={['text-base', $$restProps.class].filter(Boolean).join(' ')}>
-    <slot />
-  </p>
-{:else if variant === 'b2'}
-  <p {...$$restProps} class={['text-sm', $$restProps.class].filter(Boolean).join(' ')}><slot /></p>
-{:else if variant === 'ht'}
-  <p {...$$restProps} class={['text-xs', $$restProps.class].filter(Boolean).join(' ')}><slot /></p>
-{:else if variant === 'button'}
-  <span
-    {...$$restProps}
-    class={['font-medium text-base', $$restProps.class].filter(Boolean).join(' ')}><slot /></span
-  >
+  </svelte:element>
 {:else}
   <slot />
 {/if}
