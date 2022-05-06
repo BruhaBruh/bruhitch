@@ -41,7 +41,6 @@
 </script>
 
 <script lang="ts">
-  export let channel: string;
   export let broadcasterId: string;
   export let tbadges: TwitchBadge[];
 
@@ -58,4 +57,4 @@
   });
 </script>
 
-<PreviewChat {channel} withWrapper={false} />
+<PreviewChat channel={$config.channel} withWrapper={false} />
