@@ -1,13 +1,8 @@
 <script lang="ts">
   import { browser } from '$app/env';
-  import { page } from '$app/stores';
-  import UrlEncoder from '$lib/chat/urlEncoder';
   import UrlParser from '$lib/chat/urlParser';
-  import { copyText } from '$lib/copyText';
   import config from '$lib/stores/chat/config';
   import { me } from '$lib/stores/me';
-  import { ui } from '$lib/stores/ui';
-  import LL from '@i18n/i18n-svelte';
   import AnimationControl from './controls/AnimationControl.svelte';
   import ChannelControl from './controls/ChannelControl.svelte';
   import ChatTypeControl from './controls/ChatTypeControl.svelte';
@@ -43,38 +38,6 @@
     loadFromLink(link);
   });
   //#endregion
-
-  let url = '';
-  let previewUrl = '';
-  let loadUrl = '';
-
-  $: url = new UrlEncoder($config, $page.url.origin).getLink().href;
-  $: {
-    const u = new UrlEncoder($config, $page.url.origin).getLink();
-    u.pathname = u.pathname + '-preview';
-    previewUrl = u.href;
-  }
-
-  const handleClickCopy = async (isPreview: boolean) => {
-    if (isPreview) {
-      await copyText(previewUrl);
-      ui.toast.add('circle-check', $LL.copied(), undefined, 'success');
-      return;
-    }
-    await copyText(url);
-    if ($me) {
-      await fetch('/api/v1/chat/link', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ link: url })
-      })
-        .then((r) => r.json())
-        .catch(console.error);
-    }
-    ui.toast.add('circle-check', $LL.copied(), undefined, 'success');
-  };
 </script>
 
 <div {...$$restProps}>

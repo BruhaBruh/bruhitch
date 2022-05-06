@@ -61,6 +61,14 @@ const createConfig = (initialState: Settings) => {
         }
       }));
     },
+    setHideDelay: (hideDelay: number | string) => {
+      if (typeof hideDelay === 'number') {
+        update((v) => ({ ...v, hideDelay }));
+      }
+      const n = Number(hideDelay);
+      if (isNaN(n)) return;
+      update((v) => ({ ...v, hideDelay: n }));
+    },
     setVertical: (vertical: VerticalAlign) => update((v) => ({ ...v, vertical })),
     reset: () => set(initialState)
   };

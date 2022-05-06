@@ -34,6 +34,9 @@
 
   const handleSave = async () => {
     if ($me) {
+      config.setFontSize($config.fontSize);
+      config.setAnimationParams($config.animationParams);
+
       prevSettings = await fetch('/api/v1/subscribe/settings', {
         method: 'POST',
         headers: {
