@@ -2,7 +2,7 @@
   import { browser } from '$app/env';
   import { page } from '$app/stores';
   import config from '$lib/stores/follow/config';
-  import follow from '$lib/stores/follow/follow';
+  import follow, { showedFollow } from '$lib/stores/follow/follow';
   import {
     BaseResponseMessageType,
     CallbackResponseMessageType,
@@ -120,8 +120,14 @@
         subscribeRetry = 0;
       }
       if (data.type !== CallbackResponseMessageType.SubscribeFollow) return;
+      const alreadyShowed = $showedFollow
+        .map((v) => v)
+        .includes(new Date(data.data.followed_at).getTime());
+
+      if (alreadyShowed) return;
 
       follow.add(data.data);
+      showedFollow.add(data.data.followed_at);
     });
 
     ws.addEventListener('close', (e) => {

@@ -23,3 +23,22 @@ const createFollow = (initialState: Follow) => {
 const follow = createFollow([]);
 
 export default follow;
+
+const createShowedFollow = (initialState: number[]) => {
+  const { set, subscribe, update } = writable(initialState);
+
+  return {
+    subscribe,
+    add: (followedAt: string) =>
+      update((v) => {
+        let newArr = [...v, new Date(followedAt).getTime()].sort((a, b) => b - a);
+        if (newArr.length > 50) {
+          newArr = newArr.slice(-5);
+        }
+        return newArr;
+      }),
+    reset: () => set(initialState)
+  };
+};
+
+export const showedFollow = createShowedFollow([]);

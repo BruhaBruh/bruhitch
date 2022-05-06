@@ -23,3 +23,24 @@ const createPrediction = (initialState: Prediction) => {
 const prediction = createPrediction(null);
 
 export default prediction;
+
+const createEndedPredictions = (initialState: { id: string; date: number }[]) => {
+  const { set, subscribe, update } = writable(initialState);
+
+  return {
+    subscribe,
+    add: (id: string) =>
+      update((v) => {
+        let newArr = [...v, { id, date: new Date().getTime() }].sort((a, b) => b.date - a.date);
+        if (newArr.length > 50) {
+          newArr = newArr.slice(-5);
+        }
+        return newArr;
+      }),
+    reset: () => set(initialState)
+  };
+};
+
+export const endedPredictions = createEndedPredictions([]);
+
+export const showPrediction = writable(false);

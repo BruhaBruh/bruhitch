@@ -2,7 +2,7 @@
   import { browser } from '$app/env';
   import { page } from '$app/stores';
   import config from '$lib/stores/prediction/config';
-  import prediction from '$lib/stores/prediction/prediction';
+  import prediction, { endedPredictions, showPrediction } from '$lib/stores/prediction/prediction';
   import {
     BaseResponseMessageType,
     CallbackResponseMessageType,
@@ -132,19 +132,28 @@
       )
         return;
 
+      const predictionIsSameId = $prediction?.data.id === data.data.id;
+      const predictionInEnded = $endedPredictions.map((v) => v.id).includes(data.data.id);
       switch (data.type) {
         case CallbackResponseMessageType.SubscribePredictionBegin: {
+          if (predictionInEnded || predictionIsSameId) return;
           prediction.setPrediction('begin', data.data);
+          showPrediction.set(true);
           break;
         }
         case CallbackResponseMessageType.SubscribePredictionProgress: {
+          if (predictionInEnded) return;
           prediction.setPrediction('progress', data.data);
+          showPrediction.set(true);
           break;
         }
         case CallbackResponseMessageType.SubscribePredictionEnd: {
+          if (predictionInEnded) return;
           prediction.setPrediction('end', data.data);
+          showPrediction.set(true);
+          endedPredictions.add(data.data.id);
           setTimeout(() => {
-            prediction.reset();
+            showPrediction.set(false);
           }, $config.hideDelay);
           break;
         }

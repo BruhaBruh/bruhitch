@@ -1,6 +1,5 @@
 <script lang="ts">
   import config from '$lib/stores/prediction/config';
-  import prediction from '$lib/stores/prediction/prediction';
   import Prediction from './Prediction.svelte';
 </script>
 
@@ -17,7 +16,5 @@
     .filter(Boolean)
     .join('; ')}
 >
-  {#if $prediction}
-    <Prediction />
-  {/if}
+  <Prediction />
 </div>

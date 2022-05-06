@@ -40,9 +40,7 @@
     .filter(Boolean)
     .join('; ')}
 >
-  {#key current}
-    {#if current}
-      <Message id={current} current={$follow.find((v) => v.id === current).data} />
-    {/if}
-  {/key}
+  {#if current}
+    <Message id={current} current={$follow.find((v) => v.id === current).data} />
+  {/if}
 </div>
