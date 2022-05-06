@@ -77,7 +77,6 @@
   };
 
   const retryConnect = () => {
-    console.log(2000 * retry);
     retryTimeout = setTimeout(() => {
       if (!(ws.CLOSED || ws.CLOSING)) {
         ws.close(3000);

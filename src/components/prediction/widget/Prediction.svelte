@@ -36,15 +36,19 @@
     easing: getEasing($config.animationEasing)
   }}
 >
-  <div
-    class="whitespace-nowrap relative overflow-hidden"
-    style={`padding: ${$config.fontSize}px; border-radius: ${$config.fontSize}px; font-size: ${
-      $config.fontSize * 2
-    }px; background-color: rgba(17, 17, 17, 0.75); color: #fafafa`}
-  >
-    <h1 class="font-semibold" style={`color: ${$config.textColor};`}>{$prediction?.data.title}</h1>
-    {#each $prediction?.data.outcomes as outcome (outcome.id)}
-      <Row {outcome} />
-    {/each}
-  </div>
+  {#if $prediction}
+    <div
+      class="whitespace-nowrap relative overflow-hidden"
+      style={`padding: ${$config.fontSize}px; border-radius: ${$config.fontSize}px; font-size: ${
+        $config.fontSize * 2
+      }px; background-color: rgba(17, 17, 17, 0.75); color: #fafafa`}
+    >
+      <h1 class="font-semibold" style={`color: ${$config.textColor};`}>
+        {$prediction.data.title}
+      </h1>
+      {#each $prediction.data.outcomes as outcome (outcome.id)}
+        <Row {outcome} />
+      {/each}
+    </div>
+  {/if}
 </div>
