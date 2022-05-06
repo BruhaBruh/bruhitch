@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-  import config from '$lib/stores/subscribe/config';
+  import config from '$lib/stores/prediction/config';
   import PreviewPrediction from '@components/prediction/PreviewPrediction.svelte';
   import type { Load } from '@sveltejs/kit';
   import './prediction.css';
