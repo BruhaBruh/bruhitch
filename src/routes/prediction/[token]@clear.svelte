@@ -7,6 +7,7 @@
     BaseResponseMessageType,
     CallbackResponseMessageType,
     RequestMessageType,
+    WSResponseMessageType,
     type TwitchEventPredictionData,
     type WSRequest,
     type WSResponse
@@ -53,6 +54,38 @@
 
   let ws: WebSocket;
   let interval: NodeJS.Timer;
+  let retry = 0;
+  let subscribeRetry = 0;
+  let retryTimeout: NodeJS.Timeout;
+
+  const subscribe = () => {
+    const subscribeRequest: WSRequest<undefined> = { type: RequestMessageType.SubscribePrediction };
+    setTimeout(() => {
+      if (ws.OPEN) {
+        ws.send(JSON.stringify(subscribeRequest));
+      } else {
+        retrySubscribe();
+      }
+    }, 500);
+  };
+
+  const retrySubscribe = () => {
+    setTimeout(() => {
+      subscribe();
+    }, 5000 * subscribeRetry);
+    subscribeRetry += 1;
+  };
+
+  const retryConnect = () => {
+    console.log(2000 * retry);
+    retryTimeout = setTimeout(() => {
+      if (!(ws.CLOSED || ws.CLOSING)) {
+        ws.close(3000);
+      }
+      connect();
+    }, 2000 * retry);
+    retry += 1;
+  };
 
   const connect = async () => {
     const isSecure = $page.url.protocol.includes('https');
@@ -66,13 +99,13 @@
     ws = new WebSocket(wsURL);
 
     ws.addEventListener('open', () => {
-      const subscribeRequest: WSRequest<undefined> = {
-        type: RequestMessageType.SubscribePrediction
-      };
-      const pingRequest: WSRequest<undefined> = { type: RequestMessageType.Ping };
+      retry = 0;
+      clearTimeout(retryTimeout);
 
+      const pingRequest: WSRequest<undefined> = { type: RequestMessageType.Ping };
       interval = setInterval(() => ws.send(JSON.stringify(pingRequest)), 1000 * 20);
-      setTimeout(() => ws.send(JSON.stringify(subscribeRequest)), 500);
+
+      subscribe();
     });
 
     ws.addEventListener('message', (e) => {
@@ -80,8 +113,14 @@
         e.data
       );
       if (data.type === BaseResponseMessageType.Error) {
+        if (data.message === 'Too Many Requests') {
+          retrySubscribe();
+        }
         console.error(data.message);
         return;
+      }
+      if (data.type === WSResponseMessageType.Subscribed) {
+        subscribeRetry = 0;
       }
       if (
         !(
@@ -116,6 +155,7 @@
     ws.addEventListener('close', (e) => {
       clearInterval(interval);
       console.log(e.code, e.reason);
+      if (e.code === 1006) return retryConnect();
       try {
         const data: WSResponse<undefined> = JSON.parse(e.reason);
         if (data.type === BaseResponseMessageType.Reconnect) {
@@ -135,6 +175,9 @@
     if (!browser || !ws) return;
     clearInterval(interval);
     ws.close();
+    if (!(ws.CLOSED || ws.CLOSING)) {
+      ws.close();
+    }
   });
 </script>
 

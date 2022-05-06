@@ -1,9 +1,9 @@
 <script context="module" lang="ts">
   import { tick } from 'svelte';
 
-  export function portal(el: HTMLElement, target: HTMLElement|string = 'body') {
-    let targetEl;
-    async function update(newTarget) {
+  export function portal(el: HTMLElement, target: HTMLElement | string = 'body') {
+    let targetEl: HTMLElement;
+    async function update(newTarget: HTMLElement | string) {
       target = newTarget;
       if (typeof target === 'string') {
         targetEl = document.querySelector(target);
@@ -42,7 +42,7 @@
 </script>
 
 <script lang="ts">
-  export let target: HTMLElement|string = 'body';
+  export let target: HTMLElement | string = 'body';
 </script>
 
 <div use:portal={target} hidden>
