@@ -46,33 +46,7 @@
   export let tbadges: TwitchBadge[];
 
   const loadConfigFromHref = () => {
-    const {
-      hiddenNicknames,
-      defaultColor,
-      nicknameColors,
-      font,
-      animation,
-      animationEasing,
-      animationParams,
-      hideReward,
-      disablePadding,
-      fontSize,
-      gradientOnlyCustom,
-      chatType
-    } = new UrlParser(window.location.href).getSettings();
-
-    config.setHidden(hiddenNicknames);
-    config.setDefaultColor(defaultColor);
-    config.setCustomColor(nicknameColors);
-    config.setFont(font);
-    config.setAnimation(animation);
-    config.setAnimationEasing(animationEasing);
-    config.setAnimationParams(animationParams);
-    config.setHideReward(hideReward);
-    config.setDisablePadding(disablePadding);
-    config.setFontSize(fontSize);
-    config.setGradientOnlyCustom(gradientOnlyCustom);
-    config.setChatType(chatType);
+    config.loadSettings(new UrlParser(window.location.href).getSettings());
   };
 
   onMount(async () => {
