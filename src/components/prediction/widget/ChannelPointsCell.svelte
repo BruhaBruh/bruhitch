@@ -1,7 +1,6 @@
 <script lang="ts">
   import config from '$lib/stores/prediction/config';
   import prediction from '$lib/stores/prediction/prediction';
-  import type { TwitchEventPredictionEndData } from '$types/ws';
   import { cubicOut } from 'svelte/easing';
   import { tweened } from 'svelte/motion';
   import Cell from './Cell.svelte';
@@ -40,11 +39,12 @@
   }
 
   const addAnotherPoints = () => {
-    const anotherPoints = $prediction.data.outcomes
-      .filter((v) => v.id !== ($prediction.data as TwitchEventPredictionEndData).winning_outcome_id)
-      .reduce((prev, current) => prev + (current.channel_points ?? 0), 0);
+    const newPoints = $prediction.data.outcomes.reduce(
+      (prev, current) => prev + (current.channel_points ?? 0),
+      0
+    );
 
-    currentPoints.set($currentPoints + anotherPoints);
+    currentPoints.set(newPoints);
   };
 
   $: isWin && addAnotherPoints();
