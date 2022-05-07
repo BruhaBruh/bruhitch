@@ -138,7 +138,7 @@
       if (predictionIsSameId) {
         data.data.outcomes.forEach((v) => {
           if (predictionHasMoreChannelPoints) return;
-          const outcome = $prediction.data.outcomes.find((i) => i.id === data.data.id);
+          const outcome = $prediction.data.outcomes.find((i) => i.id === v.id);
           predictionHasMoreChannelPoints = (outcome.channel_points ?? 0) < (v.channel_points ?? 0);
         });
       }
