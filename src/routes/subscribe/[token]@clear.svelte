@@ -1,5 +1,4 @@
 <script lang="ts" context="module">
-  import { browser } from '$app/env';
   import fetchAllEmotes from '$lib/chat/fetchEmotes';
   import config from '$lib/stores/subscribe/config';
   import subscribe from '$lib/stores/subscribe/subscribe';
@@ -31,12 +30,6 @@
       .catch(console.error);
 
     if (t && t.status === 200) {
-      const authProvider = new StaticAuthProvider(
-        t.data.clientId,
-        t.data.accessToken,
-        t.data.scope
-      );
-
       const settings = await fetch('/api/v1/subscribe/settings?token=' + token)
         .then(async (r) => ({ status: r.status, data: await r.json() }))
         .catch(console.error);
@@ -49,30 +42,34 @@
 
       return {
         props: {
-          authProvider
+          clientId: t?.data?.clientId,
+          accessToken: t?.data?.clientId,
+          scope: t?.data?.scope
         }
       };
     }
 
-    return {};
+    return {
+      clientId: '',
+      accessToken: '',
+      scope: []
+    };
   };
 </script>
 
 <script lang="ts">
-  export let authProvider: StaticAuthProvider = undefined;
+  export let clientId: string;
+  export let accessToken: string;
+  export let scope: string[];
 
+  let authProvider: StaticAuthProvider = undefined;
   let pubSubClient: PubSubClient;
   let userId: string;
   let listener: PubSubListener<never>;
 
   onMount(async () => {
-    if (!browser) return;
-    if (!authProvider) {
-      setTimeout(() => {
-        window.location.reload();
-      }, 2000);
-      return;
-    }
+    if (!clientId || !accessToken || !scope) return console.log(clientId, scope);
+    authProvider = new StaticAuthProvider(clientId, accessToken, scope);
     pubSubClient = new PubSubClient();
     userId = await pubSubClient.registerUserListener(authProvider);
     listener = await pubSubClient.onSubscription(userId, (message: PubSubSubscriptionMessage) => {
