@@ -1,5 +1,5 @@
 <script lang="ts">
-  import prediction from '$lib/stores/prediction/prediction';
+  import prediction, { showPrediction } from '$lib/stores/prediction/prediction';
   import { onMount } from 'svelte';
   import PredictionWidget from './widget/PredictionWidget.svelte';
 
@@ -50,6 +50,7 @@
       started_at: '2022-05-05T18:50:16.140968603Z',
       locks_at: '2022-05-05T18:55:16.140968603Z'
     });
+    showPrediction.set(true );
   });
 </script>
 
