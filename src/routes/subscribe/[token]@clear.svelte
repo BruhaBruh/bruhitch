@@ -67,6 +67,12 @@
 
   onMount(async () => {
     if (!browser) return;
+    if (!authProvider) {
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+      return;
+    }
     pubSubClient = new PubSubClient();
     userId = await pubSubClient.registerUserListener(authProvider);
     listener = await pubSubClient.onSubscription(userId, (message: PubSubSubscriptionMessage) => {
@@ -79,8 +85,6 @@
   });
 </script>
 
-{#if !authProvider}
-  Undefined auth provider
-{:else}
+{#if authProvider}
   <SubscribeWidget />
 {/if}
