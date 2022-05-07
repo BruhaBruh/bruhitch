@@ -134,6 +134,14 @@
 
       const predictionIsSameId = $prediction?.data.id === data.data.id;
       const predictionInEnded = $endedPredictions.map((v) => v.id).includes(data.data.id);
+      let predictionHasMoreChannelPoints = false;
+      if (predictionIsSameId) {
+        data.data.outcomes.forEach((v) => {
+          if (predictionHasMoreChannelPoints) return;
+          const outcome = $prediction.data.outcomes.find((i) => i.id === data.data.id);
+          predictionHasMoreChannelPoints = (outcome.channel_points ?? 0) < (v.channel_points ?? 0);
+        });
+      }
       switch (data.type) {
         case CallbackResponseMessageType.SubscribePredictionBegin: {
           if (predictionInEnded || predictionIsSameId) return;
@@ -142,7 +150,7 @@
           break;
         }
         case CallbackResponseMessageType.SubscribePredictionProgress: {
-          if (predictionInEnded) return;
+          if (predictionInEnded || !predictionHasMoreChannelPoints) return;
           prediction.setPrediction('progress', data.data);
           showPrediction.set(true);
           break;
