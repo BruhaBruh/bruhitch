@@ -14,7 +14,7 @@
   const handleRefreshToken = async () => {
     refreshTokenIsLoading = true;
 
-    const status = await fetch('/api/v1/user/twitch', { method: 'DELETE' }).then((r) => r.status);
+    const status = await fetch('/api/v1/user/token', { method: 'PATCH' }).then((r) => r.status);
     refreshTokenIsLoading = false;
     if (status !== 200) {
       ui.toast.add('circle-cancel', $LL.settings.refreshError(), $LL.errorOccurred(), 'danger');

@@ -64,7 +64,7 @@ export type FollowSettings = {
   isGradientNickname: boolean;
   animation: string;
   animationEasing: string;
-  animationParams: object;
+  animationParams: string;
   vertical: string;
   horizontal: string;
   userId: string;
@@ -90,7 +90,28 @@ export type SubscribeSettings = {
   isGradientRecipient: boolean;
   animation: string;
   animationEasing: string;
-  animationParams: object;
+  animationParams: string;
+  vertical: string;
+  userId: string;
+};
+
+/**
+ * Model PredictionSettings
+ *
+ */
+export type PredictionSettings = {
+  id: string;
+  textColor: string;
+  blueColor: string;
+  pinkColor: string;
+  channelPointImage: string;
+  disablePadding: boolean;
+  fontSize: number;
+  font: string;
+  hideDelay: number;
+  animation: string;
+  animationEasing: string;
+  animationParams: string;
   vertical: string;
   userId: string;
 };

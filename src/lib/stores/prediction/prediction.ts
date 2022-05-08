@@ -1,9 +1,9 @@
-import type { TwitchEventPredictionData, TwitchEventPredictionEndData } from '$types/ws';
+import type { EventSubPredictionData, EventSubPredictionEndData } from '$types/eventsub';
 import { writable } from 'svelte/store';
 
 export type PredictionStatus = 'begin' | 'progress' | 'end';
 
-export type PredictionData = TwitchEventPredictionData | TwitchEventPredictionEndData;
+export type PredictionData = EventSubPredictionData | EventSubPredictionEndData;
 
 export type Prediction = {
   status: PredictionStatus;

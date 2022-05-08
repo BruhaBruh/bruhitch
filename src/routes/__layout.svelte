@@ -1,7 +1,8 @@
 <script lang="ts" context="module">
-  import { browser } from '$app/env';
+  import { goto } from '$app/navigation';
   import allowedPaths from '$lib/allowedPaths';
   import replaceLocaleInUrl from '$lib/replaceLocaleInUrl';
+  import { siteVersion } from '$lib/siteVersion';
   import { me } from '$lib/stores/me';
   import { ui } from '$lib/stores/ui';
   import App from '@components/App.svelte';
@@ -71,7 +72,10 @@
   };
 
   onMount(() => {
-    if (!browser) return;
+    if (window.localStorage.getItem('site-version') !== siteVersion) {
+      window.localStorage.setItem('site-version', siteVersion);
+      goto('/api/v1/auth/logout', { replaceState: true });
+    }
     refreshToken();
   });
 

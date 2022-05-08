@@ -25,7 +25,7 @@
       };
     }
 
-    const t = await fetch('/api/v1/user/token?token=' + token)
+    const t = await fetch('/api/v1/user/twitch?token=' + token)
       .then(async (r) => ({ status: r.status, data: await r.json() }))
       .catch(console.error);
 
@@ -43,7 +43,7 @@
       return {
         props: {
           clientId: t?.data?.clientId,
-          accessToken: t?.data?.clientId,
+          accessToken: t?.data?.accessToken,
           scope: t?.data?.scope
         }
       };
@@ -69,7 +69,7 @@
 
   onMount(async () => {
     if (!clientId || !accessToken || !scope) return console.log(clientId, scope);
-    authProvider = new StaticAuthProvider(clientId, accessToken, scope);
+    authProvider = new StaticAuthProvider(clientId, accessToken, scope, 'user');
     pubSubClient = new PubSubClient();
     userId = await pubSubClient.registerUserListener(authProvider);
     listener = await pubSubClient.onSubscription(userId, (message: PubSubSubscriptionMessage) => {

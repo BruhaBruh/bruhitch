@@ -1,7 +1,7 @@
 <script lang="ts">
   import config from '$lib/stores/prediction/config';
   import prediction from '$lib/stores/prediction/prediction';
-  import type { PredictionOutcome, TwitchEventPredictionEndData } from '$types/ws';
+  import type { EventSubPredictionEndData, PredictionOutcome } from '$types/eventsub';
   import { slide } from 'svelte/transition';
   import ChannelPointsCell from './ChannelPointsCell.svelte';
   import TitleCell from './TitleCell.svelte';
@@ -11,7 +11,7 @@
 
   $: isWin =
     $prediction.status === 'end'
-      ? outcome.id === ($prediction.data as TwitchEventPredictionEndData).winning_outcome_id
+      ? outcome.id === ($prediction.data as EventSubPredictionEndData).winning_outcome_id
       : false;
 </script>
 

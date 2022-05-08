@@ -1,4 +1,5 @@
 import { isColor } from '$lib/color';
+import isNullOrUndefined from '$lib/isNullOrUndefined';
 import { Animation, AnimationEasing, type AnimationParams } from '$types/animation';
 import type { Settings, VerticalAlign } from '$types/subscribe/settings';
 import { writable } from 'svelte/store';
@@ -58,8 +59,12 @@ const createConfig = (initialState: Settings) => {
       update((v) => ({
         ...v,
         animationParams: {
-          start: Number(animationParams.start.toString()),
-          opacity: Number(animationParams.opacity.toString())
+          start: !isNullOrUndefined(animationParams?.start)
+            ? Number(animationParams.start.toString())
+            : undefined,
+          opacity: !isNullOrUndefined(animationParams?.opacity)
+            ? Number(animationParams.opacity.toString())
+            : undefined
         }
       }));
     },
