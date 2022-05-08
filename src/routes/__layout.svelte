@@ -1,5 +1,4 @@
 <script lang="ts" context="module">
-  import { goto } from '$app/navigation';
   import allowedPaths from '$lib/allowedPaths';
   import replaceLocaleInUrl from '$lib/replaceLocaleInUrl';
   import { siteVersion } from '$lib/siteVersion';
@@ -74,7 +73,7 @@
   onMount(() => {
     if (window.localStorage.getItem('site-version') !== siteVersion) {
       window.localStorage.setItem('site-version', siteVersion);
-      goto('/api/v1/auth/logout', { replaceState: true });
+      window.location.pathname = '/api/v1/auth/logout';
     }
     refreshToken();
   });
