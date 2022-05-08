@@ -1,5 +1,6 @@
 <script lang="ts">
   import Typography from '@components/ui/Typography.svelte';
+
   export let tag: string = 'div';
 </script>
 

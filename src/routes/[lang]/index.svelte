@@ -65,7 +65,6 @@
       tag="a"
       class="col-span-12 md:col-span-6 lg:col-span-4 2xl:col-span-3 aspect-video"
       href={`/${$locale}/${card.path}`}
-      sveltekit:prefetch
     >
       {$LL[card.LL].name()}
     </Card>

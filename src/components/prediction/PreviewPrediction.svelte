@@ -11,7 +11,7 @@
       broadcaster_user_id: '635252103',
       broadcaster_user_name: 'BruhaBruh',
       broadcaster_user_login: 'bruhabruh',
-      title: 'TEST',
+      title: 'How more anything do this be allowed Pepega',
       winning_outcome_id: '3ac77d39-04fc-4a39-a07c-9dfdfb5dbf49',
       outcomes: [
         {
@@ -50,7 +50,7 @@
       started_at: '2022-05-05T18:50:16.140968603Z',
       locks_at: '2022-05-05T18:55:16.140968603Z'
     });
-    showPrediction.set(true );
+    showPrediction.set(true);
   });
 </script>
 

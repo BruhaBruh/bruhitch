@@ -43,7 +43,7 @@
         $config.fontSize * 2
       }px; background-color: rgba(17, 17, 17, 0.75); color: #fafafa`}
     >
-      <h1 class="font-semibold" style={`color: ${$config.textColor};`}>
+      <h1 class="font-semibold whitespace-normal" style={`color: ${$config.textColor};`}>
         {$prediction.data.title}
       </h1>
       {#each $prediction.data.outcomes as outcome (outcome.id)}
