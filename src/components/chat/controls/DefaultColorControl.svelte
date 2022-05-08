@@ -20,6 +20,13 @@
     saturation = color[1];
     value = color[2];
   };
+
+  config.subscribe((v) => {
+    const color = chroma.hex(v.defaultColor).hsv();
+    hue = color[0];
+    saturation = color[1];
+    value = color[2];
+  });
 </script>
 
 <TextField title={$LL.chat.controls.defaultColor()} class="mb-4">
