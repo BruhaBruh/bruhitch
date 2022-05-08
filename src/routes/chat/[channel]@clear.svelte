@@ -1,5 +1,4 @@
 <script lang="ts" context="module">
-  import { browser } from '$app/env';
   import fetchAllEmotes from '$lib/chat/fetchEmotes';
   import UrlParser from '$lib/chat/urlParser';
   import { BanWordRegex } from '$lib/constants';
@@ -95,8 +94,6 @@
   };
 
   onMount(async () => {
-    if (!browser) return;
-
     loadConfigFromHref();
 
     badges.set(tbadges);

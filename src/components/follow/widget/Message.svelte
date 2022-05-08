@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { browser } from '$app/env';
   import { getEasing } from '$lib/stores/chat/config';
   import config from '$lib/stores/follow/config';
   import follow from '$lib/stores/follow/follow';
@@ -14,7 +13,6 @@
   let timeout: NodeJS.Timeout;
 
   onMount(() => {
-    if (!browser) return;
     timeout = setTimeout(() => {
       follow.removeById(id);
     }, 3000);

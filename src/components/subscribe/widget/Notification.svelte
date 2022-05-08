@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { browser } from '$app/env';
   import { getEasing } from '$lib/stores/chat/config';
   import config from '$lib/stores/subscribe/config';
   import type { SubscribeItem } from '$lib/stores/subscribe/subscribe';
@@ -17,7 +16,6 @@
   let timeout: NodeJS.Timeout;
 
   onMount(() => {
-    if (!browser) return;
     timeout = setTimeout(() => {
       subscribe.removeById(current.id);
     }, 5000);

@@ -1,5 +1,4 @@
 <script lang="ts" context="module">
-  import { browser } from '$app/env';
   import UrlParser from '$lib/chat/urlParser';
   import badges from '$lib/stores/chat/badges';
   import config from '$lib/stores/chat/config';
@@ -49,8 +48,6 @@
   };
 
   onMount(async () => {
-    if (!browser) return;
-
     loadConfigFromHref();
 
     badges.set(tbadges);

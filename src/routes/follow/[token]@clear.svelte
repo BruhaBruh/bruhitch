@@ -1,5 +1,4 @@
 <script lang="ts" context="module">
-  import { browser } from '$app/env';
   import { page } from '$app/stores';
   import config from '$lib/stores/follow/config';
   import follow, { showedFollow } from '$lib/stores/follow/follow';
@@ -154,12 +153,12 @@
   };
 
   onMount(() => {
-    if (!browser || !!ws) return;
+    if (!!ws) return;
     connect();
   });
 
   onDestroy(() => {
-    if (!browser || !ws) return;
+    if (!ws) return;
     clearInterval(interval);
     if (!(ws.CLOSED || ws.CLOSING)) {
       ws.close();

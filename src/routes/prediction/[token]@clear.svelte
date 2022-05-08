@@ -1,5 +1,4 @@
 <script lang="ts" context="module">
-  import { browser } from '$app/env';
   import { page } from '$app/stores';
   import config from '$lib/stores/prediction/config';
   import prediction, { endedPredictions, showPrediction } from '$lib/stores/prediction/prediction';
@@ -192,12 +191,12 @@
   };
 
   onMount(() => {
-    if (!browser || !!ws) return;
+    if (!!ws) return;
     connect();
   });
 
   onDestroy(() => {
-    if (!browser || !ws) return;
+    if (!ws) return;
     clearInterval(interval);
     if (!(ws.CLOSED || ws.CLOSING)) {
       ws.close();
