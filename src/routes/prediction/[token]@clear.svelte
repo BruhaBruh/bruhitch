@@ -3,12 +3,13 @@
   import { page } from '$app/stores';
   import config from '$lib/stores/prediction/config';
   import prediction, { endedPredictions, showPrediction } from '$lib/stores/prediction/prediction';
+  import type { EventSubPredictionData, EventSubPredictionEndData } from '$types/eventsub';
   import {
     BaseResponseMessageType,
     CallbackResponseMessageType,
     RequestMessageType,
     WSResponseMessageType,
-    type TwitchEventPredictionData,
+    WsStatusCodes,
     type WSRequest,
     type WSResponse
   } from '$types/ws';
@@ -79,7 +80,7 @@
   const retryConnect = () => {
     retryTimeout = setTimeout(() => {
       if (!(ws.CLOSED || ws.CLOSING)) {
-        ws.close(3000);
+        ws.close(WsStatusCodes.NormalClose);
       }
       connect();
     }, 2000 * retry);
@@ -108,9 +109,12 @@
     });
 
     ws.addEventListener('message', (e) => {
-      const data: WSResponse<TwitchEventPredictionData | TwitchEventPredictionData> = JSON.parse(
+      const data: WSResponse<EventSubPredictionData | EventSubPredictionEndData> = JSON.parse(
         e.data
       );
+      if (data.type === BaseResponseMessageType.Reconnect) {
+        return retryConnect();
+      }
       if (data.type === BaseResponseMessageType.Error) {
         if (data.message === 'Too Many Requests') {
           retrySubscribe();
@@ -170,15 +174,20 @@
 
     ws.addEventListener('close', (e) => {
       clearInterval(interval);
-      console.log(e.code, e.reason);
-      if (e.code === 1006) return retryConnect();
+      if (e.code === WsStatusCodes.AbnormalClosure || e.code === WsStatusCodes.InternalError)
+        return retryConnect();
       try {
         const data: WSResponse<undefined> = JSON.parse(e.reason);
         if (data.type === BaseResponseMessageType.Reconnect) {
-          ws.close(3000);
-          connect();
+          retryConnect();
         }
-      } catch (e) {}
+        if (e.code === WsStatusCodes.Forbidden) {
+          console.log(data.message);
+        }
+        console.log(e.code, data);
+      } catch (err) {
+        console.log(e.code, e.reason);
+      }
     });
   };
 
@@ -190,7 +199,6 @@
   onDestroy(() => {
     if (!browser || !ws) return;
     clearInterval(interval);
-    ws.close();
     if (!(ws.CLOSED || ws.CLOSING)) {
       ws.close();
     }

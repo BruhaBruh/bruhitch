@@ -4,13 +4,13 @@
   import config from '$lib/stores/follow/config';
   import follow from '$lib/stores/follow/follow';
   import { Animation } from '$types/animation';
-  import type { TwitchEventFollowData } from '$types/ws';
+  import type { EventSubFollowData } from '$types/eventsub';
   import { onDestroy, onMount } from 'svelte';
   import { fade, scale, slide } from 'svelte/transition';
   import UserName from './UserName.svelte';
 
   export let id: number;
-  export let current: TwitchEventFollowData;
+  export let current: EventSubFollowData;
   let timeout: NodeJS.Timeout;
 
   onMount(() => {

@@ -1,9 +1,9 @@
-import type { TwitchEventFollowData } from '$types/ws';
+import type { EventSubFollowData } from '$types/eventsub';
 import { writable } from 'svelte/store';
 
 export type FollowItem = {
   id: number;
-  data: TwitchEventFollowData;
+  data: EventSubFollowData;
 };
 
 export type Follow = FollowItem[];
@@ -13,7 +13,7 @@ const createFollow = (initialState: Follow) => {
 
   return {
     subscribe,
-    add: (data: TwitchEventFollowData) =>
+    add: (data: EventSubFollowData) =>
       update((v) => [...v, { id: new Date(data.followed_at).getTime(), data }]),
     removeById: (id: number) => update((v) => v.filter((i) => i.id !== id)),
     reset: () => set(initialState)

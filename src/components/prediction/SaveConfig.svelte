@@ -14,11 +14,11 @@
   let prevSettings: Settings = undefined;
 
   onMount(async () => {
-    const data = await fetch('/api/v1/user/twitch')
+    const data = await fetch('/api/v1/user/token')
       .then((r) => r.json())
       .catch(console.error);
 
-    token = data.id;
+    token = data.token.id;
 
     const settings = await fetch('/api/v1/prediction/settings?token=' + token)
       .then((r) => r.json())

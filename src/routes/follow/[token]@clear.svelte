@@ -3,12 +3,13 @@
   import { page } from '$app/stores';
   import config from '$lib/stores/follow/config';
   import follow, { showedFollow } from '$lib/stores/follow/follow';
+  import type { EventSubFollowData } from '$types/eventsub';
   import {
     BaseResponseMessageType,
     CallbackResponseMessageType,
     RequestMessageType,
     WSResponseMessageType,
-    type TwitchEventFollowData,
+    WsStatusCodes,
     type WSRequest,
     type WSResponse
   } from '$types/ws';
@@ -79,7 +80,7 @@
   const retryConnect = () => {
     retryTimeout = setTimeout(() => {
       if (!(ws.CLOSED || ws.CLOSING)) {
-        ws.close(3000);
+        ws.close(WsStatusCodes.NormalClose);
       }
       connect();
     }, 2000 * retry);
@@ -108,7 +109,10 @@
     });
 
     ws.addEventListener('message', (e) => {
-      const data: WSResponse<TwitchEventFollowData> = JSON.parse(e.data);
+      const data: WSResponse<EventSubFollowData> = JSON.parse(e.data);
+      if (data.type === BaseResponseMessageType.Reconnect) {
+        return retryConnect();
+      }
       if (data.type === BaseResponseMessageType.Error) {
         if (data.message === 'Too Many Requests') {
           retrySubscribe();
@@ -132,14 +136,20 @@
 
     ws.addEventListener('close', (e) => {
       clearInterval(interval);
-      console.log(e.code, e.reason);
-      if (e.code === 1006) return retryConnect();
+      if (e.code === WsStatusCodes.AbnormalClosure || e.code === WsStatusCodes.InternalError)
+        return retryConnect();
       try {
         const data: WSResponse<undefined> = JSON.parse(e.reason);
         if (data.type === BaseResponseMessageType.Reconnect) {
           retryConnect();
         }
-      } catch (e) {}
+        if (e.code === WsStatusCodes.Forbidden) {
+          console.log(data.message);
+        }
+        console.log(e.code, data);
+      } catch (err) {
+        console.log(e.code, e.reason);
+      }
     });
   };
 

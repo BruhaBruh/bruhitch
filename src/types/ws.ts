@@ -1,54 +1,3 @@
-export type TwitchEventFollowData = {
-  user_id: string;
-  user_login: string;
-  user_name: string;
-  broadcaster_user_id: string;
-  broadcaster_user_login: string;
-  broadcaster_user_name: string;
-  followed_at: string;
-};
-
-export type Predictor = {
-  user_id: string;
-  user_login: string;
-  user_name: string;
-  channel_points_won: number | null;
-  channel_points_used: number;
-};
-
-export type PredictionOutcome = {
-  id: string;
-  title: string;
-  color: 'blue' | 'pink';
-  users?: number;
-  channel_points?: number;
-  top_predictors?: Predictor[];
-};
-
-export type TwitchEventPredictionData = {
-  id: string;
-  broadcaster_user_id: string;
-  broadcaster_user_login: string;
-  broadcaster_user_name: string;
-  title: string;
-  outcomes: PredictionOutcome[];
-  started_at: string;
-  locks_at: string;
-};
-
-export type TwitchEventPredictionEndData = {
-  id: string;
-  broadcaster_user_id: string;
-  broadcaster_user_login: string;
-  broadcaster_user_name: string;
-  title: string;
-  winning_outcome_id: string;
-  outcomes: PredictionOutcome[];
-  status: 'resolved' | 'canceled';
-  started_at: string;
-  ended_at: string;
-};
-
 export enum RequestMessageType {
   SubscribeFollow = 'subscribe/follow',
   SubscribePrediction = 'subscribe/prediction',
@@ -74,7 +23,11 @@ export enum CallbackResponseMessageType {
   SubscribeFollow = 'subscribe/follow',
   SubscribePredictionBegin = 'subscribe/prediction/begin',
   SubscribePredictionProgress = 'subscribe/prediction/progress',
-  SubscribePredictionEnd = 'subscribe/prediction/end'
+  SubscribePredictionEnd = 'subscribe/prediction/end',
+  VerificationFollow = 'verification/follow',
+  VerificationPredictionBegin = 'verification/prediction/begin',
+  VerificationPredictionProgress = 'verification/prediction/progress',
+  VerificationPredictionEnd = 'verification/prediction/end'
 }
 
 export type ResponseMessageType =
@@ -87,3 +40,24 @@ export type WSResponse<T> = {
   message?: string; // On Error and Status ResponseMessageTypes
   data?: T;
 };
+
+export enum WsStatusCodes {
+  NormalClose = 1000,
+  GoingAway = 1001,
+  ProtocolError = 1002,
+  UnsupportedData = 1003,
+  Reserved = 1004,
+  NoStatusReceived = 1005,
+  AbnormalClosure = 1006,
+  InvalidFramePayloadData = 1007,
+  PolicyViolation = 1008,
+  MessageTooBig = 1009,
+  MandatoryExt = 1010,
+  InternalError = 1011,
+  ServiceRestart = 1012,
+  TryAgainLater = 1013,
+  BadGateway = 1014,
+  TLSHandshake = 1015,
+  Forbidden = 3000,
+  IncorrectType = 3002
+}

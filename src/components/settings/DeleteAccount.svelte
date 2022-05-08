@@ -14,7 +14,7 @@
   const handleDeleteAccount = async () => {
     deleteAccountIsLoading = true;
 
-    const status = await fetch('/api/v1/user/remove', { method: 'POST' }).then((r) => r.status);
+    const status = await fetch('/api/v1/user/remove', { method: 'DELETE' }).then((r) => r.status);
     deleteAccountIsLoading = false;
     if (status !== 200) {
       ui.toast.add(
