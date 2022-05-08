@@ -1,6 +1,5 @@
 <script lang="ts">
   import { isColor } from '$lib/color';
-  import config from '$lib/stores/prediction/config';
   import ColorPicker from '@components/ui/ColorPicker.svelte';
   import HuePicker from '@components/ui/HuePicker.svelte';
   import Input from '@components/ui/Input.svelte';
@@ -8,9 +7,11 @@
   import LL from '@i18n/i18n-svelte';
   import * as chroma from 'chroma-js';
 
-  let hue = chroma.hex($config.blueColor).hsv()[0];
-  let saturation = chroma.hex($config.blueColor).hsv()[1];
-  let value = chroma.hex($config.blueColor).hsv()[2];
+  export let color: string;
+
+  let hue = chroma.hex(color).hsv()[0];
+  let saturation = chroma.hex(color).hsv()[1];
+  let value = chroma.hex(color).hsv()[2];
 
   const handleInput = (e: Event) => {
     const raw = (e.currentTarget as HTMLInputElement).value;
@@ -22,16 +23,16 @@
   };
 </script>
 
-<TextField title={$LL.predictionWidget.controls.blueColor()} class="mb-4">
-  <div class="w-2/3 xl:w-1/2">
+<TextField title={$LL.chat.controls.defaultColor()} class="w-full">
+  <div class="w-full">
     <ColorPicker
-      bind:hex={$config.blueColor}
+      bind:hex={color}
       bind:hue
       bind:saturation
       bind:value
       class="aspect-video w-full mb-2 rounded-default"
     />
     <HuePicker bind:hue variant="horizontal" class="w-full h-5 rounded-default mb-2" />
-    <Input value={$config.blueColor} on:input={handleInput} />
+    <Input value={color} on:input={handleInput} />
   </div>
 </TextField>

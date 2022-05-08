@@ -69,6 +69,8 @@
     bind:this={input}
     bind:value
     use:setType
+    on:change
+    on:input
   />
   {#if icon}
     <Icon
