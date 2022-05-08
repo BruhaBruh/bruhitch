@@ -3,13 +3,13 @@
   import Button from '@components/ui/Button.svelte';
   import type { CheckboxValue } from '@components/ui/Checkbox';
   import Checkbox from '@components/ui/Checkbox.svelte';
-  import ColorPicker from '@components/ui/ColorPicker.svelte';
   import Input from '@components/ui/Input.svelte';
   import TextField from '@components/ui/TextField.svelte';
   import Typography from '@components/ui/Typography.svelte';
   import LL from '@i18n/i18n-svelte';
   import * as chroma from 'chroma-js';
   import CustomColorNicknameItem from './CustomColorNicknameItem.svelte';
+  import CustomColorNicknamePicker from './CustomColorNicknamePicker.svelte';
 
   let nickname = '';
   let start = '#000000';
@@ -59,10 +59,6 @@
         {$LL.chat.controls.isGradient()}
       </Typography>
     </label>
-    <ColorPicker bind:value={start} />
-    {#if isGradient.length !== 0}
-      <ColorPicker bind:value={end} />
-    {/if}
     <Typography variant="b1">
       <span
         style={`background: linear-gradient(to right, ${gradient.join(
@@ -72,6 +68,12 @@
         {nickname}
       </span>
     </Typography>
+  </div>
+  <div class="grid grid-cols-2 gap-2 mb-2">
+    <CustomColorNicknamePicker bind:color={start} />
+    {#if isGradient.length !== 0}
+      <CustomColorNicknamePicker bind:color={end} />
+    {/if}
   </div>
   <ul class="space-y-1">
     {#each Object.keys($config.nicknameColors) as nickname (nickname)}
