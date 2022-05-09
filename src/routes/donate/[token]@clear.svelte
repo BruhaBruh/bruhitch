@@ -57,14 +57,19 @@
   let centrifuge: Centrifuge;
 
   onMount(async () => {
-    console.log('loaded');
-    centrifuge = new Centrifuge('wss://centrifugo.donationalerts.com/connection/websocket', {
+    const url = 'wss://centrifugo.donationalerts.com/connection/websocket';
+    const options: Centrifuge.Options = {
       debug: true,
       subscribeEndpoint: '/api/v1/donationalerts/subscribe',
       subscribeHeaders: {
         Authorization: `Bearer ${accessToken}`
       }
-    });
+    };
+    if (Centrifuge['default']) {
+      centrifuge = new (Centrifuge as any).default(url, options);
+    } else {
+      centrifuge = new Centrifuge(url, options);
+    }
     centrifuge.setToken(user.socket_connection_token);
 
     centrifuge.on('connect', async function (context) {
