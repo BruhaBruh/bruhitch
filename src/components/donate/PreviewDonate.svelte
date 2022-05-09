@@ -6,8 +6,6 @@
   import { onDestroy, onMount } from 'svelte';
   import DonateWidget from './widget/DonateWidget.svelte';
 
-  export let withWrapper = true;
-
   let timeout: NodeJS.Timeout;
 
   const templateOfDonateWithSound: DonationAlert = {

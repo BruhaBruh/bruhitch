@@ -7,12 +7,12 @@
 </script>
 
 <TextField title={$LL.donationAlerts.controls.isGradientCurrency()} class="mb-4">
-  <label for="gradient-username" class="cursor-pointer flex items-center space-x-1 select-none">
+  <label for="gradient-currency" class="cursor-pointer flex items-center space-x-1 select-none">
     <Checkbox
       on:change={(e) => config.setIsGradientCurrency(e.detail)}
       group={$config.isGradientCurrency ? ['true'] : []}
       value={'true'}
-      id="gradient-username"
+      id="gradient-currency"
     />
     <Typography variant="b1">
       {$LL.donationAlerts.controls.isGradientCurrency()}
