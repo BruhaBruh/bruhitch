@@ -1,4 +1,5 @@
 <script lang="ts" context="module">
+  import config from '$lib/stores/donate/config';
   import donate from '$lib/stores/donate/donate';
   import type { DonationAlert, User } from '$types/donate';
   import DonateWidget from '@components/donate/widget/DonateWidget.svelte';
@@ -23,13 +24,13 @@
       };
     }
 
-    // const settings = await fetch('/api/v1/prediction/settings?token=' + token)
-    //   .then(async (r) => ({ status: r.status, data: await r.json() }))
-    //   .catch(console.error);
+    const settings = await fetch('/api/v1/donationalerts/settings?token=' + token)
+      .then(async (r) => ({ status: r.status, data: await r.json() }))
+      .catch(console.error);
 
-    // if (settings && settings.status === 200) {
-    //   config.loadSettings(settings.data);
-    // }
+    if (settings && settings.status === 200) {
+      config.loadSettings(settings.data);
+    }
 
     const data: { accessToken: string | null } = await fetch(
       '/api/v1/donationalerts/token?token=' + token
@@ -65,15 +66,19 @@
         Authorization: `Bearer ${accessToken}`
       }
     };
+    //#region  WARNING! DO NOT EDIT
     if (Centrifuge['default']) {
       centrifuge = new (Centrifuge as any).default(url, options);
     } else {
       centrifuge = new Centrifuge(url, options);
     }
+    //#endregion
+
     centrifuge.setToken(user.socket_connection_token);
 
     centrifuge.on('connect', async function (context) {
       centrifuge.subscribe('$alerts:donation_' + user.id, (e: { data: DonationAlert }) => {
+        console.log(e.data);
         donate.add(e.data);
       });
     });

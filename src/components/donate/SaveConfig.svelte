@@ -1,0 +1,62 @@
+<script lang="ts">
+  import { deepEqual } from '$lib/deepEqual';
+  import config from '$lib/stores/donate/config';
+  import { me } from '$lib/stores/me';
+  import { ui } from '$lib/stores/ui';
+  import type { Settings } from '$types/donate/settings';
+  import Button from '@components/ui/Button.svelte';
+  import TextField from '@components/ui/TextField.svelte';
+  import LL from '@i18n/i18n-svelte';
+  import { onMount } from 'svelte';
+
+  export let token: string;
+
+  let prevSettings: Settings = undefined;
+
+  onMount(async () => {
+    const data = await fetch('/api/v1/user/token')
+      .then((r) => r.json())
+      .catch(console.error);
+
+    token = data.token.id;
+
+    const settings = await fetch('/api/v1/donationalerts/settings?token=' + token)
+      .then((r) => r.json())
+      .catch(console.error);
+
+    if (!settings) return;
+    config.loadSettings(settings);
+
+    prevSettings = settings;
+  });
+
+  $: settingsIsSame = deepEqual(prevSettings, $config);
+
+  const handleSave = async () => {
+    if ($me) {
+      config.setFontSize($config.fontSize);
+      config.setHideDelay($config.hideDelay);
+      config.setVolume($config.volume);
+      config.setAnimationParams($config.animationParams);
+
+      prevSettings = await fetch('/api/v1/donationalerts/settings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify($config)
+      })
+        .then((r) => r.json())
+        .catch(console.error);
+      ui.toast.add('circle-check', $LL.saved(), undefined, 'success');
+    } else {
+      ui.toast.add('circle-cancel', $LL.authorization(), undefined, 'danger');
+    }
+  };
+</script>
+
+<TextField title={$LL.save()} class="mb-4">
+  <Button disabled={settingsIsSame} on:click={handleSave} color="success">
+    {$LL.save()}
+  </Button>
+</TextField>

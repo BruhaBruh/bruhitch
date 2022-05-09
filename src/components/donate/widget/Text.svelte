@@ -4,11 +4,13 @@
   export let text: string;
 </script>
 
-<p
-  class="whitespace-normal"
-  style={`color: ${$config.textColor}; margin-top: ${$config.fontSize / 2}; font-size: ${
-    $config.fontSize * 1.5
-  }px`}
->
-  {text}
-</p>
+{#if text}
+  <p
+    class="whitespace-normal"
+    style={`color: ${$config.textColor}; margin-top: ${$config.fontSize / 2}; font-size: ${
+      $config.fontSize * 1.5
+    }px`}
+  >
+    {text}
+  </p>
+{/if}

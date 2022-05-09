@@ -40,6 +40,16 @@ export type TwitchToken = {
 };
 
 /**
+ * Model DonationAlerts
+ *
+ */
+export type DonationAlerts = {
+  id: string;
+  refreshToken: string;
+  userId: string;
+};
+
+/**
  * Model ChatSettings
  *
  */
@@ -109,6 +119,32 @@ export type PredictionSettings = {
   fontSize: number;
   font: string;
   hideDelay: number;
+  animation: string;
+  animationEasing: string;
+  animationParams: string;
+  vertical: string;
+  userId: string;
+};
+
+/**
+ * Model DonateSettings
+ *
+ */
+export type DonateSettings = {
+  id: string;
+  usernameColor: string;
+  isGradientUsername: boolean;
+  currencyColor: string;
+  isGradientCurrency: boolean;
+  soundColor: string;
+  textColor: string;
+  anonymous: string;
+  image: string;
+  hideDelay: number;
+  volume: number;
+  font: string;
+  fontSize: number;
+  disablePadding: boolean;
   animation: string;
   animationEasing: string;
   animationParams: string;

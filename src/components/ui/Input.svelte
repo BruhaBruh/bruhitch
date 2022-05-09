@@ -71,6 +71,9 @@
     use:setType
     on:change
     on:input
+    min={$$restProps.min}
+    max={$$restProps.max}
+    step={$$restProps.step}
   />
   {#if icon}
     <Icon

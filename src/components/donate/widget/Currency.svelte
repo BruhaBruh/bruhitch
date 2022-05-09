@@ -38,7 +38,10 @@
     $config.fontSize / 2
   }px; height: ${$config.fontSize * 3}px`}
 >
-  <p style={`margin-right: ${$config.fontSize / 4}px; line-height: ${$config.fontSize * 1.5}px;`}>
+  <p
+    class="whitespace-nowrap"
+    style={`margin-right: ${$config.fontSize / 4}px; line-height: ${$config.fontSize * 1.5}px;`}
+  >
     {amountText}
   </p>
   <CurrencySymbol {currency} />

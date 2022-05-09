@@ -43,8 +43,9 @@
       isWorking: true
     },
     {
-      path: 'wip',
-      LL: 'donationAlerts'
+      path: 'donationalerts',
+      LL: 'donationAlerts',
+      isWorking: true
     },
     {
       path: 'wip',

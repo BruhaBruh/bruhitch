@@ -58,7 +58,36 @@ const en: BaseTranslation = {
     }
   },
   donationAlerts: {
-    name: 'Donation alerts'
+    name: 'Donation alerts',
+    title: 'Donation alert settings',
+    controls: {
+      usernameColor: 'Username color',
+      isGradientUsername: 'Is gradient on username?',
+      currencyColor: 'Currency symbol color',
+      isGradientCurrency: 'Is gradient on currency symbol?',
+      soundColor: 'Sound icon color',
+      textColor: 'Text color',
+      anonymous: 'Anonymous',
+      image: 'Image',
+      hideDelay: 'Delay before remove',
+      hideDelayDescription: 'The sound alert will be removed, but the sound will remain on',
+      volume: 'Volume of sound',
+      font: 'Font',
+      fontSize: 'Font size',
+      disablePadding: 'Disable padding',
+      animation: 'Animation',
+      animationParams: {
+        name: 'Animation parameters',
+        startScale: 'start scale',
+        duration: 'duration in ms',
+        opacity: 'opacity'
+      },
+      verticalAlign: 'Vertical alignment',
+      top: 'Top',
+      bottom: 'Bottom',
+      center: 'Center',
+      widgetLink: 'Donate alert widget link'
+    }
   },
   followAlerts: {
     name: 'Follow alerts',

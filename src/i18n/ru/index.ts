@@ -58,7 +58,36 @@ const ru: Translation = {
     }
   },
   donationAlerts: {
-    name: 'Оповещения донатов'
+    name: 'Оповещения донатов',
+    title: 'Настройка оповещений доната',
+    controls: {
+      usernameColor: 'Цвет ника',
+      isGradientUsername: 'Градиент на нике?',
+      currencyColor: 'Цвет символа валюты',
+      isGradientCurrency: 'Градиент на символе валюты?',
+      soundColor: 'Цвет иконки звука',
+      textColor: 'Цвет текста',
+      anonymous: 'Аноним',
+      image: 'Изображение',
+      hideDelay: 'Задержка скрытия',
+      hideDelayDescription: 'Звуковое оповещение будет удалено, но звук продолжит работать',
+      volume: 'Громкость звука',
+      font: 'Шрифт',
+      fontSize: 'Размер шрифта',
+      disablePadding: 'Выключить отступы',
+      animation: 'Анимация',
+      animationParams: {
+        name: 'Параметры анимации',
+        startScale: 'начальный размер',
+        duration: 'продолжительность в мс',
+        opacity: 'непрозрачность'
+      },
+      verticalAlign: 'Вертикальное выравнивание',
+      top: 'Верх',
+      bottom: 'Низ',
+      center: 'Центр',
+      widgetLink: 'Ссылка на виджет донатов'
+    }
   },
   followAlerts: {
     name: 'Оповещения отслеживаний',

@@ -13,7 +13,7 @@
 </script>
 
 <span
-  class="w-full"
+  class="w-full truncate"
   style={`background: linear-gradient(to right, ${gradient.join(
     ', '
   )}); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent`}

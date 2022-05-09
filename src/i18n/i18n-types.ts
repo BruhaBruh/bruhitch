@@ -214,6 +214,110 @@ type RootTranslation = {
 		 * Donation alerts
 		 */
 		name: string
+		/**
+		 * Donation alert settings
+		 */
+		title: string
+		controls: {
+			/**
+			 * Username color
+			 */
+			usernameColor: string
+			/**
+			 * Is gradient on username?
+			 */
+			isGradientUsername: string
+			/**
+			 * Currency symbol color
+			 */
+			currencyColor: string
+			/**
+			 * Is gradient on currency symbol?
+			 */
+			isGradientCurrency: string
+			/**
+			 * Sound icon color
+			 */
+			soundColor: string
+			/**
+			 * Text color
+			 */
+			textColor: string
+			/**
+			 * Anonymous
+			 */
+			anonymous: string
+			/**
+			 * Image
+			 */
+			image: string
+			/**
+			 * Delay before remove
+			 */
+			hideDelay: string
+			/**
+			 * The sound alert will be removed, but the sound will remain on
+			 */
+			hideDelayDescription: string
+			/**
+			 * Volume of sound
+			 */
+			volume: string
+			/**
+			 * Font
+			 */
+			font: string
+			/**
+			 * Font size
+			 */
+			fontSize: string
+			/**
+			 * Disable padding
+			 */
+			disablePadding: string
+			/**
+			 * Animation
+			 */
+			animation: string
+			animationParams: {
+				/**
+				 * Animation parameters
+				 */
+				name: string
+				/**
+				 * start scale
+				 */
+				startScale: string
+				/**
+				 * duration in ms
+				 */
+				duration: string
+				/**
+				 * opacity
+				 */
+				opacity: string
+			}
+			/**
+			 * Vertical alignment
+			 */
+			verticalAlign: string
+			/**
+			 * Top
+			 */
+			top: string
+			/**
+			 * Bottom
+			 */
+			bottom: string
+			/**
+			 * Center
+			 */
+			center: string
+			/**
+			 * Donate alert widget link
+			 */
+			widgetLink: string
+		}
 	}
 	followAlerts: {
 		/**
@@ -787,6 +891,110 @@ export type TranslationFunctions = {
 		 * Donation alerts
 		 */
 		name: () => LocalizedString
+		/**
+		 * Donation alert settings
+		 */
+		title: () => LocalizedString
+		controls: {
+			/**
+			 * Username color
+			 */
+			usernameColor: () => LocalizedString
+			/**
+			 * Is gradient on username?
+			 */
+			isGradientUsername: () => LocalizedString
+			/**
+			 * Currency symbol color
+			 */
+			currencyColor: () => LocalizedString
+			/**
+			 * Is gradient on currency symbol?
+			 */
+			isGradientCurrency: () => LocalizedString
+			/**
+			 * Sound icon color
+			 */
+			soundColor: () => LocalizedString
+			/**
+			 * Text color
+			 */
+			textColor: () => LocalizedString
+			/**
+			 * Anonymous
+			 */
+			anonymous: () => LocalizedString
+			/**
+			 * Image
+			 */
+			image: () => LocalizedString
+			/**
+			 * Delay before remove
+			 */
+			hideDelay: () => LocalizedString
+			/**
+			 * The sound alert will be removed, but the sound will remain on
+			 */
+			hideDelayDescription: () => LocalizedString
+			/**
+			 * Volume of sound
+			 */
+			volume: () => LocalizedString
+			/**
+			 * Font
+			 */
+			font: () => LocalizedString
+			/**
+			 * Font size
+			 */
+			fontSize: () => LocalizedString
+			/**
+			 * Disable padding
+			 */
+			disablePadding: () => LocalizedString
+			/**
+			 * Animation
+			 */
+			animation: () => LocalizedString
+			animationParams: {
+				/**
+				 * Animation parameters
+				 */
+				name: () => LocalizedString
+				/**
+				 * start scale
+				 */
+				startScale: () => LocalizedString
+				/**
+				 * duration in ms
+				 */
+				duration: () => LocalizedString
+				/**
+				 * opacity
+				 */
+				opacity: () => LocalizedString
+			}
+			/**
+			 * Vertical alignment
+			 */
+			verticalAlign: () => LocalizedString
+			/**
+			 * Top
+			 */
+			top: () => LocalizedString
+			/**
+			 * Bottom
+			 */
+			bottom: () => LocalizedString
+			/**
+			 * Center
+			 */
+			center: () => LocalizedString
+			/**
+			 * Donate alert widget link
+			 */
+			widgetLink: () => LocalizedString
+		}
 	}
 	followAlerts: {
 		/**
