@@ -5,6 +5,11 @@
   import LL from '@i18n/i18n-svelte';
 </script>
 
-<TextField title={$LL.donationAlerts.controls.hideDelay()} class="mb-4">
+<TextField
+  title={$LL.donationAlerts.controls.hideDelay()}
+  class="mb-4"
+  status="validation"
+  statusText={$LL.donationAlerts.controls.hideDelayDescription()}
+>
   <Input bind:value={$config.hideDelay} type="number" />
 </TextField>
