@@ -14,4 +14,5 @@ export type IconName =
   | 'calendar'
   | 'fire'
   | 'gift'
-  | 'star';
+  | 'star'
+  | 'sound';

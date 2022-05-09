@@ -1,3 +1,4 @@
+import 'centrifuge';
 import 'tmi.js';
 
 declare global {

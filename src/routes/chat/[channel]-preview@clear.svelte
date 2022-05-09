@@ -24,7 +24,7 @@
       };
     }
 
-    const { badges, broadcasterId }: { badges: TwitchBadge[]; broadcasterId: string } = await fetch(
+    const { badges }: { badges: TwitchBadge[]; broadcasterId: string } = await fetch(
       '/api/v1/chat/badges?channel=' + channel
     ).then((r) => r.json());
 
@@ -32,15 +32,13 @@
 
     return {
       props: {
-        tbadges: badges,
-        broadcasterId
+        tbadges: badges
       }
     };
   };
 </script>
 
 <script lang="ts">
-  export let broadcasterId: string;
   export let tbadges: TwitchBadge[];
 
   const loadConfigFromHref = () => {

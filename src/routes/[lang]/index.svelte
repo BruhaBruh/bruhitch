@@ -7,33 +7,44 @@
   const publicCards: CardItem[] = [
     {
       path: 'settings',
-      LL: 'settings'
+      LL: 'settings',
+      isWorking: true
     },
     {
       path: 'chat',
-      LL: 'chat'
+      LL: 'chat',
+      isWorking: true
     }
   ];
   const privateCards: CardItem[] = [
     {
       path: 'settings',
-      LL: 'settings'
+      LL: 'settings',
+      isWorking: true
     },
     {
       path: 'chat',
-      LL: 'chat'
+      LL: 'chat',
+      isWorking: true
     },
     {
       path: 'followalerts',
-      LL: 'followAlerts'
+      LL: 'followAlerts',
+      isWorking: true
     },
     {
       path: 'subscribealerts',
-      LL: 'subscribeAlerts'
+      LL: 'subscribeAlerts',
+      isWorking: true
     },
     {
       path: 'prediction',
-      LL: 'predictionWidget'
+      LL: 'predictionWidget',
+      isWorking: true
+    },
+    {
+      path: 'wip',
+      LL: 'donationAlerts'
     },
     {
       path: 'wip',
@@ -42,10 +53,6 @@
     {
       path: 'wip',
       LL: 'raidAlerts'
-    },
-    {
-      path: 'wip',
-      LL: 'donationAlerts'
     }
   ];
 </script>
@@ -63,7 +70,12 @@
   {#each cards as card}
     <Card
       tag="a"
-      class="col-span-12 md:col-span-6 lg:col-span-4 2xl:col-span-3 aspect-video"
+      class={[
+        'col-span-12 md:col-span-6 lg:col-span-4 2xl:col-span-3 aspect-video',
+        card.isWorking ? 'border-primary-lighter dark:border-primary-darker' : ''
+      ]
+        .filter(Boolean)
+        .join(' ')}
       href={`/${$locale}/${card.path}`}
     >
       {$LL[card.LL].name()}
