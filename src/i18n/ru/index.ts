@@ -7,6 +7,7 @@ const ru: Translation = {
   },
   authorization: 'Требуется авторизация',
   continueWithTwitch: 'Продолжить с Twitch',
+  logout: 'Выйти',
   dontShowLinkAnyone: 'Никому не показывайте ссылку',
   preview: 'Ссылка на виджет предварительного просмотра',
   actionCanNotBeUndone: 'Это действие нельзя будет отменить, вы уверены?',

@@ -7,6 +7,7 @@ const en: BaseTranslation = {
   },
   authorization: 'Authorization is required',
   continueWithTwitch: 'Continue with Twitch',
+  logout: 'Logout',
   dontShowLinkAnyone: 'Dont show link anyone',
   preview: 'Preview widget link',
   actionCanNotBeUndone: 'This action cannot be undone, are you sure?',

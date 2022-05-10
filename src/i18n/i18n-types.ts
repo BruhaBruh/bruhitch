@@ -34,6 +34,10 @@ type RootTranslation = {
 	 */
 	continueWithTwitch: string
 	/**
+	 * Logout
+	 */
+	logout: string
+	/**
 	 * Dont show link anyone
 	 */
 	dontShowLinkAnyone: string
@@ -710,6 +714,10 @@ export type TranslationFunctions = {
 	 * Continue with Twitch
 	 */
 	continueWithTwitch: () => LocalizedString
+	/**
+	 * Logout
+	 */
+	logout: () => LocalizedString
 	/**
 	 * Dont show link anyone
 	 */

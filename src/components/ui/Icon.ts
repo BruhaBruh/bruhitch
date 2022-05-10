@@ -15,4 +15,5 @@ export type IconName =
   | 'fire'
   | 'gift'
   | 'star'
-  | 'sound';
+  | 'sound'
+  | 'menu';

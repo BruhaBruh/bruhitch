@@ -1,10 +1,8 @@
 <script lang="ts">
-  import { me } from '$lib/stores/me';
   import { ui } from '$lib/stores/ui';
   import Typography from '@components/ui/Typography.svelte';
-  import LL, { locale } from '@i18n/i18n-svelte';
-  import Avatar from './ui/Avatar.svelte';
-  import Button from './ui/Button.svelte';
+  import { locale } from '@i18n/i18n-svelte';
+  import IconButton from './ui/IconButton.svelte';
 
   let isDarkTheme = $ui.isDarkTheme;
 
@@ -19,12 +17,13 @@
       <Typography variant="h3">Bruhitch</Typography>
     </a>
   </nav>
-  {#if $me}
+  <IconButton icon="menu" color="secondary" on:click={() => ui.drawer.set(true)} />
+  <!-- {#if $me}
     <a href="/api/v1/auth/logout" class="flex space-x-2 items-center">
       <Typography variant="button">{$me.username}</Typography>
       <Avatar size="large" variant="circle" src={$me.avatar} alt={$me.username} />
     </a>
   {:else}
     <Button color="primary" link href="/api/v1/auth/login">{$LL.continueWithTwitch()}</Button>
-  {/if}
+  {/if} -->
 </header>
