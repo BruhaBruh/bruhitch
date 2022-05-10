@@ -11,6 +11,26 @@ const en: BaseTranslation = {
   dontShowLinkAnyone: 'Dont show link anyone',
   preview: 'Preview widget link',
   actionCanNotBeUndone: 'This action cannot be undone, are you sure?',
+  index: {
+    aboutProject: 'About project',
+    idea: {
+      title: 'Idea',
+      description: 'I wanted to create my own widgets in the same style and with flexible settings'
+    },
+    structure: {
+      title: 'Project structure',
+      client: 'Client',
+      server: 'Server'
+    },
+    links: {
+      title: 'Links',
+      clientGitHub: 'Client GitHub',
+      serverGitHub: 'Server GitHub',
+      creatorsTelegram: "Creator's telegram",
+      creatorsTwitch: "Creator's twitch",
+      creatorsDonationAlerts: "Creator's DonationAlerts"
+    }
+  },
   settings: {
     name: 'Settings',
     darkTheme: 'Dark theme',

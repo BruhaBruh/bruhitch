@@ -1,13 +1,13 @@
 <script lang="ts">
   import Typography from '@components/ui/Typography.svelte';
+  import LL from '@i18n/i18n-svelte';
   import TechnologyCard from './TechnologyCard.svelte';
   import TechnologyGrid from './TechnologyGrid.svelte';
-  /**
-   *
-   */
 </script>
 
-<Typography variant="h3" class="mb-2">Сервер</Typography>
+<Typography variant="h3" class="mb-2">
+  {$LL.index.structure.server()}
+</Typography>
 <TechnologyGrid class="mb-8">
   <TechnologyCard
     tag="a"

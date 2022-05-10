@@ -49,6 +49,62 @@ type RootTranslation = {
 	 * This action cannot be undone, are you sure?
 	 */
 	actionCanNotBeUndone: string
+	index: {
+		/**
+		 * About project
+		 */
+		aboutProject: string
+		idea: {
+			/**
+			 * Idea
+			 */
+			title: string
+			/**
+			 * I wanted to create my own widgets in the same style and with flexible settings
+			 */
+			description: string
+		}
+		structure: {
+			/**
+			 * Project structure
+			 */
+			title: string
+			/**
+			 * Client
+			 */
+			client: string
+			/**
+			 * Server
+			 */
+			server: string
+		}
+		links: {
+			/**
+			 * Links
+			 */
+			title: string
+			/**
+			 * Client GitHub
+			 */
+			clientGitHub: string
+			/**
+			 * Server GitHub
+			 */
+			serverGitHub: string
+			/**
+			 * Creator's telegram
+			 */
+			creatorsTelegram: string
+			/**
+			 * Creator's twitch
+			 */
+			creatorsTwitch: string
+			/**
+			 * Creator's DonationAlerts
+			 */
+			creatorsDonationAlerts: string
+		}
+	}
 	settings: {
 		/**
 		 * Settings
@@ -726,6 +782,62 @@ export type TranslationFunctions = {
 	 * This action cannot be undone, are you sure?
 	 */
 	actionCanNotBeUndone: () => LocalizedString
+	index: {
+		/**
+		 * About project
+		 */
+		aboutProject: () => LocalizedString
+		idea: {
+			/**
+			 * Idea
+			 */
+			title: () => LocalizedString
+			/**
+			 * I wanted to create my own widgets in the same style and with flexible settings
+			 */
+			description: () => LocalizedString
+		}
+		structure: {
+			/**
+			 * Project structure
+			 */
+			title: () => LocalizedString
+			/**
+			 * Client
+			 */
+			client: () => LocalizedString
+			/**
+			 * Server
+			 */
+			server: () => LocalizedString
+		}
+		links: {
+			/**
+			 * Links
+			 */
+			title: () => LocalizedString
+			/**
+			 * Client GitHub
+			 */
+			clientGitHub: () => LocalizedString
+			/**
+			 * Server GitHub
+			 */
+			serverGitHub: () => LocalizedString
+			/**
+			 * Creator's telegram
+			 */
+			creatorsTelegram: () => LocalizedString
+			/**
+			 * Creator's twitch
+			 */
+			creatorsTwitch: () => LocalizedString
+			/**
+			 * Creator's DonationAlerts
+			 */
+			creatorsDonationAlerts: () => LocalizedString
+		}
+	}
 	settings: {
 		/**
 		 * Settings

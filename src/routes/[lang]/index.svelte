@@ -13,7 +13,7 @@
 </svelte:head>
 
 <div>
-  <Typography variant="h1" class="mb-8">О проекте</Typography>
+  <Typography variant="h1" class="mb-8">{$LL.index.aboutProject()}</Typography>
   <Idea />
   <Structure />
 </div>

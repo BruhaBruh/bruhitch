@@ -11,6 +11,26 @@ const ru: Translation = {
   dontShowLinkAnyone: 'Никому не показывайте ссылку',
   preview: 'Ссылка на виджет предварительного просмотра',
   actionCanNotBeUndone: 'Это действие нельзя будет отменить, вы уверены?',
+  index: {
+    aboutProject: 'О проекте',
+    idea: {
+      title: 'Идея',
+      description: 'Я хотел создать собственные виджеты в одной стилистике и гибкими настройками'
+    },
+    structure: {
+      title: 'Структура проекта',
+      client: 'Клиент',
+      server: 'Сервер'
+    },
+    links: {
+      title: 'Ссылки',
+      clientGitHub: 'GitHub клиента',
+      serverGitHub: 'GitHub сервера',
+      creatorsTelegram: 'Telegram создателя',
+      creatorsTwitch: 'Twitch создателя',
+      creatorsDonationAlerts: 'DonationAlerts создателя'
+    }
+  },
   settings: {
     name: 'Настройки',
     darkTheme: 'Темная тема',
