@@ -7,6 +7,7 @@ export type ModalType = any | null;
 
 export type UIStore = {
   isDarkTheme: boolean;
+  IsOpenedDrawer: boolean;
   toastList: ToastItem[];
 };
 
@@ -64,12 +65,20 @@ const createUI = (initialState: UIStore) => {
     reset: () => set(initialState)
   };
 
+  const drawer = {
+    toggle: () => update((v) => ({ ...v, IsOpenedDrawer: !v.IsOpenedDrawer })),
+    set: (IsOpenedDrawer: boolean) => {
+      update((v) => ({ ...v, IsOpenedDrawer }));
+    }
+  };
+
   return {
     subscribe,
     toast,
     theme,
+    drawer,
     reset: () => set(initialState)
   };
 };
 
-export const ui = createUI({ isDarkTheme: false, toastList: [] });
+export const ui = createUI({ isDarkTheme: false, IsOpenedDrawer: false, toastList: [] });
