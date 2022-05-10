@@ -40,7 +40,7 @@
 <div
   class={[
     $$restProps.class,
-    'rounded-default p-2 shadow-xs flex items-center space-x-2 border border-gray-base bg-gray-lightest dark:bg-gray-darkest max-w-xs w-full'
+    'rounded-default p-2 shadow-xs flex items-center space-x-2 border border-gray-base bg-gray-lightest dark:bg-gray-darkest'
   ]
     .filter(Boolean)
     .join(' ')}

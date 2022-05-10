@@ -6,7 +6,7 @@
 
 {#if $ui.toastList.length}
   <div
-    class="fixed bottom-0 left-1/2 -translate-x-1/2 p-2 sm:p-4 flex flex-col-reverse items-center z-30 max-w-sm w-full"
+    class="fixed bottom-0 right-0 p-2 sm:p-4 flex flex-col-reverse items-stretch z-30 max-w-sm w-full"
     transition:slide={{ duration: 150 }}
   >
     {#each $ui.toastList.sort((a, b) => b.id - a.id) as item (item.id)}

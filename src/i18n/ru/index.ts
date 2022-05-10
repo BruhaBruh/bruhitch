@@ -13,9 +13,7 @@ const ru: Translation = {
   actionCanNotBeUndone: 'Это действие нельзя будет отменить, вы уверены?',
   settings: {
     name: 'Настройки',
-    theme: 'Тема',
-    darkTheme: 'Темная',
-    lightTheme: 'Светлая',
+    darkTheme: 'Темная тема',
     language: 'Язык',
     deleteAccount: 'Удалить аккаунт',
     accountDeleted: 'Аккаунт удален',
@@ -59,7 +57,7 @@ const ru: Translation = {
     }
   },
   donationAlerts: {
-    name: 'Оповещения донатов',
+    name: 'Донаты',
     title: 'Настройка оповещений доната',
     controls: {
       usernameColor: 'Цвет ника',
@@ -91,7 +89,7 @@ const ru: Translation = {
     }
   },
   followAlerts: {
-    name: 'Оповещения отслеживаний',
+    name: 'Отслеживания',
     title: 'Настройка оповещений отслеживания',
     controls: {
       font: 'Шрифт',
@@ -122,7 +120,7 @@ const ru: Translation = {
     }
   },
   subscribeAlerts: {
-    name: 'Оповещение подписок',
+    name: 'Подписки',
     title: 'Настройка оповещений подписок',
     controls: {
       subPattern: 'Шаблон сабки/ресабки',
@@ -157,7 +155,7 @@ const ru: Translation = {
     }
   },
   predictionWidget: {
-    name: 'Виджет прогноза',
+    name: 'Прогнозы',
     title: 'Настройки виджета прогноза',
     controls: {
       textColor: 'Цвет текста',
@@ -199,6 +197,7 @@ const ru: Translation = {
   remove: 'Удалить',
   delete: 'Удалить',
   cancel: 'Отмена',
+  close: 'Закрыть',
   wip: 'В разработке',
   errorOccurred: 'Произошла ошибка'
 };

@@ -55,17 +55,9 @@ type RootTranslation = {
 		 */
 		name: string
 		/**
-		 * Theme
-		 */
-		theme: string
-		/**
-		 * Dark
+		 * Dark theme
 		 */
 		darkTheme: string
-		/**
-		 * Light
-		 */
-		lightTheme: string
 		/**
 		 * Language
 		 */
@@ -215,7 +207,7 @@ type RootTranslation = {
 	}
 	donationAlerts: {
 		/**
-		 * Donation alerts
+		 * Donations
 		 */
 		name: string
 		/**
@@ -325,7 +317,7 @@ type RootTranslation = {
 	}
 	followAlerts: {
 		/**
-		 * Follow alerts
+		 * Follows
 		 */
 		name: string
 		/**
@@ -431,7 +423,7 @@ type RootTranslation = {
 	}
 	subscribeAlerts: {
 		/**
-		 * Subscribe alerts
+		 * Subscribes
 		 */
 		name: string
 		/**
@@ -545,7 +537,7 @@ type RootTranslation = {
 	}
 	predictionWidget: {
 		/**
-		 * Predication widget
+		 * Predications
 		 */
 		name: string
 		/**
@@ -686,6 +678,10 @@ type RootTranslation = {
 	 */
 	cancel: string
 	/**
+	 * Close
+	 */
+	close: string
+	/**
 	 * Work In Progress
 	 */
 	wip: string
@@ -736,17 +732,9 @@ export type TranslationFunctions = {
 		 */
 		name: () => LocalizedString
 		/**
-		 * Theme
-		 */
-		theme: () => LocalizedString
-		/**
-		 * Dark
+		 * Dark theme
 		 */
 		darkTheme: () => LocalizedString
-		/**
-		 * Light
-		 */
-		lightTheme: () => LocalizedString
 		/**
 		 * Language
 		 */
@@ -896,7 +884,7 @@ export type TranslationFunctions = {
 	}
 	donationAlerts: {
 		/**
-		 * Donation alerts
+		 * Donations
 		 */
 		name: () => LocalizedString
 		/**
@@ -1006,7 +994,7 @@ export type TranslationFunctions = {
 	}
 	followAlerts: {
 		/**
-		 * Follow alerts
+		 * Follows
 		 */
 		name: () => LocalizedString
 		/**
@@ -1112,7 +1100,7 @@ export type TranslationFunctions = {
 	}
 	subscribeAlerts: {
 		/**
-		 * Subscribe alerts
+		 * Subscribes
 		 */
 		name: () => LocalizedString
 		/**
@@ -1226,7 +1214,7 @@ export type TranslationFunctions = {
 	}
 	predictionWidget: {
 		/**
-		 * Predication widget
+		 * Predications
 		 */
 		name: () => LocalizedString
 		/**
@@ -1366,6 +1354,10 @@ export type TranslationFunctions = {
 	 * Cancel
 	 */
 	cancel: () => LocalizedString
+	/**
+	 * Close
+	 */
+	close: () => LocalizedString
 	/**
 	 * Work In Progress
 	 */

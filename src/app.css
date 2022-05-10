@@ -14,6 +14,7 @@ html {
 *::before {
   box-sizing: inherit;
   outline: inherit;
+  transition: background-color 0.15s;
 }
 
 .visually-hidden {
@@ -52,4 +53,9 @@ input {
 
 ::-webkit-scrollbar-thumb {
   @apply bg-gray-base rounded-default;
+}
+
+body {
+  overflow: hidden;
+  max-height: 100vh;
 }
