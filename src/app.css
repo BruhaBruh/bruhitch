@@ -51,6 +51,15 @@ input {
   width: 1px;
 }
 
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 ::-webkit-scrollbar {
   @apply w-2 bg-transparent;
 }
