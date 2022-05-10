@@ -26,7 +26,7 @@
 <header
   class="col-span-full bg-gray-lightest dark:bg-gray-darkest h-20 px-2 sm:px-4 flex items-center justify-between xl:justify-start"
 >
-  <a href={`/${$locale}`} class="h-10 flex items-center rounded-default">
+  <a href={`/${$locale}`} class="h-10 flex items-center rounded-default px-4">
     <Typography
       variant="h3"
       class="hover:text-gray-darker dark:hover:text-gray-lighter transition ease-in"
