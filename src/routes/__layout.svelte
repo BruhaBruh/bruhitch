@@ -5,8 +5,9 @@
   import { me } from '$lib/stores/me';
   import { ui } from '$lib/stores/ui';
   import App from '@components/App.svelte';
-  import Drawer from '@components/Drawer.svelte';
   import Header from '@components/Header.svelte';
+  import Main from '@components/Main.svelte';
+  import SideBar from '@components/SideBar.svelte';
   import ToastList from '@components/ToastList.svelte';
   import { setLocale } from '@i18n/i18n-svelte';
   import type { Locales } from '@i18n/i18n-types';
@@ -84,11 +85,11 @@
   });
 </script>
 
-<App>
-  <Header />
+<App class="grid grid-cols-12" style="grid-template-rows: max-content 1fr">
   <ToastList />
-  <Drawer />
-  <main class="px-2 sm:px-4 py-12">
+  <Header />
+  <SideBar />
+  <Main>
     <slot />
-  </main>
+  </Main>
 </App>

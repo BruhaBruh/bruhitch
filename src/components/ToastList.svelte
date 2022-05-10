@@ -2,11 +2,13 @@
   import { ui } from '$lib/stores/ui';
   import { slide } from 'svelte/transition';
   import Toast from './ui/Toast.svelte';
+
+  $: showToastList = $ui.toastList.length;
 </script>
 
-{#if $ui.toastList.length}
+{#if showToastList}
   <div
-    class="fixed bottom-0 left-1/2 -translate-x-1/2 p-2 sm:p-4 flex flex-col-reverse items-center z-30 max-w-sm w-full"
+    class="fixed bottom-0 right-0 p-2 sm:p-4 flex flex-col-reverse items-stretch z-30 max-w-sm w-full"
     transition:slide={{ duration: 150 }}
   >
     {#each $ui.toastList.sort((a, b) => b.id - a.id) as item (item.id)}

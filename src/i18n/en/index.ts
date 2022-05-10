@@ -13,9 +13,7 @@ const en: BaseTranslation = {
   actionCanNotBeUndone: 'This action cannot be undone, are you sure?',
   settings: {
     name: 'Settings',
-    theme: 'Theme',
-    darkTheme: 'Dark',
-    lightTheme: 'Light',
+    darkTheme: 'Dark theme',
     language: 'Language',
     deleteAccount: 'Delete account',
     accountDeleted: 'Account deleted',
@@ -59,7 +57,7 @@ const en: BaseTranslation = {
     }
   },
   donationAlerts: {
-    name: 'Donation alerts',
+    name: 'Donations',
     title: 'Donation alert settings',
     controls: {
       usernameColor: 'Username color',
@@ -91,7 +89,7 @@ const en: BaseTranslation = {
     }
   },
   followAlerts: {
-    name: 'Follow alerts',
+    name: 'Follows',
     title: 'Follow alert settings',
     controls: {
       font: 'Font',
@@ -122,7 +120,7 @@ const en: BaseTranslation = {
     }
   },
   subscribeAlerts: {
-    name: 'Subscribe alerts',
+    name: 'Subscribes',
     title: 'Subscribe alert settings',
     controls: {
       subPattern: 'Subscribe/Resubscribe pattern',
@@ -156,7 +154,7 @@ const en: BaseTranslation = {
     }
   },
   predictionWidget: {
-    name: 'Predication widget',
+    name: 'Predications',
     title: 'Predication widget settings',
     controls: {
       textColor: 'Text color',
@@ -198,6 +196,7 @@ const en: BaseTranslation = {
   remove: 'Remove',
   delete: 'Delete',
   cancel: 'Cancel',
+  close: 'Close',
   wip: 'Work In Progress',
   errorOccurred: 'An error has occurred'
 };

@@ -1,29 +1,41 @@
 <script lang="ts">
   import { ui } from '$lib/stores/ui';
-  import Typography from '@components/ui/Typography.svelte';
   import { locale } from '@i18n/i18n-svelte';
+  import { onDestroy, onMount } from 'svelte';
   import IconButton from './ui/IconButton.svelte';
+  import Typography from './ui/Typography.svelte';
 
-  let isDarkTheme = $ui.isDarkTheme;
+  let mql: MediaQueryList;
+  let matches = true;
 
-  $: ui.theme.set(isDarkTheme);
+  const mediaListener = (e: MediaQueryListEvent) => {
+    matches = e.matches;
+  };
+
+  onMount(() => {
+    mql = window.matchMedia('(min-width: 1280px)');
+    matches = mql.matches;
+    mql.addEventListener('change', mediaListener);
+  });
+
+  onDestroy(() => {
+    if (mql) mql.removeEventListener('change', mediaListener);
+  });
 </script>
 
 <header
-  class="w-full h-16 border-b border-gray-base shadow-xs px-2 sm:px-4 flex items-center justify-between sticky top-0 z-30 bg-gray-lightest dark:bg-gray-darkest"
+  class="col-span-full bg-gray-lightest dark:bg-gray-darkest h-20 px-2 sm:px-4 flex items-center justify-between xl:justify-start"
 >
-  <nav>
-    <a href={`/${$locale}`}>
-      <Typography variant="h3">Bruhitch</Typography>
-    </a>
-  </nav>
-  <IconButton icon="menu" color="secondary" on:click={() => ui.drawer.set(true)} />
-  <!-- {#if $me}
-    <a href="/api/v1/auth/logout" class="flex space-x-2 items-center">
-      <Typography variant="button">{$me.username}</Typography>
-      <Avatar size="large" variant="circle" src={$me.avatar} alt={$me.username} />
-    </a>
-  {:else}
-    <Button color="primary" link href="/api/v1/auth/login">{$LL.continueWithTwitch()}</Button>
-  {/if} -->
+  <a href={`/${$locale}`} class="h-10 flex items-center rounded-default px-4">
+    <Typography
+      variant="h3"
+      class="hover:text-gray-darker dark:hover:text-gray-lighter transition ease-in"
+    >
+      Bruhitch
+    </Typography>
+  </a>
+
+  {#if !matches}
+    <IconButton icon="menu" color="secondary" on:click={() => ui.sidebar.set(true)} />
+  {/if}
 </header>

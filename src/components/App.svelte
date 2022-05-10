@@ -4,8 +4,14 @@
 
 <div class:dark={$ui.isDarkTheme}>
   <div
+    {...$$restProps}
     id="app-container"
-    class="font-sans h-screen overflow-y-auto bg-gray-lightest text-gray-darkest dark:bg-gray-darkest dark:text-gray-lightest relative transition ease-in"
+    class={[
+      'font-sans h-screen w-full bg-gray-lightest text-gray-darkest dark:bg-gray-darkest dark:text-gray-lightest relative transition ease-in overflow-hidden',
+      $$restProps.class
+    ]
+      .filter(Boolean)
+      .join(' ')}
   >
     <slot />
   </div>
