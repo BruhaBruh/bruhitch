@@ -21,6 +21,7 @@
   let isLoadedLink = false;
 
   const loadFromLink = (link: string) => {
+    if (!link) return
     const settings = new UrlParser(link).getSettings();
     config.loadSettings(settings);
   };
