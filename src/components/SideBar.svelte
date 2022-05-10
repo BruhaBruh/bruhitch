@@ -38,7 +38,7 @@
 {#if matches ? true : $ui.isOpenedSidebar}
   <aside
     id="side-bar"
-    class="col-span-3 3xl:col-span-2 w-full min-h-full max-h-full absolute xl:relative xl:bg-gray-lightest dark:bg-gray-darkest bg-opacity-90 sm:bg-opacity-100 overflow-y-auto py-6 px-2 sm:px-4 flex flex-col items-stretch justify-end xl:justify-start text-gray-lightest xl:text-inherit"
+    class="col-span-3 3xl:col-span-2 w-full min-h-full max-h-full absolute xl:relative bg-gray-darkest xl:bg-gray-lightest dark:bg-gray-darkest bg-opacity-75 xl:bg-opacity-100 overflow-y-auto py-6 px-2 sm:px-4 flex flex-col items-stretch justify-end xl:justify-start text-gray-lightest xl:text-inherit"
     in:fly={{ duration: matches ? 0 : 150, x: 0, y: -500 }}
   >
     {#if !matches}
@@ -59,7 +59,7 @@
         <Typography variant="button">{$LL[route.LL].name()}</Typography>
       </a>
     {/each}
-    <SideBarDivider class="my-4" />
+    <SideBarDivider class="mt-2 mb-4" />
     <div
       class="flex items-center justify-between h-10 mb-2 hover:bg-gray-darker xl:hover:bg-gray-lighter dark:hover:bg-gray-darker rounded-default px-4 transition ease-in select-none cursor-pointer"
       on:click={ui.theme.toggle}
@@ -77,7 +77,7 @@
         <Typography variant="button">{$LL[settingsRoute.LL].name()}</Typography>
       </a>
     {/if}
-    <SideBarDivider class="my-4" />
+    <SideBarDivider class="mt-2 mb-4" />
     {#if $me}
       <div in:fade={{ duration: 150, delay: 250 }} out:fade={{ duration: 150 }}>
         <Button color="danger" link href="/api/v1/auth/logout">

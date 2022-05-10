@@ -10,7 +10,7 @@
     };
   } = {
     h1: { element: 'h1', class: 'font-semibold text-2xl' },
-    h2: { element: 'h2', class: 'font-semibold text-2xl' },
+    h2: { element: 'h2', class: 'font-semibold text-xl' },
     h3: { element: 'h3', class: 'font-semibold text-lg' },
     b1: { element: 'p', class: 'text-base' },
     b2: { element: 'p', class: 'text-sm' },
