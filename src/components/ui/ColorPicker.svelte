@@ -9,7 +9,7 @@
   export let hex: string = '#FF0000'; // OUTPUT
 
   let picker: HTMLDivElement;
-  let app: HTMLDivElement;
+  let scrollableElement: HTMLElement;
   let isMouseDown = false;
 
   $: hex = chroma.hsv(hue, saturation, value).hex();
@@ -19,12 +19,14 @@
     hue = color[0];
     saturation = color[1];
     value = color[2];
-    app = document.querySelector('#app-container');
+    scrollableElement = document.querySelector('#main-component');
   });
 
   const updateByEvent = (e: MouseEvent) => {
-    const x = e.clientX + app.scrollLeft - picker.offsetLeft;
-    const y = e.clientY + app.scrollTop - picker.offsetTop;
+    if (!scrollableElement) return;
+    const x =
+      e.clientX + scrollableElement.scrollLeft - (e.currentTarget as HTMLElement).offsetLeft;
+    const y = e.clientY + scrollableElement.scrollTop - (e.currentTarget as HTMLElement).offsetTop;
 
     const s = x / picker.clientWidth;
     const v = y / picker.clientHeight;
@@ -66,8 +68,6 @@
       ]
         .filter(Boolean)
         .join(' ')}
-      on:mousemove|stopPropagation
-      on:click|stopPropagation
       style={`background: ${hex}; top: ${Math.abs(1 - value) * 100}%; left: ${saturation * 100}%`}
       transition:fade={{ duration: 150 }}
     />

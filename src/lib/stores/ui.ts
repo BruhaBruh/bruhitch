@@ -82,4 +82,8 @@ const createUI = (initialState: UIStore) => {
   };
 };
 
-export const ui = createUI({ isDarkTheme: false, isOpenedSidebar: false, toastList: [] });
+export const ui = createUI({
+  isDarkTheme: false,
+  isOpenedSidebar: false,
+  toastList: []
+});

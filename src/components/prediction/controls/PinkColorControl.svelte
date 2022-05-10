@@ -23,7 +23,6 @@
 
   config.subscribe((v) => {
     const color = chroma.hex(v.pinkColor).hsv();
-    hue = color[0];
     saturation = color[1];
     value = color[2];
   });
