@@ -33,12 +33,14 @@
   onDestroy(() => {
     if (mql) mql.removeEventListener('change', mediaListener);
   });
+
+  $: showSidebar = matches || $ui.isOpenedSidebar;
 </script>
 
-{#if matches ? true : $ui.isOpenedSidebar}
+{#if showSidebar}
   <aside
     id="side-bar"
-    class="col-span-3 3xl:col-span-2 w-full min-h-full max-h-full absolute xl:relative bg-gray-darkest xl:bg-gray-lightest dark:bg-gray-darkest bg-opacity-75 xl:bg-opacity-100 overflow-y-auto py-6 px-2 sm:px-4 flex flex-col items-stretch justify-end xl:justify-start text-gray-lightest xl:text-inherit"
+    class="col-span-3 3xl:col-span-2 w-full min-h-full max-h-full absolute xl:relative bg-gray-darkest xl:bg-gray-lightest dark:bg-gray-darkest bg-opacity-75 xl:bg-opacity-100 overflow-y-auto py-6 px-2 sm:px-4 flex flex-col items-stretch justify-end xl:justify-start text-gray-lightest xl:text-inherit z-10"
     in:fly={{ duration: matches ? 0 : 150, x: 0, y: -500 }}
   >
     {#if !matches}
@@ -53,6 +55,7 @@
     {#each routes as route (route.path)}
       <a
         href={`/${$locale}/${route.path}`}
+        sveltekit:prefetch
         class="flex items-center h-10 mb-2 hover:bg-gray-darker xl:hover:bg-gray-lighter dark:hover:bg-gray-darker rounded-default px-4 transition ease-in"
         transition:slide={{ duration: 150 }}
       >

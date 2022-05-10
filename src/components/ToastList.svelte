@@ -2,9 +2,11 @@
   import { ui } from '$lib/stores/ui';
   import { slide } from 'svelte/transition';
   import Toast from './ui/Toast.svelte';
+
+  $: showToastList = $ui.toastList.length;
 </script>
 
-{#if $ui.toastList.length}
+{#if showToastList}
   <div
     class="fixed bottom-0 right-0 p-2 sm:p-4 flex flex-col-reverse items-stretch z-30 max-w-sm w-full"
     transition:slide={{ duration: 150 }}

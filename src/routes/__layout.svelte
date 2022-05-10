@@ -86,9 +86,9 @@
 </script>
 
 <App class="grid grid-cols-12" style="grid-template-rows: max-content 1fr">
+  <ToastList />
   <Header />
   <SideBar />
-  <ToastList />
   <Main>
     <slot />
   </Main>

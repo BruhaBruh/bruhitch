@@ -18,7 +18,11 @@ html {
 }
 
 *:not(input):focus {
-  @apply ring-2 ring-offset-2 ring-primary-base;
+  @apply ring-2 ring-offset-2 ring-primary-base ring-offset-gray-lightest;
+}
+
+.dark *:not(input):focus {
+  @apply ring-offset-gray-darkest;
 }
 
 .visually-hidden {
