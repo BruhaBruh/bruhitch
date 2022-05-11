@@ -1,6 +1,5 @@
+import type { VerticalAlignment } from '$types/alignment';
 import type { Animation, AnimationEasing, AnimationParams } from '$types/animation';
-
-export type VerticalAlign = 'top' | 'center' | 'bottom';
 
 export type Settings = {
   usernameColor: string;
@@ -19,5 +18,5 @@ export type Settings = {
   animation: Animation;
   animationEasing: AnimationEasing;
   animationParams: AnimationParams;
-  vertical: VerticalAlign;
+  vertical: VerticalAlignment;
 };

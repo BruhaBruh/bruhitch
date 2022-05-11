@@ -14,17 +14,15 @@
 </svelte:head>
 
 {#if $me}
-  <div class="container mx-auto grid grid-cols-12 gap-8">
-    <Typography variant="h1" class="col-span-12">
+  <div class="grid grid-cols-2 sm:grid-cols-12 gap-8">
+    <Typography variant="h1" class="col-span-full">
       {$LL.subscribeAlerts.title()}
     </Typography>
+    <PreviewSubscribe class="col-span-full md:col-span-4 sm:order-1 sm:sticky top-0" />
     <Controls class="col-span-12 md:col-span-8" />
-    <PreviewSubscribe class="col-span-12 md:col-span-4" />
   </div>
 {:else}
-  <div class="container mx-auto">
-    <Typography variant="h1" class="col-span-12">
-      {$LL.authorization()}
-    </Typography>
-  </div>
+  <Typography variant="h1">
+    {$LL.authorization()}
+  </Typography>
 {/if}

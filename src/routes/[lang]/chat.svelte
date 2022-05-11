@@ -13,10 +13,13 @@
   <title>{$LL.pageNames.another($LL.chat.name())}</title>
 </svelte:head>
 
-<div class="container mx-auto grid grid-cols-12 gap-8">
-  <Typography variant="h1" class="col-span-12">
+<div class="grid grid-cols-2 sm:grid-cols-12 gap-8">
+  <Typography variant="h1" class="col-span-full">
     {$LL.chat.title()}
   </Typography>
-  <Controls class="col-span-12 md:col-span-6" />
-  <PreviewChat channel={$config.channel} class="col-span-12 md:col-span-6" />
+  <PreviewChat
+    channel={$config.channel}
+    class="col-span-full md:col-span-4 sm:order-1 sm:sticky top-0"
+  />
+  <Controls class="col-span-full md:col-span-8" />
 </div>

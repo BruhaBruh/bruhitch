@@ -46,7 +46,8 @@
   });
 
   const sendNewDonate = () => {
-    const templates = [templateOfDonateWithSound, templateOfDonateWithText];
+    //templateOfDonateWithSound
+    const templates = [templateOfDonateWithText];
     const currencies = [
       Currency.BelarusianRuble,
       Currency.BrazilianReal,
@@ -84,7 +85,7 @@
 <div
   {...$$restProps}
   class={[
-    'preview border border-gray-base h-full sticky top-20 flex items-center justify-center overflow-hidden bg-gray-lightest',
+    'preview border border-gray-base h-full flex items-center justify-center overflow-hidden bg-gray-lightest',
     $$restProps.class
   ]
     .filter(Boolean)

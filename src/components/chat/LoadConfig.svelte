@@ -19,8 +19,8 @@
   };
 </script>
 
-<TextField title={$LL.chat.controls.loadConfigFromLink()}>
-  <div class="flex space-x-2">
+<TextField {...$$restProps} title={$LL.chat.controls.loadConfigFromLink()}>
+  <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
     <Input bind:value={loadUrl} class="flex-1" />
     <Button color="secondary" on:click={handleClickLoad}>{$LL.load()}</Button>
   </div>

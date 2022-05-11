@@ -29,6 +29,7 @@
 
 <TextField title={$LL.settings.language()} class="mb-4">
   <Select
+    class="w-full max-w-sm"
     bind:selected={selectedLocale}
     values={locales.map((v) => ({
       value: v,

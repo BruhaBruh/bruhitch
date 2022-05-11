@@ -23,8 +23,8 @@
   };
 </script>
 
-<TextField title={$LL.preview()} class="mb-4">
-  <div class="flex space-x-2">
+<TextField {...$$restProps} title={$LL.preview()}>
+  <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
     <Input readonly value={previewUrl} class="flex-1" />
     <Button color="secondary" on:click={handleClickCopy}>
       {$LL.copy()}

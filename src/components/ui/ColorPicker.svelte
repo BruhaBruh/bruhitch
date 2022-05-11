@@ -63,7 +63,7 @@
   {#if hex}
     <span
       class={[
-        'absolute -translate-x-1/2 -translate-y-1/2 border rounded-full w-4 h-4 z-20',
+        'absolute -translate-x-1/2 -translate-y-1/2 border rounded-full w-4 h-4',
         chroma.contrast(hex, 'white') < 6 ? 'border-gray-darkest' : 'border-gray-lightest'
       ]
         .filter(Boolean)

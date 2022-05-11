@@ -1,14 +1,16 @@
 <script lang="ts">
-  import AnimationControl from './controls/AnimationControl.svelte';
-  import BlueColorControl from './controls/BlueColorControl.svelte';
-  import ChannelPointImageControl from './controls/ChannelPointImageControl.svelte';
-  import DisablePaddingControl from './controls/DisablePaddingControl.svelte';
-  import FontControl from './controls/FontControl.svelte';
-  import FontSizeControl from './controls/FontSizeControl.svelte';
+  import config from '$lib/stores/prediction/config';
+  import { Animation } from '$types/animation';
+  import AnimationControl from '@components/controls/AnimationControl.svelte';
+  import ColorControl from '@components/controls/ColorControl.svelte';
+  import DisablePaddingControl from '@components/controls/DisablePaddingControl.svelte';
+  import FontControl from '@components/controls/FontControl.svelte';
+  import FontSizeControl from '@components/controls/FontSizeControl.svelte';
+  import VerticalControl from '@components/controls/VerticalControl.svelte';
+  import Input from '@components/ui/Input.svelte';
+  import TextField from '@components/ui/TextField.svelte';
+  import LL from '@i18n/i18n-svelte';
   import HideDelayControl from './controls/HideDelayControl.svelte';
-  import PinkColorControl from './controls/PinkColorControl.svelte';
-  import TextColorControl from './controls/TextColorControl.svelte';
-  import VerticalControl from './controls/VerticalControl.svelte';
   import PreviewLink from './PreviewLink.svelte';
   import SaveConfig from './SaveConfig.svelte';
   import WidgetLink from './WidgetLink.svelte';
@@ -17,18 +19,44 @@
 </script>
 
 <div {...$$restProps}>
-  <TextColorControl />
-  <BlueColorControl />
-  <PinkColorControl />
-  <ChannelPointImageControl />
-  <DisablePaddingControl />
-  <FontControl />
-  <FontSizeControl />
-  <HideDelayControl />
-  <AnimationControl />
-  <VerticalControl />
+  <ColorControl
+    title={$LL.predictionWidget.controls.textColor()}
+    bind:color={$config.textColor}
+    class="mb-4"
+  />
+  <ColorControl
+    title={$LL.predictionWidget.controls.blueColor()}
+    bind:color={$config.blueColor}
+    class="mb-4"
+  />
+  <ColorControl
+    title={$LL.predictionWidget.controls.pinkColor()}
+    bind:color={$config.pinkColor}
+    class="mb-4"
+  />
+  <TextField title={$LL.predictionWidget.controls.channelPointImage()} class="mb-4">
+    <Input bind:value={$config.channelPointImage} />
+  </TextField>
+  <HideDelayControl class="mb-8" bind:hideDelay={$config.hideDelay} />
 
-  <SaveConfig bind:token />
-  <WidgetLink {token} />
+  <FontControl bind:font={$config.font} class="mb-4" />
+  <FontSizeControl bind:fontSize={$config.fontSize} class="mb-4" />
+  <DisablePaddingControl bind:disablePadding={$config.disablePadding} class="mb-4" />
+  <AnimationControl
+    class="mb-4"
+    bind:animation={$config.animation}
+    bind:easing={$config.animationEasing}
+    showEasing={$config.animation !== Animation.Nothing}
+    bind:animationParams={$config.animationParams}
+    showAnimationParams={{
+      duration: $config.animation !== Animation.Nothing,
+      start: $config.animation === Animation.Scale,
+      opacity: $config.animation === Animation.Scale
+    }}
+  />
+  <VerticalControl bind:vertical={$config.vertical} class="mb-8" />
+
+  <SaveConfig class="mb-4" bind:token />
+  <WidgetLink class="mb-4" {token} />
   <PreviewLink {token} />
 </div>

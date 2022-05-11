@@ -11,6 +11,27 @@ const en: BaseTranslation = {
   dontShowLinkAnyone: 'Dont show link anyone',
   preview: 'Preview widget link',
   actionCanNotBeUndone: 'This action cannot be undone, are you sure?',
+  controls: {
+    font: 'Font',
+    fontSize: 'Font size',
+    disablePadding: 'Disable padding',
+    animation: 'Animation',
+    animationParams: {
+      name: 'Animation parameters',
+      duration: 'duration in ms',
+      startScale: 'start scale',
+      opacity: 'opacity'
+    },
+    alignment: {
+      vertical: 'Vertical alignment',
+      horizontal: 'Horizontal alignment',
+      top: 'Top',
+      bottom: 'Bottom',
+      center: 'Center',
+      right: 'Right',
+      left: 'Left'
+    }
+  },
   index: {
     aboutProject: 'About project',
     idea: {
@@ -62,16 +83,6 @@ const en: BaseTranslation = {
       gradientOnlyToCustomNicknames: 'Gradient only to custom nicknames',
       customColorNicknames: 'Custom color nicknames',
       isGradient: 'Is gradient?',
-      font: 'Font',
-      fontSize: 'Font size',
-      disablePadding: 'Disable padding',
-      animation: 'Animation',
-      animationParams: {
-        name: 'Animation parameters',
-        duration: 'duration in ms',
-        startScale: 'start scale',
-        opacity: 'opacity'
-      },
       chatLink: 'Chat widget link',
       loadConfigFromLink: 'Load config from link'
     }
@@ -91,20 +102,6 @@ const en: BaseTranslation = {
       hideDelay: 'Delay before remove',
       hideDelayDescription: 'The sound alert will be removed, but the sound will remain on',
       volume: 'Volume of sound',
-      font: 'Font',
-      fontSize: 'Font size',
-      disablePadding: 'Disable padding',
-      animation: 'Animation',
-      animationParams: {
-        name: 'Animation parameters',
-        startScale: 'start scale',
-        duration: 'duration in ms',
-        opacity: 'opacity'
-      },
-      verticalAlign: 'Vertical alignment',
-      top: 'Top',
-      bottom: 'Bottom',
-      center: 'Center',
       widgetLink: 'Donate alert widget link'
     }
   },
@@ -112,15 +109,6 @@ const en: BaseTranslation = {
     name: 'Follows',
     title: 'Follow alert settings',
     controls: {
-      font: 'Font',
-      fontSize: 'Font size',
-      disablePadding: 'Disable padding',
-      animation: 'Animation',
-      animationParams: {
-        name: 'Animation parameters',
-        startScale: 'start scale',
-        opacity: 'opacity'
-      },
       pattern: 'Pattern',
       patternDescription: '$username$ - show username. ![text](link) - image',
       textColor: 'Text color',
@@ -129,13 +117,6 @@ const en: BaseTranslation = {
       backgroundImageDescription: 'Link to image',
       colorNickname: 'Nickname color',
       isGradientNickname: 'Is gradient nickname?',
-      verticalAlign: 'Vertical alignment',
-      horizontalAlign: 'Horizontal alignment',
-      top: 'Top',
-      bottom: 'Bottom',
-      center: 'Center',
-      right: 'Right',
-      left: 'Left',
       widgetLink: 'Follow alert widget link'
     }
   },
@@ -152,24 +133,11 @@ const en: BaseTranslation = {
         '$username$ - who gift sub. $recipient$ - new sub. $duration$ - months. ![](link) - image',
       anonymous: 'Anonymous',
       anonymousDescription: 'This replaces $username$ when anonymous gifts a subscription',
-      disablePadding: 'Disable padding',
-      font: 'Font',
-      fontSize: 'Font size',
       image: 'Image',
       usernameColor: 'Username color',
       recipientColor: 'Recipient color',
       isGradientUsername: 'Is gradient username?',
       isGradientRecipient: 'Is gradient recipient?',
-      animation: 'Animation',
-      animationParams: {
-        name: 'Animation parameters',
-        startScale: 'start scale',
-        opacity: 'opacity'
-      },
-      verticalAlign: 'Vertical alignment',
-      top: 'Top',
-      bottom: 'Bottom',
-      center: 'Center',
       widgetLink: 'Subscribe alert widget link'
     }
   },
@@ -181,21 +149,7 @@ const en: BaseTranslation = {
       blueColor: 'Blue color',
       pinkColor: 'Pink color',
       channelPointImage: 'Channel points image',
-      disablePadding: 'Disable padding',
-      font: 'Font',
-      fontSize: 'Font size',
       hideDelay: 'Hide delay',
-      animation: 'Animation',
-      animationParams: {
-        name: 'Animation parameters',
-        startScale: 'start scale',
-        duration: 'duration in ms',
-        opacity: 'opacity'
-      },
-      verticalAlign: 'Vertical alignment',
-      top: 'Top',
-      bottom: 'Bottom',
-      center: 'Center',
       widgetLink: 'Predication widget link'
     }
   },

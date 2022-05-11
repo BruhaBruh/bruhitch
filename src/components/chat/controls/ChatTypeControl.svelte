@@ -21,7 +21,7 @@
   ];
 </script>
 
-<TextField title={$LL.chat.controls.chatType()} class="mb-4">
+<TextField {...$$restProps} title={$LL.chat.controls.chatType()}>
   <Select
     on:selectitem={(e) => config.setChatType(e.detail)}
     selected={[$config.chatType]}

@@ -22,7 +22,7 @@
   };
 </script>
 
-<div class="mb-4">
+<div {...$$restProps}>
   <TextField title={$LL.chat.controls.hiddenNicknames()} class="mb-2">
     <div class="flex space-x-2">
       <Input

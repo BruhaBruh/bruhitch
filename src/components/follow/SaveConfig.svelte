@@ -53,7 +53,7 @@
   };
 </script>
 
-<TextField title={$LL.save()} class="mb-4">
+<TextField {...$$restProps} title={$LL.save()}>
   <Button disabled={settingsIsSame} on:click={handleSave} color="success">
     {$LL.save()}
   </Button>

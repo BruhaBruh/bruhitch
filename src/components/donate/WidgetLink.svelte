@@ -18,6 +18,7 @@
 </script>
 
 <TextField
+  {...$$restProps}
   status="validation"
   statusText={$LL.dontShowLinkAnyone()}
   title={$LL.followAlerts.controls.widgetLink()}

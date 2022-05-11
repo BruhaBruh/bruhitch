@@ -5,13 +5,13 @@
   export let hue = 0; // 0-360
 
   let picker: HTMLDivElement;
-  let app: HTMLDivElement;
+  let scrollableElement: HTMLElement;
 
   let position = hue / 360;
   let isMouseDown = false;
 
   onMount(() => {
-    app = document.querySelector('#app-container');
+    scrollableElement = document.querySelector('#main-component');
   });
 
   $: {
@@ -27,20 +27,24 @@
   const handleMouseMove = (e: MouseEvent) => {
     if (!isMouseDown) return;
     if (variant === 'horizontal') {
-      const x = e.clientX + app.scrollLeft - picker.offsetLeft;
+      const x =
+        e.clientX + scrollableElement.scrollLeft - (e.currentTarget as HTMLElement).offsetLeft;
       hue = (x / picker.clientWidth) * 360;
     } else {
-      const y = e.clientY + app.clientTop - picker.offsetTop;
+      const y =
+        e.clientY + scrollableElement.scrollTop - (e.currentTarget as HTMLElement).offsetTop;
       hue = (y / picker.clientHeight) * 360;
     }
   };
 
   const handleClick = (e: MouseEvent) => {
     if (variant === 'horizontal') {
-      const x = e.pageX - picker.offsetLeft;
+      const x =
+        e.clientX + scrollableElement.scrollLeft - (e.currentTarget as HTMLElement).offsetLeft;
       hue = (x / picker.clientWidth) * 360;
     } else {
-      const y = e.pageY - picker.offsetTop;
+      const y =
+        e.clientY + scrollableElement.scrollTop - (e.currentTarget as HTMLElement).offsetTop;
       hue = (y / picker.clientHeight) * 360;
     }
   };

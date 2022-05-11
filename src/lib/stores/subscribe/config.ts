@@ -1,7 +1,8 @@
 import { isColor } from '$lib/color';
 import isNullOrUndefined from '$lib/isNullOrUndefined';
+import type { VerticalAlignment } from '$types/alignment';
 import { Animation, AnimationEasing, type AnimationParams } from '$types/animation';
-import type { Settings, VerticalAlign } from '$types/subscribe/settings';
+import type { Settings } from '$types/subscribe/settings';
 import { writable } from 'svelte/store';
 
 const createConfig = (initialState: Settings) => {
@@ -68,7 +69,7 @@ const createConfig = (initialState: Settings) => {
         }
       }));
     },
-    setVertical: (vertical: VerticalAlign) => {
+    setVertical: (vertical: VerticalAlignment) => {
       update((v) => ({ ...v, vertical }));
     },
     reset: () => set(initialState)

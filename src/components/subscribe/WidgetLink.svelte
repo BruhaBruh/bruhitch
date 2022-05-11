@@ -18,10 +18,10 @@
 </script>
 
 <TextField
+  {...$$restProps}
   status="validation"
   statusText={$LL.dontShowLinkAnyone()}
   title={$LL.subscribeAlerts.controls.widgetLink()}
-  class="mb-4"
 >
   <Button color="secondary" on:click={handleCopy}>
     {$LL.copy()}

@@ -44,3 +44,5 @@ export type AnimationParams = {
   start?: number;
   opacity?: number;
 };
+
+export type ShowAnimationParams = { [K in keyof AnimationParams]: boolean };
