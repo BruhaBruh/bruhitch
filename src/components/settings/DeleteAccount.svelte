@@ -51,7 +51,7 @@
 <FullScreenSpinner show={deleteAccountIsLoading} />
 {#if $me}
   <TextField title={$LL.settings.deleteAccount()} class="mb-4">
-    <Button color="danger" on:click={() => (showDeleteAccountAlert = true)}>
+    <Button class="w-full max-w-sm" color="danger" on:click={() => (showDeleteAccountAlert = true)}>
       {$LL.settings.deleteAccount()}
     </Button>
   </TextField>

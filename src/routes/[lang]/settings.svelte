@@ -13,7 +13,7 @@
   <title>{$LL.pageNames.another($LL.settings.name())}</title>
 </svelte:head>
 
-<div class="container mx-auto">
+<div>
   <Typography variant="h1" class="mb-8">{$LL.settings.name()}</Typography>
 
   <SelectLocale />

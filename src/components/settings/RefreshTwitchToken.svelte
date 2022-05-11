@@ -58,7 +58,7 @@
     statusText={$LL.settings.refreshTokenDescription()}
     class="mb-4"
   >
-    <Button color="warning" on:click={() => (showRefreshTokenAlert = true)}>
+    <Button class="w-full max-w-sm" color="warning" on:click={() => (showRefreshTokenAlert = true)}>
       {$LL.settings.refreshToken()}
     </Button>
   </TextField>
