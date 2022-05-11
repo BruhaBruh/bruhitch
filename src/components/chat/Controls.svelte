@@ -5,13 +5,15 @@
   import { me } from '$lib/stores/me';
   import { Animation } from '$types/animation';
   import AnimationControl from '@components/controls/AnimationControl.svelte';
+  import ColorControl from '@components/controls/ColorControl.svelte';
   import DisablePaddingControl from '@components/controls/DisablePaddingControl.svelte';
   import FontControl from '@components/controls/FontControl.svelte';
   import FontSizeControl from '@components/controls/FontSizeControl.svelte';
-  import ChannelControl from './controls/ChannelControl.svelte';
+  import Input from '@components/ui/Input.svelte';
+  import TextField from '@components/ui/TextField.svelte';
+  import LL from '@i18n/i18n-svelte';
   import ChatTypeControl from './controls/ChatTypeControl.svelte';
   import CustomColorNicknamesControl from './controls/CustomColorNicknamesControl.svelte';
-  import DefaultColorControl from './controls/DefaultColorControl.svelte';
   import GradientOnlyCustomControl from './controls/GradientOnlyCustomControl.svelte';
   import HiddenNicknamesControl from './controls/HiddenNicknamesControl.svelte';
   import HideRewardsControl from './controls/HideRewardsControl.svelte';
@@ -43,17 +45,24 @@
 </script>
 
 <div {...$$restProps}>
-  <ChannelControl />
-  <ChatTypeControl />
-  <HideRewardsControl />
-  <HiddenNicknamesControl />
-  <DefaultColorControl />
-  <GradientOnlyCustomControl />
-  <CustomColorNicknamesControl />
-  <FontControl bind:font={$config.font} />
-  <FontSizeControl bind:fontSize={$config.fontSize} />
-  <DisablePaddingControl bind:disablePadding={$config.disablePadding} />
+  <TextField title={$LL.chat.controls.channel()} class="mb-4">
+    <Input bind:value={$config.channel} />
+  </TextField>
+  <ChatTypeControl class="mb-4" />
+  <HideRewardsControl class="mb-4" />
+  <HiddenNicknamesControl class="mb-4" />
+  <ColorControl
+    title={$LL.chat.controls.defaultColor()}
+    bind:color={$config.defaultColor}
+    class="mb-4"
+  />
+  <GradientOnlyCustomControl class="mb-4" />
+  <CustomColorNicknamesControl class="mb-4" />
+  <FontControl bind:font={$config.font} class="mb-4" />
+  <FontSizeControl bind:fontSize={$config.fontSize} class="mb-4" />
+  <DisablePaddingControl bind:disablePadding={$config.disablePadding} class="mb-4" />
   <AnimationControl
+    class="mb-4"
     bind:animation={$config.animation}
     bind:easing={$config.animationEasing}
     showEasing={$config.animation !== Animation.Nothing}
@@ -65,7 +74,7 @@
     }}
   />
 
-  <WidgetLink />
-  <PreviewLink />
+  <WidgetLink class="mb-4" />
+  <PreviewLink class="mb-4" />
   <LoadConfig />
 </div>

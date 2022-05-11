@@ -15,7 +15,7 @@
 
 {#if show}
   <TextField title={$LL.controls.animationParams.name()}>
-    <div class={'flex space-x-2'}>
+    <div class={'flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2'}>
       {#if showAnimationParams.duration}
         <DurationInput bind:duration={animationParams.duration} />
       {/if}

@@ -18,7 +18,7 @@
   export let showAnimationParams: ShowAnimationParams;
 </script>
 
-<div class="mb-4">
+<div {...$$restProps}>
   <TextField title={$LL.controls.animation()} class="mb-4">
     <div class={'flex space-x-2'}>
       <AnimationSelect bind:animation />

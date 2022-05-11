@@ -7,7 +7,7 @@
   export let disablePadding: boolean;
 </script>
 
-<TextField title={$LL.controls.disablePadding()} class="mb-4">
+<TextField {...$$restProps} title={$LL.controls.disablePadding()}>
   <label for="disable-padding" class="cursor-pointer flex items-center space-x-1 select-none ">
     <Checkbox
       on:change={(e) => (disablePadding = e.detail)}

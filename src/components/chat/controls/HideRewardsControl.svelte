@@ -6,7 +6,7 @@
   import LL from '@i18n/i18n-svelte';
 </script>
 
-<TextField title={$LL.chat.controls.hideRewards()} class="mb-4">
+<TextField {...$$restProps} title={$LL.chat.controls.hideRewards()}>
   <label for="hide-rewards" class="cursor-pointer flex items-center space-x-1 select-none">
     <Checkbox
       on:change={(e) => config.setHideReward(e.detail)}

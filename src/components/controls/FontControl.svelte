@@ -6,6 +6,6 @@
   export let font: string;
 </script>
 
-<TextField title={$LL.controls.font()} class="mb-4">
+<TextField {...$$restProps} title={$LL.controls.font()}>
   <Input bind:value={font} />
 </TextField>

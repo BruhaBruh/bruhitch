@@ -4,10 +4,10 @@
   import HuePicker from '@components/ui/HuePicker.svelte';
   import Input from '@components/ui/Input.svelte';
   import TextField from '@components/ui/TextField.svelte';
-  import LL from '@i18n/i18n-svelte';
   import * as chroma from 'chroma-js';
 
   export let color: string;
+  export let title: string;
 
   let hue = chroma.hex(color).hsv()[0];
   let saturation = chroma.hex(color).hsv()[1];
@@ -16,23 +16,31 @@
   const handleInput = (e: Event) => {
     const raw = (e.currentTarget as HTMLInputElement).value;
     if (!isColor(raw)) return;
-    const color = chroma.hex(raw).hsv();
-    hue = color[0];
-    saturation = color[1];
-    value = color[2];
+    const hsv = chroma.hex(raw).hsv();
+    hue = hsv[0];
+    saturation = hsv[1];
+    value = hsv[2];
   };
+
+  $: {
+    const hsv = chroma.hex(color).hsv();
+    saturation = hsv[1];
+    value = hsv[2];
+  }
 </script>
 
-<TextField title={$LL.chat.controls.defaultColor()} class="w-full">
-  <div class="w-full">
-    <ColorPicker
-      bind:hex={color}
-      bind:hue
-      bind:saturation
-      bind:value
-      class="aspect-video w-full mb-2 rounded-default"
-    />
-    <HuePicker bind:hue variant="horizontal" class="w-full h-5 rounded-default mb-2" />
-    <Input value={color} on:input={handleInput} />
+<TextField {...$$restProps} {title}>
+  <div>
+    <div class="flex space-x-2 items-stretch mb-2">
+      <ColorPicker
+        bind:hex={color}
+        bind:hue
+        bind:saturation
+        bind:value
+        class="h-32 sm:h-48 md:h-64 lg:h-96 w-full rounded-default"
+      />
+      <HuePicker bind:hue variant="vertical" class="w-5 rounded-default" />
+    </div>
+    <Input value={color} on:input={handleInput} type="color" />
   </div>
 </TextField>

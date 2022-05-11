@@ -1,5 +1,6 @@
 <script lang="ts">
   import config from '$lib/stores/chat/config';
+  import ColorControl from '@components/controls/ColorControl.svelte';
   import Button from '@components/ui/Button.svelte';
   import type { CheckboxValue } from '@components/ui/Checkbox';
   import Checkbox from '@components/ui/Checkbox.svelte';
@@ -9,7 +10,6 @@
   import LL from '@i18n/i18n-svelte';
   import * as chroma from 'chroma-js';
   import CustomColorNicknameItem from './CustomColorNicknameItem.svelte';
-  import CustomColorNicknamePicker from './CustomColorNicknamePicker.svelte';
 
   let nickname = '';
   let start = '#000000';
@@ -40,7 +40,7 @@
   };
 </script>
 
-<div class="mb-4">
+<div {...$$restProps}>
   <TextField title={$LL.chat.controls.customColorNicknames()} class="mb-2">
     <div class="flex space-x-2">
       <Input
@@ -69,10 +69,10 @@
       </span>
     </Typography>
   </div>
-  <div class="grid grid-cols-2 gap-2 mb-2">
-    <CustomColorNicknamePicker bind:color={start} />
+  <div class="grid sm:grid-cols-2 gap-2 mb-2">
+    <ColorControl title="" bind:color={start} />
     {#if isGradient.length !== 0}
-      <CustomColorNicknamePicker bind:color={end} />
+      <ColorControl title="" bind:color={end} />
     {/if}
   </div>
   <ul class="space-y-1">
