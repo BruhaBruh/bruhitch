@@ -1,7 +1,8 @@
 import { isColor } from '$lib/color';
 import isNullOrUndefined from '$lib/isNullOrUndefined';
+import type { VerticalAlignment } from '$types/alignment';
 import { Animation, AnimationEasing, type AnimationParams } from '$types/animation';
-import type { Settings, VerticalAlign } from '$types/prediction/settings';
+import type { Settings } from '$types/prediction/settings';
 import { writable } from 'svelte/store';
 
 const createConfig = (initialState: Settings) => {
@@ -76,7 +77,7 @@ const createConfig = (initialState: Settings) => {
       if (isNaN(n)) return;
       update((v) => ({ ...v, hideDelay: n }));
     },
-    setVertical: (vertical: VerticalAlign) => update((v) => ({ ...v, vertical })),
+    setVertical: (vertical: VerticalAlignment) => update((v) => ({ ...v, vertical })),
     reset: () => set(initialState)
   };
 };

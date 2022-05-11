@@ -11,6 +11,27 @@ const en: BaseTranslation = {
   dontShowLinkAnyone: 'Dont show link anyone',
   preview: 'Preview widget link',
   actionCanNotBeUndone: 'This action cannot be undone, are you sure?',
+  controls: {
+    font: 'Font',
+    fontSize: 'Font size',
+    disablePadding: 'Disable padding',
+    animation: 'Animation',
+    animationParams: {
+      name: 'Animation parameters',
+      duration: 'duration in ms',
+      startScale: 'start scale',
+      opacity: 'opacity'
+    },
+    alignment: {
+      vertical: 'Vertical alignment',
+      horizontal: 'Horizontal alignment',
+      top: 'Top',
+      bottom: 'Bottom',
+      center: 'Center',
+      right: 'Right',
+      left: 'Left'
+    }
+  },
   index: {
     aboutProject: 'About project',
     idea: {

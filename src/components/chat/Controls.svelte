@@ -3,14 +3,15 @@
   import UrlParser from '$lib/chat/urlParser';
   import config from '$lib/stores/chat/config';
   import { me } from '$lib/stores/me';
-  import AnimationControl from './controls/AnimationControl.svelte';
+  import { Animation } from '$types/animation';
+  import AnimationControl from '@components/controls/AnimationControl.svelte';
+  import DisablePaddingControl from '@components/controls/DisablePaddingControl.svelte';
+  import FontControl from '@components/controls/FontControl.svelte';
+  import FontSizeControl from '@components/controls/FontSizeControl.svelte';
   import ChannelControl from './controls/ChannelControl.svelte';
   import ChatTypeControl from './controls/ChatTypeControl.svelte';
   import CustomColorNicknamesControl from './controls/CustomColorNicknamesControl.svelte';
   import DefaultColorControl from './controls/DefaultColorControl.svelte';
-  import DisablePaddingControl from './controls/DisablePaddingControl.svelte';
-  import FontControl from './controls/FontControl.svelte';
-  import FontSizeControl from './controls/FontSizeControl.svelte';
   import GradientOnlyCustomControl from './controls/GradientOnlyCustomControl.svelte';
   import HiddenNicknamesControl from './controls/HiddenNicknamesControl.svelte';
   import HideRewardsControl from './controls/HideRewardsControl.svelte';
@@ -21,7 +22,7 @@
   let isLoadedLink = false;
 
   const loadFromLink = (link: string) => {
-    if (!link) return
+    if (!link) return;
     const settings = new UrlParser(link).getSettings();
     config.loadSettings(settings);
   };
@@ -49,10 +50,20 @@
   <DefaultColorControl />
   <GradientOnlyCustomControl />
   <CustomColorNicknamesControl />
-  <FontControl />
-  <FontSizeControl />
-  <DisablePaddingControl />
-  <AnimationControl />
+  <FontControl bind:font={$config.font} />
+  <FontSizeControl bind:fontSize={$config.fontSize} />
+  <DisablePaddingControl bind:disablePadding={$config.disablePadding} />
+  <AnimationControl
+    bind:animation={$config.animation}
+    bind:easing={$config.animationEasing}
+    showEasing={$config.animation !== Animation.Nothing}
+    bind:animationParams={$config.animationParams}
+    showAnimationParams={{
+      duration: $config.animation !== Animation.Nothing,
+      start: $config.animation === Animation.Scale,
+      opacity: $config.animation === Animation.Scale
+    }}
+  />
 
   <WidgetLink />
   <PreviewLink />

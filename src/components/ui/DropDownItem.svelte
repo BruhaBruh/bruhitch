@@ -32,7 +32,7 @@
   on:click={handleClick}
   {disabled}
   class={[
-    'h-8 disabled:text-gray-dark dark:disabled:text-gray-light disabled:hover:bg-transparent dark:disabled:hover:bg-transparent px-2 flex items-center space-x-2 border-2 border-transparent transition ease-in',
+    'dropdown-item h-8 disabled:text-gray-dark dark:disabled:text-gray-light disabled:hover:bg-transparent dark:disabled:hover:bg-transparent px-2 flex items-center space-x-2 border-2 border-transparent transition ease-in',
     isSelected && !multi
       ? 'text-gray-lightest bg-primary-base hover:bg-primary-dark disabled:bg-primary-lighter'
       : 'text-gray-darkest dark:text-gray-lightest hover:bg-gray-lighter dark:hover:bg-gray-darker focus:border-opacity-50 focus:border-primary-base'
@@ -45,3 +45,9 @@
   {/if}
   <Typography variant="button"><slot /></Typography>
 </button>
+
+<style lang="postcss">
+  .dropdown-item {
+    @apply ring-0 ring-offset-0;
+  }
+</style>

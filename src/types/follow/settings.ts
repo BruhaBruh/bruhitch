@@ -1,7 +1,5 @@
+import type { HorizontalAlignment, VerticalAlignment } from '$types/alignment';
 import type { Animation, AnimationEasing, AnimationParams } from '$types/animation';
-
-export type VerticalAlign = 'top' | 'center' | 'bottom';
-export type HorizontalAlign = 'left' | 'center' | 'right';
 
 export type Settings = {
   /**
@@ -18,6 +16,6 @@ export type Settings = {
   animation: Animation;
   animationEasing: AnimationEasing;
   animationParams: Omit<AnimationParams, 'duration'>;
-  vertical: VerticalAlign;
-  horizontal: HorizontalAlign;
+  vertical: VerticalAlignment;
+  horizontal: HorizontalAlignment;
 };

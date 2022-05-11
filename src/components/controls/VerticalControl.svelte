@@ -1,30 +1,32 @@
 <script lang="ts">
-  import config from '$lib/stores/prediction/config';
+  import type { VerticalAlignment } from '$types/alignment';
   import type { SelectItem } from '@components/ui/Select';
   import Select from '@components/ui/Select.svelte';
   import TextField from '@components/ui/TextField.svelte';
   import LL from '@i18n/i18n-svelte';
 
+  export let vertical: VerticalAlignment;
+
   const verticalAlignTypes: SelectItem[] = [
     {
       value: 'top',
-      label: $LL.followAlerts.controls.top()
+      label: $LL.controls.alignment.top()
     },
     {
       value: 'center',
-      label: $LL.followAlerts.controls.center()
+      label: $LL.controls.alignment.center()
     },
     {
       value: 'bottom',
-      label: $LL.followAlerts.controls.bottom()
+      label: $LL.controls.alignment.bottom()
     }
   ];
 </script>
 
-<TextField title={$LL.predictionWidget.controls.verticalAlign()} class="mb-4">
+<TextField title={$LL.controls.alignment.vertical()} class="mb-4">
   <Select
-    on:selectitem={(e) => config.setVertical(e.detail)}
-    selected={[$config.vertical]}
+    on:selectitem={(e) => (vertical = e.detail)}
+    selected={[vertical]}
     values={verticalAlignTypes}
   />
 </TextField>

@@ -49,6 +49,72 @@ type RootTranslation = {
 	 * This action cannot be undone, are you sure?
 	 */
 	actionCanNotBeUndone: string
+	controls: {
+		/**
+		 * Font
+		 */
+		font: string
+		/**
+		 * Font size
+		 */
+		fontSize: string
+		/**
+		 * Disable padding
+		 */
+		disablePadding: string
+		/**
+		 * Animation
+		 */
+		animation: string
+		animationParams: {
+			/**
+			 * Animation parameters
+			 */
+			name: string
+			/**
+			 * duration in ms
+			 */
+			duration: string
+			/**
+			 * start scale
+			 */
+			startScale: string
+			/**
+			 * opacity
+			 */
+			opacity: string
+		}
+		alignment: {
+			/**
+			 * Vertical alignment
+			 */
+			vertical: string
+			/**
+			 * Horizontal alignment
+			 */
+			horizontal: string
+			/**
+			 * Top
+			 */
+			top: string
+			/**
+			 * Bottom
+			 */
+			bottom: string
+			/**
+			 * Center
+			 */
+			center: string
+			/**
+			 * Right
+			 */
+			right: string
+			/**
+			 * Left
+			 */
+			left: string
+		}
+	}
 	index: {
 		/**
 		 * About project
@@ -782,6 +848,72 @@ export type TranslationFunctions = {
 	 * This action cannot be undone, are you sure?
 	 */
 	actionCanNotBeUndone: () => LocalizedString
+	controls: {
+		/**
+		 * Font
+		 */
+		font: () => LocalizedString
+		/**
+		 * Font size
+		 */
+		fontSize: () => LocalizedString
+		/**
+		 * Disable padding
+		 */
+		disablePadding: () => LocalizedString
+		/**
+		 * Animation
+		 */
+		animation: () => LocalizedString
+		animationParams: {
+			/**
+			 * Animation parameters
+			 */
+			name: () => LocalizedString
+			/**
+			 * duration in ms
+			 */
+			duration: () => LocalizedString
+			/**
+			 * start scale
+			 */
+			startScale: () => LocalizedString
+			/**
+			 * opacity
+			 */
+			opacity: () => LocalizedString
+		}
+		alignment: {
+			/**
+			 * Vertical alignment
+			 */
+			vertical: () => LocalizedString
+			/**
+			 * Horizontal alignment
+			 */
+			horizontal: () => LocalizedString
+			/**
+			 * Top
+			 */
+			top: () => LocalizedString
+			/**
+			 * Bottom
+			 */
+			bottom: () => LocalizedString
+			/**
+			 * Center
+			 */
+			center: () => LocalizedString
+			/**
+			 * Right
+			 */
+			right: () => LocalizedString
+			/**
+			 * Left
+			 */
+			left: () => LocalizedString
+		}
+	}
 	index: {
 		/**
 		 * About project

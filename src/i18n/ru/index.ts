@@ -11,6 +11,27 @@ const ru: Translation = {
   dontShowLinkAnyone: 'Никому не показывайте ссылку',
   preview: 'Ссылка на виджет предварительного просмотра',
   actionCanNotBeUndone: 'Это действие нельзя будет отменить, вы уверены?',
+  controls: {
+    font: 'Шрифт',
+    fontSize: 'Размер шрифта',
+    disablePadding: 'Выключить отступы',
+    animation: 'Анимация',
+    animationParams: {
+      name: 'Параметры анимации',
+      duration: 'продолжительность в мс',
+      startScale: 'начальный размер',
+      opacity: 'непрозрачность'
+    },
+    alignment: {
+      vertical: 'Вертикальное выравнивание',
+      horizontal: 'Горизонтальное выравнивание',
+      top: 'Верх',
+      bottom: 'Низ',
+      center: 'Центр',
+      right: 'Право',
+      left: 'Лево'
+    }
+  },
   index: {
     aboutProject: 'О проекте',
     idea: {
