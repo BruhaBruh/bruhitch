@@ -6,7 +6,7 @@
   import LL from '@i18n/i18n-svelte';
 </script>
 
-<TextField title={$LL.donationAlerts.controls.isGradientCurrency()} class="mb-4">
+<TextField {...$$restProps} title={$LL.donationAlerts.controls.isGradientCurrency()}>
   <label for="gradient-currency" class="cursor-pointer flex items-center space-x-1 select-none">
     <Checkbox
       on:change={(e) => config.setIsGradientCurrency(e.detail)}

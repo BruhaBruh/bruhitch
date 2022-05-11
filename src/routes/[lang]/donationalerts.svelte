@@ -14,12 +14,12 @@
 </svelte:head>
 
 {#if $me}
-  <div class="container mx-auto grid grid-cols-12 gap-8">
-    <Typography variant="h1" class="col-span-12">
+  <div class="grid grid-cols-2 sm:grid-cols-12 gap-8">
+    <Typography variant="h1" class="col-span-full">
       {$LL.donationAlerts.title()}
     </Typography>
-    <Controls class="col-span-12 md:col-span-8" />
-    <PreviewDonate class="col-span-12 md:col-span-4" />
+    <PreviewDonate class="col-span-full md:col-span-4 sm:order-1 sm:sticky top-0" />
+    <Controls class="col-span-full md:col-span-8" />
   </div>
 {:else}
   <div class="container mx-auto">
