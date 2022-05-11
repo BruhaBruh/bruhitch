@@ -17,7 +17,12 @@
   };
 </script>
 
-<TextField status="validation" statusText={$LL.dontShowLinkAnyone()} title={$LL.preview()}>
+<TextField
+  {...$$restProps}
+  status="validation"
+  statusText={$LL.dontShowLinkAnyone()}
+  title={$LL.preview()}
+>
   <Button color="secondary" on:click={handleCopy}>
     {$LL.copy()}
   </Button>

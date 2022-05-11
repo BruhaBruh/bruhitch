@@ -6,7 +6,7 @@
   import LL from '@i18n/i18n-svelte';
 </script>
 
-<TextField title={$LL.subscribeAlerts.controls.isGradientUsername()} class="mb-4">
+<TextField {...$$restProps} title={$LL.subscribeAlerts.controls.isGradientUsername()}>
   <label for="gradient-username" class="cursor-pointer flex items-center space-x-1 select-none">
     <Checkbox
       on:change={(e) => config.setIsGradientUsername(e.detail)}

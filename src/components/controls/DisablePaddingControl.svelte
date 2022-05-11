@@ -8,7 +8,7 @@
 </script>
 
 <TextField {...$$restProps} title={$LL.controls.disablePadding()}>
-  <label for="disable-padding" class="cursor-pointer flex items-center space-x-1 select-none ">
+  <label for="disable-padding" class="cursor-pointer flex items-center space-x-1 select-none">
     <Checkbox
       on:change={(e) => (disablePadding = e.detail)}
       group={disablePadding ? ['true'] : []}

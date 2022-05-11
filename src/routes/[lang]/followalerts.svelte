@@ -22,9 +22,7 @@
     <Controls class="col-span-full md:col-span-8" />
   </div>
 {:else}
-  <div>
-    <Typography variant="h1">
-      {$LL.authorization()}
-    </Typography>
-  </div>
+  <Typography variant="h1">
+    {$LL.authorization()}
+  </Typography>
 {/if}
