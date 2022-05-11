@@ -83,16 +83,6 @@ const ru: Translation = {
       gradientOnlyToCustomNicknames: 'Градиент только для кастомных ников',
       customColorNicknames: 'Кастомные цвета ников',
       isGradient: 'Градиент?',
-      font: 'Шрифт',
-      fontSize: 'Размер шрифта',
-      disablePadding: 'Выключить отступы',
-      animation: 'Анимация',
-      animationParams: {
-        name: 'Параметры анимации',
-        duration: 'продолжительность в мс',
-        startScale: 'начальный размер',
-        opacity: 'непрозрачность'
-      },
       chatLink: 'Ссылка на виджет чата',
       loadConfigFromLink: 'Загрузить конфиг из ссылки'
     }
@@ -112,20 +102,6 @@ const ru: Translation = {
       hideDelay: 'Задержка скрытия',
       hideDelayDescription: 'Звуковое оповещение будет удалено, но звук продолжит работать',
       volume: 'Громкость звука',
-      font: 'Шрифт',
-      fontSize: 'Размер шрифта',
-      disablePadding: 'Выключить отступы',
-      animation: 'Анимация',
-      animationParams: {
-        name: 'Параметры анимации',
-        startScale: 'начальный размер',
-        duration: 'продолжительность в мс',
-        opacity: 'непрозрачность'
-      },
-      verticalAlign: 'Вертикальное выравнивание',
-      top: 'Верх',
-      bottom: 'Низ',
-      center: 'Центр',
       widgetLink: 'Ссылка на виджет донатов'
     }
   },
@@ -133,15 +109,6 @@ const ru: Translation = {
     name: 'Отслеживания',
     title: 'Настройка оповещений отслеживания',
     controls: {
-      font: 'Шрифт',
-      fontSize: 'Размер шрифта',
-      disablePadding: 'Выключить отступы',
-      animation: 'Анимация',
-      animationParams: {
-        name: 'Параметры анимации',
-        startScale: 'начальный размер',
-        opacity: 'непрозрачность'
-      },
       pattern: 'Паттерн',
       patternDescription: '$username$ - показать ник. ![текст](ссылка) - изображение',
       textColor: 'Цвет текста',
@@ -150,13 +117,6 @@ const ru: Translation = {
       backgroundImageDescription: 'Ссылка на изображение',
       colorNickname: 'Цвет ника',
       isGradientNickname: 'Градиент на нике?',
-      verticalAlign: 'Вертикальное выравнивание',
-      horizontalAlign: 'Горизонтальное выравнивание',
-      top: 'Верх',
-      bottom: 'Низ',
-      center: 'Центр',
-      right: 'Право',
-      left: 'Лево',
       widgetLink: 'Ссылка на виджет оповещений отслеживаний'
     }
   },
@@ -174,24 +134,11 @@ const ru: Translation = {
         '$username$ - даритель. $recipient$ - новый саб. $duration$ - месяцы. ![](ссылка) - изображение',
       anonymous: 'Аноним',
       anonymousDescription: 'Заменяет $username$ при анонимном подарке',
-      disablePadding: 'Выключить отступы',
-      font: 'Шрифт',
-      fontSize: 'Размер шрифта',
       image: 'Изображение',
       usernameColor: 'Цвет саба/дарителя',
       recipientColor: 'Цвет получателя',
       isGradientUsername: 'Градиент на сабе/дарителе?',
       isGradientRecipient: 'Градиент на получателе?',
-      animation: 'Анимация',
-      animationParams: {
-        name: 'Параметры анимации',
-        startScale: 'начальный размер',
-        opacity: 'непрозрачность'
-      },
-      verticalAlign: 'Вертикальное выравнивание',
-      top: 'Верх',
-      bottom: 'Низ',
-      center: 'Центр',
       widgetLink: 'Ссылка на виджет оповещений сабок'
     }
   },
@@ -203,21 +150,7 @@ const ru: Translation = {
       blueColor: 'Синий цвет',
       pinkColor: 'Розовый цвет',
       channelPointImage: 'Изображение поинтов канала',
-      disablePadding: 'Выключить отступы',
-      font: 'Шрифт',
-      fontSize: 'Размер шрифта',
       hideDelay: 'Задержка скрытия',
-      animation: 'Анимация',
-      animationParams: {
-        name: 'Параметры анимации',
-        startScale: 'начальный размер',
-        duration: 'продолжительность в мс',
-        opacity: 'непрозрачность'
-      },
-      verticalAlign: 'Вертикальное выравнивание',
-      top: 'Верх',
-      bottom: 'Низ',
-      center: 'Центр',
       widgetLink: 'Ссылка на виджет прогноза'
     }
   },

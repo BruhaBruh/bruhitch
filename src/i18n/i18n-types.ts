@@ -284,40 +284,6 @@ type RootTranslation = {
 			 */
 			isGradient: string
 			/**
-			 * Font
-			 */
-			font: string
-			/**
-			 * Font size
-			 */
-			fontSize: string
-			/**
-			 * Disable padding
-			 */
-			disablePadding: string
-			/**
-			 * Animation
-			 */
-			animation: string
-			animationParams: {
-				/**
-				 * Animation parameters
-				 */
-				name: string
-				/**
-				 * duration in ms
-				 */
-				duration: string
-				/**
-				 * start scale
-				 */
-				startScale: string
-				/**
-				 * opacity
-				 */
-				opacity: string
-			}
-			/**
 			 * Chat widget link
 			 */
 			chatLink: string
@@ -382,56 +348,6 @@ type RootTranslation = {
 			 */
 			volume: string
 			/**
-			 * Font
-			 */
-			font: string
-			/**
-			 * Font size
-			 */
-			fontSize: string
-			/**
-			 * Disable padding
-			 */
-			disablePadding: string
-			/**
-			 * Animation
-			 */
-			animation: string
-			animationParams: {
-				/**
-				 * Animation parameters
-				 */
-				name: string
-				/**
-				 * start scale
-				 */
-				startScale: string
-				/**
-				 * duration in ms
-				 */
-				duration: string
-				/**
-				 * opacity
-				 */
-				opacity: string
-			}
-			/**
-			 * Vertical alignment
-			 */
-			verticalAlign: string
-			/**
-			 * Top
-			 */
-			top: string
-			/**
-			 * Bottom
-			 */
-			bottom: string
-			/**
-			 * Center
-			 */
-			center: string
-			/**
 			 * Donate alert widget link
 			 */
 			widgetLink: string
@@ -447,36 +363,6 @@ type RootTranslation = {
 		 */
 		title: string
 		controls: {
-			/**
-			 * Font
-			 */
-			font: string
-			/**
-			 * Font size
-			 */
-			fontSize: string
-			/**
-			 * Disable padding
-			 */
-			disablePadding: string
-			/**
-			 * Animation
-			 */
-			animation: string
-			animationParams: {
-				/**
-				 * Animation parameters
-				 */
-				name: string
-				/**
-				 * start scale
-				 */
-				startScale: string
-				/**
-				 * opacity
-				 */
-				opacity: string
-			}
 			/**
 			 * Pattern
 			 */
@@ -509,34 +395,6 @@ type RootTranslation = {
 			 * Is gradient nickname?
 			 */
 			isGradientNickname: string
-			/**
-			 * Vertical alignment
-			 */
-			verticalAlign: string
-			/**
-			 * Horizontal alignment
-			 */
-			horizontalAlign: string
-			/**
-			 * Top
-			 */
-			top: string
-			/**
-			 * Bottom
-			 */
-			bottom: string
-			/**
-			 * Center
-			 */
-			center: string
-			/**
-			 * Right
-			 */
-			right: string
-			/**
-			 * Left
-			 */
-			left: string
 			/**
 			 * Follow alert widget link
 			 */
@@ -586,18 +444,6 @@ type RootTranslation = {
 			 */
 			anonymousDescription: string
 			/**
-			 * Disable padding
-			 */
-			disablePadding: string
-			/**
-			 * Font
-			 */
-			font: string
-			/**
-			 * Font size
-			 */
-			fontSize: string
-			/**
 			 * Image
 			 */
 			image: string
@@ -617,40 +463,6 @@ type RootTranslation = {
 			 * Is gradient recipient?
 			 */
 			isGradientRecipient: string
-			/**
-			 * Animation
-			 */
-			animation: string
-			animationParams: {
-				/**
-				 * Animation parameters
-				 */
-				name: string
-				/**
-				 * start scale
-				 */
-				startScale: string
-				/**
-				 * opacity
-				 */
-				opacity: string
-			}
-			/**
-			 * Vertical alignment
-			 */
-			verticalAlign: string
-			/**
-			 * Top
-			 */
-			top: string
-			/**
-			 * Bottom
-			 */
-			bottom: string
-			/**
-			 * Center
-			 */
-			center: string
 			/**
 			 * Subscribe alert widget link
 			 */
@@ -684,59 +496,9 @@ type RootTranslation = {
 			 */
 			channelPointImage: string
 			/**
-			 * Disable padding
-			 */
-			disablePadding: string
-			/**
-			 * Font
-			 */
-			font: string
-			/**
-			 * Font size
-			 */
-			fontSize: string
-			/**
 			 * Hide delay
 			 */
 			hideDelay: string
-			/**
-			 * Animation
-			 */
-			animation: string
-			animationParams: {
-				/**
-				 * Animation parameters
-				 */
-				name: string
-				/**
-				 * start scale
-				 */
-				startScale: string
-				/**
-				 * duration in ms
-				 */
-				duration: string
-				/**
-				 * opacity
-				 */
-				opacity: string
-			}
-			/**
-			 * Vertical alignment
-			 */
-			verticalAlign: string
-			/**
-			 * Top
-			 */
-			top: string
-			/**
-			 * Bottom
-			 */
-			bottom: string
-			/**
-			 * Center
-			 */
-			center: string
 			/**
 			 * Predication widget link
 			 */
@@ -1083,40 +845,6 @@ export type TranslationFunctions = {
 			 */
 			isGradient: () => LocalizedString
 			/**
-			 * Font
-			 */
-			font: () => LocalizedString
-			/**
-			 * Font size
-			 */
-			fontSize: () => LocalizedString
-			/**
-			 * Disable padding
-			 */
-			disablePadding: () => LocalizedString
-			/**
-			 * Animation
-			 */
-			animation: () => LocalizedString
-			animationParams: {
-				/**
-				 * Animation parameters
-				 */
-				name: () => LocalizedString
-				/**
-				 * duration in ms
-				 */
-				duration: () => LocalizedString
-				/**
-				 * start scale
-				 */
-				startScale: () => LocalizedString
-				/**
-				 * opacity
-				 */
-				opacity: () => LocalizedString
-			}
-			/**
 			 * Chat widget link
 			 */
 			chatLink: () => LocalizedString
@@ -1181,56 +909,6 @@ export type TranslationFunctions = {
 			 */
 			volume: () => LocalizedString
 			/**
-			 * Font
-			 */
-			font: () => LocalizedString
-			/**
-			 * Font size
-			 */
-			fontSize: () => LocalizedString
-			/**
-			 * Disable padding
-			 */
-			disablePadding: () => LocalizedString
-			/**
-			 * Animation
-			 */
-			animation: () => LocalizedString
-			animationParams: {
-				/**
-				 * Animation parameters
-				 */
-				name: () => LocalizedString
-				/**
-				 * start scale
-				 */
-				startScale: () => LocalizedString
-				/**
-				 * duration in ms
-				 */
-				duration: () => LocalizedString
-				/**
-				 * opacity
-				 */
-				opacity: () => LocalizedString
-			}
-			/**
-			 * Vertical alignment
-			 */
-			verticalAlign: () => LocalizedString
-			/**
-			 * Top
-			 */
-			top: () => LocalizedString
-			/**
-			 * Bottom
-			 */
-			bottom: () => LocalizedString
-			/**
-			 * Center
-			 */
-			center: () => LocalizedString
-			/**
 			 * Donate alert widget link
 			 */
 			widgetLink: () => LocalizedString
@@ -1246,36 +924,6 @@ export type TranslationFunctions = {
 		 */
 		title: () => LocalizedString
 		controls: {
-			/**
-			 * Font
-			 */
-			font: () => LocalizedString
-			/**
-			 * Font size
-			 */
-			fontSize: () => LocalizedString
-			/**
-			 * Disable padding
-			 */
-			disablePadding: () => LocalizedString
-			/**
-			 * Animation
-			 */
-			animation: () => LocalizedString
-			animationParams: {
-				/**
-				 * Animation parameters
-				 */
-				name: () => LocalizedString
-				/**
-				 * start scale
-				 */
-				startScale: () => LocalizedString
-				/**
-				 * opacity
-				 */
-				opacity: () => LocalizedString
-			}
 			/**
 			 * Pattern
 			 */
@@ -1308,34 +956,6 @@ export type TranslationFunctions = {
 			 * Is gradient nickname?
 			 */
 			isGradientNickname: () => LocalizedString
-			/**
-			 * Vertical alignment
-			 */
-			verticalAlign: () => LocalizedString
-			/**
-			 * Horizontal alignment
-			 */
-			horizontalAlign: () => LocalizedString
-			/**
-			 * Top
-			 */
-			top: () => LocalizedString
-			/**
-			 * Bottom
-			 */
-			bottom: () => LocalizedString
-			/**
-			 * Center
-			 */
-			center: () => LocalizedString
-			/**
-			 * Right
-			 */
-			right: () => LocalizedString
-			/**
-			 * Left
-			 */
-			left: () => LocalizedString
 			/**
 			 * Follow alert widget link
 			 */
@@ -1385,18 +1005,6 @@ export type TranslationFunctions = {
 			 */
 			anonymousDescription: () => LocalizedString
 			/**
-			 * Disable padding
-			 */
-			disablePadding: () => LocalizedString
-			/**
-			 * Font
-			 */
-			font: () => LocalizedString
-			/**
-			 * Font size
-			 */
-			fontSize: () => LocalizedString
-			/**
 			 * Image
 			 */
 			image: () => LocalizedString
@@ -1416,40 +1024,6 @@ export type TranslationFunctions = {
 			 * Is gradient recipient?
 			 */
 			isGradientRecipient: () => LocalizedString
-			/**
-			 * Animation
-			 */
-			animation: () => LocalizedString
-			animationParams: {
-				/**
-				 * Animation parameters
-				 */
-				name: () => LocalizedString
-				/**
-				 * start scale
-				 */
-				startScale: () => LocalizedString
-				/**
-				 * opacity
-				 */
-				opacity: () => LocalizedString
-			}
-			/**
-			 * Vertical alignment
-			 */
-			verticalAlign: () => LocalizedString
-			/**
-			 * Top
-			 */
-			top: () => LocalizedString
-			/**
-			 * Bottom
-			 */
-			bottom: () => LocalizedString
-			/**
-			 * Center
-			 */
-			center: () => LocalizedString
 			/**
 			 * Subscribe alert widget link
 			 */
@@ -1483,59 +1057,9 @@ export type TranslationFunctions = {
 			 */
 			channelPointImage: () => LocalizedString
 			/**
-			 * Disable padding
-			 */
-			disablePadding: () => LocalizedString
-			/**
-			 * Font
-			 */
-			font: () => LocalizedString
-			/**
-			 * Font size
-			 */
-			fontSize: () => LocalizedString
-			/**
 			 * Hide delay
 			 */
 			hideDelay: () => LocalizedString
-			/**
-			 * Animation
-			 */
-			animation: () => LocalizedString
-			animationParams: {
-				/**
-				 * Animation parameters
-				 */
-				name: () => LocalizedString
-				/**
-				 * start scale
-				 */
-				startScale: () => LocalizedString
-				/**
-				 * duration in ms
-				 */
-				duration: () => LocalizedString
-				/**
-				 * opacity
-				 */
-				opacity: () => LocalizedString
-			}
-			/**
-			 * Vertical alignment
-			 */
-			verticalAlign: () => LocalizedString
-			/**
-			 * Top
-			 */
-			top: () => LocalizedString
-			/**
-			 * Bottom
-			 */
-			bottom: () => LocalizedString
-			/**
-			 * Center
-			 */
-			center: () => LocalizedString
 			/**
 			 * Predication widget link
 			 */
