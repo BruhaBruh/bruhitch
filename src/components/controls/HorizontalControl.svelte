@@ -10,20 +10,20 @@
   const horizontalAlignTypes: SelectItem[] = [
     {
       value: 'left',
-      label: $LL.followAlerts.controls.left()
+      label: $LL.controls.alignment.left()
     },
     {
       value: 'center',
-      label: $LL.followAlerts.controls.center()
+      label: $LL.controls.alignment.center()
     },
     {
       value: 'right',
-      label: $LL.followAlerts.controls.right()
+      label: $LL.controls.alignment.right()
     }
   ];
 </script>
 
-<TextField title={$LL.controls.alignment.horizontal()} class="mb-4">
+<TextField {...$$restProps} title={$LL.controls.alignment.horizontal()}>
   <Select
     on:selectitem={(e) => (horizontal = e.detail)}
     selected={[horizontal]}

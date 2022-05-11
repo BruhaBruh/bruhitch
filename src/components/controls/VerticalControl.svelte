@@ -23,7 +23,7 @@
   ];
 </script>
 
-<TextField title={$LL.controls.alignment.vertical()} class="mb-4">
+<TextField {...$$restProps} title={$LL.controls.alignment.vertical()}>
   <Select
     on:selectitem={(e) => (vertical = e.detail)}
     selected={[vertical]}

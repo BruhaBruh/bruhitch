@@ -57,12 +57,13 @@
     class="mb-4"
   />
   <GradientOnlyCustomControl class="mb-4" />
-  <CustomColorNicknamesControl class="mb-4" />
+  <CustomColorNicknamesControl class="mb-8" />
+
   <FontControl bind:font={$config.font} class="mb-4" />
   <FontSizeControl bind:fontSize={$config.fontSize} class="mb-4" />
   <DisablePaddingControl bind:disablePadding={$config.disablePadding} class="mb-4" />
   <AnimationControl
-    class="mb-4"
+    class="mb-8"
     bind:animation={$config.animation}
     bind:easing={$config.animationEasing}
     showEasing={$config.animation !== Animation.Nothing}

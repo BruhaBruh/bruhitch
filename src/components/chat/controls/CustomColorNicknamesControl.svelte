@@ -12,8 +12,8 @@
   import CustomColorNicknameItem from './CustomColorNicknameItem.svelte';
 
   let nickname = '';
-  let start = '#000000';
-  let end = '#000000';
+  let start = '#2fd523';
+  let end = '#17b2de';
   let isGradient: CheckboxValue[] = [];
   let input: HTMLInputElement;
 
@@ -30,8 +30,8 @@
       config.addCustomColor(nickname, start);
     }
     nickname = '';
-    start = '#000000';
-    end = '#000000';
+    start = '#2fd523';
+    end = '#17b2de';
     input.focus();
   };
 

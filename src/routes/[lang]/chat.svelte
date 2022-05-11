@@ -17,6 +17,9 @@
   <Typography variant="h1" class="col-span-full">
     {$LL.chat.title()}
   </Typography>
-  <PreviewChat channel={$config.channel} class="col-span-full md:col-span-4 sm:order-1" />
+  <PreviewChat
+    channel={$config.channel}
+    class="col-span-full md:col-span-4 sm:order-1 sm:sticky top-0"
+  />
   <Controls class="col-span-full md:col-span-8" />
 </div>
