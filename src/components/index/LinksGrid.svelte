@@ -59,7 +59,7 @@
     <Typography variant="button">{$LL.index.links.serverGitHub()}</Typography>
   </a>
   <a
-    href="https://t.me/bruhabruh"
+    href="https://t.me/bruhabruh4"
     target="_blank"
     class={[
       'p-2 sm:p-4 cursor-pointer space-x-4',

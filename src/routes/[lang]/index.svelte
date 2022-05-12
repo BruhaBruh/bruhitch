@@ -1,5 +1,6 @@
 <script lang="ts" context="module">
   import Idea from '@components/index/Idea.svelte';
+  import Links from '@components/index/Links.svelte';
   import Structure from '@components/index/Structure.svelte';
   import Typography from '@components/ui/Typography.svelte';
   import LL from '@i18n/i18n-svelte';
@@ -16,4 +17,5 @@
   <Typography variant="h1" class="mb-8">{$LL.index.aboutProject()}</Typography>
   <Idea />
   <Structure />
+  <Links />
 </div>
