@@ -46,8 +46,7 @@
   });
 
   const sendNewDonate = () => {
-    //templateOfDonateWithSound
-    const templates = [templateOfDonateWithText];
+    const templates = [templateOfDonateWithSound, templateOfDonateWithText];
     const currencies = [
       Currency.BelarusianRuble,
       Currency.BrazilianReal,
