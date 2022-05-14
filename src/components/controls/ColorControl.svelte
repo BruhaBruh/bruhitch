@@ -9,6 +9,7 @@
   export let color: string;
   export let title: string;
 
+  let hex = color;
   let hue = chroma.hex(color).hsv()[0];
   let saturation = chroma.hex(color).hsv()[1];
   let value = chroma.hex(color).hsv()[2];
@@ -24,6 +25,7 @@
 
   $: {
     const hsv = chroma.hex(color).hsv();
+    hue = hsv[0];
     saturation = hsv[1];
     value = hsv[2];
   }
@@ -33,7 +35,7 @@
   <div>
     <div class="flex space-x-2 items-stretch mb-2">
       <ColorPicker
-        bind:hex={color}
+        bind:hex
         bind:hue
         bind:saturation
         bind:value
@@ -41,6 +43,6 @@
       />
       <HuePicker bind:hue variant="vertical" class="w-5 rounded-default" />
     </div>
-    <Input value={color} on:input={handleInput} type="color" />
+    <Input value={hex} on:input={handleInput} type="color" />
   </div>
 </TextField>
