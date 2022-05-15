@@ -38,7 +38,8 @@
   </TextField>
   <ColorControl
     title={$LL.followAlerts.controls.colorNickname()}
-    bind:color={$config.colorNickname}
+    color={$config.colorNickname}
+    bind:hex={$config.colorNickname}
     class="mb-4"
   />
   <IsGradientNicknameControl class="mb-8" />

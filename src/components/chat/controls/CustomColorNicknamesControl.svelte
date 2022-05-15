@@ -70,9 +70,9 @@
     </Typography>
   </div>
   <div class="grid sm:grid-cols-2 gap-2 mb-2">
-    <ColorControl title="" bind:color={start} />
+    <ColorControl title="" color={start} bind:hex={start} />
     {#if isGradient.length !== 0}
-      <ColorControl title="" bind:color={end} />
+      <ColorControl title="" color={end} bind:hex={end} />
     {/if}
   </div>
   <ul class="space-y-1">

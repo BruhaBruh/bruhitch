@@ -53,7 +53,8 @@
   <HiddenNicknamesControl class="mb-4" />
   <ColorControl
     title={$LL.chat.controls.defaultColor()}
-    bind:color={$config.defaultColor}
+    color={$config.defaultColor}
+    bind:hex={$config.defaultColor}
     class="mb-4"
   />
   <GradientOnlyCustomControl class="mb-4" />

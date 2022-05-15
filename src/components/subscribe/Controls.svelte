@@ -62,13 +62,15 @@
   </TextField>
   <ColorControl
     title={$LL.subscribeAlerts.controls.usernameColor()}
-    bind:color={$config.usernameColor}
+    color={$config.usernameColor}
+    bind:hex={$config.usernameColor}
     class="mb-4"
   />
   <IsGradientUserNameControl class="mb-4" />
   <ColorControl
     title={$LL.subscribeAlerts.controls.recipientColor()}
-    bind:color={$config.recipientColor}
+    color={$config.recipientColor}
+    bind:hex={$config.recipientColor}
     class="mb-4"
   />
   <IsGradientRecipientControl class="mb-8" />

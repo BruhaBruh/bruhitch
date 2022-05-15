@@ -21,17 +21,20 @@
 <div {...$$restProps}>
   <ColorControl
     title={$LL.predictionWidget.controls.textColor()}
-    bind:color={$config.textColor}
+    color={$config.textColor}
+    bind:hex={$config.textColor}
     class="mb-4"
   />
   <ColorControl
     title={$LL.predictionWidget.controls.blueColor()}
-    bind:color={$config.blueColor}
+    color={$config.blueColor}
+    bind:hex={$config.blueColor}
     class="mb-4"
   />
   <ColorControl
     title={$LL.predictionWidget.controls.pinkColor()}
-    bind:color={$config.pinkColor}
+    color={$config.pinkColor}
+    bind:hex={$config.pinkColor}
     class="mb-4"
   />
   <TextField title={$LL.predictionWidget.controls.channelPointImage()} class="mb-4">

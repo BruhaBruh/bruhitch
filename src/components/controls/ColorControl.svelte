@@ -8,8 +8,7 @@
 
   export let color: string;
   export let title: string;
-
-  let hex = color;
+  export let hex = color;
   let hue = chroma.hex(color).hsv()[0];
   let saturation = chroma.hex(color).hsv()[1];
   let value = chroma.hex(color).hsv()[2];

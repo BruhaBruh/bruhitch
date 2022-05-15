@@ -23,24 +23,28 @@
 <div {...$$restProps}>
   <ColorControl
     title={$LL.donationAlerts.controls.usernameColor()}
-    bind:color={$config.usernameColor}
+    color={$config.usernameColor}
+    bind:hex={$config.usernameColor}
     class="mb-4"
   />
   <IsGradientUserNameControl class="mb-4" />
   <ColorControl
     title={$LL.donationAlerts.controls.currencyColor()}
-    bind:color={$config.currencyColor}
+    color={$config.currencyColor}
+    bind:hex={$config.currencyColor}
     class="mb-4"
   />
   <IsGradientCurrencyControl class="mb-4" />
   <ColorControl
     title={$LL.donationAlerts.controls.soundColor()}
-    bind:color={$config.soundColor}
+    color={$config.soundColor}
+    bind:hex={$config.soundColor}
     class="mb-4"
   />
   <ColorControl
     title={$LL.donationAlerts.controls.textColor()}
-    bind:color={$config.textColor}
+    color={$config.textColor}
+    bind:hex={$config.textColor}
     class="mb-4"
   />
   <TextField title={$LL.donationAlerts.controls.anonymous()} class="mb-4">
