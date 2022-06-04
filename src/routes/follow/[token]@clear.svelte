@@ -92,7 +92,7 @@
     const isLocalhost = $page.url.host.includes('localhost');
 
     const wsURL = `ws${isSecure ? 's' : ''}://${
-      isLocalhost ? 'localhost' : '893589-cm69223.tmweb.ru'
+      isLocalhost ? 'localhost' : 'bruhitch.mauves.ru'
     }/ws/v1?token=${token}`;
 
     ws = new WebSocket(wsURL);
