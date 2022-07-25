@@ -30,7 +30,7 @@
     }
 
     const { badges, broadcasterId }: { badges: TwitchBadge[]; broadcasterId: string } = await fetch(
-      '/api/v1/chat/badges?channel=' + channel
+      '/badges?channel=' + channel
     ).then((r) => r.json());
 
     config.setChannel(channel);
